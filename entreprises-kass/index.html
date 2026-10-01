@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="fr" data-vibe="isolation" data-phone="4385241478">
+<!-- Business phone: the 10 digits in data-phone above. Every "Appeler" button dials it. -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Entreprises Kass · Toiture et isolation</title>
+<meta name="description" content="Toiture, isolation d'entretoit, désamiantage et décontamination à La Prairie, Montréal et sur la Rive-Sud. Plus de 20 ans d'expertise. RBQ 5759-3048-01.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600;800;900&family=Red+Hat+Text:wght@400;500;600&family=Red+Hat+Mono:wght@500;600&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* Layout: an attic inspection report. Hero = drone rising over a fresh shingle roof; a thermal-camera
+   section sells the energy assessment; insulation-pink accent by default. */
+:root{
+  --display:"Red Hat Display","Arial Narrow",Arial,sans-serif;
+  --body:"Red Hat Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Red Hat Mono",ui-monospace,Menlo,monospace;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  /* Isolation (default) */
+  --bg:#eef0f5; --surface:#ffffff; --ink:#0d1322; --muted:#5a6275; --line:#d7dbe4;
+  --accent:#ff7aa8; --accent-ink:#0d1322; --accent-text:#c2366a;
+  --hero:#0b1220; --hero-ink:#eef2fb; --hero-muted:#95a1bb;
+  --win:#ff7aa8; --ground:#1c271d; --gravel:#5f5b54; --asphalt:#161719; --brick:#a3654a; --brick2:#86533e; --house:#3a3d42; --edge:#232c40;
+}
+:root[data-vibe="bardeau"]{
+  --bg:#f1efeb; --surface:#ffffff; --ink:#18171a; --muted:#5f5b58; --line:#dcd8d1;
+  --accent:#e9a23b; --accent-ink:#18171a; --accent-text:#9a6210;
+  --hero:#16181b; --hero-ink:#f3f1ec; --hero-muted:#a6a29b;
+  --win:#e9a23b; --ground:#1c271d; --gravel:#5f5b54; --asphalt:#161719; --brick:#a3654a; --brick2:#86533e; --house:#3a3d42; --edge:#2c2d31;
+}
+:root[data-vibe="thermique"]{
+  --bg:#ecf2f3; --surface:#ffffff; --ink:#0a1517; --muted:#55666a; --line:#d1dcde;
+  --accent:#3fd0e0; --accent-ink:#071317; --accent-text:#0b7f8c;
+  --hero:#071317; --hero-ink:#e9f6f8; --hero-muted:#8fa9ad;
+  --win:#3fd0e0; --ground:#1c271d; --gravel:#5f5b54; --asphalt:#161719; --brick:#a3654a; --brick2:#86533e; --house:#3a3d42; --edge:#16292d;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--body);transition:background-color .6s var(--ease),color .6s var(--ease)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.tag{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:inline-flex;gap:10px;align-items:center}
+.tag::before{content:"";width:16px;height:2px;background:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 15px/1 var(--body);text-decoration:none;border-radius:8px;padding:16px 22px;border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease),background-color .3s,color .3s,border-color .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover{box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 40%,transparent)}
+.btn-line{border-color:color-mix(in srgb,var(--hero-ink) 40%,transparent);color:var(--hero-ink);background:transparent}
+.btn-line:hover{border-color:var(--hero-ink)}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.ph-ic{width:18px;height:18px;flex:none}
+.btn-call{position:relative}
+.btn-call::after{content:"";position:absolute;inset:-4px;border-radius:11px;border:2px solid var(--accent);opacity:0;animation:ring 2.4s var(--ease) infinite;pointer-events:none}
+@keyframes ring{0%{opacity:.7;transform:scale(.97)}70%,100%{opacity:0;transform:scale(1.08)}}
+.btn-call .num{font:500 13px var(--mono);opacity:.85}
+
+/* ---------- Entry gate ---------- */
+.gate{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:24px;text-align:center;color:var(--hero-ink);
+  background:color-mix(in srgb,var(--hero) 74%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:opacity .9s var(--ease),visibility 0s linear .9s}
+html:not(.js) .gate{display:none}
+.gate.closed{opacity:0;visibility:hidden}
+.gate::before{content:"";position:absolute;left:50%;top:40%;width:min(92vw,820px);aspect-ratio:2/1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--win) 18%,transparent),transparent);pointer-events:none}
+.logo3d{position:relative;width:min(44vw,240px);aspect-ratio:1140/1060;cursor:grab;touch-action:none}
+.logo3d:active{cursor:grabbing}
+.logo3d svg.flat{position:absolute;inset:0;width:100%;height:100%;color:var(--accent);transition:opacity .6s}
+.logo3d canvas{position:absolute;left:-45%;top:-45%;width:190%;height:190%;opacity:0;transition:opacity 1s var(--ease);pointer-events:none}
+.logo3d.webgl canvas{opacity:1}
+.logo3d.webgl svg.flat{opacity:0}
+.gate .logo3d{animation:logoIn 1.6s var(--ease) both;margin-bottom:18px}
+@keyframes logoIn{from{opacity:0;transform:translateY(26px) scale(.92);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+.gate-name{font:800 clamp(22px,4vw,34px)/1 var(--display);font-stretch:112%;text-transform:uppercase;letter-spacing:.02em}
+.gate-name small{display:block;font:500 11px/1 var(--mono);letter-spacing:.32em;color:var(--hero-muted);margin-top:10px}
+.gate-q{font:500 12px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;margin:4px 0 0;opacity:.9}
+.gate-q span{opacity:.6}
+.gate-langs{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.gate-langs .btn{min-width:170px}
+.gate-hint{font:400 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);margin:0}
+
+/* ---------- Vibes ---------- */
+.vibes{display:inline-flex;align-items:center;gap:6px;padding:5px;border-radius:999px;border:1px solid color-mix(in srgb,currentColor 25%,transparent)}
+.vibes button{width:26px;height:26px;border-radius:50%;border:0;padding:0;cursor:pointer;background:conic-gradient(var(--a) 0 50%,var(--b) 0 100%);transform:rotate(-45deg);transition:transform .3s var(--ease)}
+.vibes button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--hero),0 0 0 3.5px currentColor}
+.vibes button:hover{transform:rotate(-45deg) scale(1.12)}
+.vibe-name{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:0 8px 0 4px;white-space:nowrap}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;color:var(--hero-ink);transition:background-color .4s;padding-top:env(safe-area-inset-top,0px)}
+.nav.solid{background:color-mix(in srgb,var(--hero) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px}
+.brand{display:flex;align-items:center;text-decoration:none;color:var(--hero-ink)}
+.brand svg{height:30px;width:auto}
+.nav-links{display:flex;gap:28px;font:500 14px var(--body)}
+.nav-links a{text-decoration:none;opacity:.8;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang{display:flex;font:500 12px var(--mono)}
+.lang button{background:none;border:0;color:inherit;opacity:.55;cursor:pointer;padding:6px}
+.lang button[aria-pressed="true"]{opacity:1;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--accent)}
+.nav .btn{padding:12px 16px;font-size:14px}
+
+/* ---------- Hero ---------- */
+.hero{position:sticky;top:0;min-height:100svh;display:flex;align-items:flex-end;color:var(--hero-ink);background:var(--hero);overflow:hidden;isolation:isolate}
+#town{position:absolute;inset:0;width:100%;height:100%;z-index:-2;display:block;transform:scale(calc(1 + var(--p,0) * .08));filter:brightness(calc(1 - var(--p,0) * .55));will-change:transform}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,color-mix(in srgb,var(--hero) 50%,transparent) 0%,transparent 24%,transparent 48%,color-mix(in srgb,var(--hero) 94%,transparent) 92%),linear-gradient(90deg,color-mix(in srgb,var(--hero) 78%,transparent),transparent 62%)}
+.hero .wrap{width:100%;padding-block:140px 56px;display:grid;gap:24px;transform:translate3d(0,calc(var(--p,0) * -90px),0);opacity:calc(1 - var(--p,0) * 1.6);will-change:transform,opacity}
+.live{display:inline-flex;align-items:center;gap:10px;justify-self:start;font:500 12px var(--mono);letter-spacing:.08em;color:var(--hero-ink);background:color-mix(in srgb,var(--hero-ink) 8%,transparent);border:1px solid color-mix(in srgb,var(--hero-ink) 16%,transparent);border-radius:999px;padding:8px 14px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:live 1.8s infinite}
+@keyframes live{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 70%,transparent)}100%{box-shadow:0 0 0 10px transparent}}
+.live b{font-weight:500;font-variant-numeric:tabular-nums}
+.hero h1{font:800 clamp(46px,7.4vw,112px)/.9 var(--display);font-stretch:112%;text-transform:uppercase;margin:0;letter-spacing:-.01em;max-width:13ch;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--accent);text-shadow:0 0 40px color-mix(in srgb,var(--win) 40%,transparent)}
+.hero-sub{font-size:clamp(16px,1.6vw,19px);max-width:52ch;color:color-mix(in srgb,var(--hero-ink) 82%,transparent);margin:0}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.sectors{display:flex;gap:20px;flex-wrap:wrap;font:400 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);margin-top:12px}
+.sectors span{display:inline-flex;align-items:center;gap:8px}
+.sectors span::before{content:"";width:6px;height:6px;border-radius:1px;background:var(--win);box-shadow:0 0 8px var(--win)}
+.hero-tag{position:absolute;right:clamp(16px,4vw,40px);bottom:24px;font:400 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);opacity:calc(.75 - var(--p,0) * 2)}
+
+/* ---------- Sheet ---------- */
+.sheet{position:relative;z-index:2;background:var(--bg);border-radius:28px 28px 0 0;overflow:hidden;box-shadow:0 -30px 60px rgba(0,0,0,.3);transition:background-color .6s var(--ease)}
+footer{position:relative;z-index:2}
+.facts{background:var(--hero);color:var(--hero-ink)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:30px 0 30px 24px;display:grid;gap:6px;border-left:1px solid color-mix(in srgb,var(--hero-ink) 12%,transparent)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact b{font:800 42px/1 var(--display);font-stretch:112%;color:var(--accent)}
+.fact span{font-size:13px;color:var(--hero-muted)}
+
+section{padding-block:clamp(72px,10vw,128px)}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+h2{font:800 clamp(36px,5.4vw,72px)/.94 var(--display);font-stretch:112%;text-transform:uppercase;margin:16px 0 0;text-wrap:balance;letter-spacing:-.01em}
+h2 em{font-style:normal;color:var(--accent-text)}
+.head p{color:var(--muted);margin:0;max-width:46ch;justify-self:end}
+
+/* three sectors */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sector{position:relative;border-radius:16px;background:var(--hero);color:var(--hero-ink);padding:28px;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;overflow:hidden;isolation:isolate}
+.sector::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 55% at 75% 20%,color-mix(in srgb,var(--win) 26%,transparent),transparent 70%);opacity:.35;transition:opacity .8s var(--ease)}
+.sector:hover::before,.sector.in::before{opacity:1}
+.sector .n{position:absolute;top:22px;left:28px;font:500 12px var(--mono);color:var(--hero-muted)}
+.sector svg.sil{position:absolute;right:20px;top:24px;width:46%;height:auto;color:color-mix(in srgb,var(--hero-ink) 18%,transparent)}
+.sector svg.sil .w{fill:var(--win);opacity:.15;transition:opacity .6s}
+.sector:hover svg.sil .w,.sector.in svg.sil .w{opacity:1}
+.sector h3{font:800 32px/1 var(--display);font-stretch:112%;text-transform:uppercase;margin:0}
+.sector p{margin:0;color:var(--hero-muted);font-size:15px}
+
+/* residential checklist */
+.jobs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0;padding:0;list-style:none}
+.jobs li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:14px;align-content:start;min-height:140px}
+.led{width:10px;height:10px;border-radius:50%;background:var(--line);transition:background-color .5s,box-shadow .5s;transition-delay:calc(var(--i,0) * 120ms + .4s)}
+.jobs li.in .led{background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.jobs b{font:600 17px/1.25 var(--body)}
+
+/* emergency band */
+.sos{background:var(--hero);color:var(--hero-ink);position:relative;overflow:hidden}
+.sos::before{content:"";position:absolute;inset:-40% -10% auto auto;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 22%,transparent),transparent);pointer-events:none}
+.sos .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center;position:relative}
+.sos h2{margin:14px 0 18px}
+.sos p{color:var(--hero-muted);margin:0 0 26px;max-width:46ch}
+.sos .tag{color:var(--hero-muted)}
+.clock{justify-self:end;text-align:right;display:grid;gap:8px}
+.clock b{font:800 clamp(64px,9vw,128px)/.85 var(--display);font-stretch:112%;font-variant-numeric:tabular-nums;color:var(--accent);text-shadow:0 0 50px color-mix(in srgb,var(--accent) 35%,transparent)}
+.clock span{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted)}
+
+.quote{font:800 clamp(28px,3.8vw,48px)/1.04 var(--display);font-stretch:112%;text-transform:uppercase;margin:18px 0 56px;max-width:24ch;text-wrap:balance}
+.quote em{font-style:normal;color:var(--accent-text)}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.why div{border-top:2px solid var(--ink);padding-top:20px;display:grid;gap:8px}
+.why b{font:800 24px/1 var(--display);font-stretch:112%;text-transform:uppercase}
+.why p{margin:0;color:var(--muted)}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(160px,18vw,240px);gap:12px}
+.ph{position:relative;overflow:hidden;border-radius:12px;background:var(--hero)}
+.ph::before{content:"";position:absolute;inset:0;background:radial-gradient(40% 35% at 70% 35%,color-mix(in srgb,var(--win) 35%,transparent),transparent 70%),linear-gradient(180deg,transparent 55%,color-mix(in srgb,var(--edge) 80%,transparent));transition:transform 1.2s var(--ease)}
+.ph:hover::before{transform:scale(1.08)}
+.ph span{position:absolute;left:14px;bottom:12px;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--hero-muted)}
+.ph.big{grid-column:span 2;grid-row:span 2}
+.ph.wide{grid-column:span 2}
+.ph.big span{color:var(--hero-ink)}
+
+.split{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(32px,6vw,80px);align-items:start}
+.zones{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;padding:0;list-style:none}
+.zones li{border:1px solid var(--line);padding:8px 14px;font-size:14px;border-radius:999px;background:var(--surface)}
+.rating{background:var(--hero);color:var(--hero-ink);padding:34px;display:grid;gap:18px;border-radius:16px}
+.rating .score{display:flex;align-items:baseline;gap:14px}
+.rating b{font:800 88px/.8 var(--display);font-stretch:112%;color:var(--accent)}
+.rating .score span{color:var(--hero-muted);font-size:14px}
+.bars{display:grid;gap:8px;font:400 12px var(--mono);color:var(--hero-muted)}
+.bar{display:grid;grid-template-columns:24px 1fr 28px;gap:10px;align-items:center;font-variant-numeric:tabular-nums}
+.bar i{height:6px;border-radius:6px;background:color-mix(in srgb,var(--hero-ink) 12%,transparent);overflow:hidden;position:relative}
+.bar i::after{content:"";position:absolute;inset:0;width:calc(var(--v) * 1%);background:var(--accent);border-radius:6px;transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--ease)}
+.rating.in .bar i::after{transform:scaleX(1)}
+.rating p{margin:0;color:var(--hero-muted);font-size:13px}
+
+.contact{background:var(--hero);color:var(--hero-ink)}
+.contact h2 em{color:var(--accent)}
+.contact .tag{color:var(--hero-muted)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px;margin-top:8px}
+label{display:grid;gap:8px;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--hero-muted)}
+input,select,textarea{font:16px var(--body);color:var(--hero-ink);background:transparent;border:0;border-bottom:1px solid color-mix(in srgb,var(--hero-ink) 30%,transparent);padding:10px 0;border-radius:0;width:100%;transition:border-color .3s}
+select option{color:#111}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--accent)}
+textarea{min-height:90px;resize:vertical}
+.full{grid-column:1/-1}
+.sent{grid-column:1/-1;margin:0;color:var(--accent);font:500 13px var(--mono)}
+.contact-side{display:grid;gap:22px;align-content:start;color:var(--hero-muted)}
+.contact-side b{display:block;color:var(--hero-ink);font:800 18px var(--display);font-stretch:112%;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px}
+
+footer{background:var(--hero);color:var(--hero-muted);border-top:1px solid color-mix(in srgb,var(--hero-ink) 12%,transparent);font-size:13px;padding-block:36px calc(36px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer svg{height:30px;width:auto;color:var(--hero-ink)}
+
+/* ---------- shared video-hero styles ---------- */
+.hero-video{position:absolute;inset:0;z-index:-2;overflow:hidden;filter:brightness(calc(.9 - var(--p,0) * .5))}
+.hero-video video{width:100%;height:100%;object-fit:cover;object-position:50% 60%;transform:scale(calc(1.02 + var(--p,0) * .06))}
+#town{display:none}
+.hero-photo{position:absolute;inset:0;z-index:-2;overflow:hidden;filter:brightness(calc(.92 - var(--p,0) * .5))}
+.hero-photo canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1s}
+.hero-photo.is-live canvas{opacity:1}
+.hero-photo.is-live img{visibility:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:62% 90%;transform-origin:68% 80%;animation:kb 26s ease-in-out infinite alternate;will-change:transform}
+@keyframes kb{from{transform:scale(1.03)}to{transform:scale(1.13) translate(-1.2%,.8%)}}
+@media (prefers-reduced-motion:reduce){.hero-photo img{animation:none}}
+.credit{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.book{display:inline-flex;align-items:center;gap:10px;justify-self:start;font:500 12px var(--mono);letter-spacing:.06em;color:var(--hero-ink);background:color-mix(in srgb,var(--hero-ink) 8%,transparent);border:1px solid color-mix(in srgb,var(--hero-ink) 16%,transparent);border-radius:999px;padding:8px 14px}
+.book i{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:live 1.8s infinite}
+.lanes{display:grid;gap:0;border-top:1px solid var(--line)}
+.lane{display:grid;grid-template-columns:70px 1fr 1.2fr;gap:24px;align-items:center;padding:28px 0;border-bottom:1px solid var(--line);position:relative}
+.lane::after{content:"";position:absolute;left:0;bottom:-1px;height:3px;width:0;background:repeating-linear-gradient(90deg,var(--accent) 0 28px,transparent 28px 48px);transition:width 1.6s var(--ease)}
+.lane.in::after{width:100%}
+.lane .n{font:600 12px var(--mono);color:var(--muted)}
+.lane h3{font:900 clamp(24px,2.8vw,36px)/1 var(--display);text-transform:uppercase;margin:0}
+.lane p{margin:0;color:var(--muted)}
+.lane .tagx{display:inline-block;margin-left:10px;font:600 10px var(--mono);letter-spacing:.1em;color:var(--accent-text);border:1px solid currentColor;border-radius:4px;padding:3px 6px;vertical-align:6px}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;list-style:none;margin:0;padding:0;counter-reset:s}
+.steps4 li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;gap:10px;align-content:start}
+.steps4 li::before{content:"0" counter(s);font:900 34px/1 var(--display);color:var(--accent-text)}
+.steps4 h3{font:800 20px/1.1 var(--display);text-transform:uppercase;margin:0}
+.steps4 p{margin:0;color:var(--muted);font-size:15px}
+.spring{background:var(--hero);color:var(--hero-ink);position:relative;overflow:hidden}
+.spring .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.spring p{color:var(--hero-muted);margin:0 0 26px;max-width:46ch}
+.spring .tag{color:var(--hero-muted)}
+.spring h2 em{color:var(--accent)}
+.cal{justify-self:end;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:min(100%,340px)}
+.cal div{border:1px solid color-mix(in srgb,var(--hero-ink) 18%,transparent);border-radius:10px;padding:14px 10px;text-align:center;font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--hero-muted)}
+.cal div b{display:block;font:900 26px/1 var(--display);color:var(--hero-ink);margin-top:6px}
+.cal div.hot{border-color:var(--accent);color:var(--accent)}
+.cal div.hot b{color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips li{background:color-mix(in srgb,var(--hero-ink) 8%,transparent);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--hero-ink)}
+@media (max-width:900px){.lane{grid-template-columns:40px 1fr}.lane p{grid-column:2}.steps4{grid-template-columns:1fr 1fr}.spring .wrap{grid-template-columns:1fr}.cal{justify-self:start}}
+@media (max-width:620px){.steps4{grid-template-columns:1fr}}
+
+
+/* ---------- Kass specific ---------- */
+.thermo{background:var(--hero);color:var(--hero-ink)}
+.thermo .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.thermo .tag{color:var(--hero-muted)}
+.thermo h2 em{color:var(--accent)}
+.thermo p{color:var(--hero-muted);margin:0 0 24px;max-width:46ch}
+.clip{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10;background:#000}
+.clip video{width:100%;height:100%;object-fit:cover;display:block}
+.clip .scan{position:absolute;left:0;right:0;height:2px;top:0;background:var(--accent);box-shadow:0 0 18px var(--accent);animation:scan 3.2s linear infinite;opacity:.8}
+@keyframes scan{from{top:0}to{top:100%}}
+.clip .lbl{position:absolute;left:12px;top:12px;font:600 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.45);padding:5px 8px;border-radius:4px}
+.ph.vid{background:#000}
+.ph.vid::before{display:none}
+.ph.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph.vid span{z-index:1;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.fund{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 24px}
+.fund span{font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;border:1px solid color-mix(in srgb,var(--hero-ink) 25%,transparent);border-radius:999px;padding:6px 10px;color:var(--hero-ink)}
+@media (prefers-reduced-motion:reduce){.clip .scan{animation:none;display:none}}
+@media (max-width:900px){.thermo .wrap{grid-template-columns:1fr}}
+
+.mock{position:fixed;left:16px;bottom:16px;z-index:60;font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);padding:8px 12px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.callbar{display:none}
+
+.js .rv{opacity:0;transform:translateY(40px);filter:blur(6px);transition:opacity 1.3s var(--ease),transform 1.3s var(--ease),filter 1.3s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
+.js .rv.in{opacity:1;transform:none;filter:none}
+.js .ph.rv{transform:none;filter:none;clip-path:inset(100% 0 0 0);transition:clip-path 1.4s var(--ease),opacity .6s;transition-delay:calc(var(--i,0) * 110ms)}
+.js .ph.rv.in{clip-path:inset(0 0 0 0)}
+@media (max-width:900px),(pointer:coarse){.js .rv{filter:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv,.js .ph.rv{opacity:1;transform:none;filter:none;clip-path:none}#town,.hero .wrap{transform:none!important;filter:none!important;opacity:1!important}.gate .logo3d{animation:none}.btn-call::after,.live i{animation:none}}
+
+[data-en]{display:none!important}
+html[lang="en"] [data-en]{display:revert!important}
+html[lang="en"] [data-fr]{display:none!important}
+
+@media (max-width:900px){
+  .nav-links{display:none}
+  .facts .wrap{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .head,.split,.sos .wrap{grid-template-columns:1fr}
+  .head p{justify-self:start}
+  .clock{justify-self:start;text-align:left}
+  .trio{grid-template-columns:1fr}
+  .sector{min-height:260px}
+  .jobs{grid-template-columns:1fr 1fr}
+  .why{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .nav .nav-right>.btn,.vibe-name{display:none}
+  form{grid-template-columns:1fr}
+  .callbar{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:55;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--hero)}
+  .callbar .btn{width:100%;padding-inline:12px}
+  .mock{bottom:84px}
+  footer{padding-bottom:110px}
+}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateQ">
+  <div class="logo3d" id="logo3d" aria-hidden="true">
+    <svg class="flat" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-70 -30 1140 1060"><path fill="currentColor" fill-rule="evenodd" d="M-40 420L500.0 0L1040 420L1000 420V1000H0V420ZM224.92464285714283 933.95V368.44999999999993H363.87607142857144V615.6542857142857L592.4996428571428 368.44999999999993H760.5339285714285L498.7882142857143 634.235L775.0753571428571 933.95H590.8839285714286L363.87607142857144 674.6278571428572V933.95Z"/></svg>
+    <canvas id="logoCanvas"></canvas>
+  </div>
+  <div class="gate-name">Entreprises Kass<small>Toiture · Isolation · Décontamination</small></div>
+  <p class="gate-q" id="gateQ">Choisissez votre langue <span>· Choose your language</span></p>
+  <div class="gate-langs">
+    <button type="button" class="btn btn-accent" data-pick="fr">Français</button>
+    <button type="button" class="btn btn-line" data-pick="en">English</button>
+  </div>
+  <div class="vibes" role="group" aria-label="Ambiance / Vibe" data-vibes>
+    <span class="vibe-name" data-vibe-label>Isolation</span>
+  </div>
+  <p class="gate-hint">Glissez le logo · Drag the logo</p>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Entreprises Kass"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-70 -30 3386 1060"><path fill="currentColor" fill-rule="evenodd" d="M-40 420L500.0 0L1040 420L1000 420V1000H0V420ZM224.92464285714283 933.95V368.44999999999993H363.87607142857144V615.6542857142857L592.4996428571428 368.44999999999993H760.5339285714285L498.7882142857143 634.235L775.0753571428571 933.95H590.8839285714286L363.87607142857144 674.6278571428572V933.95Z"/><path fill="currentColor" d="M1220.0 620.0V100.0H1347.7714285714285V327.3142857142857L1558.0 100.0H1712.5142857142855L1471.8285714285712 344.4L1725.8857142857141 620.0H1556.5142857142855L1347.7714285714285 381.54285714285714V620.0ZM1735.5428571428572 620.0 1948.7428571428572 100.0H2095.0857142857144L2305.3142857142857 620.0H2167.1428571428573L2119.6000000000004 494.45714285714286H1916.8000000000002L1868.5142857142857 620.0ZM1955.4285714285716 392.6857142857143H2081.714285714286L2019.3142857142857 226.28571428571428ZM2557.1428571428573 627.4285714285714Q2494.0 627.4285714285714 2432.342857142857 604.4000000000001Q2370.6857142857143 581.3714285714286 2322.4 540.5142857142857L2393.714285714286 447.65714285714284Q2441.2571428571428 486.2857142857143 2481.3714285714286 503.0Q2521.4857142857145 519.7142857142857 2566.8 519.7142857142857Q2596.514285714286 519.7142857142857 2617.3142857142857 513.7714285714285Q2638.114285714286 507.8285714285714 2649.2571428571428 496.3142857142857Q2660.4 484.79999999999995 2660.4 469.2Q2660.4 447.65714285714284 2644.057142857143 435.77142857142854Q2627.714285714286 423.88571428571424 2588.342857142857 417.2L2473.942857142857 397.1428571428571Q2410.8 386.0 2376.6285714285714 348.8571428571429Q2342.457142857143 311.7142857142857 2342.457142857143 254.51428571428568Q2342.457142857143 204.0 2368.0857142857144 167.6Q2393.714285714286 131.2 2441.6285714285714 111.88571428571427Q2489.5428571428574 92.57142857142856 2555.657142857143 92.57142857142856Q2613.6 92.57142857142856 2672.285714285714 112.25714285714284Q2730.9714285714285 131.94285714285712 2774.057142857143 166.85714285714283L2706.457142857143 261.2Q2626.2285714285717 199.54285714285714 2546.7428571428572 199.54285714285714Q2520.7428571428572 199.54285714285714 2501.8 205.1142857142857Q2482.857142857143 210.68571428571425 2472.8285714285716 220.7142857142857Q2462.8 230.74285714285713 2462.8 244.85714285714283Q2462.8 264.1714285714286 2477.2857142857147 274.57142857142856Q2491.7714285714287 284.97142857142853 2524.457142857143 290.9142857142857L2632.171428571429 308.74285714285713Q2707.2000000000003 320.62857142857143 2746.2000000000003 358.51428571428573Q2785.2000000000003 396.4 2785.2000000000003 456.57142857142856Q2785.2000000000003 509.3142857142857 2757.7142857142862 547.5714285714286Q2730.2285714285717 585.8285714285714 2678.971428571429 606.6285714285714Q2627.714285714286 627.4285714285714 2557.1428571428573 627.4285714285714ZM3057.8285714285716 627.4285714285714Q2994.6857142857143 627.4285714285714 2933.0285714285715 604.4000000000001Q2871.3714285714286 581.3714285714286 2823.0857142857144 540.5142857142857L2894.4 447.65714285714284Q2941.942857142857 486.2857142857143 2982.057142857143 503.0Q3022.171428571429 519.7142857142857 3067.4857142857145 519.7142857142857Q3097.2000000000003 519.7142857142857 3118.0 513.7714285714285Q3138.8 507.8285714285714 3149.942857142857 496.3142857142857Q3161.0857142857144 484.79999999999995 3161.0857142857144 469.2Q3161.0857142857144 447.65714285714284 3144.7428571428572 435.77142857142854Q3128.4 423.88571428571424 3089.0285714285715 417.2L2974.6285714285714 397.1428571428571Q2911.4857142857145 386.0 2877.3142857142857 348.8571428571429Q2843.1428571428573 311.7142857142857 2843.1428571428573 254.51428571428568Q2843.1428571428573 204.0 2868.7714285714287 167.6Q2894.4 131.2 2942.3142857142857 111.88571428571427Q2990.2285714285717 92.57142857142856 3056.342857142857 92.57142857142856Q3114.285714285714 92.57142857142856 3172.9714285714285 112.25714285714284Q3231.657142857143 131.94285714285712 3274.7428571428572 166.85714285714283L3207.1428571428573 261.2Q3126.914285714286 199.54285714285714 3047.4285714285716 199.54285714285714Q3021.4285714285716 199.54285714285714 3002.4857142857145 205.1142857142857Q2983.5428571428574 210.68571428571425 2973.514285714286 220.7142857142857Q2963.4857142857145 230.74285714285713 2963.4857142857145 244.85714285714283Q2963.4857142857145 264.1714285714286 2977.971428571429 274.57142857142856Q2992.457142857143 284.97142857142853 3025.1428571428573 290.9142857142857L3132.857142857143 308.74285714285713Q3207.8857142857146 320.62857142857143 3246.8857142857146 358.51428571428573Q3285.8857142857146 396.4 3285.8857142857146 456.57142857142856Q3285.8857142857146 509.3142857142857 3258.4000000000005 547.5714285714286Q3230.914285714286 585.8285714285714 3179.6571428571433 606.6285714285714Q3128.4 627.4285714285714 3057.8285714285716 627.4285714285714Z"/><path fill="currentColor" d="M1251.763265777303 870.4653369484549V792.1456230301152H1220.0V780.0H1297.1727900097374V792.1456230301152H1265.4095242324343V870.4653369484549ZM1392.5692166685917 871.8869351005021Q1382.6330220467569 871.8869351005021 1374.0695911555702 868.3329397203843Q1365.5061602643834 864.7789443402663 1359.046457973936 858.3817526560542Q1352.5867556834885 851.984560971842 1348.9980321887954 843.5195901573795Q1345.4093086941023 835.0546193429169 1345.4093086941023 825.2326684742275Q1345.4093086941023 815.410717605538 1349.000834808568 806.9457467910754Q1352.592360923034 798.4807759766129 1359.0571079290723 792.0835842924007Q1365.5218549351107 785.6863926081886 1374.0762171350202 782.1323972280707Q1382.6305793349297 778.5784018479528 1392.5692166685917 778.5784018479528Q1402.4175132949374 778.5784018479528 1410.971875494847 782.1323972280707Q1419.5262376947564 785.6863926081886 1425.9909847007948 792.0835842924007Q1432.4557317068331 798.4807759766129 1436.047257821299 806.9457467910754Q1439.6387839357649 815.410717605538 1439.6387839357649 825.2326684742275Q1439.6387839357649 835.0546193429169 1436.047257821299 843.5195901573795Q1432.4557317068331 851.984560971842 1425.9909847007948 858.3817526560542Q1419.5262376947564 864.7789443402663 1410.971875494847 868.3329397203843Q1402.4175132949374 871.8869351005021 1392.5692166685917 871.8869351005021ZM1392.5702631839727 859.3272577258086Q1399.6232696171949 859.3272577258086 1405.6308832700047 856.7368820958218Q1411.6384969228145 854.1465064658349 1416.1473445950887 849.527870342082Q1420.6561922673632 844.9092342183292 1423.1819497995298 838.6628506923412Q1425.7077073316962 832.4164671663531 1425.7077073316962 825.2272332968197Q1425.7077073316962 817.9201431343431 1423.1819497995298 811.7381229322344Q1420.6561922673632 805.5561027301258 1416.1473445950887 800.9374666063729Q1411.6384969228145 796.31883048262 1405.6371906464897 793.7284548526331Q1399.6358843701648 791.1380792226463 1392.5755240450767 791.1380792226463Q1385.5151637199888 791.1380792226463 1379.4623797135207 793.7284548526331Q1373.4095957070526 796.31883048262 1368.9007480347782 800.9374666063729Q1364.391900362504 805.5561027301258 1361.8661428303376 811.7409377373106Q1359.340385298171 817.9257727444954 1359.340385298171 825.2297683720278Q1359.340385298171 832.4159576184711 1361.8661428303376 838.6625959184001Q1364.391900362504 844.9092342183292 1368.9007480347782 849.527870342082Q1373.4095957070526 854.1465064658349 1379.4634262289017 856.7368820958218Q1385.5172567507507 859.3272577258086 1392.5702631839727 859.3272577258086ZM1494.8828955350216 870.4653369484549V780.0H1508.5291539901527V870.4653369484549ZM1592.429877486056 870.4653369484549V792.1456230301152H1560.666611708753V780.0H1637.8394017184903V792.1456230301152H1606.0761359411872V870.4653369484549ZM1726.853055868281 871.8480396121779Q1715.0398705496693 871.8480396121779 1706.3866971589196 866.9627867873293Q1697.73352376817 862.0775339624806 1693.0546749674504 853.0824454866274Q1688.3758261667308 844.0873570107741 1688.3758261667308 831.8613636439046V780.0H1702.0220846218617V831.8613636439046Q1702.0220846218617 840.1939825219258 1705.0710618019248 846.3628298452063Q1708.120038981988 852.5316771684869 1713.759391792038 855.8905719588236Q1719.398744602088 859.2494667491602 1726.8919513566052 859.2494667491602Q1734.514394306763 859.2494667491602 1740.0696812748306 855.8905719588236Q1745.6249682428981 852.5316771684869 1748.6739454229612 846.3628298452063Q1751.7229226030242 840.1939825219258 1751.7229226030242 831.8613636439046V780.0H1765.3691810581554V831.8613636439046Q1765.3691810581554 844.0484615224499 1760.6257141596154 853.0435499983032Q1755.8822472610755 862.0386384741564 1747.2742442239842 866.9433390431672Q1738.6662411868926 871.8480396121779 1726.853055868281 871.8480396121779ZM1822.8843600709909 870.4653369484549V780.0H1863.9111570859907Q1872.9451410501683 780.0 1879.7306644694627 783.367039100151Q1886.5161878887568 786.7340782003021 1890.316105929488 792.7636321899145Q1894.1160239702192 798.793186179527 1894.1160239702192 806.8321760669035Q1894.1160239702192 815.6327871011357 1889.0569877442317 822.1272175061583Q1883.9979515182445 828.6216479111811 1875.5599496095983 831.4786402422636L1895.6944503718835 870.4653369484549H1880.5475564917365L1861.8622459354751 833.3544345235335H1836.530618526122V870.4653369484549ZM1836.530618526122 822.0369201825746H1862.8371257362212Q1870.8071354886563 822.0369201825746 1875.599555013548 817.9289539760503Q1880.3919745384396 813.820987769526 1880.3919745384396 806.9488625318761Q1880.3919745384396 800.1670780015427 1875.599555013548 796.0591117950185Q1870.8071354886563 791.9511455884941 1862.8371257362212 791.9511455884941H1836.530618526122ZM1948.760414624984 870.4653369484549V780.0H2015.491418545485V791.9385958578262H1962.406673080115V818.972900679203H1997.1938165761453V830.6266783880916H1962.406673080115V858.5267410906288H2016.0083633280476V870.4653369484549ZM2145.300368525463 842.050908823461Q2141.9170818887633 842.050908823461 2139.4923453501005 839.6342755115327Q2137.0676088114383 837.2176421996044 2137.0676088114383 833.8343555629048Q2137.0676088114383 830.4510689262052 2139.4842421233666 828.0263323875427Q2141.900875435295 825.6015958488802 2145.2841620719946 825.6015958488802Q2148.667448708694 825.6015958488802 2151.0921852473566 828.0182291608085Q2153.516921786019 830.4348624727368 2153.516921786019 833.8181491094364Q2153.516921786019 837.201435746136 2151.1002884740906 839.6261722847985Q2148.6836551621623 842.050908823461 2145.300368525463 842.050908823461ZM2279.088130682485 870.4653369484549V780.0H2292.734389137616V870.4653369484549ZM2382.3904853766494 871.7576989048614Q2371.586090161827 871.7576989048614 2361.4918708748683 867.5255250717103Q2351.397651587909 863.293351238559 2343.6296838224816 855.4626348197918L2351.971026774745 845.8126412914934Q2359.338736222582 853.0749677087058 2366.9950460920504 856.5699967081772Q2374.6513559615187 860.0650257076486 2383.1671488468132 860.0650257076486Q2389.6917072821857 860.0650257076486 2394.620261016212 858.1728994230173Q2399.5488147502388 856.280773138386 2402.300424050696 852.8321607888931Q2405.052033351154 849.3835484394002 2405.052033351154 844.9531148919344Q2405.052033351154 838.9467475354448 2400.8085560836553 835.7045392100808Q2396.565078816156 832.462330884717 2386.7343171057596 830.8475015873689L2371.62000046487 828.3518720855521Q2359.189472518352 826.2326477363094 2353.0639261042493 820.4032229054919Q2346.9383796901466 814.5737980746745 2346.9383796901466 804.8936331322938Q2346.9383796901466 797.0089789018939 2351.0808359641414 791.1281088520841Q2355.2232922381363 785.2472388022744 2362.74596049111 782.0226087765922Q2370.2686287440843 778.7979787509099 2380.3251988390393 778.7979787509099Q2390.0442592697445 778.7979787509099 2399.5763634204823 781.9968861670961Q2409.1084675712204 785.1957935832822 2416.6945076256948 791.0892133637599L2409.180027066268 801.4493828199218Q2394.5901329858625 790.3614157524821 2379.5874308571993 790.3614157524821Q2373.7090534000304 790.3614157524821 2369.2842715697384 792.0534128783183Q2364.8594897394464 793.7454100041547 2362.437245793424 796.7548685477334Q2360.0150018474023 799.7643270913122 2360.0150018474023 803.8459475401803Q2360.0150018474023 809.2839248951151 2363.7547072111665 812.1773201218814Q2367.494412574931 815.0707153486476 2376.0717078172456 816.4659677430384L2390.745624355901 818.8449107798826Q2405.0632500180363 821.1837120320823 2411.802979935512 827.2778841195151Q2418.542709852988 833.3720562069478 2418.542709852988 843.9305287611569Q2418.542709852988 852.2028915784788 2414.0319927362334 858.4971928247065Q2409.5212756194787 864.7914940709343 2401.3718741324637 868.2745964878978Q2393.2224726454483 871.7576989048614 2382.3904853766494 871.7576989048614ZM2514.9855758076355 871.8869351005021Q2505.0493811858005 871.8869351005021 2496.4859502946138 868.3329397203843Q2487.9225194034275 864.7789443402663 2481.46281711298 858.3817526560542Q2475.003114822532 851.984560971842 2471.4143913278394 843.5195901573795Q2467.8256678331463 835.0546193429169 2467.8256678331463 825.2326684742275Q2467.8256678331463 815.410717605538 2471.417193947612 806.9457467910754Q2475.008720062078 798.4807759766129 2481.4734670681164 792.0835842924007Q2487.9382140741545 785.6863926081886 2496.492576274064 782.1323972280707Q2505.0469384739736 778.5784018479528 2514.9855758076355 778.5784018479528Q2524.8338724339815 778.5784018479528 2533.3882346338905 782.1323972280707Q2541.9425968338 785.6863926081886 2548.4073438398386 792.0835842924007Q2554.872090845877 798.4807759766129 2558.4636169603427 806.9457467910754Q2562.0551430748087 815.410717605538 2562.0551430748087 825.2326684742275Q2562.0551430748087 835.0546193429169 2558.4636169603427 843.5195901573795Q2554.872090845877 851.984560971842 2548.4073438398386 858.3817526560542Q2541.9425968338 864.7789443402663 2533.3882346338905 868.3329397203843Q2524.8338724339815 871.8869351005021 2514.9855758076355 871.8869351005021ZM2514.9866223230165 859.3272577258086Q2522.0396287562385 859.3272577258086 2528.0472424090485 856.7368820958218Q2534.054856061858 854.1465064658349 2538.5637037341326 849.527870342082Q2543.072551406407 844.9092342183292 2545.5983089385736 838.6628506923412Q2548.12406647074 832.4164671663531 2548.12406647074 825.2272332968197Q2548.12406647074 817.9201431343431 2545.5983089385736 811.7381229322344Q2543.072551406407 805.5561027301258 2538.5637037341326 800.9374666063729Q2534.054856061858 796.31883048262 2528.0535497855335 793.7284548526331Q2522.0522435092084 791.1380792226463 2514.9918831841205 791.1380792226463Q2507.9315228590326 791.1380792226463 2501.8787388525643 793.7284548526331Q2495.8259548460965 796.31883048262 2491.3171071738225 800.9374666063729Q2486.808259501548 805.5561027301258 2484.2825019693814 811.7409377373106Q2481.756744437215 817.9257727444954 2481.756744437215 825.2297683720278Q2481.756744437215 832.4159576184711 2484.2825019693814 838.6625959184001Q2486.808259501548 844.9092342183292 2491.3171071738225 849.527870342082Q2495.8259548460965 854.1465064658349 2501.8797853679453 856.7368820958218Q2507.9336158897945 859.3272577258086 2514.9866223230165 859.3272577258086ZM2617.2992546740657 870.4653369484549V780.0H2630.9455131291966V858.3197139183397H2682.970023271785V870.4653369484549ZM2728.2366020490554 870.4653369484549 2765.5984123198714 780.0H2781.6625093001708L2818.688056203057 870.4653369484549H2803.8648759601715L2793.4255824635757 844.0170438120473H2752.994680736642L2742.4261510444053 870.4653369484549ZM2757.456445227045 832.7258752287446H2789.002713461497L2773.268474832595 793.0264232345841ZM2893.450659000478 870.4653369484549V792.1456230301152H2861.687393223175V780.0H2938.8601832329123V792.1456230301152H2907.096917455609V870.4653369484549ZM2991.0503324668252 870.4653369484549V780.0H3004.696590921956V870.4653369484549ZM3107.016588037453 871.8869351005021Q3097.080393415618 871.8869351005021 3088.5169625244316 868.3329397203843Q3079.953531633245 864.7789443402663 3073.493829342797 858.3817526560542Q3067.0341270523495 851.984560971842 3063.4454035576564 843.5195901573795Q3059.8566800629637 835.0546193429169 3059.8566800629637 825.2326684742275Q3059.8566800629637 815.410717605538 3063.4482061774297 806.9457467910754Q3067.0397322918952 798.4807759766129 3073.5044792979334 792.0835842924007Q3079.969226303972 785.6863926081886 3088.5235885038815 782.1323972280707Q3097.077950703791 778.5784018479528 3107.016588037453 778.5784018479528Q3116.864884663799 778.5784018479528 3125.4192468637084 782.1323972280707Q3133.9736090636175 785.6863926081886 3140.438356069656 792.0835842924007Q3146.9031030756946 798.4807759766129 3150.4946291901606 806.9457467910754Q3154.086155304626 815.410717605538 3154.086155304626 825.2326684742275Q3154.086155304626 835.0546193429169 3150.4946291901606 843.5195901573795Q3146.9031030756946 851.984560971842 3140.438356069656 858.3817526560542Q3133.9736090636175 864.7789443402663 3125.4192468637084 868.3329397203843Q3116.864884663799 871.8869351005021 3107.016588037453 871.8869351005021ZM3107.017634552834 859.3272577258086Q3114.070640986056 859.3272577258086 3120.0782546388655 856.7368820958218Q3126.0858682916755 854.1465064658349 3130.59471596395 849.527870342082Q3135.1035636362244 844.9092342183292 3137.629321168391 838.6628506923412Q3140.1550787005576 832.4164671663531 3140.1550787005576 825.2272332968197Q3140.1550787005576 817.9201431343431 3137.629321168391 811.7381229322344Q3135.1035636362244 805.5561027301258 3130.59471596395 800.9374666063729Q3126.0858682916755 796.31883048262 3120.0845620153505 793.7284548526331Q3114.083255739026 791.1380792226463 3107.022895413938 791.1380792226463Q3099.96253508885 791.1380792226463 3093.909751082382 793.7284548526331Q3087.856967075914 796.31883048262 3083.3481194036394 800.9374666063729Q3078.8392717313654 805.5561027301258 3076.313514199199 811.7409377373106Q3073.787756667032 817.9257727444954 3073.787756667032 825.2297683720278Q3073.787756667032 832.4159576184711 3076.313514199199 838.6625959184001Q3078.8392717313654 844.9092342183292 3083.3481194036394 849.527870342082Q3087.856967075914 854.1465064658349 3093.910797597763 856.7368820958218Q3099.964628119612 859.3272577258086 3107.017634552834 859.3272577258086ZM3209.330266903883 870.4653369484549V780.0H3222.587570475772L3272.9897735430905 847.1050900153652V780.0H3285.8857142857137V870.4653369484549H3273.830431962915L3222.2262076465063 801.3828085101557V870.4653369484549Z"/></svg></a>
+    <nav class="nav-links" aria-label="Menu">
+      <a href="#services"><span data-fr>Services</span><span data-en>Services</span></a>
+      <a href="#thermo"><span data-fr>Analyse énergétique</span><span data-en>Energy assessment</span></a>
+      <a href="#realisations"><span data-fr>Réalisations</span><span data-en>Projects</span></a>
+      <a href="#soumission"><span data-fr>Contact</span><span data-en>Contact</span></a>
+    </nav>
+    <div class="nav-right">
+      <div class="vibes" role="group" aria-label="Ambiance / Vibe" data-vibes>
+        <span class="vibe-name" data-vibe-label>Isolation</span>
+      </div>
+      <div class="lang" role="group" aria-label="Langue / Language">
+        <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-accent" href="#soumission" data-call><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-fr>Appeler</span><span data-en>Call</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:0">
+    <div class="hero-video"><video id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/roof-poster.jpg" aria-hidden="true"></video></div>
+    <canvas id="town" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <span class="book"><i></i><span data-fr>Programmes de financement disponibles</span><span data-en>Financing programs available</span></span>
+      <h1 data-fr>Bien isolé, <em>du grenier au toit.</em></h1>
+      <h1 data-en>Insulated right, <em>from attic to roof.</em></h1>
+      <p class="hero-sub" data-fr>Toiture, isolation et décontamination à La Prairie, Montréal et sur la Rive-Sud depuis plus de 20 ans. Aucune pression de vente, seulement des conseils honnêtes.</p>
+      <p class="hero-sub" data-en>Roofing, insulation and decontamination in La Prairie, Montreal and the South Shore for over 20 years. No sales pressure, just honest advice.</p>
+      <div class="hero-cta">
+        <a class="btn btn-accent btn-call" href="#soumission" data-call><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-fr>Appeler maintenant</span><span data-en>Call now</span><span class="num" data-phone-text>(438) 524-1478</span></a>
+        <a class="btn btn-line" href="#thermo"><span data-fr>Analyse énergétique</span><span data-en>Energy assessment</span><span class="arr">→</span></a>
+      </div>
+      <div class="sectors" aria-hidden="true"><span data-fr>Toiture</span><span data-en>Roofing</span><span data-fr>Isolation</span><span data-en>Insulation</span><span data-fr>Décontamination</span><span data-en>Decontamination</span></div>
+    </div>
+    <div class="hero-tag" data-fr>Vidéo d'illustration · remplacée par vos chantiers · <a class="credit" href="https://www.pexels.com/video/17624839/" target="_blank" rel="noopener">Pexels</a></div>
+    <div class="hero-tag" data-en>Illustration video · replaced by your own job sites · <a class="credit" href="https://www.pexels.com/video/17624839/" target="_blank" rel="noopener">Pexels</a></div>
+  </section>
+
+  <div class="sheet">
+  <div class="facts">
+    <div class="wrap">
+      <div class="fact rv"><b>20+</b><span data-fr>ans d'expertise</span><span data-en>years of expertise</span></div>
+      <div class="fact rv"><b>4,7★</b><span data-fr>30 avis vérifiés</span><span data-en>30 verified reviews</span></div>
+      <div class="fact rv"><b>RBQ</b><span>5759-3048-01</span></div>
+      <div class="fact rv"><b>$</b><span data-fr>financement et aide gouvernementale</span><span data-en>financing and government aid</span></div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head rv">
+        <div><span class="tag" data-fr>Services</span><span class="tag" data-en>Services</span>
+          <h2 data-fr>Tout ce qui se passe <em>au-dessus de vos têtes</em></h2><h2 data-en>Everything happening <em>above your head</em></h2></div>
+        <p data-fr>Entrepreneur général et spécialisé : on inspecte, on décontamine, on isole et on refait la toiture, avec la même équipe.</p>
+        <p data-en>General and specialized contractor: we inspect, decontaminate, insulate and redo the roof, with the same crew.</p>
+      </div>
+      <div class="lanes">
+        <div class="lane rv"><span class="n">01</span><h3 data-fr>Isolation d'entretoit</h3><h3 data-en>Attic insulation</h3><p data-fr>Grenier, murs, sous-sol et sous le revêtement, pour réduire vos factures d'énergie.</p><p data-en>Attic, walls, basement and under siding, to cut your energy bills.</p></div>
+        <div class="lane rv"><span class="n">02</span><h3 data-fr>Toiture de bardeau</h3><h3 data-en>Shingle roofing</h3><p data-fr>Réfection ou remplacement complet de toiture en bardeau d'asphalte.</p><p data-en>Asphalt shingle roof repair or full replacement.</p></div>
+        <div class="lane rv"><span class="n">03</span><h3 data-fr>Désamiantage</h3><h3 data-en>Asbestos removal</h3><p data-fr>Retrait sécuritaire de l'amiante, selon les normes.</p><p data-en>Safe asbestos removal, to code.</p></div>
+        <div class="lane rv"><span class="n">04</span><h3 data-fr>Vermiculite et moisissure</h3><h3 data-en>Vermiculite and mould</h3><p data-fr>Décontamination du grenier et extraction d'isolant contaminé.</p><p data-en>Attic decontamination and removal of contaminated insulation.</p></div>
+        <div class="lane rv"><span class="n">05</span><h3 data-fr>Calfeutrage</h3><h3 data-en>Caulking</h3><p data-fr>Portes et fenêtres calfeutrées pour couper les courants d'air.</p><p data-en>Doors and windows sealed to stop drafts.</p></div>
+        <div class="lane rv"><span class="n">06</span><h3 data-fr>Chauffage et climatisation</h3><h3 data-en>Heating and cooling</h3><p data-fr>Service et entretien de vos systèmes CVC.</p><p data-en>Service and maintenance for your HVAC systems.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="thermo" id="thermo">
+    <div class="wrap">
+      <div class="clip rv"><video class="lazyvid" data-src="assets/thermal-720.mp4" poster="assets/thermal-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scan" aria-hidden="true"></span><span class="lbl" data-fr>Analyse thermographique</span><span class="lbl" data-en>Thermal imaging</span></div>
+      <div class="rv">
+        <span class="tag" data-fr>Analyse énergétique</span><span class="tag" data-en>Energy assessment</span>
+        <h2 data-fr>Où perdez-vous <em>votre chaleur?</em></h2><h2 data-en>Where is your <em>heat escaping?</em></h2>
+        <p data-fr>Notre caméra thermique montre exactement où la chaleur s'échappe : grenier, murs, fenêtres. Vous savez quoi corriger avant de dépenser un dollar.</p>
+        <p data-en>Our thermal camera shows exactly where heat escapes: attic, walls, windows. You know what to fix before spending a dollar.</p>
+        <div class="fund"><span data-fr>Financement flexible</span><span data-en>Flexible financing</span><span data-fr>Aide gouvernementale</span><span data-en>Government aid</span><span data-fr>Estimation gratuite</span><span data-en>Free estimate</span></div>
+        <a class="btn btn-accent" href="#soumission"><span data-fr>Je veux mon analyse</span><span data-en>Book my assessment</span><span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="approche">
+    <div class="wrap">
+      <div class="head rv">
+        <div><span class="tag" data-fr>Pourquoi nous</span><span class="tag" data-en>Why us</span>
+          <h2 data-fr>Aucune pression. <em>Juste du bon travail.</em></h2><h2 data-en>No pressure. <em>Just good work.</em></h2></div>
+      </div>
+      <ol class="steps4">
+        <li class="rv"><h3 data-fr>Aucune pression de vente</h3><h3 data-en>No sales pressure</h3><p data-fr>L'honnêteté et la communication avant tout.</p><p data-en>Honesty and communication come first.</p></li>
+        <li class="rv"><h3 data-fr>Qualité garantie</h3><h3 data-en>Guaranteed quality</h3><p data-fr>Plus de 20 ans d'expertise et une main-d'œuvre expérimentée.</p><p data-en>Over 20 years of expertise and an experienced crew.</p></li>
+        <li class="rv"><h3 data-fr>Conseils honnêtes</h3><h3 data-en>Honest advice</h3><p data-fr>Les bonnes infos pour prendre la meilleure décision pour vous.</p><p data-en>The right information to make the best decision for you.</p></li>
+        <li class="rv"><h3 data-fr>Payez plus tard</h3><h3 data-en>Pay later</h3><p data-fr>Programmes de financement pour lancer vos projets maintenant.</p><p data-en>Financing programs to start your project now.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="realisations" style="padding-top:0">
+    <div class="wrap">
+      <div class="head rv">
+        <div><span class="tag" data-fr>Réalisations</span><span class="tag" data-en>Projects</span>
+          <h2 data-fr>Sur le toit, dans le grenier</h2><h2 data-en>On the roof, in the attic</h2></div>
+        <p data-fr>Ces espaces accueillent les photos et vidéos de vos vrais projets, tournées par notre équipe.</p>
+        <p data-en>These spaces hold photos and video of your real projects, shot by our team.</p>
+      </div>
+      <div class="gallery">
+        <div class="ph big rv vid"><video class="lazyvid" data-src="assets/insulation-720.mp4" poster="assets/insulation-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span data-fr>Isolation · vidéo d'illustration</span><span data-en>Insulation · illustration video</span></div>
+        <div class="ph rv"><span data-fr>Bardeau neuf</span><span data-en>New shingles</span></div>
+        <div class="ph rv"><span data-fr>Grenier avant</span><span data-en>Attic before</span></div>
+        <div class="ph wide rv"><span data-fr>Grenier après</span><span data-en>Attic after</span></div>
+        <div class="ph rv"><span data-fr>Désamiantage</span><span data-en>Asbestos removal</span></div>
+        <div class="ph rv"><span data-fr>Calfeutrage</span><span data-en>Caulking</span></div>
+        <div class="ph wide rv"><span data-fr>L'équipe</span><span data-en>The crew</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap split">
+      <div class="rv">
+        <span class="tag" data-fr>Secteurs desservis</span><span class="tag" data-en>Areas served</span>
+        <h2 data-fr>Rive-Sud, Montréal, Laval</h2><h2 data-en>South Shore, Montreal, Laval</h2>
+        <ul class="zones">
+          <li>La Prairie</li><li>Candiac</li><li>Brossard</li><li>Longueuil</li><li>Saint-Constant</li><li>Châteauguay</li><li>Montréal</li><li>Laval</li><li>Laurentides</li><li>Lanaudière</li><li>Estrie</li>
+        </ul>
+      </div>
+      <div class="rating rv">
+        <div class="score"><b>4,7</b><span data-fr>sur 5 · 30 avis vérifiés</span><span data-en>out of 5 · 30 verified reviews</span></div>
+        <div class="bars">
+          <div class="bar"><span>5★</span><i style="--v:70"></i><span>21</span></div>
+          <div class="bar"><span>4★</span><i style="--v:30"></i><span>9</span></div>
+          <div class="bar"><span>3★</span><i style="--v:0"></i><span>0</span></div>
+          <div class="bar"><span>2★</span><i style="--v:0"></i><span>0</span></div>
+          <div class="bar"><span>1★</span><i style="--v:0"></i><span>0</span></div>
+        </div>
+        <p data-fr>Avis vérifiés sur Soumission Rénovation. Vos avis Google s'afficheront ici.</p>
+        <p data-en>Verified reviews on Soumission Rénovation. Your Google reviews will show here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="soumission">
+    <div class="wrap split">
+      <div class="rv">
+        <span class="tag" data-fr>Estimation gratuite</span><span class="tag" data-en>Free estimate</span>
+        <h2 data-fr>Parlez-nous de <em>votre maison</em></h2><h2 data-en>Tell us about <em>your home</em></h2>
+        <form id="quote">
+          <label for="q-name"><span data-fr>Nom</span><span data-en>Name</span><input id="q-name" required autocomplete="name"></label>
+          <label for="q-phone"><span data-fr>Téléphone</span><span data-en>Phone</span><input id="q-phone" type="tel" required autocomplete="tel"></label>
+          <label for="q-city"><span data-fr>Ville</span><span data-en>City</span><input id="q-city" autocomplete="address-level2"></label>
+          <label for="q-type"><span data-fr>Besoin</span><span data-en>Need</span>
+            <select id="q-type"><option>Isolation / Insulation</option><option>Toiture / Roofing</option><option>Désamiantage / Asbestos</option><option>Vermiculite, moisissure / Mould</option><option>Analyse énergétique / Energy assessment</option><option>Calfeutrage / Caulking</option></select></label>
+          <label for="q-year"><span data-fr>Année de construction</span><span data-en>Year built</span><input id="q-year" inputmode="numeric"></label>
+          <label for="q-fund"><span data-fr>Intéressé par le financement?</span><span data-en>Interested in financing?</span>
+            <select id="q-fund"><option>Oui / Yes</option><option>Non / No</option><option>Peut-être / Maybe</option></select></label>
+          <label class="full" for="q-msg"><span data-fr>Description</span><span data-en>Description</span><textarea id="q-msg"></textarea></label>
+          <div class="full"><button class="btn btn-accent" type="submit"><span data-fr>Envoyer ma demande</span><span data-en>Send my request</span><span class="arr">→</span></button></div>
+          <p class="sent" id="sent" hidden><span data-fr>Maquette : sur le vrai site, la demande arrive directement dans votre courriel.</span><span data-en>Sample: on the live site, requests go straight to your inbox.</span></p>
+        </form>
+      </div>
+      <div class="contact-side rv">
+        <div><b data-fr>Ventes</b><b data-en>Sales</b><a class="btn btn-accent btn-call" href="#soumission" data-call style="margin-top:8px"><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="num" data-phone-text>(438) 524-1478</span></a></div>
+        <div><b data-fr>Administration</b><b data-en>Office</b>(450) 907-1477 · <span data-fr>sans frais</span><span data-en>toll-free</span> 1 833 333-1477</div>
+        <div><b data-fr>Heures</b><b data-en>Hours</b><span data-fr>Lundi au vendredi, 8 h à 17 h</span><span data-en>Monday to Friday, 8 a.m. to 5 p.m.</span></div>
+        <div><b data-fr>Adresse</b><b data-en>Address</b>769, boulevard Taschereau<br>La Prairie (Québec) J5R 1W1</div>
+        <div><b>RBQ</b>5759-3048-01</div>
+      </div>
+    </div>
+  </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-70 -30 3386 1060"><path fill="currentColor" fill-rule="evenodd" d="M-40 420L500.0 0L1040 420L1000 420V1000H0V420ZM224.92464285714283 933.95V368.44999999999993H363.87607142857144V615.6542857142857L592.4996428571428 368.44999999999993H760.5339285714285L498.7882142857143 634.235L775.0753571428571 933.95H590.8839285714286L363.87607142857144 674.6278571428572V933.95Z"/><path fill="currentColor" d="M1220.0 620.0V100.0H1347.7714285714285V327.3142857142857L1558.0 100.0H1712.5142857142855L1471.8285714285712 344.4L1725.8857142857141 620.0H1556.5142857142855L1347.7714285714285 381.54285714285714V620.0ZM1735.5428571428572 620.0 1948.7428571428572 100.0H2095.0857142857144L2305.3142857142857 620.0H2167.1428571428573L2119.6000000000004 494.45714285714286H1916.8000000000002L1868.5142857142857 620.0ZM1955.4285714285716 392.6857142857143H2081.714285714286L2019.3142857142857 226.28571428571428ZM2557.1428571428573 627.4285714285714Q2494.0 627.4285714285714 2432.342857142857 604.4000000000001Q2370.6857142857143 581.3714285714286 2322.4 540.5142857142857L2393.714285714286 447.65714285714284Q2441.2571428571428 486.2857142857143 2481.3714285714286 503.0Q2521.4857142857145 519.7142857142857 2566.8 519.7142857142857Q2596.514285714286 519.7142857142857 2617.3142857142857 513.7714285714285Q2638.114285714286 507.8285714285714 2649.2571428571428 496.3142857142857Q2660.4 484.79999999999995 2660.4 469.2Q2660.4 447.65714285714284 2644.057142857143 435.77142857142854Q2627.714285714286 423.88571428571424 2588.342857142857 417.2L2473.942857142857 397.1428571428571Q2410.8 386.0 2376.6285714285714 348.8571428571429Q2342.457142857143 311.7142857142857 2342.457142857143 254.51428571428568Q2342.457142857143 204.0 2368.0857142857144 167.6Q2393.714285714286 131.2 2441.6285714285714 111.88571428571427Q2489.5428571428574 92.57142857142856 2555.657142857143 92.57142857142856Q2613.6 92.57142857142856 2672.285714285714 112.25714285714284Q2730.9714285714285 131.94285714285712 2774.057142857143 166.85714285714283L2706.457142857143 261.2Q2626.2285714285717 199.54285714285714 2546.7428571428572 199.54285714285714Q2520.7428571428572 199.54285714285714 2501.8 205.1142857142857Q2482.857142857143 210.68571428571425 2472.8285714285716 220.7142857142857Q2462.8 230.74285714285713 2462.8 244.85714285714283Q2462.8 264.1714285714286 2477.2857142857147 274.57142857142856Q2491.7714285714287 284.97142857142853 2524.457142857143 290.9142857142857L2632.171428571429 308.74285714285713Q2707.2000000000003 320.62857142857143 2746.2000000000003 358.51428571428573Q2785.2000000000003 396.4 2785.2000000000003 456.57142857142856Q2785.2000000000003 509.3142857142857 2757.7142857142862 547.5714285714286Q2730.2285714285717 585.8285714285714 2678.971428571429 606.6285714285714Q2627.714285714286 627.4285714285714 2557.1428571428573 627.4285714285714ZM3057.8285714285716 627.4285714285714Q2994.6857142857143 627.4285714285714 2933.0285714285715 604.4000000000001Q2871.3714285714286 581.3714285714286 2823.0857142857144 540.5142857142857L2894.4 447.65714285714284Q2941.942857142857 486.2857142857143 2982.057142857143 503.0Q3022.171428571429 519.7142857142857 3067.4857142857145 519.7142857142857Q3097.2000000000003 519.7142857142857 3118.0 513.7714285714285Q3138.8 507.8285714285714 3149.942857142857 496.3142857142857Q3161.0857142857144 484.79999999999995 3161.0857142857144 469.2Q3161.0857142857144 447.65714285714284 3144.7428571428572 435.77142857142854Q3128.4 423.88571428571424 3089.0285714285715 417.2L2974.6285714285714 397.1428571428571Q2911.4857142857145 386.0 2877.3142857142857 348.8571428571429Q2843.1428571428573 311.7142857142857 2843.1428571428573 254.51428571428568Q2843.1428571428573 204.0 2868.7714285714287 167.6Q2894.4 131.2 2942.3142857142857 111.88571428571427Q2990.2285714285717 92.57142857142856 3056.342857142857 92.57142857142856Q3114.285714285714 92.57142857142856 3172.9714285714285 112.25714285714284Q3231.657142857143 131.94285714285712 3274.7428571428572 166.85714285714283L3207.1428571428573 261.2Q3126.914285714286 199.54285714285714 3047.4285714285716 199.54285714285714Q3021.4285714285716 199.54285714285714 3002.4857142857145 205.1142857142857Q2983.5428571428574 210.68571428571425 2973.514285714286 220.7142857142857Q2963.4857142857145 230.74285714285713 2963.4857142857145 244.85714285714283Q2963.4857142857145 264.1714285714286 2977.971428571429 274.57142857142856Q2992.457142857143 284.97142857142853 3025.1428571428573 290.9142857142857L3132.857142857143 308.74285714285713Q3207.8857142857146 320.62857142857143 3246.8857142857146 358.51428571428573Q3285.8857142857146 396.4 3285.8857142857146 456.57142857142856Q3285.8857142857146 509.3142857142857 3258.4000000000005 547.5714285714286Q3230.914285714286 585.8285714285714 3179.6571428571433 606.6285714285714Q3128.4 627.4285714285714 3057.8285714285716 627.4285714285714Z"/><path fill="currentColor" d="M1251.763265777303 870.4653369484549V792.1456230301152H1220.0V780.0H1297.1727900097374V792.1456230301152H1265.4095242324343V870.4653369484549ZM1392.5692166685917 871.8869351005021Q1382.6330220467569 871.8869351005021 1374.0695911555702 868.3329397203843Q1365.5061602643834 864.7789443402663 1359.046457973936 858.3817526560542Q1352.5867556834885 851.984560971842 1348.9980321887954 843.5195901573795Q1345.4093086941023 835.0546193429169 1345.4093086941023 825.2326684742275Q1345.4093086941023 815.410717605538 1349.000834808568 806.9457467910754Q1352.592360923034 798.4807759766129 1359.0571079290723 792.0835842924007Q1365.5218549351107 785.6863926081886 1374.0762171350202 782.1323972280707Q1382.6305793349297 778.5784018479528 1392.5692166685917 778.5784018479528Q1402.4175132949374 778.5784018479528 1410.971875494847 782.1323972280707Q1419.5262376947564 785.6863926081886 1425.9909847007948 792.0835842924007Q1432.4557317068331 798.4807759766129 1436.047257821299 806.9457467910754Q1439.6387839357649 815.410717605538 1439.6387839357649 825.2326684742275Q1439.6387839357649 835.0546193429169 1436.047257821299 843.5195901573795Q1432.4557317068331 851.984560971842 1425.9909847007948 858.3817526560542Q1419.5262376947564 864.7789443402663 1410.971875494847 868.3329397203843Q1402.4175132949374 871.8869351005021 1392.5692166685917 871.8869351005021ZM1392.5702631839727 859.3272577258086Q1399.6232696171949 859.3272577258086 1405.6308832700047 856.7368820958218Q1411.6384969228145 854.1465064658349 1416.1473445950887 849.527870342082Q1420.6561922673632 844.9092342183292 1423.1819497995298 838.6628506923412Q1425.7077073316962 832.4164671663531 1425.7077073316962 825.2272332968197Q1425.7077073316962 817.9201431343431 1423.1819497995298 811.7381229322344Q1420.6561922673632 805.5561027301258 1416.1473445950887 800.9374666063729Q1411.6384969228145 796.31883048262 1405.6371906464897 793.7284548526331Q1399.6358843701648 791.1380792226463 1392.5755240450767 791.1380792226463Q1385.5151637199888 791.1380792226463 1379.4623797135207 793.7284548526331Q1373.4095957070526 796.31883048262 1368.9007480347782 800.9374666063729Q1364.391900362504 805.5561027301258 1361.8661428303376 811.7409377373106Q1359.340385298171 817.9257727444954 1359.340385298171 825.2297683720278Q1359.340385298171 832.4159576184711 1361.8661428303376 838.6625959184001Q1364.391900362504 844.9092342183292 1368.9007480347782 849.527870342082Q1373.4095957070526 854.1465064658349 1379.4634262289017 856.7368820958218Q1385.5172567507507 859.3272577258086 1392.5702631839727 859.3272577258086ZM1494.8828955350216 870.4653369484549V780.0H1508.5291539901527V870.4653369484549ZM1592.429877486056 870.4653369484549V792.1456230301152H1560.666611708753V780.0H1637.8394017184903V792.1456230301152H1606.0761359411872V870.4653369484549ZM1726.853055868281 871.8480396121779Q1715.0398705496693 871.8480396121779 1706.3866971589196 866.9627867873293Q1697.73352376817 862.0775339624806 1693.0546749674504 853.0824454866274Q1688.3758261667308 844.0873570107741 1688.3758261667308 831.8613636439046V780.0H1702.0220846218617V831.8613636439046Q1702.0220846218617 840.1939825219258 1705.0710618019248 846.3628298452063Q1708.120038981988 852.5316771684869 1713.759391792038 855.8905719588236Q1719.398744602088 859.2494667491602 1726.8919513566052 859.2494667491602Q1734.514394306763 859.2494667491602 1740.0696812748306 855.8905719588236Q1745.6249682428981 852.5316771684869 1748.6739454229612 846.3628298452063Q1751.7229226030242 840.1939825219258 1751.7229226030242 831.8613636439046V780.0H1765.3691810581554V831.8613636439046Q1765.3691810581554 844.0484615224499 1760.6257141596154 853.0435499983032Q1755.8822472610755 862.0386384741564 1747.2742442239842 866.9433390431672Q1738.6662411868926 871.8480396121779 1726.853055868281 871.8480396121779ZM1822.8843600709909 870.4653369484549V780.0H1863.9111570859907Q1872.9451410501683 780.0 1879.7306644694627 783.367039100151Q1886.5161878887568 786.7340782003021 1890.316105929488 792.7636321899145Q1894.1160239702192 798.793186179527 1894.1160239702192 806.8321760669035Q1894.1160239702192 815.6327871011357 1889.0569877442317 822.1272175061583Q1883.9979515182445 828.6216479111811 1875.5599496095983 831.4786402422636L1895.6944503718835 870.4653369484549H1880.5475564917365L1861.8622459354751 833.3544345235335H1836.530618526122V870.4653369484549ZM1836.530618526122 822.0369201825746H1862.8371257362212Q1870.8071354886563 822.0369201825746 1875.599555013548 817.9289539760503Q1880.3919745384396 813.820987769526 1880.3919745384396 806.9488625318761Q1880.3919745384396 800.1670780015427 1875.599555013548 796.0591117950185Q1870.8071354886563 791.9511455884941 1862.8371257362212 791.9511455884941H1836.530618526122ZM1948.760414624984 870.4653369484549V780.0H2015.491418545485V791.9385958578262H1962.406673080115V818.972900679203H1997.1938165761453V830.6266783880916H1962.406673080115V858.5267410906288H2016.0083633280476V870.4653369484549ZM2145.300368525463 842.050908823461Q2141.9170818887633 842.050908823461 2139.4923453501005 839.6342755115327Q2137.0676088114383 837.2176421996044 2137.0676088114383 833.8343555629048Q2137.0676088114383 830.4510689262052 2139.4842421233666 828.0263323875427Q2141.900875435295 825.6015958488802 2145.2841620719946 825.6015958488802Q2148.667448708694 825.6015958488802 2151.0921852473566 828.0182291608085Q2153.516921786019 830.4348624727368 2153.516921786019 833.8181491094364Q2153.516921786019 837.201435746136 2151.1002884740906 839.6261722847985Q2148.6836551621623 842.050908823461 2145.300368525463 842.050908823461ZM2279.088130682485 870.4653369484549V780.0H2292.734389137616V870.4653369484549ZM2382.3904853766494 871.7576989048614Q2371.586090161827 871.7576989048614 2361.4918708748683 867.5255250717103Q2351.397651587909 863.293351238559 2343.6296838224816 855.4626348197918L2351.971026774745 845.8126412914934Q2359.338736222582 853.0749677087058 2366.9950460920504 856.5699967081772Q2374.6513559615187 860.0650257076486 2383.1671488468132 860.0650257076486Q2389.6917072821857 860.0650257076486 2394.620261016212 858.1728994230173Q2399.5488147502388 856.280773138386 2402.300424050696 852.8321607888931Q2405.052033351154 849.3835484394002 2405.052033351154 844.9531148919344Q2405.052033351154 838.9467475354448 2400.8085560836553 835.7045392100808Q2396.565078816156 832.462330884717 2386.7343171057596 830.8475015873689L2371.62000046487 828.3518720855521Q2359.189472518352 826.2326477363094 2353.0639261042493 820.4032229054919Q2346.9383796901466 814.5737980746745 2346.9383796901466 804.8936331322938Q2346.9383796901466 797.0089789018939 2351.0808359641414 791.1281088520841Q2355.2232922381363 785.2472388022744 2362.74596049111 782.0226087765922Q2370.2686287440843 778.7979787509099 2380.3251988390393 778.7979787509099Q2390.0442592697445 778.7979787509099 2399.5763634204823 781.9968861670961Q2409.1084675712204 785.1957935832822 2416.6945076256948 791.0892133637599L2409.180027066268 801.4493828199218Q2394.5901329858625 790.3614157524821 2379.5874308571993 790.3614157524821Q2373.7090534000304 790.3614157524821 2369.2842715697384 792.0534128783183Q2364.8594897394464 793.7454100041547 2362.437245793424 796.7548685477334Q2360.0150018474023 799.7643270913122 2360.0150018474023 803.8459475401803Q2360.0150018474023 809.2839248951151 2363.7547072111665 812.1773201218814Q2367.494412574931 815.0707153486476 2376.0717078172456 816.4659677430384L2390.745624355901 818.8449107798826Q2405.0632500180363 821.1837120320823 2411.802979935512 827.2778841195151Q2418.542709852988 833.3720562069478 2418.542709852988 843.9305287611569Q2418.542709852988 852.2028915784788 2414.0319927362334 858.4971928247065Q2409.5212756194787 864.7914940709343 2401.3718741324637 868.2745964878978Q2393.2224726454483 871.7576989048614 2382.3904853766494 871.7576989048614ZM2514.9855758076355 871.8869351005021Q2505.0493811858005 871.8869351005021 2496.4859502946138 868.3329397203843Q2487.9225194034275 864.7789443402663 2481.46281711298 858.3817526560542Q2475.003114822532 851.984560971842 2471.4143913278394 843.5195901573795Q2467.8256678331463 835.0546193429169 2467.8256678331463 825.2326684742275Q2467.8256678331463 815.410717605538 2471.417193947612 806.9457467910754Q2475.008720062078 798.4807759766129 2481.4734670681164 792.0835842924007Q2487.9382140741545 785.6863926081886 2496.492576274064 782.1323972280707Q2505.0469384739736 778.5784018479528 2514.9855758076355 778.5784018479528Q2524.8338724339815 778.5784018479528 2533.3882346338905 782.1323972280707Q2541.9425968338 785.6863926081886 2548.4073438398386 792.0835842924007Q2554.872090845877 798.4807759766129 2558.4636169603427 806.9457467910754Q2562.0551430748087 815.410717605538 2562.0551430748087 825.2326684742275Q2562.0551430748087 835.0546193429169 2558.4636169603427 843.5195901573795Q2554.872090845877 851.984560971842 2548.4073438398386 858.3817526560542Q2541.9425968338 864.7789443402663 2533.3882346338905 868.3329397203843Q2524.8338724339815 871.8869351005021 2514.9855758076355 871.8869351005021ZM2514.9866223230165 859.3272577258086Q2522.0396287562385 859.3272577258086 2528.0472424090485 856.7368820958218Q2534.054856061858 854.1465064658349 2538.5637037341326 849.527870342082Q2543.072551406407 844.9092342183292 2545.5983089385736 838.6628506923412Q2548.12406647074 832.4164671663531 2548.12406647074 825.2272332968197Q2548.12406647074 817.9201431343431 2545.5983089385736 811.7381229322344Q2543.072551406407 805.5561027301258 2538.5637037341326 800.9374666063729Q2534.054856061858 796.31883048262 2528.0535497855335 793.7284548526331Q2522.0522435092084 791.1380792226463 2514.9918831841205 791.1380792226463Q2507.9315228590326 791.1380792226463 2501.8787388525643 793.7284548526331Q2495.8259548460965 796.31883048262 2491.3171071738225 800.9374666063729Q2486.808259501548 805.5561027301258 2484.2825019693814 811.7409377373106Q2481.756744437215 817.9257727444954 2481.756744437215 825.2297683720278Q2481.756744437215 832.4159576184711 2484.2825019693814 838.6625959184001Q2486.808259501548 844.9092342183292 2491.3171071738225 849.527870342082Q2495.8259548460965 854.1465064658349 2501.8797853679453 856.7368820958218Q2507.9336158897945 859.3272577258086 2514.9866223230165 859.3272577258086ZM2617.2992546740657 870.4653369484549V780.0H2630.9455131291966V858.3197139183397H2682.970023271785V870.4653369484549ZM2728.2366020490554 870.4653369484549 2765.5984123198714 780.0H2781.6625093001708L2818.688056203057 870.4653369484549H2803.8648759601715L2793.4255824635757 844.0170438120473H2752.994680736642L2742.4261510444053 870.4653369484549ZM2757.456445227045 832.7258752287446H2789.002713461497L2773.268474832595 793.0264232345841ZM2893.450659000478 870.4653369484549V792.1456230301152H2861.687393223175V780.0H2938.8601832329123V792.1456230301152H2907.096917455609V870.4653369484549ZM2991.0503324668252 870.4653369484549V780.0H3004.696590921956V870.4653369484549ZM3107.016588037453 871.8869351005021Q3097.080393415618 871.8869351005021 3088.5169625244316 868.3329397203843Q3079.953531633245 864.7789443402663 3073.493829342797 858.3817526560542Q3067.0341270523495 851.984560971842 3063.4454035576564 843.5195901573795Q3059.8566800629637 835.0546193429169 3059.8566800629637 825.2326684742275Q3059.8566800629637 815.410717605538 3063.4482061774297 806.9457467910754Q3067.0397322918952 798.4807759766129 3073.5044792979334 792.0835842924007Q3079.969226303972 785.6863926081886 3088.5235885038815 782.1323972280707Q3097.077950703791 778.5784018479528 3107.016588037453 778.5784018479528Q3116.864884663799 778.5784018479528 3125.4192468637084 782.1323972280707Q3133.9736090636175 785.6863926081886 3140.438356069656 792.0835842924007Q3146.9031030756946 798.4807759766129 3150.4946291901606 806.9457467910754Q3154.086155304626 815.410717605538 3154.086155304626 825.2326684742275Q3154.086155304626 835.0546193429169 3150.4946291901606 843.5195901573795Q3146.9031030756946 851.984560971842 3140.438356069656 858.3817526560542Q3133.9736090636175 864.7789443402663 3125.4192468637084 868.3329397203843Q3116.864884663799 871.8869351005021 3107.016588037453 871.8869351005021ZM3107.017634552834 859.3272577258086Q3114.070640986056 859.3272577258086 3120.0782546388655 856.7368820958218Q3126.0858682916755 854.1465064658349 3130.59471596395 849.527870342082Q3135.1035636362244 844.9092342183292 3137.629321168391 838.6628506923412Q3140.1550787005576 832.4164671663531 3140.1550787005576 825.2272332968197Q3140.1550787005576 817.9201431343431 3137.629321168391 811.7381229322344Q3135.1035636362244 805.5561027301258 3130.59471596395 800.9374666063729Q3126.0858682916755 796.31883048262 3120.0845620153505 793.7284548526331Q3114.083255739026 791.1380792226463 3107.022895413938 791.1380792226463Q3099.96253508885 791.1380792226463 3093.909751082382 793.7284548526331Q3087.856967075914 796.31883048262 3083.3481194036394 800.9374666063729Q3078.8392717313654 805.5561027301258 3076.313514199199 811.7409377373106Q3073.787756667032 817.9257727444954 3073.787756667032 825.2297683720278Q3073.787756667032 832.4159576184711 3076.313514199199 838.6625959184001Q3078.8392717313654 844.9092342183292 3083.3481194036394 849.527870342082Q3087.856967075914 854.1465064658349 3093.910797597763 856.7368820958218Q3099.964628119612 859.3272577258086 3107.017634552834 859.3272577258086ZM3209.330266903883 870.4653369484549V780.0H3222.587570475772L3272.9897735430905 847.1050900153652V780.0H3285.8857142857137V870.4653369484549H3273.830431962915L3222.2262076465063 801.3828085101557V870.4653369484549Z"/></svg>
+    <span>© 2026 Les Entreprises Kass inc. · <a href="#top" data-fr>Politique de confidentialité (Loi 25)</a><a href="#top" data-en>Privacy policy (Law 25)</a></span>
+    <span data-fr>Site par WeUnfolded Web</span><span data-en>Site by WeUnfolded Web</span>
+  </div>
+</footer>
+
+<div class="mock"><span data-fr>Maquette · WeUnfolded Web</span><span data-en>Sample · WeUnfolded Web</span></div>
+<div class="callbar"><a class="btn btn-accent btn-call" href="#soumission" data-call><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-fr>Appeler</span><span data-en>Call</span></a><a class="btn btn-line" href="#soumission"><span data-fr>Soumission</span><span data-en>Estimate</span></a></div>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var root=document.documentElement;
+  function setLang(l){
+    root.lang=l;
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
+    setVibe(root.dataset.vibe);tick();
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
+  var VIBES=[
+    {id:'isolation',fr:'Isolation',en:'Insulation',a:'#0b1220',b:'#ff7aa8'},
+    {id:'bardeau',fr:'Bardeau',en:'Shingle',a:'#16181b',b:'#e9a23b'},
+    {id:'thermique',fr:'Thermique',en:'Thermal',a:'#071317',b:'#3fd0e0'}
+  ];
+  document.querySelectorAll('[data-vibes]').forEach(function(g){
+    var label=g.querySelector('[data-vibe-label]');
+    VIBES.forEach(function(v){
+      var b=document.createElement('button');b.type='button';b.dataset.vibe=v.id;
+      b.style.setProperty('--a',v.a);b.style.setProperty('--b',v.b);
+      b.setAttribute('aria-label',v.fr+' / '+v.en);b.title=v.fr+' / '+v.en;
+      b.addEventListener('click',function(){setVibe(v.id)});
+      g.insertBefore(b,label);
+    });
+  });
+  function setVibe(id){
+    var v=VIBES.filter(function(x){return x.id===id})[0]||VIBES[0];
+    root.dataset.vibe=v.id;
+    document.querySelectorAll('[data-vibes] button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.vibe===v.id)});
+    document.querySelectorAll('[data-vibe-label]').forEach(function(s){s.textContent=root.lang==='en'?v.en:v.fr});
+    try{localStorage.setItem('kass-vibe',v.id)}catch(e){}
+    window.dispatchEvent(new Event('vibechange'));
+  }
+  // live clock (Montreal time)
+  function tick(){
+    var d=new Date(),t;
+    try{t=new Intl.DateTimeFormat(root.lang==='en'?'en-CA':'fr-CA',{hour:'numeric',minute:'2-digit',hour12:root.lang==='en',timeZone:'America/Toronto'}).format(d)}catch(e){t=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+    document.querySelectorAll('[data-clock]').forEach(function(b){b.textContent=t});
+  }
+  setInterval(tick,15000);
+  var saved=null;try{saved=localStorage.getItem('kass-vibe')}catch(e){}
+  var hm=/^#(fr|en)(?:-(isolation|bardeau|thermique))?$/.exec(location.hash);
+  if(hm&&hm[2])saved=hm[2];
+  setVibe(saved||'isolation');tick();
+  // call buttons
+  var digits=(root.dataset.phone||'').replace(/\D/g,'').replace(/^1(?=\d{10}$)/,'');
+  if(digits.length===10){
+    var pretty='('+digits.slice(0,3)+') '+digits.slice(3,6)+'-'+digits.slice(6);
+    document.querySelectorAll('[data-call]').forEach(function(a){a.href='tel:+1'+digits;a.setAttribute('aria-label','Appeler / Call '+pretty)});
+    document.querySelectorAll('[data-phone-text]').forEach(function(s){s.textContent=pretty});
+  }
+  var gate=document.getElementById('gate');
+  if(hm){setLang(hm[1]);gate.hidden=true}else document.body.style.overflow='hidden';
+  gate.querySelectorAll('[data-pick]').forEach(function(b){
+    b.addEventListener('click',function(){
+      setLang(b.dataset.pick);
+      gate.classList.add('closed');document.body.style.overflow='';
+      window.dispatchEvent(new Event('gateopening'));
+      setTimeout(function(){gate.hidden=true},900);
+    });
+  });
+  var hv=document.getElementById('heroVid');
+  if(hv){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){hv.removeAttribute('autoplay')}
+    else{hv.src=(Math.max(screen.width,screen.height)*(window.devicePixelRatio||1)>1600&&innerWidth>700)?'assets/roof-1080.mp4':'assets/roof-720.mp4';hv.play&&hv.play().catch(function(){})}
+  }
+  if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var vo=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.src)v.src=v.dataset.src;v.play().catch(function(){})}else if(v.src){v.pause()}})},{rootMargin:'200px'});
+    document.querySelectorAll('.lazyvid').forEach(function(v){vo.observe(v)});
+  }
+  var nav=document.getElementById('nav');
+  function onScroll(){nav.classList.toggle('solid',window.scrollY>40)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,lenis=null;
+  if(window.Lenis&&!reduce){
+    lenis=new Lenis({duration:1.35,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true,wheelMultiplier:.9});
+    (function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(performance.now());
+    if(!gate.hidden)lenis.stop();
+    window.addEventListener('gateopening',function(){lenis.start()});
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click',function(e){
+        if(a.getAttribute('href').indexOf('tel:')===0)return;
+        var id=a.getAttribute('href');var el=id==='#top'?0:document.querySelector(id);
+        if(el===null)return;e.preventDefault();lenis.scrollTo(el,{offset:id==='#top'?0:-76,duration:1.6});
+      });
+    });
+  }
+  var hero=document.querySelector('.hero');
+  function heroProgress(){var p=Math.min(1,Math.max(0,window.scrollY/(hero.offsetHeight||1)));hero.style.setProperty('--p',p.toFixed(3));window.__heroCovered=p>=1}
+  window.addEventListener('scroll',heroProgress,{passive:true});heroProgress();
+  ['.lanes','.steps4','.gallery','.facts .wrap','.cal'].forEach(function(sel){
+    var g=document.querySelector(sel);if(!g)return;
+    Array.prototype.forEach.call(g.children,function(c,i){c.style.setProperty('--i',i%8)});
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  }else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
+  document.getElementById('quote').addEventListener('submit',function(e){e.preventDefault();document.getElementById('sent').hidden=false});
+})();
+</script>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const col = (n) => new THREE.Color(css(n));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const phone = matchMedia('(max-width: 900px), (pointer: coarse)').matches;
+const glowTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const g = c.getContext('2d'); const r = g.createRadialGradient(64, 64, 0, 64, 64, 64); r.addColorStop(0, 'rgba(255,255,255,1)'); r.addColorStop(.25, 'rgba(255,255,255,.45)'); r.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = r; g.fillRect(0, 0, 128, 128); return new THREE.CanvasTexture(c); })();
+
+/* ================= Hero: living photo (slow push, rising steam, heat shimmer) ================= */
+(function living(){
+  const wrap = document.querySelector('.hero-photo'); if (!wrap) return;
+  const img = wrap.querySelector('img');
+  const cv = document.createElement('canvas'); wrap.appendChild(cv);
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: false, alpha: false }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, phone ? 1.5 : 2));
+  const scene = new THREE.Scene();
+  const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+  const POS = new THREE.Vector2(0.62, 0.9);           // same framing as the CSS object-position
+  const IMG_ASPECT = 4 / 3;
+  const u = { tex: { value: null }, t: { value: 0 }, off: { value: new THREE.Vector2() }, size: { value: new THREE.Vector2(1, 1) } };
+  const photo = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.ShaderMaterial({
+    uniforms: u, depthWrite: false,
+    vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0., 1.); }',
+    fragmentShader: `
+      uniform sampler2D tex; uniform float t; uniform vec2 off; uniform vec2 size; varying vec2 vUv;
+      void main(){
+        vec2 p = off + vec2(vUv.x, 1. - vUv.y) * size;           // image coords, y down
+        // heat shimmer just above the fresh asphalt mat (left of the paver)
+        float m = smoothstep(0.50, 0.60, p.y) * (1. - smoothstep(0.80, 0.92, p.y)) * (1. - smoothstep(0.58, 0.74, p.x));
+        p.x += m * 0.0016 * sin(p.y * 160. + t * 3.1 + sin(p.x * 50. + t * 1.3) * 2.);
+        p.y += m * 0.0012 * sin(p.x * 120. - t * 2.4);
+        gl_FragColor = texture2D(tex, vec2(p.x, 1. - p.y));
+      }`
+  }));
+  scene.add(photo);
+  // steam puffs rising off the mat
+  const N = phone ? 60 : 120;
+  const geo = new THREE.BufferGeometry();
+  const pos = new Float32Array(N * 3), alpha = new Float32Array(N), sz = new Float32Array(N);
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('a', new THREE.BufferAttribute(alpha, 1));
+  geo.setAttribute('s', new THREE.BufferAttribute(sz, 1));
+  const steam = new THREE.Points(geo, new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    vertexShader: 'attribute float a; attribute float s; varying float va; void main(){ va = a; gl_Position = vec4(position.xy, 0., 1.); gl_PointSize = s; }',
+    fragmentShader: 'varying float va; void main(){ vec2 c = gl_PointCoord - .5; float d = length(c); float f = 1. - smoothstep(0., .5, d); gl_FragColor = vec4(vec3(.92,.93,.95), f * f * va); }'
+  }));
+  scene.add(steam);
+  const P = Array.from({ length: N }, () => ({ life: Math.random(), dur: 4 + Math.random() * 4, x: 0, y: 0, w: 0 }));
+  const spawn = (q) => { q.x = 0.04 + Math.random() * 0.56; q.y = 0.62 + Math.random() * 0.26; q.w = (Math.random() - 0.3) * 0.03; q.dur = 4 + Math.random() * 4; q.life = 0; };
+  P.forEach((q) => { spawn(q); q.life = Math.random(); });
+
+  const tl = new THREE.TextureLoader();
+  tl.load(img.currentSrc || img.src, (tx) => {
+    tx.minFilter = THREE.LinearFilter; tx.generateMipmaps = false;
+    u.tex.value = tx; start();
+  });
+  function start() {
+    let W = 1, H = 1;
+    const fit = () => { W = cv.clientWidth; H = cv.clientHeight; if (W && H) renderer.setSize(W, H, false); };
+    new ResizeObserver(fit).observe(cv); fit();
+    let visible = true; new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(cv);
+    const T0 = performance.now(); let last = T0, shown = false;
+    renderer.setAnimationLoop((now) => {
+      if (!visible || window.__heroCovered) { last = now; return; }
+      const t = (now - T0) / 1000, dt = Math.min(0.05, (now - last) / 1000); last = now;
+      // cover fit + slow push-in (26 s each way, like the CSS version)
+      const A = W / H; let sx = 1, sy = 1;
+      if (A > IMG_ASPECT) sy = IMG_ASPECT / A; else sx = A / IMG_ASPECT;
+      const k = reduce ? 0 : (1 - Math.cos(t / 26 * Math.PI)) / 2;
+      const zoom = (A < 1 ? 1.32 : 1.03) + 0.10 * k;
+      const size = u.size.value.set(sx / zoom, sy / zoom);
+      u.off.value.set(POS.x * (1 - size.x) - 0.012 * k * size.x, POS.y * (1 - size.y) + 0.008 * k * size.y);
+      u.t.value = t;
+      P.forEach((q, i) => {
+        q.life += dt / q.dur; if (q.life >= 1) spawn(q);
+        const L = q.life, ix = q.x + q.w * L + 0.01 * Math.sin(t * 0.7 + i), iy = q.y - 0.16 * L;
+        const sxn = (ix - u.off.value.x) / size.x, syn = (iy - u.off.value.y) / size.y;
+        pos[i * 3] = sxn * 2 - 1; pos[i * 3 + 1] = 1 - syn * 2; pos[i * 3 + 2] = 0;
+        alpha[i] = Math.sin(L * Math.PI) * 0.16;
+        sz[i] = (60 + 220 * L) * (H / 900) * renderer.getPixelRatio();
+      });
+      geo.attributes.position.needsUpdate = true; geo.attributes.a.needsUpdate = true; geo.attributes.s.needsUpdate = true;
+      renderer.render(scene, cam);
+      if (!shown) { shown = true; wrap.classList.add('is-live'); }
+    });
+  }
+})();
+
+/* ================= Hero: a driveway being paved ================= */
+(function paving(){
+  if (document.querySelector('.hero-photo, .hero-video')) return;
+  const canvas = document.getElementById('town');
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, phone ? 1.5 : 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.shadowMap.enabled = !phone; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0x000000, 110, 260);
+  const camera = new THREE.PerspectiveCamera(32, 1, 0.5, 400);
+  const hemi = new THREE.HemisphereLight(0xdfe8ff, 0x2a2a2a, 0.9); scene.add(hemi);
+  const sun = new THREE.DirectionalLight(0xffd9a8, 2.6); sun.position.set(-30, 40, 25); sun.castShadow = !phone;
+  sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, { left: -40, right: 40, top: 40, bottom: -40, near: 1, far: 120 }); sun.shadow.bias = -0.0006;
+  scene.add(sun);
+  const std = (r = 0.9) => new THREE.MeshStandardMaterial({ roughness: r });
+  const groundMat = std(1), gravelMat = std(1), asphaltMat = std(0.4), houseMat = std(0.85), roofMat = std(0.9), machineMat = std(0.5), darkMat = std(0.6), brickMats = [std(0.8), std(0.8)];
+  const plane = (w, d, mat, x, y, z) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(w, d), mat); m.rotation.x = -Math.PI / 2; m.position.set(x, y, z); m.receiveShadow = true; scene.add(m); return m; };
+  const box = (w, h, d, mat, x, y, z, parent = scene) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); m.castShadow = !phone; m.receiveShadow = !phone; parent.add(m); return m; };
+  plane(500, 500, groundMat, 0, 0, 0);
+  // street with a dashed centre line
+  const streetMat = std(0.85); plane(220, 14, streetMat, 0, 0.02, 20);
+  const paint = new THREE.MeshBasicMaterial({ toneMapped: false });
+  for (let x = -100; x < 100; x += 6) plane(3, 0.35, paint, x, 0.03, 20);
+  const curbMat = std(0.9); box(220, 0.3, 2, curbMat, 0, 0.15, 12.2);
+  // house + garage at the top of the driveway
+  box(34, 10, 16, houseMat, 4, 5, -32);
+  const tri = new THREE.Shape(); tri.moveTo(-9, 0); tri.lineTo(9, 0); tri.lineTo(0, 6); tri.closePath();
+  const roof = new THREE.Mesh(new THREE.ExtrudeGeometry(tri, { depth: 35, bevelEnabled: false }), roofMat); roof.rotation.y = Math.PI / 2; roof.position.set(-13.5, 10, -32); roof.castShadow = !phone; scene.add(roof);
+  box(9, 7, 0.3, darkMat, 0, 3.5, -23.9);
+  const winMat = new THREE.MeshBasicMaterial({ toneMapped: false });
+  box(3, 2.4, 0.2, winMat, 12, 5.5, -23.9); box(3, 2.4, 0.2, winMat, 18, 5.5, -23.9);
+  // driveway: gravel base, then fresh asphalt grows from the garage to the street
+  const DZ0 = -23.6, DZ1 = 11.2, DL = DZ1 - DZ0;
+  box(11, 0.2, DL, gravelMat, 0, 0.1, (DZ0 + DZ1) / 2);
+  const matGeo = new THREE.BoxGeometry(11, 0.3, 1); matGeo.translate(0, 0, 0.5);
+  const mat = new THREE.Mesh(matGeo, asphaltMat); mat.position.set(0, 0.2, DZ0); mat.receiveShadow = true; scene.add(mat);
+  // paver machine
+  const paver = new THREE.Group(); scene.add(paver);
+  box(5, 2.6, 5, machineMat, 0, 2.1, 0, paver); box(6.5, 1.4, 3, machineMat, 0, 1.5, 3.6, paver); box(12, 0.8, 1.4, darkMat, 0, 0.7, -3, paver);
+  box(1.6, 1.6, 1.6, darkMat, 1.2, 4.2, -0.8, paver);
+  // roller
+  const roller = new THREE.Group(); scene.add(roller);
+  box(3.4, 2.2, 5, machineMat, 0, 2.4, 0, roller); box(2.6, 1.6, 2, darkMat, 0, 4.2, -0.6, roller);
+  [-2.6, 2.6].forEach((z) => { const d = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.1, 4.4, 20), darkMat); d.rotation.z = Math.PI / 2; d.position.set(0, 1.1, z); d.castShadow = !phone; roller.add(d); });
+  // steam
+  const tex = (() => { const c = document.createElement('canvas'); c.width = c.height = 64; const g = c.getContext('2d'); const r = g.createRadialGradient(32, 32, 0, 32, 32, 32); r.addColorStop(0, 'rgba(255,255,255,.9)'); r.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = r; g.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c); })();
+  const steam = Array.from({ length: phone ? 18 : 40 }, () => { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false, opacity: 0 })); scene.add(s); return { s, life: Math.random() }; });
+  // interlocking pavers for the front walk (running bond), dropped in a diagonal wave
+  const BW = 1.2, BD = 0.6, cols = 10, rows = 18, PX = 9, PZ = -21;
+  const bricks = []; const bGeo = new THREE.BoxGeometry(BW - 0.08, 0.35, BD - 0.08);
+  const inst = [new THREE.InstancedMesh(bGeo, brickMats[0], cols * rows), new THREE.InstancedMesh(bGeo, brickMats[1], cols * rows)];
+  inst.forEach((m) => { m.castShadow = !phone; m.receiveShadow = !phone; m.count = 0; scene.add(m); });
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { const x = PX + c * BW + (r % 2 ? BW / 2 : 0), z = PZ + r * BD * 1.0; bricks.push({ x, z, k: (r * 7 + c * 3) % 5 === 0 ? 1 : 0, order: (c + r * 0.6) }); }
+  const maxOrder = Math.max(...bricks.map((b) => b.order));
+  const dummy = new THREE.Object3D();
+
+  let composer = null;
+  if (!phone) { composer = new EffectComposer(renderer); composer.addPass(new RenderPass(scene, camera)); composer.addPass(new UnrealBloomPass(new THREE.Vector2(256, 256), 0.35, 0.4, 0.85)); composer.addPass(new OutputPass()); }
+
+  const FRESH = new THREE.Color(), CURED = new THREE.Color();
+  function applyVibe() {
+    const hero = col('--hero');
+    scene.background = hero; scene.fog.color = hero;
+    groundMat.color = col('--ground'); gravelMat.color = col('--gravel'); streetMat.color = col('--asphalt').offsetHSL(0, 0, 0.04); curbMat.color = col('--gravel').offsetHSL(0, 0, 0.12);
+    houseMat.color = col('--house'); roofMat.color = col('--house').multiplyScalar(0.6); darkMat.color = col('--asphalt').offsetHSL(0, 0, 0.06);
+    machineMat.color = col('--accent'); paint.color = col('--win'); winMat.color = col('--win').multiplyScalar(1.4);
+    brickMats[0].color = col('--brick'); brickMats[1].color = col('--brick2');
+    FRESH.copy(col('--asphalt')).multiplyScalar(0.55); CURED.copy(col('--asphalt')).offsetHSL(0, 0, 0.06);
+  }
+  applyVibe(); addEventListener('vibechange', applyVibe);
+  function fit() { const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); if (composer) composer.setSize(w, h); }
+  new ResizeObserver(fit).observe(canvas); fit();
+
+  const BARE = 1.2, PAVE = 9, BRICK = 5, HOLD = 5, RESET = 1.4;
+  const CYCLE = BARE + PAVE + BRICK + HOLD + RESET;
+  const ease = (k) => 1 - Math.pow(1 - k, 3);
+  let visible = true; new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(canvas);
+  const T0 = performance.now(); let last = T0;
+  renderer.setAnimationLoop((now) => {
+    if (!visible || window.__heroCovered) { last = now; return; }
+    const t = (now - T0) / 1000, dt = Math.min(0.05, (now - last) / 1000); last = now;
+    const c = reduce ? BARE + PAVE + BRICK + 1 : t % CYCLE;
+    const resetK = c > CYCLE - RESET ? (c - (CYCLE - RESET)) / RESET : 0;
+    const p = Math.max(0, Math.min(1, (c - BARE) / PAVE)) * (1 - resetK);
+    const len = Math.max(0.001, p * DL);
+    mat.scale.z = len;
+    asphaltMat.color.copy(FRESH).lerp(CURED, Math.min(1, Math.max(0, (c - BARE - PAVE) / 4)));
+    asphaltMat.roughness = 0.35 + 0.5 * Math.min(1, Math.max(0, (c - BARE - PAVE) / 4));
+    const front = DZ0 + len;
+    const paving = c > BARE && c < BARE + PAVE + 0.3;
+    paver.position.set(0, 0, Math.min(front + 3.5, DZ1 + 9) + (c > BARE + PAVE ? (c - BARE - PAVE) * 6 : 0));
+    paver.visible = c < BARE + PAVE + 3 && resetK === 0;
+    roller.position.set(Math.sin(t * 1.2) * 2, 0, Math.max(DZ0 + 2.6, front - 9 + Math.sin(t * 0.9) * 3));
+    roller.visible = c > BARE + 1.2 && c < BARE + PAVE + BRICK && resetK === 0;
+    steam.forEach((st) => {
+      st.life += dt * 0.6;
+      if (st.life > 1) { st.life = 0; st.x = (Math.random() - 0.5) * 10; st.z = front - Math.random() * 4; }
+      const on = paving ? 1 : 0;
+      st.s.position.set(st.x || 0, 0.6 + st.life * 5, (st.z || DZ0) - st.life * 1.5);
+      st.s.scale.setScalar(1.5 + st.life * 4);
+      st.s.material.opacity = on * (1 - st.life) * 0.28;
+    });
+    const bk = Math.max(0, (c - BARE - PAVE) / BRICK);
+    const counts = [0, 0];
+    bricks.forEach((b) => {
+      const q = Math.max(0, Math.min(1, bk * (maxOrder + 6) - b.order)) ;
+      if (q <= 0 || resetK > 0.6) return;
+      const e = ease(q);
+      dummy.position.set(b.x, 0.18 + (1 - e) * 5 - resetK * 2, b.z); dummy.rotation.set(0, (1 - e) * 0.6, 0); dummy.scale.setScalar(0.6 + 0.4 * e); dummy.updateMatrix();
+      inst[b.k].setMatrixAt(counts[b.k]++, dummy.matrix);
+    });
+    inst.forEach((m, i) => { m.count = counts[i]; m.instanceMatrix.needsUpdate = true; });
+    const a = 0.7 + Math.sin(t * 0.06) * 0.4, r = phone ? 100 : 84;
+    camera.position.set(Math.sin(a) * r + 4, phone ? 52 : 42, Math.cos(a) * r - 4);
+    camera.lookAt(6, 0, -6);
+    if (!phone) camera.setViewOffset(canvas.clientWidth, canvas.clientHeight, -canvas.clientWidth * 0.18, 0, canvas.clientWidth, canvas.clientHeight);
+    composer ? composer.render() : renderer.render(scene, camera);
+  });
+})();
+
+/* ================= Gate: 3D logo ================= */
+(function logo(){
+  const gate = document.getElementById('gate');
+  const wrap = document.getElementById('logo3d');
+  const canvas = document.getElementById('logoCanvas');
+  const MARK = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-70 -30 1140 1060"><path fill="#000" fill-rule="evenodd" d="M-40 420L500.0 0L1040 420L1000 420V1000H0V420ZM224.92464285714283 933.95V368.44999999999993H363.87607142857144V615.6542857142857L592.4996428571428 368.44999999999993H760.5339285714285L498.7882142857143 634.235L775.0753571428571 933.95H590.8839285714286L363.87607142857144 674.6278571428572V933.95Z"/></svg>`;
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+  const camera = new THREE.PerspectiveCamera(26, 1, 10, 60000);
+  const shapes = [];
+  new SVGLoader().parse(MARK).paths.forEach((p) => SVGLoader.createShapes(p).forEach((s) => shapes.push(s)));
+  const geo = new THREE.ExtrudeGeometry(shapes, { depth: 90, curveSegments: phone ? 10 : 24, bevelEnabled: true, bevelThickness: 12, bevelSize: 6, bevelSegments: phone ? 3 : 6 });
+  geo.center(); geo.computeBoundingBox();
+  const width = geo.boundingBox.max.x - geo.boundingBox.min.x;
+  const mat = new THREE.MeshPhysicalMaterial({ metalness: 0.6, roughness: 0.25, clearcoat: 0.8, clearcoatRoughness: 0.15 });
+  const mesh = new THREE.Mesh(geo, mat); mesh.rotation.x = Math.PI;
+  const group = new THREE.Group(); group.add(mesh); scene.add(group);
+  const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(0, 0, 4000); scene.add(key);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+  const applyVibe = () => mat.color = col('--accent');
+  applyVibe(); addEventListener('vibechange', applyVibe);
+  const fit = () => {
+    const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
+    renderer.setSize(w, h, false); camera.aspect = w / h;
+    const hfov = 2 * Math.atan(Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * camera.aspect);
+    camera.position.set(0, 0, (width / 0.62) / 2 / Math.tan(hfov / 2));
+    camera.near = camera.position.z / 20; camera.far = camera.position.z * 4; camera.updateProjectionMatrix();
+  };
+  new ResizeObserver(fit).observe(canvas); fit();
+  const ptr = { x: 0, y: 0 }; let drag = null, spin = 0, vel = 0, tiltX = 0;
+  const onMove = (e) => {
+    ptr.x = e.clientX / innerWidth * 2 - 1; ptr.y = e.clientY / innerHeight * 2 - 1;
+    if (drag) { const dx = e.clientX - drag.x; vel = dx * 0.012; spin += vel; tiltX = Math.max(-0.6, Math.min(0.6, tiltX + (e.clientY - drag.y) * 0.006)); drag.x = e.clientX; drag.y = e.clientY; }
+  };
+  wrap.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY }; wrap.setPointerCapture(e.pointerId); });
+  const end = () => { drag = null; };
+  wrap.addEventListener('pointerup', end); wrap.addEventListener('pointercancel', end);
+  addEventListener('pointermove', onMove, { passive: true });
+  const t0 = performance.now(); let shown = false;
+  const ease = (k) => 1 - Math.pow(1 - k, 3);
+  renderer.setAnimationLoop((now) => {
+    if (gate.hidden) { renderer.setAnimationLoop(null); removeEventListener('pointermove', onMove); geo.dispose(); mat.dispose(); pmrem.dispose(); renderer.dispose(); return; }
+    const t = (now - t0) / 1000, intro = reduce ? 1 : ease(Math.min(t / 1.8, 1));
+    if (!drag) { vel *= 0.95; spin += vel; spin *= 0.985; tiltX *= 0.96; }
+    const f = reduce ? 0 : 1;
+    group.rotation.y = spin + ptr.x * 0.45 + Math.cos(t * 0.6) * 0.12 * f - (1 - intro) * 1.2;
+    group.rotation.x = tiltX + ptr.y * 0.3 + Math.sin(t * 0.8) * 0.05 * f + 0.08;
+    group.position.y = Math.sin(t * 1.1) * width * 0.005 * f;
+    group.scale.setScalar(0.86 + 0.14 * intro);
+    key.position.set(ptr.x * 3000, -ptr.y * 2000 + 800, 4000);
+    renderer.render(scene, camera);
+    if (!shown) { shown = true; wrap.classList.add('webgl'); }
+  });
+})();
+</script>
+</body>
+</html>

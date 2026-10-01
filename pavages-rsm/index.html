@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="fr" data-vibe="asphalte" data-phone="4506326518">
+<!-- Business phone: the 10 digits in data-phone above. Every "Appeler" button dials it. -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Les Pavages R.S.M. · Saint-Constant</title>
+<meta name="description" content="Pavage d'asphalte, pavé-uni et excavation à Saint-Constant et sur la Rive-Sud. Résidentiel et commercial. Soumission claire, sans surprise.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@600;800;900&family=Source+Sans+3:wght@400;500;600&family=Overpass+Mono:wght@500;600&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* Layout: a road crew's job sheet. Hero = a driveway paved live (paver, roller, steam, then pavers);
+   highway-sign lettering, dashed lane lines as dividers, an off-season booking calendar. */
+:root{
+  --display:"Overpass","Arial Narrow",Arial,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Overpass Mono",ui-monospace,Menlo,monospace;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  /* Asphalte (default) */
+  --bg:#efefec; --surface:#ffffff; --ink:#141414; --muted:#5c5c58; --line:#d8d8d3;
+  --accent:#f4c20d; --accent-ink:#141414; --accent-text:#8a6a00;
+  --hero:#121314; --hero-ink:#f2f2ef; --hero-muted:#a3a39d;
+  --win:#f4c20d; --ground:#1c271d; --gravel:#5f5b54; --asphalt:#161719; --brick:#a3654a; --brick2:#86533e; --house:#3a3d42; --edge:#2a2b2e;
+}
+:root[data-vibe="pave"]{
+  --bg:#f3eee9; --surface:#ffffff; --ink:#1d1612; --muted:#6a5d55; --line:#e0d6cd;
+  --accent:#d0673f; --accent-ink:#ffffff; --accent-text:#a8461f;
+  --hero:#1f1814; --hero-ink:#f6efe8; --hero-muted:#b09f92;
+  --win:#ffb98f; --ground:#222e1e; --gravel:#6f655a; --asphalt:#1a1817; --brick:#b8775a; --brick2:#9a6048; --house:#463b35; --edge:#33291f;
+}
+:root[data-vibe="cone"]{
+  --bg:#eef2f4; --surface:#ffffff; --ink:#0f1a22; --muted:#56636d; --line:#d4dde2;
+  --accent:#ff7a1a; --accent-ink:#ffffff; --accent-text:#b9500a;
+  --hero:#0f1c26; --hero-ink:#eef5f9; --hero-muted:#9db0bd;
+  --win:#ffb36b; --ground:#203a24; --gravel:#6f6b62; --asphalt:#18191b; --brick:#9c6a52; --brick2:#85584a; --house:#3c4852; --edge:#1f2e3a;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--body);transition:background-color .6s var(--ease),color .6s var(--ease)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.tag{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:inline-flex;gap:10px;align-items:center}
+.tag::before{content:"";width:16px;height:2px;background:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 15px/1 var(--body);text-decoration:none;border-radius:8px;padding:16px 22px;border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease),background-color .3s,color .3s,border-color .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover{box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 40%,transparent)}
+.btn-line{border-color:color-mix(in srgb,var(--hero-ink) 40%,transparent);color:var(--hero-ink);background:transparent}
+.btn-line:hover{border-color:var(--hero-ink)}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.ph-ic{width:18px;height:18px;flex:none}
+.btn-call{position:relative}
+.btn-call::after{content:"";position:absolute;inset:-4px;border-radius:11px;border:2px solid var(--accent);opacity:0;animation:ring 2.4s var(--ease) infinite;pointer-events:none}
+@keyframes ring{0%{opacity:.7;transform:scale(.97)}70%,100%{opacity:0;transform:scale(1.08)}}
+.btn-call .num{font:500 13px var(--mono);opacity:.85}
+
+/* ---------- Entry gate ---------- */
+.gate{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:24px;text-align:center;color:var(--hero-ink);
+  background:color-mix(in srgb,var(--hero) 74%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:opacity .9s var(--ease),visibility 0s linear .9s}
+html:not(.js) .gate{display:none}
+.gate.closed{opacity:0;visibility:hidden}
+.gate::before{content:"";position:absolute;left:50%;top:40%;width:min(92vw,820px);aspect-ratio:2/1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--win) 18%,transparent),transparent);pointer-events:none}
+.logo3d{position:relative;width:min(60vw,380px);aspect-ratio:4112/2160;cursor:grab;touch-action:none}
+.logo3d:active{cursor:grabbing}
+.logo3d svg.flat{position:absolute;inset:0;width:100%;height:100%;color:var(--accent);transition:opacity .6s}
+.logo3d canvas{position:absolute;left:-30%;top:-45%;width:160%;height:190%;opacity:0;transition:opacity 1s var(--ease);pointer-events:none}
+.logo3d.webgl canvas{opacity:1}
+.logo3d.webgl svg.flat{opacity:0}
+.gate .logo3d{animation:logoIn 1.6s var(--ease) both}
+@keyframes logoIn{from{opacity:0;transform:translateY(26px) scale(.92);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+.gate-name{font:800 clamp(22px,4vw,34px)/1 var(--display);font-stretch:112%;text-transform:uppercase;letter-spacing:.02em}
+.gate-name small{display:block;font:500 11px/1 var(--mono);letter-spacing:.32em;color:var(--hero-muted);margin-top:10px}
+.gate-q{font:500 12px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;margin:4px 0 0;opacity:.9}
+.gate-q span{opacity:.6}
+.gate-langs{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.gate-langs .btn{min-width:170px}
+.gate-hint{font:400 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);margin:0}
+
+/* ---------- Vibes ---------- */
+.vibes{display:inline-flex;align-items:center;gap:6px;padding:5px;border-radius:999px;border:1px solid color-mix(in srgb,currentColor 25%,transparent)}
+.vibes button{width:26px;height:26px;border-radius:50%;border:0;padding:0;cursor:pointer;background:conic-gradient(var(--a) 0 50%,var(--b) 0 100%);transform:rotate(-45deg);transition:transform .3s var(--ease)}
+.vibes button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--hero),0 0 0 3.5px currentColor}
+.vibes button:hover{transform:rotate(-45deg) scale(1.12)}
+.vibe-name{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:0 8px 0 4px;white-space:nowrap}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;color:var(--hero-ink);transition:background-color .4s;padding-top:env(safe-area-inset-top,0px)}
+.nav.solid{background:color-mix(in srgb,var(--hero) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px}
+.brand{display:flex;align-items:center;text-decoration:none;color:var(--hero-ink)}
+.brand svg{height:30px;width:auto}
+.nav-links{display:flex;gap:28px;font:500 14px var(--body)}
+.nav-links a{text-decoration:none;opacity:.8;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang{display:flex;font:500 12px var(--mono)}
+.lang button{background:none;border:0;color:inherit;opacity:.55;cursor:pointer;padding:6px}
+.lang button[aria-pressed="true"]{opacity:1;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--accent)}
+.nav .btn{padding:12px 16px;font-size:14px}
+
+/* ---------- Hero ---------- */
+.hero{position:sticky;top:0;min-height:100svh;display:flex;align-items:flex-end;color:var(--hero-ink);background:var(--hero);overflow:hidden;isolation:isolate}
+#town{position:absolute;inset:0;width:100%;height:100%;z-index:-2;display:block;transform:scale(calc(1 + var(--p,0) * .08));filter:brightness(calc(1 - var(--p,0) * .55));will-change:transform}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,color-mix(in srgb,var(--hero) 50%,transparent) 0%,transparent 24%,transparent 48%,color-mix(in srgb,var(--hero) 94%,transparent) 92%),linear-gradient(90deg,color-mix(in srgb,var(--hero) 78%,transparent),transparent 62%)}
+.hero .wrap{width:100%;padding-block:140px 56px;display:grid;gap:24px;transform:translate3d(0,calc(var(--p,0) * -90px),0);opacity:calc(1 - var(--p,0) * 1.6);will-change:transform,opacity}
+.live{display:inline-flex;align-items:center;gap:10px;justify-self:start;font:500 12px var(--mono);letter-spacing:.08em;color:var(--hero-ink);background:color-mix(in srgb,var(--hero-ink) 8%,transparent);border:1px solid color-mix(in srgb,var(--hero-ink) 16%,transparent);border-radius:999px;padding:8px 14px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:live 1.8s infinite}
+@keyframes live{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 70%,transparent)}100%{box-shadow:0 0 0 10px transparent}}
+.live b{font-weight:500;font-variant-numeric:tabular-nums}
+.hero h1{font:800 clamp(46px,7.4vw,112px)/.9 var(--display);font-stretch:112%;text-transform:uppercase;margin:0;letter-spacing:-.01em;max-width:13ch;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--accent);text-shadow:0 0 40px color-mix(in srgb,var(--win) 40%,transparent)}
+.hero-sub{font-size:clamp(16px,1.6vw,19px);max-width:52ch;color:color-mix(in srgb,var(--hero-ink) 82%,transparent);margin:0}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.sectors{display:flex;gap:20px;flex-wrap:wrap;font:400 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);margin-top:12px}
+.sectors span{display:inline-flex;align-items:center;gap:8px}
+.sectors span::before{content:"";width:6px;height:6px;border-radius:1px;background:var(--win);box-shadow:0 0 8px var(--win)}
+.hero-tag{position:absolute;right:clamp(16px,4vw,40px);bottom:24px;font:400 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);opacity:calc(.75 - var(--p,0) * 2)}
+
+/* ---------- Sheet ---------- */
+.sheet{position:relative;z-index:2;background:var(--bg);border-radius:28px 28px 0 0;overflow:hidden;box-shadow:0 -30px 60px rgba(0,0,0,.3);transition:background-color .6s var(--ease)}
+footer{position:relative;z-index:2}
+.facts{background:var(--hero);color:var(--hero-ink)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:30px 0 30px 24px;display:grid;gap:6px;border-left:1px solid color-mix(in srgb,var(--hero-ink) 12%,transparent)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact b{font:800 42px/1 var(--display);font-stretch:112%;color:var(--accent)}
+.fact span{font-size:13px;color:var(--hero-muted)}
+
+section{padding-block:clamp(72px,10vw,128px)}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+h2{font:800 clamp(36px,5.4vw,72px)/.94 var(--display);font-stretch:112%;text-transform:uppercase;margin:16px 0 0;text-wrap:balance;letter-spacing:-.01em}
+h2 em{font-style:normal;color:var(--accent-text)}
+.head p{color:var(--muted);margin:0;max-width:46ch;justify-self:end}
+
+/* three sectors */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sector{position:relative;border-radius:16px;background:var(--hero);color:var(--hero-ink);padding:28px;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;overflow:hidden;isolation:isolate}
+.sector::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 55% at 75% 20%,color-mix(in srgb,var(--win) 26%,transparent),transparent 70%);opacity:.35;transition:opacity .8s var(--ease)}
+.sector:hover::before,.sector.in::before{opacity:1}
+.sector .n{position:absolute;top:22px;left:28px;font:500 12px var(--mono);color:var(--hero-muted)}
+.sector svg.sil{position:absolute;right:20px;top:24px;width:46%;height:auto;color:color-mix(in srgb,var(--hero-ink) 18%,transparent)}
+.sector svg.sil .w{fill:var(--win);opacity:.15;transition:opacity .6s}
+.sector:hover svg.sil .w,.sector.in svg.sil .w{opacity:1}
+.sector h3{font:800 32px/1 var(--display);font-stretch:112%;text-transform:uppercase;margin:0}
+.sector p{margin:0;color:var(--hero-muted);font-size:15px}
+
+/* residential checklist */
+.jobs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0;padding:0;list-style:none}
+.jobs li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:14px;align-content:start;min-height:140px}
+.led{width:10px;height:10px;border-radius:50%;background:var(--line);transition:background-color .5s,box-shadow .5s;transition-delay:calc(var(--i,0) * 120ms + .4s)}
+.jobs li.in .led{background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.jobs b{font:600 17px/1.25 var(--body)}
+
+/* emergency band */
+.sos{background:var(--hero);color:var(--hero-ink);position:relative;overflow:hidden}
+.sos::before{content:"";position:absolute;inset:-40% -10% auto auto;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 22%,transparent),transparent);pointer-events:none}
+.sos .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center;position:relative}
+.sos h2{margin:14px 0 18px}
+.sos p{color:var(--hero-muted);margin:0 0 26px;max-width:46ch}
+.sos .tag{color:var(--hero-muted)}
+.clock{justify-self:end;text-align:right;display:grid;gap:8px}
+.clock b{font:800 clamp(64px,9vw,128px)/.85 var(--display);font-stretch:112%;font-variant-numeric:tabular-nums;color:var(--accent);text-shadow:0 0 50px color-mix(in srgb,var(--accent) 35%,transparent)}
+.clock span{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted)}
+
+.quote{font:800 clamp(28px,3.8vw,48px)/1.04 var(--display);font-stretch:112%;text-transform:uppercase;margin:18px 0 56px;max-width:24ch;text-wrap:balance}
+.quote em{font-style:normal;color:var(--accent-text)}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.why div{border-top:2px solid var(--ink);padding-top:20px;display:grid;gap:8px}
+.why b{font:800 24px/1 var(--display);font-stretch:112%;text-transform:uppercase}
+.why p{margin:0;color:var(--muted)}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(160px,18vw,240px);gap:12px}
+.ph{position:relative;overflow:hidden;border-radius:12px;background:var(--hero)}
+.ph::before{content:"";position:absolute;inset:0;background:radial-gradient(40% 35% at 70% 35%,color-mix(in srgb,var(--win) 35%,transparent),transparent 70%),linear-gradient(180deg,transparent 55%,color-mix(in srgb,var(--edge) 80%,transparent));transition:transform 1.2s var(--ease)}
+.ph:hover::before{transform:scale(1.08)}
+.ph span{position:absolute;left:14px;bottom:12px;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--hero-muted)}
+.ph.big{grid-column:span 2;grid-row:span 2}
+.ph.wide{grid-column:span 2}
+.ph.big span{color:var(--hero-ink)}
+
+.split{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(32px,6vw,80px);align-items:start}
+.zones{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;padding:0;list-style:none}
+.zones li{border:1px solid var(--line);padding:8px 14px;font-size:14px;border-radius:999px;background:var(--surface)}
+.rating{background:var(--hero);color:var(--hero-ink);padding:34px;display:grid;gap:18px;border-radius:16px}
+.rating .score{display:flex;align-items:baseline;gap:14px}
+.rating b{font:800 88px/.8 var(--display);font-stretch:112%;color:var(--accent)}
+.rating .score span{color:var(--hero-muted);font-size:14px}
+.bars{display:grid;gap:8px;font:400 12px var(--mono);color:var(--hero-muted)}
+.bar{display:grid;grid-template-columns:24px 1fr 28px;gap:10px;align-items:center;font-variant-numeric:tabular-nums}
+.bar i{height:6px;border-radius:6px;background:color-mix(in srgb,var(--hero-ink) 12%,transparent);overflow:hidden;position:relative}
+.bar i::after{content:"";position:absolute;inset:0;width:calc(var(--v) * 1%);background:var(--accent);border-radius:6px;transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--ease)}
+.rating.in .bar i::after{transform:scaleX(1)}
+.rating p{margin:0;color:var(--hero-muted);font-size:13px}
+
+.contact{background:var(--hero);color:var(--hero-ink)}
+.contact h2 em{color:var(--accent)}
+.contact .tag{color:var(--hero-muted)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px;margin-top:8px}
+label{display:grid;gap:8px;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--hero-muted)}
+input,select,textarea{font:16px var(--body);color:var(--hero-ink);background:transparent;border:0;border-bottom:1px solid color-mix(in srgb,var(--hero-ink) 30%,transparent);padding:10px 0;border-radius:0;width:100%;transition:border-color .3s}
+select option{color:#111}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--accent)}
+textarea{min-height:90px;resize:vertical}
+.full{grid-column:1/-1}
+.sent{grid-column:1/-1;margin:0;color:var(--accent);font:500 13px var(--mono)}
+.contact-side{display:grid;gap:22px;align-content:start;color:var(--hero-muted)}
+.contact-side b{display:block;color:var(--hero-ink);font:800 18px var(--display);font-stretch:112%;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px}
+
+footer{background:var(--hero);color:var(--hero-muted);border-top:1px solid color-mix(in srgb,var(--hero-ink) 12%,transparent);font-size:13px;padding-block:36px calc(36px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer svg{height:30px;width:auto;color:var(--hero-ink)}
+
+/* ---------- R.S.M. specific ---------- */
+.hero-video{position:absolute;inset:0;z-index:-2;overflow:hidden;filter:brightness(calc(.9 - var(--p,0) * .5))}
+.hero-video video{width:100%;height:100%;object-fit:cover;object-position:50% 60%;transform:scale(calc(1.02 + var(--p,0) * .06))}
+#town{display:none}
+.hero-photo{position:absolute;inset:0;z-index:-2;overflow:hidden;filter:brightness(calc(.92 - var(--p,0) * .5))}
+.hero-photo canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1s}
+.hero-photo.is-live canvas{opacity:1}
+.hero-photo.is-live img{visibility:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:62% 90%;transform-origin:68% 80%;animation:kb 26s ease-in-out infinite alternate;will-change:transform}
+@keyframes kb{from{transform:scale(1.03)}to{transform:scale(1.13) translate(-1.2%,.8%)}}
+@media (prefers-reduced-motion:reduce){.hero-photo img{animation:none}}
+.credit{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.book{display:inline-flex;align-items:center;gap:10px;justify-self:start;font:500 12px var(--mono);letter-spacing:.06em;color:var(--hero-ink);background:color-mix(in srgb,var(--hero-ink) 8%,transparent);border:1px solid color-mix(in srgb,var(--hero-ink) 16%,transparent);border-radius:999px;padding:8px 14px}
+.book i{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:live 1.8s infinite}
+.lanes{display:grid;gap:0;border-top:1px solid var(--line)}
+.lane{display:grid;grid-template-columns:70px 1fr 1.2fr;gap:24px;align-items:center;padding:28px 0;border-bottom:1px solid var(--line);position:relative}
+.lane::after{content:"";position:absolute;left:0;bottom:-1px;height:3px;width:0;background:repeating-linear-gradient(90deg,var(--accent) 0 28px,transparent 28px 48px);transition:width 1.6s var(--ease)}
+.lane.in::after{width:100%}
+.lane .n{font:600 12px var(--mono);color:var(--muted)}
+.lane h3{font:900 clamp(24px,2.8vw,36px)/1 var(--display);text-transform:uppercase;margin:0}
+.lane p{margin:0;color:var(--muted)}
+.lane .tagx{display:inline-block;margin-left:10px;font:600 10px var(--mono);letter-spacing:.1em;color:var(--accent-text);border:1px solid currentColor;border-radius:4px;padding:3px 6px;vertical-align:6px}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;list-style:none;margin:0;padding:0;counter-reset:s}
+.steps4 li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;gap:10px;align-content:start}
+.steps4 li::before{content:"0" counter(s);font:900 34px/1 var(--display);color:var(--accent-text)}
+.steps4 h3{font:800 20px/1.1 var(--display);text-transform:uppercase;margin:0}
+.steps4 p{margin:0;color:var(--muted);font-size:15px}
+.spring{background:var(--hero);color:var(--hero-ink);position:relative;overflow:hidden}
+.spring .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.spring p{color:var(--hero-muted);margin:0 0 26px;max-width:46ch}
+.spring .tag{color:var(--hero-muted)}
+.spring h2 em{color:var(--accent)}
+.cal{justify-self:end;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:min(100%,340px)}
+.cal div{border:1px solid color-mix(in srgb,var(--hero-ink) 18%,transparent);border-radius:10px;padding:14px 10px;text-align:center;font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--hero-muted)}
+.cal div b{display:block;font:900 26px/1 var(--display);color:var(--hero-ink);margin-top:6px}
+.cal div.hot{border-color:var(--accent);color:var(--accent)}
+.cal div.hot b{color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips li{background:color-mix(in srgb,var(--hero-ink) 8%,transparent);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--hero-ink)}
+@media (max-width:900px){.lane{grid-template-columns:40px 1fr}.lane p{grid-column:2}.steps4{grid-template-columns:1fr 1fr}.spring .wrap{grid-template-columns:1fr}.cal{justify-self:start}}
+@media (max-width:620px){.steps4{grid-template-columns:1fr}}
+
+/* gallery media (Pexels illustration footage) */
+.ph.media{background:#000}
+.ph.media::before{display:none}
+.ph.media video,.ph.media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.1,1)}
+.ph.media:hover video,.ph.media:hover img{transform:scale(1.05)}
+.ph.media::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(transparent,rgba(0,0,0,.55));pointer-events:none}
+.ph.media span{z-index:1;color:#fff!important;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.mock{position:fixed;left:16px;bottom:16px;z-index:60;font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);padding:8px 12px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.callbar{display:none}
+
+.js .rv{opacity:0;transform:translateY(40px);filter:blur(6px);transition:opacity 1.3s var(--ease),transform 1.3s var(--ease),filter 1.3s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
+.js .rv.in{opacity:1;transform:none;filter:none}
+.js .ph.rv{transform:none;filter:none;clip-path:inset(100% 0 0 0);transition:clip-path 1.4s var(--ease),opacity .6s;transition-delay:calc(var(--i,0) * 110ms)}
+.js .ph.rv.in{clip-path:inset(0 0 0 0)}
+@media (max-width:900px),(pointer:coarse){.js .rv{filter:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv,.js .ph.rv{opacity:1;transform:none;filter:none;clip-path:none}#town,.hero .wrap{transform:none!important;filter:none!important;opacity:1!important}.gate .logo3d{animation:none}.btn-call::after,.live i{animation:none}}
+
+[data-en]{display:none!important}
+html[lang="en"] [data-en]{display:revert!important}
+html[lang="en"] [data-fr]{display:none!important}
+
+@media (max-width:900px){
+  .nav-links{display:none}
+  .facts .wrap{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .head,.split,.sos .wrap{grid-template-columns:1fr}
+  .head p{justify-self:start}
+  .clock{justify-self:start;text-align:left}
+  .trio{grid-template-columns:1fr}
+  .sector{min-height:260px}
+  .jobs{grid-template-columns:1fr 1fr}
+  .why{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .nav .nav-right>.btn,.vibe-name{display:none}
+  form{grid-template-columns:1fr}
+  .callbar{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:55;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--hero)}
+  .callbar .btn{width:100%;padding-inline:12px}
+  .mock{bottom:84px}
+  footer{padding-bottom:110px}
+}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateQ">
+  <div class="logo3d" id="logo3d" aria-hidden="true">
+    <svg class="flat" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-30 -430 4112 2160"><path fill="currentColor" d="M0 1000V-400H694Q873 -400 978.0 -337.5Q1083 -275 1128.5 -171.0Q1174 -67 1174 56Q1174 133 1145.0 214.5Q1116 296 1060.5 363.5Q1005 431 926 466L1186 1000H832L582 516H316V1000ZM316 218H698Q754 218 786.5 195.5Q819 173 832.5 136.0Q846 99 846 56Q846 16 833.0 -20.0Q820 -56 787.5 -79.0Q755 -102 698 -102H316ZM1930 1024Q1793 1024 1680.5 974.0Q1568 924 1486.5 830.5Q1405 737 1362 606L1644 500Q1691 599 1768.0 662.5Q1845 726 1938 726Q2031 726 2087.5 691.5Q2144 657 2144 590Q2144 546 2111.5 517.0Q2079 488 2020.5 465.5Q1962 443 1884 418Q1805 392 1723.0 361.0Q1641 330 1572.5 282.5Q1504 235 1462.0 161.0Q1420 87 1420 -24Q1420 -133 1478.0 -224.0Q1536 -315 1646.5 -369.5Q1757 -424 1914 -424Q2044 -424 2145.0 -376.5Q2246 -329 2312.5 -248.0Q2379 -167 2406 -66L2126 26Q2096 -39 2044.5 -82.5Q1993 -126 1898 -126Q1819 -126 1776.5 -98.5Q1734 -71 1734 -18Q1734 14 1763.0 37.5Q1792 61 1844.0 81.0Q1896 101 1966 124Q2055 153 2142.5 188.0Q2230 223 2301.5 274.0Q2373 325 2415.5 402.0Q2458 479 2458 592Q2458 729 2387.5 825.5Q2317 922 2197.5 973.0Q2078 1024 1930 1024ZM3386 1024 3042 314Q3041 311 3039.0 305.5Q3037 300 3034 290Q3034 299 3034.0 306.0Q3034 313 3034 316V1000H2718V-400H3040L3360 296Q3371 318 3379.0 337.5Q3387 357 3394 380Q3402 357 3409.5 336.0Q3417 315 3426 296L3758 -400H4052V1000H3736V314Q3736 308 3736.0 301.0Q3736 294 3736 290Q3733 296 3730.5 301.5Q3728 307 3726 310Z"/><path fill="currentColor" fill-rule="evenodd" d="M0 1224.0H4052.0V1700.0H0ZM225.1 1414.4V1509.6H675.3V1414.4ZM1125.6 1414.4V1509.6H1575.8V1414.4ZM2026.0 1414.4V1509.6H2476.2V1414.4ZM2926.4 1414.4V1509.6H3376.7V1414.4Z"/></svg>
+    <canvas id="logoCanvas"></canvas>
+  </div>
+  <div class="gate-name">Les Pavages<small>R.S.M. inc. · Saint-Constant</small></div>
+  <p class="gate-q" id="gateQ">Choisissez votre langue <span>· Choose your language</span></p>
+  <div class="gate-langs">
+    <button type="button" class="btn btn-accent" data-pick="fr">Français</button>
+    <button type="button" class="btn btn-line" data-pick="en">English</button>
+  </div>
+  <div class="vibes" role="group" aria-label="Ambiance / Vibe" data-vibes>
+    <span class="vibe-name" data-vibe-label>Asphalte</span>
+  </div>
+  <p class="gate-hint">Glissez le logo · Drag the logo</p>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Les Pavages R.S.M."><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-30 -430 11803 2160"><path fill="currentColor" d="M0 1000V-400H694Q873 -400 978.0 -337.5Q1083 -275 1128.5 -171.0Q1174 -67 1174 56Q1174 133 1145.0 214.5Q1116 296 1060.5 363.5Q1005 431 926 466L1186 1000H832L582 516H316V1000ZM316 218H698Q754 218 786.5 195.5Q819 173 832.5 136.0Q846 99 846 56Q846 16 833.0 -20.0Q820 -56 787.5 -79.0Q755 -102 698 -102H316ZM1930 1024Q1793 1024 1680.5 974.0Q1568 924 1486.5 830.5Q1405 737 1362 606L1644 500Q1691 599 1768.0 662.5Q1845 726 1938 726Q2031 726 2087.5 691.5Q2144 657 2144 590Q2144 546 2111.5 517.0Q2079 488 2020.5 465.5Q1962 443 1884 418Q1805 392 1723.0 361.0Q1641 330 1572.5 282.5Q1504 235 1462.0 161.0Q1420 87 1420 -24Q1420 -133 1478.0 -224.0Q1536 -315 1646.5 -369.5Q1757 -424 1914 -424Q2044 -424 2145.0 -376.5Q2246 -329 2312.5 -248.0Q2379 -167 2406 -66L2126 26Q2096 -39 2044.5 -82.5Q1993 -126 1898 -126Q1819 -126 1776.5 -98.5Q1734 -71 1734 -18Q1734 14 1763.0 37.5Q1792 61 1844.0 81.0Q1896 101 1966 124Q2055 153 2142.5 188.0Q2230 223 2301.5 274.0Q2373 325 2415.5 402.0Q2458 479 2458 592Q2458 729 2387.5 825.5Q2317 922 2197.5 973.0Q2078 1024 1930 1024ZM3386 1024 3042 314Q3041 311 3039.0 305.5Q3037 300 3034 290Q3034 299 3034.0 306.0Q3034 313 3034 316V1000H2718V-400H3040L3360 296Q3371 318 3379.0 337.5Q3387 357 3394 380Q3402 357 3409.5 336.0Q3417 315 3426 296L3758 -400H4052V1000H3736V314Q3736 308 3736.0 301.0Q3736 294 3736 290Q3733 296 3730.5 301.5Q3728 307 3726 310Z"/><path fill="currentColor" fill-rule="evenodd" d="M0 1224.0H4052.0V1700.0H0ZM225.1 1414.4V1509.6H675.3V1414.4ZM1125.6 1414.4V1509.6H1575.8V1414.4ZM2026.0 1414.4V1509.6H2476.2V1414.4ZM2926.4 1414.4V1509.6H3376.7V1414.4Z"/><path fill="currentColor" d="M4538.24 440.0V-316.0H4693.543063964843V289.66490966796874H5057.287182617187V440.0ZM5152.219999999999 440.0V-316.0H5683.578747558593V-168.68889648437505H5307.523063964843V-23.751564941406286H5522.011367187499V123.55953857421872H5307.523063964843V291.608896484375H5705.61077392578V440.0ZM6090.19947265625 452.96Q6017.839571533203 452.96 5958.54766052246 426.98606262207034Q5899.255749511718 401.01212524414063 5856.649835205078 353.00627685546874Q5814.043920898437 305.00042846679685 5792.12 238.68869873046873L5931.6552221679685 186.41700195312498Q5956.495189208984 239.22896240234374 5998.993245239257 272.8709228515625Q6041.491301269531 306.51288330078125 6094.087446289062 306.51288330078125Q6147.871663818359 306.51288330078125 6180.379785766601 285.0747119140625Q6212.887907714843 263.63654052734375 6212.887907714843 222.27222412109373Q6212.887907714843 194.51598022460936 6193.987825317383 176.0478088378906Q6175.087742919922 157.57963745117183 6142.039653930664 143.80953857421872Q6108.991564941406 130.0394396972656 6066.439538574218 115.99940673828121Q6024.427578125 101.85140014648437 5981.119637451171 84.8953869628906Q5937.811696777343 67.93937377929683 5901.793756103515 42.50538696289058Q5865.775815429687 17.071400146484336 5843.743854980468 -21.970543823242224Q5821.7118945312495 -61.012487792968784 5821.7118945312495 -118.7923559570313Q5821.7118945312495 -176.03225708007812 5852.275848388672 -223.82217468261723Q5882.839802246093 -271.61209228515634 5940.943706665039 -300.2860461425782Q5999.047611083984 -328.96000000000004 6081.559472656249 -328.96000000000004Q6149.707347412109 -328.96000000000004 6202.465238647461 -304.93009887695314Q6255.223129882812 -280.90019775390624 6289.83705078125 -239.80635925292972Q6324.450971679687 -198.7125207519532 6338.382932128906 -147.30471191406252L6200.143723144531 -101.72896240234377Q6184.483756103516 -136.1809228515625 6155.053657226563 -159.45490966796876Q6125.623558349609 -182.728896484375 6073.351499023437 -182.728896484375Q6027.235288085937 -182.728896484375 6002.0171496582025 -165.5567547607422Q5976.799011230469 -148.38461303710938 5976.799011230469 -116.20039550781257Q5976.799011230469 -95.35617797851569 5993.917100219726 -80.50604614257819Q6011.035189208984 -65.65591430664068 6040.951301269531 -53.55983520507817Q6070.867413330077 -41.463756103515664 6109.639472656249 -28.287709960937548Q6156.0793737792965 -12.735716552734402 6201.925288085937 6.218286743164043Q6247.771202392578 25.17229003906249 6285.409143066406 52.71229003906248Q6323.047083740234 80.25229003906247 6345.5110540771475 121.4542669677734Q6367.975024414062 162.65624389648434 6367.975024414062 222.7041845703125Q6367.975024414062 295.8201318359375 6331.039093627929 347.2280889892578Q6294.103162841797 398.63604614257815 6231.247265014648 425.7980230712891Q6168.3913671875 452.96 6090.19947265625 452.96ZM6778.16 440.0V-316.0H7107.343393554687Q7203.895321044922 -316.0 7261.027265014648 -280.6300329589844Q7318.159208984374 -245.26006591796875 7342.999176025391 -190.12611206054692Q7367.839143066406 -134.9921582031251 7367.839143066406 -75.37621093749999Q7367.839143066406 -33.47225708007818 7353.313162841796 8.809703369140578Q7338.787182617187 51.091663818359336 7307.683212280273 86.5156341552734Q7276.579241943359 121.93960449218747 7226.899291381836 143.48558471679686Q7177.219340820312 165.03156494140626 7107.343393554687 165.03156494140626H6933.463063964843V440.0ZM6933.463063964843 18.800461425781236H7113.823393554687Q7147.843690185547 18.800461425781236 7168.417858276367 4.652355957031233Q7188.9920263671875 -9.49574951171877 7198.172092285156 -31.203904418945342Q7207.352158203124 -52.912059326171914 7207.352158203124 -75.37621093749999Q7207.352158203124 -95.57235595703128 7199.090098876953 -117.60451416015627Q7190.828039550781 -139.63667236328126 7170.307874755859 -154.70278442382818Q7149.787709960938 -169.7688964843751 7113.823393554687 -169.7688964843751H6933.463063964843ZM7411.040131835937 440.0 7705.663723144531 -316.0H7853.622800292968L8149.110378417969 440.0H7980.415485839843L7922.527380371093 288.1514990234375H7636.97515625L7580.16705078125 440.0ZM7688.382800292969 145.37640869140625H7870.0397363281245L7801.351301269531 -31.529160156250043Q7798.003294677734 -39.737199707031266 7793.845288085937 -50.15925903320314Q7789.68728149414 -60.58131835937502 7785.799274902343 -71.32736450195313Q7781.911268310547 -82.07341064453124 7779.319274902343 -90.92942382812498Q7776.619274902343 -82.07341064453124 7772.785271606444 -71.32736450195313Q7768.951268310547 -60.58131835937502 7764.79326171875 -50.15925903320314Q7760.635255126953 -39.737199707031266 7757.287248535155 -31.529160156250043ZM8475.595815429686 440.0 8204.3 -316.0H8372.130971679686L8537.80319580078 169.13693603515622Q8541.36721557617 179.0730151367187 8544.55326171875 188.73917663574215Q8547.739307861328 198.4053381347656 8549.251367187499 205.2095556640625Q8550.22342651367 199.701318359375 8553.08546936035 189.98117004394533Q8555.94751220703 180.26102172851563 8559.619538574218 169.13693603515622L8725.07568359375 -316.0H8891.178681640624L8620.962866210937 440.0ZM8946.260131835938 440.0 9240.88372314453 -316.0H9388.842800292969L9684.330378417968 440.0H9515.635485839843L9457.747380371093 288.1514990234375H9172.19515625L9115.38705078125 440.0ZM9223.602800292969 145.37640869140625H9405.259736328124L9336.57130126953 -31.529160156250043Q9333.223294677735 -39.737199707031266 9329.065288085938 -50.15925903320314Q9324.907281494141 -60.58131835937502 9321.019274902344 -71.32736450195313Q9317.131268310546 -82.07341064453124 9314.539274902343 -90.92942382812498Q9311.839274902344 -82.07341064453124 9308.005271606446 -71.32736450195313Q9304.171268310547 -60.58131835937502 9300.01326171875 -50.15925903320314Q9295.855255126953 -39.737199707031266 9292.507248535156 -31.529160156250043ZM10097.431762695312 452.96Q10010.275782470704 452.96 9947.31181213379 420.28999999999996Q9884.347841796874 387.62 9844.279868164063 331.73Q9804.21189453125 275.84 9784.82591430664 205.90999999999997Q9765.439934082031 135.97999999999996 9765.439934082031 62.0Q9765.439934082031 -7.5520593261719 9785.257924194335 -76.56406921386721Q9805.07591430664 -145.57607910156253 9845.737891235352 -202.76205932617194Q9886.399868164062 -259.94803955078135 9949.039835205078 -294.4540197753907Q10011.679802246093 -328.96000000000004 10097.431762695312 -328.96000000000004Q10170.655716552734 -328.96000000000004 10221.901647338867 -304.87607910156254Q10273.147578125001 -280.79215820312504 10308.78749572754 -242.5062768554688Q10344.427413330079 -204.22039550781255 10371.10332763672 -161.5605273437501L10235.024118652344 -84.4489624023438Q10210.400098876953 -123.00494262695315 10177.460049438476 -151.89492614746098Q10144.52 -180.7849096679688 10097.431762695312 -180.7849096679688Q10048.507545166016 -180.7849096679688 10015.513393554687 -158.26683715820315Q9982.519241943359 -135.7487646484375 9963.079143066407 -99.5686328125Q9943.639044189453 -63.38850097656251 9935.107001342774 -20.782339477539068Q9926.574958496094 21.823822021484375 9926.574958496094 62.0Q9926.574958496094 107.79219116210936 9936.07901123047 151.20835266113278Q9945.583063964845 194.62451416015622 9965.887166137696 229.29263610839843Q9986.191268310547 263.9607580566406 10018.861416625976 284.2648272705078Q10051.531564941406 304.568896484375 10097.431762695312 304.568896484375Q10130.588039550781 304.568896484375 10158.290197753906 289.5567877197266Q10185.99235595703 274.5446789550781 10202.732421875 249.65046142578123Q10219.47248779297 224.75624389648436 10219.47248779297 194.6239208984375V185.98359130859373H10094.408303222657V38.24052734374999H10379.095551757813V153.152158203125Q10379.095551757813 250.13611206054685 10341.781581420899 317.042075805664Q10304.467611083985 383.94803955078123 10240.693657226562 418.45401977539063Q10176.919703369142 452.96 10097.431762695312 452.96ZM10526.84 440.0V-316.0H11058.198747558594V-168.68889648437505H10682.143063964844V-23.751564941406286H10896.6313671875V123.55953857421872H10682.143063964844V291.608896484375H11080.230773925781V440.0ZM11464.81947265625 452.96Q11392.459571533203 452.96 11333.16766052246 426.98606262207034Q11273.875749511719 401.01212524414063 11231.26983520508 353.00627685546874Q11188.663920898438 305.00042846679685 11166.74 238.68869873046873L11306.27522216797 186.41700195312498Q11331.115189208986 239.22896240234374 11373.61324523926 272.8709228515625Q11416.111301269531 306.51288330078125 11468.707446289063 306.51288330078125Q11522.49166381836 306.51288330078125 11554.999785766602 285.0747119140625Q11587.507907714844 263.63654052734375 11587.507907714844 222.27222412109373Q11587.507907714844 194.51598022460936 11568.607825317384 176.0478088378906Q11549.707742919922 157.57963745117183 11516.659653930663 143.80953857421872Q11483.611564941406 130.0394396972656 11441.05953857422 115.99940673828121Q11399.047578125 101.85140014648437 11355.739637451174 84.8953869628906Q11312.431696777345 67.93937377929683 11276.413756103517 42.50538696289058Q11240.395815429687 17.071400146484336 11218.36385498047 -21.970543823242224Q11196.331894531251 -61.012487792968784 11196.331894531251 -118.7923559570313Q11196.331894531251 -176.03225708007812 11226.895848388673 -223.82217468261723Q11257.459802246094 -271.61209228515634 11315.56370666504 -300.2860461425782Q11373.667611083985 -328.96000000000004 11456.179472656251 -328.96000000000004Q11524.32734741211 -328.96000000000004 11577.085238647462 -304.93009887695314Q11629.843129882813 -280.90019775390624 11664.45705078125 -239.80635925292972Q11699.070971679688 -198.7125207519532 11713.002932128908 -147.30471191406252L11574.763723144531 -101.72896240234377Q11559.103756103515 -136.1809228515625 11529.673657226562 -159.45490966796876Q11500.24355834961 -182.728896484375 11447.971499023439 -182.728896484375Q11401.855288085939 -182.728896484375 11376.637149658203 -165.5567547607422Q11351.41901123047 -148.38461303710938 11351.41901123047 -116.20039550781257Q11351.41901123047 -95.35617797851569 11368.537100219728 -80.50604614257819Q11385.655189208985 -65.65591430664068 11415.57130126953 -53.55983520507817Q11445.487413330078 -41.463756103515664 11484.259472656251 -28.287709960937548Q11530.699373779298 -12.735716552734402 11576.545288085938 6.218286743164043Q11622.391202392579 25.17229003906249 11660.029143066407 52.71229003906248Q11697.667083740234 80.25229003906247 11720.131054077148 121.4542669677734Q11742.595024414062 162.65624389648434 11742.595024414062 222.7041845703125Q11742.595024414062 295.8201318359375 11705.65909362793 347.2280889892578Q11668.723162841798 398.63604614257815 11605.86726501465 425.7980230712891Q11543.0113671875 452.96 11464.81947265625 452.96Z"/><path fill="currentColor" d="M4538.24 1466.8430259471527V860.0H4802.131527141522Q4876.8600276014 860.0 4920.162702047044 885.9209140152898Q4963.465376492687 911.8418280305797 4981.887449835738 953.6707831717902Q5000.309523178789 995.4997383130008 5000.309523178789 1042.573672734391Q5000.309523178789 1077.5104291617617 4986.8289758554365 1112.5772974579247Q4973.348428532084 1147.6441657540877 4945.000364645559 1175.212246290525Q4916.652300759034 1202.7803268269622 4872.526545721687 1215.0906874751324L4995.628564828008 1466.8430259471527H4883.274241131533L4765.026945067785 1226.8811826857739H4638.283910135791V1466.8430259471527ZM4638.283910135791 1133.0791500261678H4803.865364358515Q4839.061815398342 1133.0791500261678 4859.650867787557 1120.0755031800106Q4880.239920176772 1107.0718563338535 4888.952335784628 1086.6127570758927Q4897.6647513924845 1066.153657817932 4897.6647513924845 1043.6139327345759Q4897.6647513924845 1023.1547805641025 4889.559162936822 1002.478978110274Q4881.453574481159 981.8031756564458 4860.994554591967 967.8026041580259Q4840.535534702775 953.8020326596061 4803.865364358515 953.8020326596061H4638.283910135791ZM5458.474949518636 1477.7661792491963Q5429.866423788219 1477.7661792491963 5410.44731996788 1458.4337990372142Q5391.028216147541 1439.101418825232 5391.028216147541 1411.5331530950002Q5391.028216147541 1384.4850702773738 5410.44731996788 1364.4591393048408Q5429.866423788219 1344.4332083323081 5458.474949518636 1344.4332083323081Q5487.343540249099 1344.4332083323081 5507.066070873663 1364.4591393048408Q5526.788601498227 1384.4850702773738 5526.788601498227 1411.5331530950002Q5526.788601498227 1439.101418825232 5507.066070873663 1458.4337990372142Q5487.343540249099 1477.7661792491963 5458.474949518636 1477.7661792491963ZM6132.070708319976 1477.2460492491039Q6076.587758638698 1477.2460492491039 6031.334464411426 1458.043701537145Q5986.081170184154 1438.8413538251857 5954.135081888546 1404.2944038790642Q5922.188993592938 1369.7474539329428 5906.671023510829 1323.6269500783549L5998.2188773033 1289.6432538301972Q6017.291139602724 1330.9953349504685 6052.87805853021 1356.959610769937Q6088.4649774576965 1382.9238865894054 6134.498122753775 1382.9238865894054Q6183.391983050361 1382.9238865894054 6212.693636241226 1361.2078505916484Q6241.995289432091 1339.4918145938916 6241.995289432091 1297.9669212070585Q6241.995289432091 1269.2723068184373 6224.657049543455 1249.9402969940443Q6207.318809654818 1230.608287169651 6178.450562855688 1216.9544778233783Q6149.582316056558 1203.3006684771055 6114.732230325031 1191.1638608706753Q6082.049335289719 1179.633853960182 6048.846257341802 1165.6764855284025Q6015.6431793938855 1151.719117096623 5988.291802053316 1131.6499301449371Q5960.940424712746 1111.5807431932512 5944.295523934608 1081.7153071792948Q5927.650623156472 1051.8498711653383 5927.650623156472 1008.9371883947387Q5927.650623156472 965.5910992324038 5950.9708078025305 929.3971150464168Q5974.290992448588 893.2031308604298 6018.417303067318 871.4000537792393Q6062.543613686048 849.5969766980488 6125.135359452008 849.5969766980488Q6176.543834003365 849.5969766980488 6216.032151231647 866.2853186491336Q6255.520468459928 882.9736606002185 6281.224732191864 911.7122717431711Q6306.9289959237985 940.4508828861236 6317.072007138217 976.6883876138274L6226.911201954334 1006.6841736028833Q6215.207747827126 980.069708827043 6188.983618657662 961.7343590923489Q6162.759489488199 943.3990093576548 6119.240270584225 943.3990093576548Q6076.674905547156 943.3990093576548 6052.791520115647 960.910537725468Q6028.908134684138 978.422066093281 6028.908134684138 1009.9775542199491Q6028.908134684138 1032.4303969574098 6044.989332007953 1047.8179906081616Q6061.070529331768 1063.2055842589134 6088.031518153448 1074.9955503444276Q6114.992506975129 1086.7855164299417 6147.675243272903 1098.5755354279686Q6182.3521463502775 1110.8857902511133 6216.8989904713735 1126.1868983998152Q6251.4458345924695 1141.4880065485172 6280.097589845784 1163.5944310651635Q6308.749345099097 1185.7008555818097 6326.001073029427 1218.1669945087415Q6343.252800959757 1250.633133435673 6343.252800959757 1297.273449815277Q6343.252800959757 1354.5768544968785 6315.424602510761 1394.7152548565068Q6287.5964040617655 1434.853655216135 6239.82902470485 1456.0498522326193Q6192.061645347935 1477.2460492491039 6132.070708319976 1477.2460492491039ZM6798.2976589491 1477.7661792491963Q6769.689133218683 1477.7661792491963 6750.2700293983435 1458.4337990372142Q6730.8509255780045 1439.101418825232 6730.8509255780045 1411.5331530950002Q6730.8509255780045 1384.4850702773738 6750.2700293983435 1364.4591393048408Q6769.689133218683 1344.4332083323081 6798.2976589491 1344.4332083323081Q6827.1662496795625 1344.4332083323081 6846.888780304127 1364.4591393048408Q6866.611310928691 1384.4850702773738 6866.611310928691 1411.5331530950002Q6866.611310928691 1439.101418825232 6846.888780304127 1458.4337990372142Q6827.1662496795625 1477.7661792491963 6798.2976589491 1477.7661792491963ZM7555.117392515998 1477.2460492491039 7396.645051853033 1124.238633225003Q7392.5706825481375 1114.6161753107797 7387.932821438972 1102.8698091357514Q7383.294960329806 1091.1234429607232 7379.653997416645 1080.5472899171339Q7380.434192416784 1089.1295936561978 7380.824289916853 1101.9162462876675Q7381.214387416922 1114.702898919137 7381.214387416922 1124.5854218334066V1466.8430259471527H7281.170477281131V860.0H7379.654103241671L7541.2468006050885 1225.6636657679583Q7545.494722951724 1235.1997704614134 7549.222462385754 1244.8225193944568Q7552.950201819784 1254.4452683275003 7556.504546949612 1264.6748973252497Q7559.972221383596 1254.7053333275464 7563.613263665525 1244.9525254382236Q7567.254305947454 1235.1997175489007 7571.415504685731 1225.6636657679583L7734.568803699478 860.0H7828.717519142462V1466.8430259471527H7728.67360900667V1124.238633225003Q7728.67360900667 1113.8359273981282 7729.0637065067385 1100.7892097666124Q7729.453804006808 1087.7424921350967 7729.713869006855 1080.0271599170414Q7726.072906093695 1089.9097357438236 7721.088282832381 1102.3062644189677Q7716.1036595710675 1114.7027930941115 7711.855895961971 1124.5853160083811ZM8310.637171470253 1477.7661792491963Q8282.028645739836 1477.7661792491963 8262.609541919497 1458.4337990372142Q8243.190438099158 1439.101418825232 8243.190438099158 1411.5331530950002Q8243.190438099158 1384.4850702773738 8262.609541919497 1364.4591393048408Q8282.028645739836 1344.4332083323081 8310.637171470253 1344.4332083323081Q8339.505762200717 1344.4332083323081 8359.22829282528 1364.4591393048408Q8378.950823449844 1384.4850702773738 8378.950823449844 1411.5331530950002Q8378.950823449844 1439.101418825232 8359.22829282528 1458.4337990372142Q8339.505762200717 1477.7661792491963 8310.637171470253 1477.7661792491963ZM9309.326561857364 1466.8430259471527V860.0H9409.370471993157V1466.8430259471527ZM9865.454849207505 1466.8430259471527V860.0H9960.817060217338L10209.794878172079 1242.134696029279Q10215.256401910588 1250.8904469850575 10222.36519799527 1263.2874783290722Q10229.473994079952 1275.684509673087 10234.935517818461 1287.2144636710675Q10234.15526990581 1276.9848875858308 10233.505080949439 1264.0676997854673Q10232.854891993065 1251.1505119851038 10232.854891993065 1242.308037420968V860.0H10332.552013520455V1466.8430259471527H10241.351054161412L9987.691854555787 1082.6277040924783Q9982.57706651317 1074.2186888325905 9975.424935080566 1061.6482631843742Q9968.272803647962 1049.0778375361576 9962.724556301095 1038.4147492341604Q9964.111657822195 1048.8178254486243 9964.458419974344 1060.868041727979Q9964.80518212649 1072.9182580073339 9964.80518212649 1082.6277040924783V1466.8430259471527ZM11017.936680157052 1476.552472032297Q10947.802890652214 1476.552472032297 10899.255422120186 1449.5046008647214Q10850.707953588157 1422.4567296971456 10821.059326595094 1377.1602324032333Q10791.410699602031 1331.8637351093207 10777.930125822422 1276.2075763176358Q10764.449552042812 1220.5514175259507 10764.449552042812 1163.4215129735762Q10764.449552042812 1108.4590107674674 10778.276887974567 1053.0195816279063Q10792.104223906324 997.5801524883452 10822.099613051534 951.4600454776028Q10852.095002196746 905.3399384668602 10900.51243822875 877.4684575824544Q10948.929874260757 849.5969766980488 11017.936680157052 849.5969766980488Q11074.893296230252 849.5969766980488 11116.115424219268 867.8023997577452Q11157.337552208286 886.0078228174416 11184.25552315712 914.6597103520369Q11211.173494105955 943.3115978866322 11225.304309754449 974.7809973550957L11135.836975962347 1017.4338796882125Q11121.18603031376 995.5007965632553 11105.148088969097 979.0727048060112Q11089.110147624437 962.644613048767 11068.13086545387 953.5419941158161Q11047.151583283305 944.4393751828652 11017.936680157052 944.4393751828652Q10975.804827336746 944.4393751828652 10946.936712818897 964.3783708969898Q10918.068598301048 984.3173666111145 10900.773746672847 1016.826602779661Q10883.478895044644 1049.3358389482075 10875.806739436972 1087.826755311612Q10868.134583829302 1126.3176716750168 10868.134583829302 1163.4215129735762Q10868.134583829302 1202.9526628809094 10876.716993393391 1241.70364424436Q10885.29940295748 1280.4546256078108 10903.591205694202 1311.9669106678384Q10921.883008430923 1343.479195727866 10950.187631144501 1362.334569637627Q10978.492253858078 1381.189943547388 11017.936680157052 1381.189943547388Q11060.58861006494 1381.189943547388 11088.503241103474 1359.560313682912Q11116.417872142008 1337.930683818436 11137.22391874591 1303.6873987828467L11228.771878363406 1338.0178836394077Q11210.566428847453 1377.3763271052044 11181.958008942061 1408.7590029653106Q11153.34958903667 1440.1416788254169 11112.821064720716 1458.347075428857Q11072.292540404764 1476.552472032297 11017.936680157052 1476.552472032297ZM11674.28137243447 1477.7661792491963Q11645.672846704054 1477.7661792491963 11626.253742883715 1458.4337990372142Q11606.834639063376 1439.101418825232 11606.834639063376 1411.5331530950002Q11606.834639063376 1384.4850702773738 11626.253742883715 1364.4591393048408Q11645.672846704054 1344.4332083323081 11674.28137243447 1344.4332083323081Q11703.149963164935 1344.4332083323081 11722.872493789499 1364.4591393048408Q11742.595024414062 1384.4850702773738 11742.595024414062 1411.5331530950002Q11742.595024414062 1439.101418825232 11722.872493789499 1458.4337990372142Q11703.149963164935 1477.7661792491963 11674.28137243447 1477.7661792491963Z"/></svg></a>
+    <nav class="nav-links" aria-label="Menu">
+      <a href="#services"><span data-fr>Services</span><span data-en>Services</span></a>
+      <a href="#printemps"><span data-fr>Printemps 2027</span><span data-en>Spring 2027</span></a>
+      <a href="#realisations"><span data-fr>Réalisations</span><span data-en>Projects</span></a>
+      <a href="#soumission"><span data-fr>Contact</span><span data-en>Contact</span></a>
+    </nav>
+    <div class="nav-right">
+      <div class="vibes" role="group" aria-label="Ambiance / Vibe" data-vibes>
+        <span class="vibe-name" data-vibe-label>Asphalte</span>
+      </div>
+      <div class="lang" role="group" aria-label="Langue / Language">
+        <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-accent" href="#soumission" data-call><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-fr>Appeler</span><span data-en>Call</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:0">
+    <div class="hero-video"><video id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/paving-poster.jpg" aria-hidden="true"></video></div>
+    <canvas id="town" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <span class="book"><i></i><span data-fr>Réservations printemps 2027 ouvertes</span><span data-en>Spring 2027 bookings open</span></span>
+      <h1 data-fr>Une entrée faite <em>pour durer.</em></h1>
+      <h1 data-en>Driveways built <em>to last.</em></h1>
+      <p class="hero-sub" data-fr>Asphalte, pavé-uni et excavation à Saint-Constant et sur la Rive-Sud. Une soumission claire et détaillée, sans surprise, pour la maison comme pour le commerce.</p>
+      <p class="hero-sub" data-en>Asphalt, interlocking pavers and excavation in Saint-Constant and across the South Shore. A clear, detailed quote with no surprises, for homes and businesses.</p>
+      <div class="hero-cta">
+        <a class="btn btn-accent btn-call" href="#soumission" data-call><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-fr>Appeler maintenant</span><span data-en>Call now</span><span class="num" data-phone-text>(450) 632-6518</span></a>
+        <a class="btn btn-line" href="#soumission"><span data-fr>Soumission en ligne</span><span data-en>Online estimate</span><span class="arr">→</span></a>
+      </div>
+      <div class="sectors" aria-hidden="true"><span data-fr>Asphalte</span><span data-en>Asphalt</span><span data-fr>Pavé-uni</span><span data-en>Pavers</span><span data-fr>Excavation</span><span data-en>Excavation</span></div>
+    </div>
+    <div class="hero-tag" data-fr>Vidéo d'illustration · remplacée par vos chantiers · <a class="credit" href="https://www.pexels.com/video/27991545/" target="_blank" rel="noopener">Pexels</a></div>
+    <div class="hero-tag" data-en>Illustration video · replaced by your own job sites · <a class="credit" href="https://www.pexels.com/video/27991545/" target="_blank" rel="noopener">Pexels</a></div>
+  </section>
+
+  <div class="sheet">
+  <div class="facts">
+    <div class="wrap">
+      <div class="fact rv"><b>4,5★</b><span data-fr>21 avis Google</span><span data-en>21 Google reviews</span></div>
+      <div class="fact rv"><b>FR · EN</b><span data-fr>service dans les deux langues</span><span data-en>service in both languages</span></div>
+      <div class="fact rv"><b data-fr>Rés. + Com.</b><b data-en>Res. + Com.</b><span data-fr>résidentiel et commercial</span><span data-en>residential and commercial</span></div>
+      <div class="fact rv"><b data-fr>Hiver</b><b data-en>Winter</b><span data-fr>réparation d'asphalte</span><span data-en>asphalt repairs</span></div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head rv">
+        <div><span class="tag" data-fr>Services</span><span class="tag" data-en>Services</span>
+          <h2 data-fr>Du terrassement <em>à la dernière couche</em></h2><h2 data-en>From the groundwork <em>to the final coat</em></h2></div>
+        <p data-fr>Une seule équipe pour creuser, préparer la fondation et poser une surface qui tient le coup, hiver après hiver.</p>
+        <p data-en>One crew to dig, prepare the base and lay a surface that holds up, winter after winter.</p>
+      </div>
+      <div class="lanes">
+        <div class="lane rv"><span class="n">01</span><h3 data-fr>Pavage résidentiel</h3><h3 data-en>Residential paving</h3><p data-fr>Entrées de garage neuves ou refaites, en asphalte.</p><p data-en>New or redone asphalt driveways.</p></div>
+        <div class="lane rv"><span class="n">02</span><h3 data-fr>Pavage commercial</h3><h3 data-en>Commercial paving</h3><p data-fr>Stationnements et accès pour commerces et immeubles.</p><p data-en>Parking lots and access roads for businesses and buildings.</p></div>
+        <div class="lane rv"><span class="n">03</span><h3 data-fr>Pavé-uni</h3><h3 data-en>Interlocking pavers</h3><p data-fr>Allées, terrasses et bordures en pavé-uni.</p><p data-en>Walkways, patios and borders in interlocking pavers.</p></div>
+        <div class="lane rv"><span class="n">04</span><h3 data-fr>Excavation</h3><h3 data-en>Excavation</h3><p data-fr>Excavation et préparation de la fondation avant la pose.</p><p data-en>Digging and base preparation before paving.</p></div>
+        <div class="lane rv"><span class="n">05</span><h3><span data-fr>Réparation d'asphalte</span><span data-en>Asphalt repair</span><span class="tagx" data-fr>MÊME L'HIVER</span><span class="tagx" data-en>EVEN IN WINTER</span></h3><p data-fr>Nids-de-poule et fissures réparés, même en saison froide.</p><p data-en>Potholes and cracks repaired, even in the cold season.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0" id="approche">
+    <div class="wrap">
+      <div class="head rv">
+        <div><span class="tag" data-fr>Comment on travaille</span><span class="tag" data-en>How we work</span>
+          <h2 data-fr>Une soumission claire, <em>sans surprise</em></h2><h2 data-en>A clear quote, <em>no surprises</em></h2></div>
+      </div>
+      <ol class="steps4">
+        <li class="rv"><h3 data-fr>Soumission détaillée</h3><h3 data-en>Detailed quote</h3><p data-fr>On mesure sur place et on vous remet un prix clair.</p><p data-en>We measure on site and give you a clear price.</p></li>
+        <li class="rv"><h3 data-fr>Excavation</h3><h3 data-en>Excavation</h3><p data-fr>On retire l'ancien revêtement et on prépare une fondation solide.</p><p data-en>We remove the old surface and build a solid base.</p></li>
+        <li class="rv"><h3 data-fr>Pose et compactage</h3><h3 data-en>Lay and compact</h3><p data-fr>Asphalte ou pavé-uni posé et compacté pour durer.</p><p data-en>Asphalt or pavers laid and compacted to last.</p></li>
+        <li class="rv"><h3 data-fr>Finition</h3><h3 data-en>Finishing</h3><p data-fr>Bordures, nettoyage et chantier propre à la fin.</p><p data-en>Edges, clean-up and a tidy site at the end.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="spring" id="printemps">
+    <div class="wrap">
+      <div class="rv">
+        <span class="tag" data-fr>Hors saison</span><span class="tag" data-en>Off-season</span>
+        <h2 data-fr>Réservez votre entrée <em>pour le printemps</em></h2>
+        <h2 data-en>Book your driveway <em>for spring</em></h2>
+        <p data-fr>Les meilleures dates partent vite. Demandez votre soumission cet hiver et soyez parmi les premiers servis dès le dégel.</p>
+        <p data-en>The best dates go fast. Get your quote this winter and be first in line when the ground thaws.</p>
+        <a class="btn btn-accent" href="#soumission"><span data-fr>Réserver ma date</span><span data-en>Reserve my date</span><span class="arr">→</span></a>
+      </div>
+      <div class="cal rv" aria-hidden="true">
+        <div><span data-fr>Avr</span><span data-en>Apr</span><b>2027</b></div>
+        <div class="hot"><span data-fr>Mai</span><span data-en>May</span><b>2027</b></div>
+        <div class="hot"><span data-fr>Juin</span><span data-en>Jun</span><b>2027</b></div>
+        <div><span data-fr>Juil</span><span data-en>Jul</span><b>2027</b></div>
+        <div><span data-fr>Août</span><span data-en>Aug</span><b>2027</b></div>
+        <div><span data-fr>Sept</span><span data-en>Sep</span><b>2027</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="realisations">
+    <div class="wrap">
+      <div class="head rv">
+        <div><span class="tag" data-fr>Réalisations</span><span class="tag" data-en>Projects</span>
+          <h2 data-fr>Avant, après</h2><h2 data-en>Before, after</h2></div>
+        <p data-fr>Ces espaces accueillent les photos, vidéos et prises de drone de vos vrais projets, tournées par notre équipe.</p>
+        <p data-en>These spaces hold photos, video and drone shots of your real projects, shot by our team.</p>
+      </div>
+      <div class="gallery">
+        <div class="ph big rv media"><video class="gvid" data-src="assets/g-9836134.mp4" poster="assets/g-9836134.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span data-fr>Pose d'asphalte · vidéo</span><span data-en>Laying asphalt · video</span></div>
+        <div class="ph rv media"><img src="assets/g-36136558.jpg" alt="Pavé-uni en béton" loading="lazy" decoding="async"><span data-fr>Pavé-uni</span><span data-en>Interlocking pavers</span></div>
+        <div class="ph rv media"><img src="assets/g-8134845.jpg" alt="Maison avec une grande entrée pavée" loading="lazy" decoding="async"><span data-fr>Entrée de garage</span><span data-en>Driveway</span></div>
+        <div class="ph wide rv media"><video class="gvid" data-src="assets/g-14630443.mp4" poster="assets/g-14630443.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span data-fr>Compactage vu du drone</span><span data-en>Compaction from the drone</span></div>
+        <div class="ph rv"><span data-fr>Pavé-uni</span><span data-en>Pavers</span></div>
+        <div class="ph rv"><span data-fr>Bordures</span><span data-en>Borders</span></div>
+        <div class="ph wide rv"><span data-fr>L'équipe à l'œuvre</span><span data-en>The crew at work</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap split">
+      <div class="rv">
+        <span class="tag" data-fr>Secteurs desservis</span><span class="tag" data-en>Areas served</span>
+        <h2 data-fr>Saint-Constant et les environs</h2><h2 data-en>Saint-Constant and nearby</h2>
+        <ul class="zones">
+          <li>Saint-Constant</li><li>Delson</li><li>Candiac</li><li>La Prairie</li><li>Sainte-Catherine</li><li>Châteauguay</li><li>Saint-Isidore</li><li>Saint-Philippe</li><li>Mercier</li><li>Brossard</li>
+        </ul>
+      </div>
+      <div class="rating rv">
+        <div class="score"><b>4,5</b><span data-fr>sur 5 · 21 avis Google</span><span data-en>out of 5 · 21 Google reviews</span></div>
+        <p data-fr>Ce que les clients soulignent :</p><p data-en>What customers mention:</p>
+        <ul class="chips">
+          <li data-fr>Travail durable</li><li data-en>Durable work</li>
+          <li data-fr>Équipe professionnelle</li><li data-en>Professional crew</li>
+          <li data-fr>Soumission claire</li><li data-en>Clear quote</li>
+          <li data-fr>Service rapide</li><li data-en>Fast service</li>
+        </ul>
+        <p data-fr>Vos avis Google s'afficheront ici, avec vos réponses.</p>
+        <p data-en>Your Google reviews will show here, with your replies.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="soumission">
+    <div class="wrap split">
+      <div class="rv">
+        <span class="tag" data-fr>Soumission</span><span class="tag" data-en>Estimate</span>
+        <h2 data-fr>Parlez-nous de <em>votre entrée</em></h2><h2 data-en>Tell us about <em>your driveway</em></h2>
+        <form id="quote">
+          <label for="q-name"><span data-fr>Nom</span><span data-en>Name</span><input id="q-name" required autocomplete="name"></label>
+          <label for="q-phone"><span data-fr>Téléphone</span><span data-en>Phone</span><input id="q-phone" type="tel" required autocomplete="tel"></label>
+          <label for="q-city"><span data-fr>Ville</span><span data-en>City</span><input id="q-city" autocomplete="address-level2"></label>
+          <label for="q-type"><span data-fr>Travaux</span><span data-en>Work</span>
+            <select id="q-type"><option>Asphalte / Asphalt</option><option>Pavé-uni / Pavers</option><option>Commercial</option><option>Réparation / Repair</option><option>Excavation</option></select></label>
+          <label for="q-size"><span data-fr>Superficie approx. (pi²)</span><span data-en>Approx. area (sq ft)</span><input id="q-size" inputmode="numeric"></label>
+          <label for="q-when"><span data-fr>Moment souhaité</span><span data-en>Preferred timing</span>
+            <select id="q-when"><option>Printemps 2027 / Spring 2027</option><option>Été 2027 / Summer 2027</option><option>Dès que possible / ASAP</option></select></label>
+          <label class="full" for="q-msg"><span data-fr>Description</span><span data-en>Description</span><textarea id="q-msg"></textarea></label>
+          <div class="full"><button class="btn btn-accent" type="submit"><span data-fr>Envoyer ma demande</span><span data-en>Send my request</span><span class="arr">→</span></button></div>
+          <p class="sent" id="sent" hidden><span data-fr>Maquette : sur le vrai site, la demande arrive directement dans votre courriel.</span><span data-en>Sample: on the live site, requests go straight to your inbox.</span></p>
+        </form>
+      </div>
+      <div class="contact-side rv">
+        <div><b data-fr>Téléphone</b><b data-en>Phone</b><a class="btn btn-accent btn-call" href="#soumission" data-call style="margin-top:8px"><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="num" data-phone-text>(450) 632-6518</span></a></div>
+        <div><b data-fr>Adresse</b><b data-en>Address</b>400, rue Saint-François-Xavier<br>Saint-Constant (Québec) J5A 2E8</div>
+        <div><b>Facebook</b><a href="https://www.facebook.com/people/Les-Pavages-RSM-inc/100042244422862/" target="_blank" rel="noopener">Les Pavages RSM inc.</a></div>
+      </div>
+    </div>
+  </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-30 -430 11803 2160"><path fill="currentColor" d="M0 1000V-400H694Q873 -400 978.0 -337.5Q1083 -275 1128.5 -171.0Q1174 -67 1174 56Q1174 133 1145.0 214.5Q1116 296 1060.5 363.5Q1005 431 926 466L1186 1000H832L582 516H316V1000ZM316 218H698Q754 218 786.5 195.5Q819 173 832.5 136.0Q846 99 846 56Q846 16 833.0 -20.0Q820 -56 787.5 -79.0Q755 -102 698 -102H316ZM1930 1024Q1793 1024 1680.5 974.0Q1568 924 1486.5 830.5Q1405 737 1362 606L1644 500Q1691 599 1768.0 662.5Q1845 726 1938 726Q2031 726 2087.5 691.5Q2144 657 2144 590Q2144 546 2111.5 517.0Q2079 488 2020.5 465.5Q1962 443 1884 418Q1805 392 1723.0 361.0Q1641 330 1572.5 282.5Q1504 235 1462.0 161.0Q1420 87 1420 -24Q1420 -133 1478.0 -224.0Q1536 -315 1646.5 -369.5Q1757 -424 1914 -424Q2044 -424 2145.0 -376.5Q2246 -329 2312.5 -248.0Q2379 -167 2406 -66L2126 26Q2096 -39 2044.5 -82.5Q1993 -126 1898 -126Q1819 -126 1776.5 -98.5Q1734 -71 1734 -18Q1734 14 1763.0 37.5Q1792 61 1844.0 81.0Q1896 101 1966 124Q2055 153 2142.5 188.0Q2230 223 2301.5 274.0Q2373 325 2415.5 402.0Q2458 479 2458 592Q2458 729 2387.5 825.5Q2317 922 2197.5 973.0Q2078 1024 1930 1024ZM3386 1024 3042 314Q3041 311 3039.0 305.5Q3037 300 3034 290Q3034 299 3034.0 306.0Q3034 313 3034 316V1000H2718V-400H3040L3360 296Q3371 318 3379.0 337.5Q3387 357 3394 380Q3402 357 3409.5 336.0Q3417 315 3426 296L3758 -400H4052V1000H3736V314Q3736 308 3736.0 301.0Q3736 294 3736 290Q3733 296 3730.5 301.5Q3728 307 3726 310Z"/><path fill="currentColor" fill-rule="evenodd" d="M0 1224.0H4052.0V1700.0H0ZM225.1 1414.4V1509.6H675.3V1414.4ZM1125.6 1414.4V1509.6H1575.8V1414.4ZM2026.0 1414.4V1509.6H2476.2V1414.4ZM2926.4 1414.4V1509.6H3376.7V1414.4Z"/><path fill="currentColor" d="M4538.24 440.0V-316.0H4693.543063964843V289.66490966796874H5057.287182617187V440.0ZM5152.219999999999 440.0V-316.0H5683.578747558593V-168.68889648437505H5307.523063964843V-23.751564941406286H5522.011367187499V123.55953857421872H5307.523063964843V291.608896484375H5705.61077392578V440.0ZM6090.19947265625 452.96Q6017.839571533203 452.96 5958.54766052246 426.98606262207034Q5899.255749511718 401.01212524414063 5856.649835205078 353.00627685546874Q5814.043920898437 305.00042846679685 5792.12 238.68869873046873L5931.6552221679685 186.41700195312498Q5956.495189208984 239.22896240234374 5998.993245239257 272.8709228515625Q6041.491301269531 306.51288330078125 6094.087446289062 306.51288330078125Q6147.871663818359 306.51288330078125 6180.379785766601 285.0747119140625Q6212.887907714843 263.63654052734375 6212.887907714843 222.27222412109373Q6212.887907714843 194.51598022460936 6193.987825317383 176.0478088378906Q6175.087742919922 157.57963745117183 6142.039653930664 143.80953857421872Q6108.991564941406 130.0394396972656 6066.439538574218 115.99940673828121Q6024.427578125 101.85140014648437 5981.119637451171 84.8953869628906Q5937.811696777343 67.93937377929683 5901.793756103515 42.50538696289058Q5865.775815429687 17.071400146484336 5843.743854980468 -21.970543823242224Q5821.7118945312495 -61.012487792968784 5821.7118945312495 -118.7923559570313Q5821.7118945312495 -176.03225708007812 5852.275848388672 -223.82217468261723Q5882.839802246093 -271.61209228515634 5940.943706665039 -300.2860461425782Q5999.047611083984 -328.96000000000004 6081.559472656249 -328.96000000000004Q6149.707347412109 -328.96000000000004 6202.465238647461 -304.93009887695314Q6255.223129882812 -280.90019775390624 6289.83705078125 -239.80635925292972Q6324.450971679687 -198.7125207519532 6338.382932128906 -147.30471191406252L6200.143723144531 -101.72896240234377Q6184.483756103516 -136.1809228515625 6155.053657226563 -159.45490966796876Q6125.623558349609 -182.728896484375 6073.351499023437 -182.728896484375Q6027.235288085937 -182.728896484375 6002.0171496582025 -165.5567547607422Q5976.799011230469 -148.38461303710938 5976.799011230469 -116.20039550781257Q5976.799011230469 -95.35617797851569 5993.917100219726 -80.50604614257819Q6011.035189208984 -65.65591430664068 6040.951301269531 -53.55983520507817Q6070.867413330077 -41.463756103515664 6109.639472656249 -28.287709960937548Q6156.0793737792965 -12.735716552734402 6201.925288085937 6.218286743164043Q6247.771202392578 25.17229003906249 6285.409143066406 52.71229003906248Q6323.047083740234 80.25229003906247 6345.5110540771475 121.4542669677734Q6367.975024414062 162.65624389648434 6367.975024414062 222.7041845703125Q6367.975024414062 295.8201318359375 6331.039093627929 347.2280889892578Q6294.103162841797 398.63604614257815 6231.247265014648 425.7980230712891Q6168.3913671875 452.96 6090.19947265625 452.96ZM6778.16 440.0V-316.0H7107.343393554687Q7203.895321044922 -316.0 7261.027265014648 -280.6300329589844Q7318.159208984374 -245.26006591796875 7342.999176025391 -190.12611206054692Q7367.839143066406 -134.9921582031251 7367.839143066406 -75.37621093749999Q7367.839143066406 -33.47225708007818 7353.313162841796 8.809703369140578Q7338.787182617187 51.091663818359336 7307.683212280273 86.5156341552734Q7276.579241943359 121.93960449218747 7226.899291381836 143.48558471679686Q7177.219340820312 165.03156494140626 7107.343393554687 165.03156494140626H6933.463063964843V440.0ZM6933.463063964843 18.800461425781236H7113.823393554687Q7147.843690185547 18.800461425781236 7168.417858276367 4.652355957031233Q7188.9920263671875 -9.49574951171877 7198.172092285156 -31.203904418945342Q7207.352158203124 -52.912059326171914 7207.352158203124 -75.37621093749999Q7207.352158203124 -95.57235595703128 7199.090098876953 -117.60451416015627Q7190.828039550781 -139.63667236328126 7170.307874755859 -154.70278442382818Q7149.787709960938 -169.7688964843751 7113.823393554687 -169.7688964843751H6933.463063964843ZM7411.040131835937 440.0 7705.663723144531 -316.0H7853.622800292968L8149.110378417969 440.0H7980.415485839843L7922.527380371093 288.1514990234375H7636.97515625L7580.16705078125 440.0ZM7688.382800292969 145.37640869140625H7870.0397363281245L7801.351301269531 -31.529160156250043Q7798.003294677734 -39.737199707031266 7793.845288085937 -50.15925903320314Q7789.68728149414 -60.58131835937502 7785.799274902343 -71.32736450195313Q7781.911268310547 -82.07341064453124 7779.319274902343 -90.92942382812498Q7776.619274902343 -82.07341064453124 7772.785271606444 -71.32736450195313Q7768.951268310547 -60.58131835937502 7764.79326171875 -50.15925903320314Q7760.635255126953 -39.737199707031266 7757.287248535155 -31.529160156250043ZM8475.595815429686 440.0 8204.3 -316.0H8372.130971679686L8537.80319580078 169.13693603515622Q8541.36721557617 179.0730151367187 8544.55326171875 188.73917663574215Q8547.739307861328 198.4053381347656 8549.251367187499 205.2095556640625Q8550.22342651367 199.701318359375 8553.08546936035 189.98117004394533Q8555.94751220703 180.26102172851563 8559.619538574218 169.13693603515622L8725.07568359375 -316.0H8891.178681640624L8620.962866210937 440.0ZM8946.260131835938 440.0 9240.88372314453 -316.0H9388.842800292969L9684.330378417968 440.0H9515.635485839843L9457.747380371093 288.1514990234375H9172.19515625L9115.38705078125 440.0ZM9223.602800292969 145.37640869140625H9405.259736328124L9336.57130126953 -31.529160156250043Q9333.223294677735 -39.737199707031266 9329.065288085938 -50.15925903320314Q9324.907281494141 -60.58131835937502 9321.019274902344 -71.32736450195313Q9317.131268310546 -82.07341064453124 9314.539274902343 -90.92942382812498Q9311.839274902344 -82.07341064453124 9308.005271606446 -71.32736450195313Q9304.171268310547 -60.58131835937502 9300.01326171875 -50.15925903320314Q9295.855255126953 -39.737199707031266 9292.507248535156 -31.529160156250043ZM10097.431762695312 452.96Q10010.275782470704 452.96 9947.31181213379 420.28999999999996Q9884.347841796874 387.62 9844.279868164063 331.73Q9804.21189453125 275.84 9784.82591430664 205.90999999999997Q9765.439934082031 135.97999999999996 9765.439934082031 62.0Q9765.439934082031 -7.5520593261719 9785.257924194335 -76.56406921386721Q9805.07591430664 -145.57607910156253 9845.737891235352 -202.76205932617194Q9886.399868164062 -259.94803955078135 9949.039835205078 -294.4540197753907Q10011.679802246093 -328.96000000000004 10097.431762695312 -328.96000000000004Q10170.655716552734 -328.96000000000004 10221.901647338867 -304.87607910156254Q10273.147578125001 -280.79215820312504 10308.78749572754 -242.5062768554688Q10344.427413330079 -204.22039550781255 10371.10332763672 -161.5605273437501L10235.024118652344 -84.4489624023438Q10210.400098876953 -123.00494262695315 10177.460049438476 -151.89492614746098Q10144.52 -180.7849096679688 10097.431762695312 -180.7849096679688Q10048.507545166016 -180.7849096679688 10015.513393554687 -158.26683715820315Q9982.519241943359 -135.7487646484375 9963.079143066407 -99.5686328125Q9943.639044189453 -63.38850097656251 9935.107001342774 -20.782339477539068Q9926.574958496094 21.823822021484375 9926.574958496094 62.0Q9926.574958496094 107.79219116210936 9936.07901123047 151.20835266113278Q9945.583063964845 194.62451416015622 9965.887166137696 229.29263610839843Q9986.191268310547 263.9607580566406 10018.861416625976 284.2648272705078Q10051.531564941406 304.568896484375 10097.431762695312 304.568896484375Q10130.588039550781 304.568896484375 10158.290197753906 289.5567877197266Q10185.99235595703 274.5446789550781 10202.732421875 249.65046142578123Q10219.47248779297 224.75624389648436 10219.47248779297 194.6239208984375V185.98359130859373H10094.408303222657V38.24052734374999H10379.095551757813V153.152158203125Q10379.095551757813 250.13611206054685 10341.781581420899 317.042075805664Q10304.467611083985 383.94803955078123 10240.693657226562 418.45401977539063Q10176.919703369142 452.96 10097.431762695312 452.96ZM10526.84 440.0V-316.0H11058.198747558594V-168.68889648437505H10682.143063964844V-23.751564941406286H10896.6313671875V123.55953857421872H10682.143063964844V291.608896484375H11080.230773925781V440.0ZM11464.81947265625 452.96Q11392.459571533203 452.96 11333.16766052246 426.98606262207034Q11273.875749511719 401.01212524414063 11231.26983520508 353.00627685546874Q11188.663920898438 305.00042846679685 11166.74 238.68869873046873L11306.27522216797 186.41700195312498Q11331.115189208986 239.22896240234374 11373.61324523926 272.8709228515625Q11416.111301269531 306.51288330078125 11468.707446289063 306.51288330078125Q11522.49166381836 306.51288330078125 11554.999785766602 285.0747119140625Q11587.507907714844 263.63654052734375 11587.507907714844 222.27222412109373Q11587.507907714844 194.51598022460936 11568.607825317384 176.0478088378906Q11549.707742919922 157.57963745117183 11516.659653930663 143.80953857421872Q11483.611564941406 130.0394396972656 11441.05953857422 115.99940673828121Q11399.047578125 101.85140014648437 11355.739637451174 84.8953869628906Q11312.431696777345 67.93937377929683 11276.413756103517 42.50538696289058Q11240.395815429687 17.071400146484336 11218.36385498047 -21.970543823242224Q11196.331894531251 -61.012487792968784 11196.331894531251 -118.7923559570313Q11196.331894531251 -176.03225708007812 11226.895848388673 -223.82217468261723Q11257.459802246094 -271.61209228515634 11315.56370666504 -300.2860461425782Q11373.667611083985 -328.96000000000004 11456.179472656251 -328.96000000000004Q11524.32734741211 -328.96000000000004 11577.085238647462 -304.93009887695314Q11629.843129882813 -280.90019775390624 11664.45705078125 -239.80635925292972Q11699.070971679688 -198.7125207519532 11713.002932128908 -147.30471191406252L11574.763723144531 -101.72896240234377Q11559.103756103515 -136.1809228515625 11529.673657226562 -159.45490966796876Q11500.24355834961 -182.728896484375 11447.971499023439 -182.728896484375Q11401.855288085939 -182.728896484375 11376.637149658203 -165.5567547607422Q11351.41901123047 -148.38461303710938 11351.41901123047 -116.20039550781257Q11351.41901123047 -95.35617797851569 11368.537100219728 -80.50604614257819Q11385.655189208985 -65.65591430664068 11415.57130126953 -53.55983520507817Q11445.487413330078 -41.463756103515664 11484.259472656251 -28.287709960937548Q11530.699373779298 -12.735716552734402 11576.545288085938 6.218286743164043Q11622.391202392579 25.17229003906249 11660.029143066407 52.71229003906248Q11697.667083740234 80.25229003906247 11720.131054077148 121.4542669677734Q11742.595024414062 162.65624389648434 11742.595024414062 222.7041845703125Q11742.595024414062 295.8201318359375 11705.65909362793 347.2280889892578Q11668.723162841798 398.63604614257815 11605.86726501465 425.7980230712891Q11543.0113671875 452.96 11464.81947265625 452.96Z"/><path fill="currentColor" d="M4538.24 1466.8430259471527V860.0H4802.131527141522Q4876.8600276014 860.0 4920.162702047044 885.9209140152898Q4963.465376492687 911.8418280305797 4981.887449835738 953.6707831717902Q5000.309523178789 995.4997383130008 5000.309523178789 1042.573672734391Q5000.309523178789 1077.5104291617617 4986.8289758554365 1112.5772974579247Q4973.348428532084 1147.6441657540877 4945.000364645559 1175.212246290525Q4916.652300759034 1202.7803268269622 4872.526545721687 1215.0906874751324L4995.628564828008 1466.8430259471527H4883.274241131533L4765.026945067785 1226.8811826857739H4638.283910135791V1466.8430259471527ZM4638.283910135791 1133.0791500261678H4803.865364358515Q4839.061815398342 1133.0791500261678 4859.650867787557 1120.0755031800106Q4880.239920176772 1107.0718563338535 4888.952335784628 1086.6127570758927Q4897.6647513924845 1066.153657817932 4897.6647513924845 1043.6139327345759Q4897.6647513924845 1023.1547805641025 4889.559162936822 1002.478978110274Q4881.453574481159 981.8031756564458 4860.994554591967 967.8026041580259Q4840.535534702775 953.8020326596061 4803.865364358515 953.8020326596061H4638.283910135791ZM5458.474949518636 1477.7661792491963Q5429.866423788219 1477.7661792491963 5410.44731996788 1458.4337990372142Q5391.028216147541 1439.101418825232 5391.028216147541 1411.5331530950002Q5391.028216147541 1384.4850702773738 5410.44731996788 1364.4591393048408Q5429.866423788219 1344.4332083323081 5458.474949518636 1344.4332083323081Q5487.343540249099 1344.4332083323081 5507.066070873663 1364.4591393048408Q5526.788601498227 1384.4850702773738 5526.788601498227 1411.5331530950002Q5526.788601498227 1439.101418825232 5507.066070873663 1458.4337990372142Q5487.343540249099 1477.7661792491963 5458.474949518636 1477.7661792491963ZM6132.070708319976 1477.2460492491039Q6076.587758638698 1477.2460492491039 6031.334464411426 1458.043701537145Q5986.081170184154 1438.8413538251857 5954.135081888546 1404.2944038790642Q5922.188993592938 1369.7474539329428 5906.671023510829 1323.6269500783549L5998.2188773033 1289.6432538301972Q6017.291139602724 1330.9953349504685 6052.87805853021 1356.959610769937Q6088.4649774576965 1382.9238865894054 6134.498122753775 1382.9238865894054Q6183.391983050361 1382.9238865894054 6212.693636241226 1361.2078505916484Q6241.995289432091 1339.4918145938916 6241.995289432091 1297.9669212070585Q6241.995289432091 1269.2723068184373 6224.657049543455 1249.9402969940443Q6207.318809654818 1230.608287169651 6178.450562855688 1216.9544778233783Q6149.582316056558 1203.3006684771055 6114.732230325031 1191.1638608706753Q6082.049335289719 1179.633853960182 6048.846257341802 1165.6764855284025Q6015.6431793938855 1151.719117096623 5988.291802053316 1131.6499301449371Q5960.940424712746 1111.5807431932512 5944.295523934608 1081.7153071792948Q5927.650623156472 1051.8498711653383 5927.650623156472 1008.9371883947387Q5927.650623156472 965.5910992324038 5950.9708078025305 929.3971150464168Q5974.290992448588 893.2031308604298 6018.417303067318 871.4000537792393Q6062.543613686048 849.5969766980488 6125.135359452008 849.5969766980488Q6176.543834003365 849.5969766980488 6216.032151231647 866.2853186491336Q6255.520468459928 882.9736606002185 6281.224732191864 911.7122717431711Q6306.9289959237985 940.4508828861236 6317.072007138217 976.6883876138274L6226.911201954334 1006.6841736028833Q6215.207747827126 980.069708827043 6188.983618657662 961.7343590923489Q6162.759489488199 943.3990093576548 6119.240270584225 943.3990093576548Q6076.674905547156 943.3990093576548 6052.791520115647 960.910537725468Q6028.908134684138 978.422066093281 6028.908134684138 1009.9775542199491Q6028.908134684138 1032.4303969574098 6044.989332007953 1047.8179906081616Q6061.070529331768 1063.2055842589134 6088.031518153448 1074.9955503444276Q6114.992506975129 1086.7855164299417 6147.675243272903 1098.5755354279686Q6182.3521463502775 1110.8857902511133 6216.8989904713735 1126.1868983998152Q6251.4458345924695 1141.4880065485172 6280.097589845784 1163.5944310651635Q6308.749345099097 1185.7008555818097 6326.001073029427 1218.1669945087415Q6343.252800959757 1250.633133435673 6343.252800959757 1297.273449815277Q6343.252800959757 1354.5768544968785 6315.424602510761 1394.7152548565068Q6287.5964040617655 1434.853655216135 6239.82902470485 1456.0498522326193Q6192.061645347935 1477.2460492491039 6132.070708319976 1477.2460492491039ZM6798.2976589491 1477.7661792491963Q6769.689133218683 1477.7661792491963 6750.2700293983435 1458.4337990372142Q6730.8509255780045 1439.101418825232 6730.8509255780045 1411.5331530950002Q6730.8509255780045 1384.4850702773738 6750.2700293983435 1364.4591393048408Q6769.689133218683 1344.4332083323081 6798.2976589491 1344.4332083323081Q6827.1662496795625 1344.4332083323081 6846.888780304127 1364.4591393048408Q6866.611310928691 1384.4850702773738 6866.611310928691 1411.5331530950002Q6866.611310928691 1439.101418825232 6846.888780304127 1458.4337990372142Q6827.1662496795625 1477.7661792491963 6798.2976589491 1477.7661792491963ZM7555.117392515998 1477.2460492491039 7396.645051853033 1124.238633225003Q7392.5706825481375 1114.6161753107797 7387.932821438972 1102.8698091357514Q7383.294960329806 1091.1234429607232 7379.653997416645 1080.5472899171339Q7380.434192416784 1089.1295936561978 7380.824289916853 1101.9162462876675Q7381.214387416922 1114.702898919137 7381.214387416922 1124.5854218334066V1466.8430259471527H7281.170477281131V860.0H7379.654103241671L7541.2468006050885 1225.6636657679583Q7545.494722951724 1235.1997704614134 7549.222462385754 1244.8225193944568Q7552.950201819784 1254.4452683275003 7556.504546949612 1264.6748973252497Q7559.972221383596 1254.7053333275464 7563.613263665525 1244.9525254382236Q7567.254305947454 1235.1997175489007 7571.415504685731 1225.6636657679583L7734.568803699478 860.0H7828.717519142462V1466.8430259471527H7728.67360900667V1124.238633225003Q7728.67360900667 1113.8359273981282 7729.0637065067385 1100.7892097666124Q7729.453804006808 1087.7424921350967 7729.713869006855 1080.0271599170414Q7726.072906093695 1089.9097357438236 7721.088282832381 1102.3062644189677Q7716.1036595710675 1114.7027930941115 7711.855895961971 1124.5853160083811ZM8310.637171470253 1477.7661792491963Q8282.028645739836 1477.7661792491963 8262.609541919497 1458.4337990372142Q8243.190438099158 1439.101418825232 8243.190438099158 1411.5331530950002Q8243.190438099158 1384.4850702773738 8262.609541919497 1364.4591393048408Q8282.028645739836 1344.4332083323081 8310.637171470253 1344.4332083323081Q8339.505762200717 1344.4332083323081 8359.22829282528 1364.4591393048408Q8378.950823449844 1384.4850702773738 8378.950823449844 1411.5331530950002Q8378.950823449844 1439.101418825232 8359.22829282528 1458.4337990372142Q8339.505762200717 1477.7661792491963 8310.637171470253 1477.7661792491963ZM9309.326561857364 1466.8430259471527V860.0H9409.370471993157V1466.8430259471527ZM9865.454849207505 1466.8430259471527V860.0H9960.817060217338L10209.794878172079 1242.134696029279Q10215.256401910588 1250.8904469850575 10222.36519799527 1263.2874783290722Q10229.473994079952 1275.684509673087 10234.935517818461 1287.2144636710675Q10234.15526990581 1276.9848875858308 10233.505080949439 1264.0676997854673Q10232.854891993065 1251.1505119851038 10232.854891993065 1242.308037420968V860.0H10332.552013520455V1466.8430259471527H10241.351054161412L9987.691854555787 1082.6277040924783Q9982.57706651317 1074.2186888325905 9975.424935080566 1061.6482631843742Q9968.272803647962 1049.0778375361576 9962.724556301095 1038.4147492341604Q9964.111657822195 1048.8178254486243 9964.458419974344 1060.868041727979Q9964.80518212649 1072.9182580073339 9964.80518212649 1082.6277040924783V1466.8430259471527ZM11017.936680157052 1476.552472032297Q10947.802890652214 1476.552472032297 10899.255422120186 1449.5046008647214Q10850.707953588157 1422.4567296971456 10821.059326595094 1377.1602324032333Q10791.410699602031 1331.8637351093207 10777.930125822422 1276.2075763176358Q10764.449552042812 1220.5514175259507 10764.449552042812 1163.4215129735762Q10764.449552042812 1108.4590107674674 10778.276887974567 1053.0195816279063Q10792.104223906324 997.5801524883452 10822.099613051534 951.4600454776028Q10852.095002196746 905.3399384668602 10900.51243822875 877.4684575824544Q10948.929874260757 849.5969766980488 11017.936680157052 849.5969766980488Q11074.893296230252 849.5969766980488 11116.115424219268 867.8023997577452Q11157.337552208286 886.0078228174416 11184.25552315712 914.6597103520369Q11211.173494105955 943.3115978866322 11225.304309754449 974.7809973550957L11135.836975962347 1017.4338796882125Q11121.18603031376 995.5007965632553 11105.148088969097 979.0727048060112Q11089.110147624437 962.644613048767 11068.13086545387 953.5419941158161Q11047.151583283305 944.4393751828652 11017.936680157052 944.4393751828652Q10975.804827336746 944.4393751828652 10946.936712818897 964.3783708969898Q10918.068598301048 984.3173666111145 10900.773746672847 1016.826602779661Q10883.478895044644 1049.3358389482075 10875.806739436972 1087.826755311612Q10868.134583829302 1126.3176716750168 10868.134583829302 1163.4215129735762Q10868.134583829302 1202.9526628809094 10876.716993393391 1241.70364424436Q10885.29940295748 1280.4546256078108 10903.591205694202 1311.9669106678384Q10921.883008430923 1343.479195727866 10950.187631144501 1362.334569637627Q10978.492253858078 1381.189943547388 11017.936680157052 1381.189943547388Q11060.58861006494 1381.189943547388 11088.503241103474 1359.560313682912Q11116.417872142008 1337.930683818436 11137.22391874591 1303.6873987828467L11228.771878363406 1338.0178836394077Q11210.566428847453 1377.3763271052044 11181.958008942061 1408.7590029653106Q11153.34958903667 1440.1416788254169 11112.821064720716 1458.347075428857Q11072.292540404764 1476.552472032297 11017.936680157052 1476.552472032297ZM11674.28137243447 1477.7661792491963Q11645.672846704054 1477.7661792491963 11626.253742883715 1458.4337990372142Q11606.834639063376 1439.101418825232 11606.834639063376 1411.5331530950002Q11606.834639063376 1384.4850702773738 11626.253742883715 1364.4591393048408Q11645.672846704054 1344.4332083323081 11674.28137243447 1344.4332083323081Q11703.149963164935 1344.4332083323081 11722.872493789499 1364.4591393048408Q11742.595024414062 1384.4850702773738 11742.595024414062 1411.5331530950002Q11742.595024414062 1439.101418825232 11722.872493789499 1458.4337990372142Q11703.149963164935 1477.7661792491963 11674.28137243447 1477.7661792491963Z"/></svg>
+    <span>© 2026 Les Pavages R.S.M. inc. · <a href="#top" data-fr>Politique de confidentialité (Loi 25)</a><a href="#top" data-en>Privacy policy (Law 25)</a></span>
+    <span data-fr>Site par WeUnfolded Web</span><span data-en>Site by WeUnfolded Web</span>
+  </div>
+</footer>
+
+<div class="mock"><span data-fr>Maquette · WeUnfolded Web</span><span data-en>Sample · WeUnfolded Web</span></div>
+<div class="callbar"><a class="btn btn-accent btn-call" href="#soumission" data-call><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-fr>Appeler</span><span data-en>Call</span></a><a class="btn btn-line" href="#soumission"><span data-fr>Soumission</span><span data-en>Estimate</span></a></div>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var root=document.documentElement;
+  function setLang(l){
+    root.lang=l;
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
+    setVibe(root.dataset.vibe);tick();
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
+  var VIBES=[
+    {id:'asphalte',fr:'Asphalte',en:'Asphalt',a:'#121314',b:'#f4c20d'},
+    {id:'pave',fr:'Pavé-uni',en:'Pavers',a:'#1f1814',b:'#d0673f'},
+    {id:'cone',fr:'Cône',en:'Cone',a:'#0f1c26',b:'#ff7a1a'}
+  ];
+  document.querySelectorAll('[data-vibes]').forEach(function(g){
+    var label=g.querySelector('[data-vibe-label]');
+    VIBES.forEach(function(v){
+      var b=document.createElement('button');b.type='button';b.dataset.vibe=v.id;
+      b.style.setProperty('--a',v.a);b.style.setProperty('--b',v.b);
+      b.setAttribute('aria-label',v.fr+' / '+v.en);b.title=v.fr+' / '+v.en;
+      b.addEventListener('click',function(){setVibe(v.id)});
+      g.insertBefore(b,label);
+    });
+  });
+  function setVibe(id){
+    var v=VIBES.filter(function(x){return x.id===id})[0]||VIBES[0];
+    root.dataset.vibe=v.id;
+    document.querySelectorAll('[data-vibes] button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.vibe===v.id)});
+    document.querySelectorAll('[data-vibe-label]').forEach(function(s){s.textContent=root.lang==='en'?v.en:v.fr});
+    try{localStorage.setItem('rsm-vibe',v.id)}catch(e){}
+    window.dispatchEvent(new Event('vibechange'));
+  }
+  // live clock (Montreal time)
+  function tick(){
+    var d=new Date(),t;
+    try{t=new Intl.DateTimeFormat(root.lang==='en'?'en-CA':'fr-CA',{hour:'numeric',minute:'2-digit',hour12:root.lang==='en',timeZone:'America/Toronto'}).format(d)}catch(e){t=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+    document.querySelectorAll('[data-clock]').forEach(function(b){b.textContent=t});
+  }
+  setInterval(tick,15000);
+  var saved=null;try{saved=localStorage.getItem('rsm-vibe')}catch(e){}
+  var hm=/^#(fr|en)(?:-(asphalte|pave|cone))?$/.exec(location.hash);
+  if(hm&&hm[2])saved=hm[2];
+  setVibe(saved||'asphalte');tick();
+  // call buttons
+  var digits=(root.dataset.phone||'').replace(/\D/g,'').replace(/^1(?=\d{10}$)/,'');
+  if(digits.length===10){
+    var pretty='('+digits.slice(0,3)+') '+digits.slice(3,6)+'-'+digits.slice(6);
+    document.querySelectorAll('[data-call]').forEach(function(a){a.href='tel:+1'+digits;a.setAttribute('aria-label','Appeler / Call '+pretty)});
+    document.querySelectorAll('[data-phone-text]').forEach(function(s){s.textContent=pretty});
+  }
+  var gate=document.getElementById('gate');
+  if(hm){setLang(hm[1]);gate.hidden=true}else document.body.style.overflow='hidden';
+  gate.querySelectorAll('[data-pick]').forEach(function(b){
+    b.addEventListener('click',function(){
+      setLang(b.dataset.pick);
+      gate.classList.add('closed');document.body.style.overflow='';
+      window.dispatchEvent(new Event('gateopening'));
+      setTimeout(function(){gate.hidden=true},900);
+    });
+  });
+  var hv=document.getElementById('heroVid');
+  if(hv){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){hv.removeAttribute('autoplay')}
+    else{hv.src=(Math.max(screen.width,screen.height)*(window.devicePixelRatio||1)>1600&&innerWidth>700)?'assets/paving-1080.mp4':'assets/paving-720.mp4';hv.play&&hv.play().catch(function(){})}
+  }
+  if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var gvo=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.getAttribute('src'))v.src=v.dataset.src;v.play().catch(function(){})}else if(v.getAttribute('src')){v.pause()}})},{rootMargin:'200px'});
+    document.querySelectorAll('video.gvid').forEach(function(v){gvo.observe(v)});
+  }
+  var nav=document.getElementById('nav');
+  function onScroll(){nav.classList.toggle('solid',window.scrollY>40)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,lenis=null;
+  if(window.Lenis&&!reduce){
+    lenis=new Lenis({duration:1.35,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true,wheelMultiplier:.9});
+    (function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(performance.now());
+    if(!gate.hidden)lenis.stop();
+    window.addEventListener('gateopening',function(){lenis.start()});
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click',function(e){
+        if(a.getAttribute('href').indexOf('tel:')===0)return;
+        var id=a.getAttribute('href');var el=id==='#top'?0:document.querySelector(id);
+        if(el===null)return;e.preventDefault();lenis.scrollTo(el,{offset:id==='#top'?0:-76,duration:1.6});
+      });
+    });
+  }
+  var hero=document.querySelector('.hero');
+  function heroProgress(){var p=Math.min(1,Math.max(0,window.scrollY/(hero.offsetHeight||1)));hero.style.setProperty('--p',p.toFixed(3));window.__heroCovered=p>=1}
+  window.addEventListener('scroll',heroProgress,{passive:true});heroProgress();
+  ['.lanes','.steps4','.gallery','.facts .wrap','.cal'].forEach(function(sel){
+    var g=document.querySelector(sel);if(!g)return;
+    Array.prototype.forEach.call(g.children,function(c,i){c.style.setProperty('--i',i%8)});
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  }else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
+  document.getElementById('quote').addEventListener('submit',function(e){e.preventDefault();document.getElementById('sent').hidden=false});
+})();
+</script>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const col = (n) => new THREE.Color(css(n));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const phone = matchMedia('(max-width: 900px), (pointer: coarse)').matches;
+const glowTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const g = c.getContext('2d'); const r = g.createRadialGradient(64, 64, 0, 64, 64, 64); r.addColorStop(0, 'rgba(255,255,255,1)'); r.addColorStop(.25, 'rgba(255,255,255,.45)'); r.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = r; g.fillRect(0, 0, 128, 128); return new THREE.CanvasTexture(c); })();
+
+/* ================= Hero: living photo (slow push, rising steam, heat shimmer) ================= */
+(function living(){
+  const wrap = document.querySelector('.hero-photo'); if (!wrap) return;
+  const img = wrap.querySelector('img');
+  const cv = document.createElement('canvas'); wrap.appendChild(cv);
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: false, alpha: false }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, phone ? 1.5 : 2));
+  const scene = new THREE.Scene();
+  const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+  const POS = new THREE.Vector2(0.62, 0.9);           // same framing as the CSS object-position
+  const IMG_ASPECT = 4 / 3;
+  const u = { tex: { value: null }, t: { value: 0 }, off: { value: new THREE.Vector2() }, size: { value: new THREE.Vector2(1, 1) } };
+  const photo = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.ShaderMaterial({
+    uniforms: u, depthWrite: false,
+    vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0., 1.); }',
+    fragmentShader: `
+      uniform sampler2D tex; uniform float t; uniform vec2 off; uniform vec2 size; varying vec2 vUv;
+      void main(){
+        vec2 p = off + vec2(vUv.x, 1. - vUv.y) * size;           // image coords, y down
+        // heat shimmer just above the fresh asphalt mat (left of the paver)
+        float m = smoothstep(0.50, 0.60, p.y) * (1. - smoothstep(0.80, 0.92, p.y)) * (1. - smoothstep(0.58, 0.74, p.x));
+        p.x += m * 0.0016 * sin(p.y * 160. + t * 3.1 + sin(p.x * 50. + t * 1.3) * 2.);
+        p.y += m * 0.0012 * sin(p.x * 120. - t * 2.4);
+        gl_FragColor = texture2D(tex, vec2(p.x, 1. - p.y));
+      }`
+  }));
+  scene.add(photo);
+  // steam puffs rising off the mat
+  const N = phone ? 60 : 120;
+  const geo = new THREE.BufferGeometry();
+  const pos = new Float32Array(N * 3), alpha = new Float32Array(N), sz = new Float32Array(N);
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('a', new THREE.BufferAttribute(alpha, 1));
+  geo.setAttribute('s', new THREE.BufferAttribute(sz, 1));
+  const steam = new THREE.Points(geo, new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    vertexShader: 'attribute float a; attribute float s; varying float va; void main(){ va = a; gl_Position = vec4(position.xy, 0., 1.); gl_PointSize = s; }',
+    fragmentShader: 'varying float va; void main(){ vec2 c = gl_PointCoord - .5; float d = length(c); float f = 1. - smoothstep(0., .5, d); gl_FragColor = vec4(vec3(.92,.93,.95), f * f * va); }'
+  }));
+  scene.add(steam);
+  const P = Array.from({ length: N }, () => ({ life: Math.random(), dur: 4 + Math.random() * 4, x: 0, y: 0, w: 0 }));
+  const spawn = (q) => { q.x = 0.04 + Math.random() * 0.56; q.y = 0.62 + Math.random() * 0.26; q.w = (Math.random() - 0.3) * 0.03; q.dur = 4 + Math.random() * 4; q.life = 0; };
+  P.forEach((q) => { spawn(q); q.life = Math.random(); });
+
+  const tl = new THREE.TextureLoader();
+  tl.load(img.currentSrc || img.src, (tx) => {
+    tx.minFilter = THREE.LinearFilter; tx.generateMipmaps = false;
+    u.tex.value = tx; start();
+  });
+  function start() {
+    let W = 1, H = 1;
+    const fit = () => { W = cv.clientWidth; H = cv.clientHeight; if (W && H) renderer.setSize(W, H, false); };
+    new ResizeObserver(fit).observe(cv); fit();
+    let visible = true; new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(cv);
+    const T0 = performance.now(); let last = T0, shown = false;
+    renderer.setAnimationLoop((now) => {
+      if (!visible || window.__heroCovered) { last = now; return; }
+      const t = (now - T0) / 1000, dt = Math.min(0.05, (now - last) / 1000); last = now;
+      // cover fit + slow push-in (26 s each way, like the CSS version)
+      const A = W / H; let sx = 1, sy = 1;
+      if (A > IMG_ASPECT) sy = IMG_ASPECT / A; else sx = A / IMG_ASPECT;
+      const k = reduce ? 0 : (1 - Math.cos(t / 26 * Math.PI)) / 2;
+      const zoom = (A < 1 ? 1.32 : 1.03) + 0.10 * k;
+      const size = u.size.value.set(sx / zoom, sy / zoom);
+      u.off.value.set(POS.x * (1 - size.x) - 0.012 * k * size.x, POS.y * (1 - size.y) + 0.008 * k * size.y);
+      u.t.value = t;
+      P.forEach((q, i) => {
+        q.life += dt / q.dur; if (q.life >= 1) spawn(q);
+        const L = q.life, ix = q.x + q.w * L + 0.01 * Math.sin(t * 0.7 + i), iy = q.y - 0.16 * L;
+        const sxn = (ix - u.off.value.x) / size.x, syn = (iy - u.off.value.y) / size.y;
+        pos[i * 3] = sxn * 2 - 1; pos[i * 3 + 1] = 1 - syn * 2; pos[i * 3 + 2] = 0;
+        alpha[i] = Math.sin(L * Math.PI) * 0.16;
+        sz[i] = (60 + 220 * L) * (H / 900) * renderer.getPixelRatio();
+      });
+      geo.attributes.position.needsUpdate = true; geo.attributes.a.needsUpdate = true; geo.attributes.s.needsUpdate = true;
+      renderer.render(scene, cam);
+      if (!shown) { shown = true; wrap.classList.add('is-live'); }
+    });
+  }
+})();
+
+/* ================= Hero: a driveway being paved ================= */
+(function paving(){
+  if (document.querySelector('.hero-photo, .hero-video')) return;
+  const canvas = document.getElementById('town');
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, phone ? 1.5 : 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.shadowMap.enabled = !phone; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0x000000, 110, 260);
+  const camera = new THREE.PerspectiveCamera(32, 1, 0.5, 400);
+  const hemi = new THREE.HemisphereLight(0xdfe8ff, 0x2a2a2a, 0.9); scene.add(hemi);
+  const sun = new THREE.DirectionalLight(0xffd9a8, 2.6); sun.position.set(-30, 40, 25); sun.castShadow = !phone;
+  sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, { left: -40, right: 40, top: 40, bottom: -40, near: 1, far: 120 }); sun.shadow.bias = -0.0006;
+  scene.add(sun);
+  const std = (r = 0.9) => new THREE.MeshStandardMaterial({ roughness: r });
+  const groundMat = std(1), gravelMat = std(1), asphaltMat = std(0.4), houseMat = std(0.85), roofMat = std(0.9), machineMat = std(0.5), darkMat = std(0.6), brickMats = [std(0.8), std(0.8)];
+  const plane = (w, d, mat, x, y, z) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(w, d), mat); m.rotation.x = -Math.PI / 2; m.position.set(x, y, z); m.receiveShadow = true; scene.add(m); return m; };
+  const box = (w, h, d, mat, x, y, z, parent = scene) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); m.castShadow = !phone; m.receiveShadow = !phone; parent.add(m); return m; };
+  plane(500, 500, groundMat, 0, 0, 0);
+  // street with a dashed centre line
+  const streetMat = std(0.85); plane(220, 14, streetMat, 0, 0.02, 20);
+  const paint = new THREE.MeshBasicMaterial({ toneMapped: false });
+  for (let x = -100; x < 100; x += 6) plane(3, 0.35, paint, x, 0.03, 20);
+  const curbMat = std(0.9); box(220, 0.3, 2, curbMat, 0, 0.15, 12.2);
+  // house + garage at the top of the driveway
+  box(34, 10, 16, houseMat, 4, 5, -32);
+  const tri = new THREE.Shape(); tri.moveTo(-9, 0); tri.lineTo(9, 0); tri.lineTo(0, 6); tri.closePath();
+  const roof = new THREE.Mesh(new THREE.ExtrudeGeometry(tri, { depth: 35, bevelEnabled: false }), roofMat); roof.rotation.y = Math.PI / 2; roof.position.set(-13.5, 10, -32); roof.castShadow = !phone; scene.add(roof);
+  box(9, 7, 0.3, darkMat, 0, 3.5, -23.9);
+  const winMat = new THREE.MeshBasicMaterial({ toneMapped: false });
+  box(3, 2.4, 0.2, winMat, 12, 5.5, -23.9); box(3, 2.4, 0.2, winMat, 18, 5.5, -23.9);
+  // driveway: gravel base, then fresh asphalt grows from the garage to the street
+  const DZ0 = -23.6, DZ1 = 11.2, DL = DZ1 - DZ0;
+  box(11, 0.2, DL, gravelMat, 0, 0.1, (DZ0 + DZ1) / 2);
+  const matGeo = new THREE.BoxGeometry(11, 0.3, 1); matGeo.translate(0, 0, 0.5);
+  const mat = new THREE.Mesh(matGeo, asphaltMat); mat.position.set(0, 0.2, DZ0); mat.receiveShadow = true; scene.add(mat);
+  // paver machine
+  const paver = new THREE.Group(); scene.add(paver);
+  box(5, 2.6, 5, machineMat, 0, 2.1, 0, paver); box(6.5, 1.4, 3, machineMat, 0, 1.5, 3.6, paver); box(12, 0.8, 1.4, darkMat, 0, 0.7, -3, paver);
+  box(1.6, 1.6, 1.6, darkMat, 1.2, 4.2, -0.8, paver);
+  // roller
+  const roller = new THREE.Group(); scene.add(roller);
+  box(3.4, 2.2, 5, machineMat, 0, 2.4, 0, roller); box(2.6, 1.6, 2, darkMat, 0, 4.2, -0.6, roller);
+  [-2.6, 2.6].forEach((z) => { const d = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.1, 4.4, 20), darkMat); d.rotation.z = Math.PI / 2; d.position.set(0, 1.1, z); d.castShadow = !phone; roller.add(d); });
+  // steam
+  const tex = (() => { const c = document.createElement('canvas'); c.width = c.height = 64; const g = c.getContext('2d'); const r = g.createRadialGradient(32, 32, 0, 32, 32, 32); r.addColorStop(0, 'rgba(255,255,255,.9)'); r.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = r; g.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c); })();
+  const steam = Array.from({ length: phone ? 18 : 40 }, () => { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false, opacity: 0 })); scene.add(s); return { s, life: Math.random() }; });
+  // interlocking pavers for the front walk (running bond), dropped in a diagonal wave
+  const BW = 1.2, BD = 0.6, cols = 10, rows = 18, PX = 9, PZ = -21;
+  const bricks = []; const bGeo = new THREE.BoxGeometry(BW - 0.08, 0.35, BD - 0.08);
+  const inst = [new THREE.InstancedMesh(bGeo, brickMats[0], cols * rows), new THREE.InstancedMesh(bGeo, brickMats[1], cols * rows)];
+  inst.forEach((m) => { m.castShadow = !phone; m.receiveShadow = !phone; m.count = 0; scene.add(m); });
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { const x = PX + c * BW + (r % 2 ? BW / 2 : 0), z = PZ + r * BD * 1.0; bricks.push({ x, z, k: (r * 7 + c * 3) % 5 === 0 ? 1 : 0, order: (c + r * 0.6) }); }
+  const maxOrder = Math.max(...bricks.map((b) => b.order));
+  const dummy = new THREE.Object3D();
+
+  let composer = null;
+  if (!phone) { composer = new EffectComposer(renderer); composer.addPass(new RenderPass(scene, camera)); composer.addPass(new UnrealBloomPass(new THREE.Vector2(256, 256), 0.35, 0.4, 0.85)); composer.addPass(new OutputPass()); }
+
+  const FRESH = new THREE.Color(), CURED = new THREE.Color();
+  function applyVibe() {
+    const hero = col('--hero');
+    scene.background = hero; scene.fog.color = hero;
+    groundMat.color = col('--ground'); gravelMat.color = col('--gravel'); streetMat.color = col('--asphalt').offsetHSL(0, 0, 0.04); curbMat.color = col('--gravel').offsetHSL(0, 0, 0.12);
+    houseMat.color = col('--house'); roofMat.color = col('--house').multiplyScalar(0.6); darkMat.color = col('--asphalt').offsetHSL(0, 0, 0.06);
+    machineMat.color = col('--accent'); paint.color = col('--win'); winMat.color = col('--win').multiplyScalar(1.4);
+    brickMats[0].color = col('--brick'); brickMats[1].color = col('--brick2');
+    FRESH.copy(col('--asphalt')).multiplyScalar(0.55); CURED.copy(col('--asphalt')).offsetHSL(0, 0, 0.06);
+  }
+  applyVibe(); addEventListener('vibechange', applyVibe);
+  function fit() { const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); if (composer) composer.setSize(w, h); }
+  new ResizeObserver(fit).observe(canvas); fit();
+
+  const BARE = 1.2, PAVE = 9, BRICK = 5, HOLD = 5, RESET = 1.4;
+  const CYCLE = BARE + PAVE + BRICK + HOLD + RESET;
+  const ease = (k) => 1 - Math.pow(1 - k, 3);
+  let visible = true; new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(canvas);
+  const T0 = performance.now(); let last = T0;
+  renderer.setAnimationLoop((now) => {
+    if (!visible || window.__heroCovered) { last = now; return; }
+    const t = (now - T0) / 1000, dt = Math.min(0.05, (now - last) / 1000); last = now;
+    const c = reduce ? BARE + PAVE + BRICK + 1 : t % CYCLE;
+    const resetK = c > CYCLE - RESET ? (c - (CYCLE - RESET)) / RESET : 0;
+    const p = Math.max(0, Math.min(1, (c - BARE) / PAVE)) * (1 - resetK);
+    const len = Math.max(0.001, p * DL);
+    mat.scale.z = len;
+    asphaltMat.color.copy(FRESH).lerp(CURED, Math.min(1, Math.max(0, (c - BARE - PAVE) / 4)));
+    asphaltMat.roughness = 0.35 + 0.5 * Math.min(1, Math.max(0, (c - BARE - PAVE) / 4));
+    const front = DZ0 + len;
+    const paving = c > BARE && c < BARE + PAVE + 0.3;
+    paver.position.set(0, 0, Math.min(front + 3.5, DZ1 + 9) + (c > BARE + PAVE ? (c - BARE - PAVE) * 6 : 0));
+    paver.visible = c < BARE + PAVE + 3 && resetK === 0;
+    roller.position.set(Math.sin(t * 1.2) * 2, 0, Math.max(DZ0 + 2.6, front - 9 + Math.sin(t * 0.9) * 3));
+    roller.visible = c > BARE + 1.2 && c < BARE + PAVE + BRICK && resetK === 0;
+    steam.forEach((st) => {
+      st.life += dt * 0.6;
+      if (st.life > 1) { st.life = 0; st.x = (Math.random() - 0.5) * 10; st.z = front - Math.random() * 4; }
+      const on = paving ? 1 : 0;
+      st.s.position.set(st.x || 0, 0.6 + st.life * 5, (st.z || DZ0) - st.life * 1.5);
+      st.s.scale.setScalar(1.5 + st.life * 4);
+      st.s.material.opacity = on * (1 - st.life) * 0.28;
+    });
+    const bk = Math.max(0, (c - BARE - PAVE) / BRICK);
+    const counts = [0, 0];
+    bricks.forEach((b) => {
+      const q = Math.max(0, Math.min(1, bk * (maxOrder + 6) - b.order)) ;
+      if (q <= 0 || resetK > 0.6) return;
+      const e = ease(q);
+      dummy.position.set(b.x, 0.18 + (1 - e) * 5 - resetK * 2, b.z); dummy.rotation.set(0, (1 - e) * 0.6, 0); dummy.scale.setScalar(0.6 + 0.4 * e); dummy.updateMatrix();
+      inst[b.k].setMatrixAt(counts[b.k]++, dummy.matrix);
+    });
+    inst.forEach((m, i) => { m.count = counts[i]; m.instanceMatrix.needsUpdate = true; });
+    const a = 0.7 + Math.sin(t * 0.06) * 0.4, r = phone ? 100 : 84;
+    camera.position.set(Math.sin(a) * r + 4, phone ? 52 : 42, Math.cos(a) * r - 4);
+    camera.lookAt(6, 0, -6);
+    if (!phone) camera.setViewOffset(canvas.clientWidth, canvas.clientHeight, -canvas.clientWidth * 0.18, 0, canvas.clientWidth, canvas.clientHeight);
+    composer ? composer.render() : renderer.render(scene, camera);
+  });
+})();
+
+/* ================= Gate: 3D logo ================= */
+(function logo(){
+  const gate = document.getElementById('gate');
+  const wrap = document.getElementById('logo3d');
+  const canvas = document.getElementById('logoCanvas');
+  const MARK = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30 -430 4112 2160"><path fill="#000" d="M0 1000V-400H694Q873 -400 978.0 -337.5Q1083 -275 1128.5 -171.0Q1174 -67 1174 56Q1174 133 1145.0 214.5Q1116 296 1060.5 363.5Q1005 431 926 466L1186 1000H832L582 516H316V1000ZM316 218H698Q754 218 786.5 195.5Q819 173 832.5 136.0Q846 99 846 56Q846 16 833.0 -20.0Q820 -56 787.5 -79.0Q755 -102 698 -102H316ZM1930 1024Q1793 1024 1680.5 974.0Q1568 924 1486.5 830.5Q1405 737 1362 606L1644 500Q1691 599 1768.0 662.5Q1845 726 1938 726Q2031 726 2087.5 691.5Q2144 657 2144 590Q2144 546 2111.5 517.0Q2079 488 2020.5 465.5Q1962 443 1884 418Q1805 392 1723.0 361.0Q1641 330 1572.5 282.5Q1504 235 1462.0 161.0Q1420 87 1420 -24Q1420 -133 1478.0 -224.0Q1536 -315 1646.5 -369.5Q1757 -424 1914 -424Q2044 -424 2145.0 -376.5Q2246 -329 2312.5 -248.0Q2379 -167 2406 -66L2126 26Q2096 -39 2044.5 -82.5Q1993 -126 1898 -126Q1819 -126 1776.5 -98.5Q1734 -71 1734 -18Q1734 14 1763.0 37.5Q1792 61 1844.0 81.0Q1896 101 1966 124Q2055 153 2142.5 188.0Q2230 223 2301.5 274.0Q2373 325 2415.5 402.0Q2458 479 2458 592Q2458 729 2387.5 825.5Q2317 922 2197.5 973.0Q2078 1024 1930 1024ZM3386 1024 3042 314Q3041 311 3039.0 305.5Q3037 300 3034 290Q3034 299 3034.0 306.0Q3034 313 3034 316V1000H2718V-400H3040L3360 296Q3371 318 3379.0 337.5Q3387 357 3394 380Q3402 357 3409.5 336.0Q3417 315 3426 296L3758 -400H4052V1000H3736V314Q3736 308 3736.0 301.0Q3736 294 3736 290Q3733 296 3730.5 301.5Q3728 307 3726 310Z"/><path fill="#000" fill-rule="evenodd" d="M0 1224.0H4052.0V1700.0H0ZM225.1 1414.4V1509.6H675.3V1414.4ZM1125.6 1414.4V1509.6H1575.8V1414.4ZM2026.0 1414.4V1509.6H2476.2V1414.4ZM2926.4 1414.4V1509.6H3376.7V1414.4Z"/></svg>`;
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+  const camera = new THREE.PerspectiveCamera(26, 1, 10, 60000);
+  const shapes = [];
+  new SVGLoader().parse(MARK).paths.forEach((p) => SVGLoader.createShapes(p).forEach((s) => shapes.push(s)));
+  const geo = new THREE.ExtrudeGeometry(shapes, { depth: 200, curveSegments: phone ? 10 : 24, bevelEnabled: true, bevelThickness: 22, bevelSize: 10, bevelSegments: phone ? 3 : 6 });
+  geo.center(); geo.computeBoundingBox();
+  const width = geo.boundingBox.max.x - geo.boundingBox.min.x;
+  const mat = new THREE.MeshPhysicalMaterial({ metalness: 0.6, roughness: 0.25, clearcoat: 0.8, clearcoatRoughness: 0.15 });
+  const mesh = new THREE.Mesh(geo, mat); mesh.rotation.x = Math.PI;
+  const group = new THREE.Group(); group.add(mesh); scene.add(group);
+  const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(0, 0, 4000); scene.add(key);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+  const applyVibe = () => mat.color = col('--accent');
+  applyVibe(); addEventListener('vibechange', applyVibe);
+  const fit = () => {
+    const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
+    renderer.setSize(w, h, false); camera.aspect = w / h;
+    const hfov = 2 * Math.atan(Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * camera.aspect);
+    camera.position.set(0, 0, (width / 0.62) / 2 / Math.tan(hfov / 2));
+    camera.near = camera.position.z / 20; camera.far = camera.position.z * 4; camera.updateProjectionMatrix();
+  };
+  new ResizeObserver(fit).observe(canvas); fit();
+  const ptr = { x: 0, y: 0 }; let drag = null, spin = 0, vel = 0, tiltX = 0;
+  const onMove = (e) => {
+    ptr.x = e.clientX / innerWidth * 2 - 1; ptr.y = e.clientY / innerHeight * 2 - 1;
+    if (drag) { const dx = e.clientX - drag.x; vel = dx * 0.012; spin += vel; tiltX = Math.max(-0.6, Math.min(0.6, tiltX + (e.clientY - drag.y) * 0.006)); drag.x = e.clientX; drag.y = e.clientY; }
+  };
+  wrap.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY }; wrap.setPointerCapture(e.pointerId); });
+  const end = () => { drag = null; };
+  wrap.addEventListener('pointerup', end); wrap.addEventListener('pointercancel', end);
+  addEventListener('pointermove', onMove, { passive: true });
+  const t0 = performance.now(); let shown = false;
+  const ease = (k) => 1 - Math.pow(1 - k, 3);
+  renderer.setAnimationLoop((now) => {
+    if (gate.hidden) { renderer.setAnimationLoop(null); removeEventListener('pointermove', onMove); geo.dispose(); mat.dispose(); pmrem.dispose(); renderer.dispose(); return; }
+    const t = (now - t0) / 1000, intro = reduce ? 1 : ease(Math.min(t / 1.8, 1));
+    if (!drag) { vel *= 0.95; spin += vel; spin *= 0.985; tiltX *= 0.96; }
+    const f = reduce ? 0 : 1;
+    group.rotation.y = spin + ptr.x * 0.45 + Math.cos(t * 0.6) * 0.12 * f - (1 - intro) * 1.2;
+    group.rotation.x = tiltX + ptr.y * 0.3 + Math.sin(t * 0.8) * 0.05 * f + 0.08;
+    group.position.y = Math.sin(t * 1.1) * width * 0.005 * f;
+    group.scale.setScalar(0.86 + 0.14 * intro);
+    key.position.set(ptr.x * 3000, -ptr.y * 2000 + 800, 4000);
+    renderer.render(scene, camera);
+    if (!shown) { shown = true; wrap.classList.add('webgl'); }
+  });
+})();
+</script>
+</body>
+</html>

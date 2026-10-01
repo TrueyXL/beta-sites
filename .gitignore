@@ -1,0 +1,4 @@
+# drafts and backups stay local
+*-before-*.html
+*-v1-*.html
+.DS_Store

@@ -11,6 +11,7 @@ Every sample carries a visible "Maquette / Sample · WeUnfolded Web" label and i
 | `pavages-rsm/` | Les Pavages R.S.M. inc. (Saint-Constant) | Sample ready |
 | `entreprises-kass/` | Les Entreprises Kass inc. (La Prairie) | Sample ready |
 | `alexscellant-pavage/` | Alexscellant Pavage (Longueuil) | Sample ready |
+| `climatisation-directe/` | Climatisation Directe (Saint-Philippe) | Sample ready |
 
 Background videos come from Pexels (free licence); the hero labels them as illustration footage. Alexscellant uses the business's own job photos from its current website.
 

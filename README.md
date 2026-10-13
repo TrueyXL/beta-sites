@@ -12,6 +12,7 @@ Every sample carries a visible "Maquette / Sample · WeUnfolded Web" label and i
 | `entreprises-kass/` | Les Entreprises Kass inc. (La Prairie) | Sample ready |
 | `alexscellant-pavage/` | Alexscellant Pavage (Longueuil) | Sample ready |
 | `climatisation-directe/` | Climatisation Directe (Saint-Philippe) | Sample ready |
+| `roro-ag-logistics/` | RORO.CA · AG Logistics (Saint-Donat-de-Montcalm) | Sample ready |
 
 Background videos come from Pexels (free licence); the hero labels them as illustration footage. Alexscellant uses the business's own job photos from its current website.
 

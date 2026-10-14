@@ -1,0 +1,1050 @@
+<!doctype html>
+<html lang="fr" data-vibe="bleu" data-phone="4505362121">
+<!-- Business phone: the 10 digits in data-phone above. Every "Appeler" button dials it. -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Couvertures Montérégiennes</title>
+<meta name="description" content="Entrepreneur en toiture depuis 2001. Toit plat commercial, industriel et institutionnel, toit blanc résidentiel TPO, élastomère et PVC, réparation et déneigement. Montréal, Laval et Rive-Sud.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Figtree:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* Layout: a roofer's site that reads like a spec sheet for a white roof. Hero = their own drone shot of a
+   finished TPO roof; signature = a 3D cutaway that installs a TPO roof, step by step, as you scroll. */
+:root{
+  --display:"Bricolage Grotesque","Arial Narrow",Arial,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Spline Sans Mono",ui-monospace,Menlo,monospace;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  /* Bleu (default): the blue of their script logo and truck stripe, on night navy */
+  --bg:#eef2f7; --surface:#ffffff; --ink:#0b1a2e; --muted:#556173; --line:#d3dce7;
+  --accent:#2f86ff; --accent-ink:#ffffff; --accent-text:#1a5fc4;
+  --hero:#0b1a2e; --hero-ink:#eef4fb; --hero-muted:#93a5bb;
+  --win:#8fc2ff; --edge:#13253d; --membrane:#f3f6f9;
+}
+:root[data-vibe="membrane"]{
+  --bg:#f3f4f5; --surface:#ffffff; --ink:#15191e; --muted:#5b636c; --line:#dadfe4;
+  --accent:#e4ebf1; --accent-ink:#12171c; --accent-text:#46586a;
+  --hero:#1a2027; --hero-ink:#f4f6f8; --hero-muted:#9ea8b2;
+  --win:#ffffff; --edge:#252d36; --membrane:#ffffff;
+}
+:root[data-vibe="vert"]{
+  --bg:#eef3ee; --surface:#ffffff; --ink:#0f1b13; --muted:#56635a; --line:#d2ddd4;
+  --accent:#4cbb6b; --accent-ink:#06210f; --accent-text:#26803f;
+  --hero:#0f1a14; --hero-ink:#eef6f0; --hero-muted:#93a99a;
+  --win:#9fe0ae; --edge:#16271c; --membrane:#eef4ef;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--body);transition:background-color .6s var(--ease),color .6s var(--ease)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.tag{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:inline-flex;gap:10px;align-items:center}
+.tag::before{content:"";width:16px;height:2px;background:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 15px/1 var(--body);text-decoration:none;border-radius:8px;padding:16px 22px;border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease),background-color .3s,color .3s,border-color .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover{box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 40%,transparent)}
+.btn-line{border-color:color-mix(in srgb,var(--hero-ink) 40%,transparent);color:var(--hero-ink);background:transparent}
+.btn-line:hover{border-color:var(--hero-ink)}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.ph-ic{width:18px;height:18px;flex:none}
+.btn-call{position:relative}
+.btn-call::after{content:"";position:absolute;inset:-4px;border-radius:11px;border:2px solid var(--accent);opacity:0;animation:ring 2.4s var(--ease) infinite;pointer-events:none}
+@keyframes ring{0%{opacity:.7;transform:scale(.97)}70%,100%{opacity:0;transform:scale(1.08)}}
+.btn-call .num{font:500 13px var(--mono);opacity:.85}
+
+/* ---------- Entry gate ---------- */
+.gate{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:24px;text-align:center;color:var(--hero-ink);
+  background:color-mix(in srgb,var(--hero) 74%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:opacity .9s var(--ease),visibility 0s linear .9s}
+html:not(.js) .gate{display:none}
+.gate.closed{opacity:0;visibility:hidden}
+.gate::before{content:"";position:absolute;left:50%;top:40%;width:min(92vw,820px);aspect-ratio:2/1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--win) 18%,transparent),transparent);pointer-events:none}
+.logo3d{position:relative;width:min(60vw,380px);aspect-ratio:4112/2160;cursor:grab;touch-action:none}
+.logo3d:active{cursor:grabbing}
+.logo3d svg.flat{position:absolute;inset:0;width:100%;height:100%;color:var(--accent);transition:opacity .6s}
+.logo3d canvas{position:absolute;left:-30%;top:-45%;width:160%;height:190%;opacity:0;transition:opacity 1s var(--ease);pointer-events:none}
+.logo3d.webgl canvas{opacity:1}
+.logo3d.webgl svg.flat{opacity:0}
+.gate .logo3d{animation:logoIn 1.6s var(--ease) both}
+@keyframes logoIn{from{opacity:0;transform:translateY(26px) scale(.92);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+.gate-name{font:800 clamp(22px,4vw,34px)/1 var(--display);font-stretch:112%;text-transform:uppercase;letter-spacing:.02em}
+.gate-name small{display:block;font:500 11px/1 var(--mono);letter-spacing:.32em;color:var(--hero-muted);margin-top:10px}
+.gate-q{font:500 12px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;margin:4px 0 0;opacity:.9}
+.gate-q span{opacity:.6}
+.gate-langs{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.gate-langs .btn{min-width:170px}
+.gate-hint{font:400 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);margin:0}
+
+/* ---------- Vibes ---------- */
+.vibes{display:inline-flex;align-items:center;gap:6px;padding:5px;border-radius:999px;border:1px solid color-mix(in srgb,currentColor 25%,transparent)}
+.vibes button{width:26px;height:26px;border-radius:50%;border:0;padding:0;cursor:pointer;background:conic-gradient(var(--a) 0 50%,var(--b) 0 100%);transform:rotate(-45deg);transition:transform .3s var(--ease)}
+.vibes button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--hero),0 0 0 3.5px currentColor}
+.vibes button:hover{transform:rotate(-45deg) scale(1.12)}
+.vibe-name{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:0 8px 0 4px;white-space:nowrap}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;color:var(--hero-ink);transition:background-color .4s;padding-top:env(safe-area-inset-top,0px)}
+.nav.solid{background:color-mix(in srgb,var(--hero) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px}
+.brand{display:flex;align-items:center;text-decoration:none;color:var(--hero-ink)}
+.brand svg{height:30px;width:auto}
+.nav-links{display:flex;gap:28px;font:500 14px var(--body)}
+.nav-links a{text-decoration:none;opacity:.8;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang{display:flex;font:500 12px var(--mono)}
+.lang button{background:none;border:0;color:inherit;opacity:.55;cursor:pointer;padding:6px}
+.lang button[aria-pressed="true"]{opacity:1;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--accent)}
+.nav .btn{padding:12px 16px;font-size:14px}
+
+/* ---------- Hero ---------- */
+.hero{position:sticky;top:0;min-height:100svh;display:flex;align-items:flex-end;color:var(--hero-ink);background:var(--hero);overflow:hidden;isolation:isolate}
+#town{position:absolute;inset:0;width:100%;height:100%;z-index:-2;display:block;transform:scale(calc(1 + var(--p,0) * .08));filter:brightness(calc(1 - var(--p,0) * .55));will-change:transform}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,color-mix(in srgb,var(--hero) 50%,transparent) 0%,transparent 24%,transparent 48%,color-mix(in srgb,var(--hero) 94%,transparent) 92%),linear-gradient(90deg,color-mix(in srgb,var(--hero) 78%,transparent),transparent 62%)}
+.hero .wrap{width:100%;padding-block:140px 56px;display:grid;gap:24px;transform:translate3d(0,calc(var(--p,0) * -90px),0);opacity:calc(1 - var(--p,0) * 1.6);will-change:transform,opacity}
+.live{display:inline-flex;align-items:center;gap:10px;justify-self:start;font:500 12px var(--mono);letter-spacing:.08em;color:var(--hero-ink);background:color-mix(in srgb,var(--hero-ink) 8%,transparent);border:1px solid color-mix(in srgb,var(--hero-ink) 16%,transparent);border-radius:999px;padding:8px 14px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:live 1.8s infinite}
+@keyframes live{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 70%,transparent)}100%{box-shadow:0 0 0 10px transparent}}
+.live b{font-weight:500;font-variant-numeric:tabular-nums}
+.hero h1{font:800 clamp(46px,7.4vw,112px)/.9 var(--display);font-stretch:112%;text-transform:uppercase;margin:0;letter-spacing:-.01em;max-width:13ch;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--accent);text-shadow:0 0 40px color-mix(in srgb,var(--win) 40%,transparent)}
+.hero-sub{font-size:clamp(16px,1.6vw,19px);max-width:52ch;color:color-mix(in srgb,var(--hero-ink) 82%,transparent);margin:0}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.sectors{display:flex;gap:20px;flex-wrap:wrap;font:400 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);margin-top:12px}
+.sectors span{display:inline-flex;align-items:center;gap:8px}
+.sectors span::before{content:"";width:6px;height:6px;border-radius:1px;background:var(--win);box-shadow:0 0 8px var(--win)}
+.hero-tag{position:absolute;right:clamp(16px,4vw,40px);bottom:24px;font:400 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);opacity:calc(.75 - var(--p,0) * 2)}
+
+/* ---------- Sheet ---------- */
+.sheet{position:relative;z-index:2;background:var(--bg);border-radius:28px 28px 0 0;overflow:hidden;box-shadow:0 -30px 60px rgba(0,0,0,.3);transition:background-color .6s var(--ease)}
+footer{position:relative;z-index:2}
+.facts{background:var(--hero);color:var(--hero-ink)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:30px 0 30px 24px;display:grid;gap:6px;border-left:1px solid color-mix(in srgb,var(--hero-ink) 12%,transparent)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact b{font:800 42px/1 var(--display);font-stretch:112%;color:var(--accent)}
+.fact span{font-size:13px;color:var(--hero-muted)}
+
+section{padding-block:clamp(72px,10vw,128px)}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+h2{font:800 clamp(36px,5.4vw,72px)/.94 var(--display);font-stretch:112%;text-transform:uppercase;margin:16px 0 0;text-wrap:balance;letter-spacing:-.01em}
+h2 em{font-style:normal;color:var(--accent-text)}
+.head p{color:var(--muted);margin:0;max-width:46ch;justify-self:end}
+
+/* three sectors */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sector{position:relative;border-radius:16px;background:var(--hero);color:var(--hero-ink);padding:28px;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;overflow:hidden;isolation:isolate}
+.sector::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 55% at 75% 20%,color-mix(in srgb,var(--win) 26%,transparent),transparent 70%);opacity:.35;transition:opacity .8s var(--ease)}
+.sector:hover::before,.sector.in::before{opacity:1}
+.sector .n{position:absolute;top:22px;left:28px;font:500 12px var(--mono);color:var(--hero-muted)}
+.sector svg.sil{position:absolute;right:20px;top:24px;width:46%;height:auto;color:color-mix(in srgb,var(--hero-ink) 18%,transparent)}
+.sector svg.sil .w{fill:var(--win);opacity:.15;transition:opacity .6s}
+.sector:hover svg.sil .w,.sector.in svg.sil .w{opacity:1}
+.sector h3{font:800 32px/1 var(--display);font-stretch:112%;text-transform:uppercase;margin:0}
+.sector p{margin:0;color:var(--hero-muted);font-size:15px}
+
+/* residential checklist */
+.jobs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0;padding:0;list-style:none}
+.jobs li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:14px;align-content:start;min-height:140px}
+.led{width:10px;height:10px;border-radius:50%;background:var(--line);transition:background-color .5s,box-shadow .5s;transition-delay:calc(var(--i,0) * 120ms + .4s)}
+.jobs li.in .led{background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.jobs b{font:600 17px/1.25 var(--body)}
+
+/* emergency band */
+.sos{background:var(--hero);color:var(--hero-ink);position:relative;overflow:hidden}
+.sos::before{content:"";position:absolute;inset:-40% -10% auto auto;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 22%,transparent),transparent);pointer-events:none}
+.sos .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center;position:relative}
+.sos h2{margin:14px 0 18px}
+.sos p{color:var(--hero-muted);margin:0 0 26px;max-width:46ch}
+.sos .tag{color:var(--hero-muted)}
+.clock{justify-self:end;text-align:right;display:grid;gap:8px}
+.clock b{font:800 clamp(64px,9vw,128px)/.85 var(--display);font-stretch:112%;font-variant-numeric:tabular-nums;color:var(--accent);text-shadow:0 0 50px color-mix(in srgb,var(--accent) 35%,transparent)}
+.clock span{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted)}
+
+.quote{font:800 clamp(28px,3.8vw,48px)/1.04 var(--display);font-stretch:112%;text-transform:uppercase;margin:18px 0 56px;max-width:24ch;text-wrap:balance}
+.quote em{font-style:normal;color:var(--accent-text)}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.why div{border-top:2px solid var(--ink);padding-top:20px;display:grid;gap:8px}
+.why b{font:800 24px/1 var(--display);font-stretch:112%;text-transform:uppercase}
+.why p{margin:0;color:var(--muted)}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(160px,18vw,240px);gap:12px}
+.ph{position:relative;overflow:hidden;border-radius:12px;background:var(--hero)}
+.ph::before{content:"";position:absolute;inset:0;background:radial-gradient(40% 35% at 70% 35%,color-mix(in srgb,var(--win) 35%,transparent),transparent 70%),linear-gradient(180deg,transparent 55%,color-mix(in srgb,var(--edge) 80%,transparent));transition:transform 1.2s var(--ease)}
+.ph:hover::before{transform:scale(1.08)}
+.ph span{position:absolute;left:14px;bottom:12px;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--hero-muted)}
+.ph.big{grid-column:span 2;grid-row:span 2}
+.ph.wide{grid-column:span 2}
+.ph.big span{color:var(--hero-ink)}
+
+.split{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(32px,6vw,80px);align-items:start}
+.zones{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;padding:0;list-style:none}
+.zones li{border:1px solid var(--line);padding:8px 14px;font-size:14px;border-radius:999px;background:var(--surface)}
+.rating{background:var(--hero);color:var(--hero-ink);padding:34px;display:grid;gap:18px;border-radius:16px}
+.rating .score{display:flex;align-items:baseline;gap:14px}
+.rating b{font:800 88px/.8 var(--display);font-stretch:112%;color:var(--accent)}
+.rating .score span{color:var(--hero-muted);font-size:14px}
+.bars{display:grid;gap:8px;font:400 12px var(--mono);color:var(--hero-muted)}
+.bar{display:grid;grid-template-columns:24px 1fr 28px;gap:10px;align-items:center;font-variant-numeric:tabular-nums}
+.bar i{height:6px;border-radius:6px;background:color-mix(in srgb,var(--hero-ink) 12%,transparent);overflow:hidden;position:relative}
+.bar i::after{content:"";position:absolute;inset:0;width:calc(var(--v) * 1%);background:var(--accent);border-radius:6px;transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--ease)}
+.rating.in .bar i::after{transform:scaleX(1)}
+.rating p{margin:0;color:var(--hero-muted);font-size:13px}
+
+.contact{background:var(--hero);color:var(--hero-ink)}
+.contact h2 em{color:var(--accent)}
+.contact .tag{color:var(--hero-muted)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px;margin-top:8px}
+label{display:grid;gap:8px;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--hero-muted)}
+input,select,textarea{font:16px var(--body);color:var(--hero-ink);background:transparent;border:0;border-bottom:1px solid color-mix(in srgb,var(--hero-ink) 30%,transparent);padding:10px 0;border-radius:0;width:100%;transition:border-color .3s}
+select option{color:#111}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--accent)}
+textarea{min-height:90px;resize:vertical}
+.full{grid-column:1/-1}
+.sent{grid-column:1/-1;margin:0;color:var(--accent);font:500 13px var(--mono)}
+.contact-side{display:grid;gap:22px;align-content:start;color:var(--hero-muted)}
+.contact-side b{display:block;color:var(--hero-ink);font:800 18px var(--display);font-stretch:112%;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px}
+
+footer{background:var(--hero);color:var(--hero-muted);border-top:1px solid color-mix(in srgb,var(--hero-ink) 12%,transparent);font-size:13px;padding-block:36px calc(36px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer svg{height:30px;width:auto;color:var(--hero-ink)}
+
+.mock{position:fixed;left:16px;bottom:16px;z-index:60;font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);padding:8px 12px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.callbar{display:none}
+
+.js .rv{opacity:0;transform:translateY(40px);filter:blur(6px);transition:opacity 1.3s var(--ease),transform 1.3s var(--ease),filter 1.3s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
+.js .rv.in{opacity:1;transform:none;filter:none}
+.js .ph.rv{transform:none;filter:none;clip-path:inset(100% 0 0 0);transition:clip-path 1.4s var(--ease),opacity .6s;transition-delay:calc(var(--i,0) * 110ms)}
+.js .ph.rv.in{clip-path:inset(0 0 0 0)}
+@media (max-width:900px),(pointer:coarse){.js .rv{filter:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv,.js .ph.rv{opacity:1;transform:none;filter:none;clip-path:none}#town,.hero .wrap{transform:none!important;filter:none!important;opacity:1!important}.gate .logo3d{animation:none}.btn-call::after,.live i{animation:none}}
+
+[data-en]{display:none!important}
+html[lang="en"] [data-en]{display:revert!important}
+html[lang="en"] [data-fr]{display:none!important}
+
+@media (max-width:900px){
+  .nav-links{display:none}
+  .facts .wrap{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .head,.split,.sos .wrap{grid-template-columns:1fr}
+  .head p{justify-self:start}
+  .clock{justify-self:start;text-align:left}
+  .trio{grid-template-columns:1fr}
+  .sector{min-height:260px}
+  .jobs{grid-template-columns:1fr 1fr}
+  .why{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .nav .nav-right>.btn,.vibe-name{display:none}
+  form{grid-template-columns:1fr}
+  .callbar{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:55;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--hero)}
+  .callbar .btn{width:100%;padding-inline:12px}
+  .mock{bottom:84px}
+  footer{padding-bottom:110px}
+}
+
+/* ---------- Couvertures Montérégiennes specific ---------- */
+.sheet{overflow:clip}
+.logo3d{width:min(46vw,250px);aspect-ratio:1360/1200}
+.logo3d canvas{left:-30%;top:-30%;width:160%;height:160%}
+.gate-name{font:800 clamp(28px,4.6vw,44px)/1 var(--display);font-stretch:75%;letter-spacing:.01em}
+.brand{gap:12px}
+.brand svg.mk{height:38px;width:auto;color:var(--accent)}
+.brand svg.word{height:40px;width:auto;color:var(--hero-ink)}
+footer svg.word{height:44px;width:auto}
+.hero h1,h2,.fact b,.svc h3,.contact-side b,.quote,.st b,.cmp-name,.winter b,.founder blockquote,.pose-done b{font-family:var(--display);font-weight:800;font-stretch:75%;text-transform:uppercase}
+.hero h1{font-size:clamp(58px,8.6vw,136px);line-height:.84;max-width:12ch;letter-spacing:-.005em}
+h2{font-size:clamp(42px,6.2vw,88px);line-height:.88;letter-spacing:0}
+.fact b{font-size:clamp(32px,3.8vw,52px);line-height:1}
+
+/* hero: living drone photo */
+.hero-photo{position:absolute;inset:0;z-index:-2;overflow:hidden;filter:brightness(calc(.98 - var(--p,0) * .5))}
+.hero-photo canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1s}
+.hero-photo.is-live canvas{opacity:1}
+.hero-photo.is-live img{visibility:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:45% 55%;transform-origin:45% 55%;animation:kb 26s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.08)}}
+@media (prefers-reduced-motion:reduce){.hero-photo img{animation:none}}
+@media (max-aspect-ratio:1/1){.hero-photo img{object-position:45% 72%}}
+.hero::after{background:linear-gradient(180deg,color-mix(in srgb,var(--hero) 55%,transparent) 0%,transparent 22%,transparent 46%,color-mix(in srgb,var(--hero) 94%,transparent) 92%),linear-gradient(90deg,color-mix(in srgb,var(--hero) 78%,transparent),transparent 58%)}
+.book{display:inline-flex;align-items:center;gap:10px;justify-self:start;font:500 11px var(--mono);letter-spacing:.06em;color:var(--hero-ink);background:color-mix(in srgb,var(--hero) 50%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid color-mix(in srgb,var(--hero-ink) 16%,transparent);border-radius:999px;padding:8px 14px}
+.book i{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:live 1.8s infinite}
+
+/* signature: a TPO roof installs itself */
+.pose{height:460vh;padding:0;position:relative;background:var(--hero);color:var(--hero-ink)}
+.pose-pin{position:sticky;top:0;height:100svh;overflow:hidden}
+#roof3d{position:absolute;inset:0;width:100%;height:100%;display:block}
+.pose-ui{position:relative;height:100%;display:grid;grid-template-columns:minmax(0,430px);align-content:center;gap:22px;pointer-events:none}
+.pose-ui>*{pointer-events:auto}
+.pose .tag{color:var(--hero-muted)}
+.pose h2{margin:12px 0 0;font-size:clamp(38px,5vw,68px)}
+.pose h2 em{font-style:normal;color:var(--accent)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:4px;counter-reset:s}
+.st{display:grid;grid-template-columns:34px 1fr;gap:4px 12px;padding:12px 14px;border-radius:12px;opacity:.38;transition:opacity .5s,background-color .5s}
+.st.on{opacity:1;background:color-mix(in srgb,var(--hero) 72%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.st.done{opacity:.62}
+.st i{grid-row:span 2;font:500 12px/22px var(--mono);font-style:normal;color:var(--accent)}
+.st b{font-size:22px;line-height:1.05;letter-spacing:.01em}
+.st p{margin:0;font-size:14px;line-height:1.5;color:var(--hero-muted);max-height:0;overflow:hidden;transition:max-height .6s var(--ease)}
+.st.on p{max-height:140px}
+.rail{height:3px;border-radius:3px;background:color-mix(in srgb,var(--hero-ink) 14%,transparent);overflow:hidden}
+.rail i{display:block;height:100%;width:100%;background:var(--accent);transform-origin:left;transform:scaleX(var(--pp,0))}
+.pose-done{position:absolute;right:clamp(16px,4vw,40px);bottom:clamp(24px,6vh,60px);max-width:330px;background:var(--accent);color:var(--accent-ink);border-radius:16px;padding:22px 24px;opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s var(--ease)}
+.pose-done.on{opacity:1;transform:none}
+.pose-done b{display:block;font-size:30px;line-height:.95}
+.pose-done p{margin:8px 0 0;font-size:14px;line-height:1.5}
+@media (max-width:900px){
+  .pose-ui{align-content:end;padding-bottom:110px}
+  .pose-ui .head2{display:none}
+  .st{display:none}.st.on{display:grid}
+  .pose-done{left:16px;right:16px;top:90px;bottom:auto;max-width:none}
+}
+
+/* facts + services */
+.svcs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc{position:relative;border-radius:16px;overflow:hidden;min-height:420px;background:var(--hero);color:var(--hero-ink);display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding:28px;isolation:isolate}
+.svc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.4s var(--ease)}
+.svc:hover img{transform:scale(1.05)}
+.svc::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 12%,color-mix(in srgb,var(--hero) 80%,transparent) 48%,color-mix(in srgb,var(--hero) 96%,transparent) 80%)}
+.svc .k{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.svc h3{font-size:clamp(32px,3vw,42px);line-height:.9;margin:0}
+.svc p{margin:0;color:color-mix(in srgb,var(--hero-ink) 78%,transparent);font-size:15px}
+.more{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.more div{padding:24px 26px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.more div:nth-child(-n+3){border-top:0}
+.more div:nth-child(3n+1){border-left:0}
+.more b{display:block;font:600 17px/1.25 var(--body);margin-bottom:6px}
+.more p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+@media (max-width:900px){.svcs,.more{grid-template-columns:1fr}.svc{min-height:340px}.more div{border-left:0!important;border-top:1px solid var(--line)!important}.more div:first-child{border-top:0!important}}
+
+/* compare flat-roof systems (their own table) */
+.cmp{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:start}
+.cmp-pick{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0}
+.cmp-pick button{font:500 15px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:10px 16px;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s}
+.cmp-pick button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cmp-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:clamp(22px,3vw,34px)}
+.cmp-name{font-size:clamp(34px,4vw,54px);line-height:.9;margin:0 0 6px}
+.cmp-desc{color:var(--muted);margin:0 0 22px;font-size:15px}
+.crit{display:grid;grid-template-columns:150px 1fr 120px;gap:14px;align-items:center;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
+.crit span{color:var(--muted)}
+.crit em{font-style:normal;font-weight:600;text-align:right}
+.meter{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.meter i{height:8px;border-radius:2px;background:var(--line);transition:background-color .4s;transition-delay:calc(var(--j) * 60ms)}
+.meter i.on{background:var(--accent-text)}
+.cmp .note{font:400 11px/1.6 var(--mono);color:var(--muted);margin:16px 0 0}
+@media (max-width:900px){.cmp{grid-template-columns:1fr}}
+.cmp h2{font-size:clamp(38px,4.6vw,66px)}
+@media (max-width:480px){.crit{grid-template-columns:1fr 92px;gap:6px 12px}.crit .meter{grid-column:1/-1;grid-row:2}}
+
+/* winter */
+.winter{position:relative;color:var(--hero-ink);background:var(--hero);overflow:hidden;isolation:isolate}
+.winter>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.5}
+.winter::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--hero) 18%,color-mix(in srgb,var(--hero) 40%,transparent))}
+.winter .tag{color:var(--hero-muted)}
+.winter h2 em{font-style:normal;color:var(--accent)}
+.winter p.lead{max-width:48ch;color:color-mix(in srgb,var(--hero-ink) 82%,transparent);margin:18px 0 26px}
+.risks{list-style:none;margin:0 0 30px;padding:0;display:grid;gap:10px;max-width:52ch}
+.risks li{display:grid;grid-template-columns:22px 1fr;gap:10px;color:color-mix(in srgb,var(--hero-ink) 85%,transparent)}
+.risks li::before{content:"";width:10px;height:10px;margin-top:8px;border-radius:2px;background:var(--win);box-shadow:0 0 10px var(--win)}
+.winter .row{display:flex;gap:12px;flex-wrap:wrap}
+
+/* founder */
+.founder .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:center}
+.founder figure{margin:0;border-radius:16px;overflow:hidden;aspect-ratio:13/11;background:var(--hero)}
+.founder figure img{width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+.founder blockquote{margin:18px 0 0;font-size:clamp(28px,3.4vw,44px);line-height:.98;text-wrap:balance}
+.founder blockquote em{font-style:normal;color:var(--accent-text)}
+.founder p{color:var(--muted);max-width:52ch}
+.brands{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+.brands li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:14px}
+.hire{margin-top:26px;display:inline-flex;gap:10px;align-items:center;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.hire i{width:8px;height:8px;border-radius:50%;background:var(--accent-text)}
+@media (max-width:900px){.founder .wrap{grid-template-columns:1fr}}
+
+.gallery .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.gallery .ph:hover img{transform:scale(1.05)}
+.gallery .ph span{z-index:1;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.gallery .ph::before{z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.45))}
+
+.contact-side .btn{margin-top:8px}
+.contact-side small{display:block;margin-top:6px;font:400 12px var(--mono);color:var(--hero-muted)}
+@media (max-width:620px){.brand svg.word{display:none}.hero-cta .num{display:none}}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateQ">
+  <div class="logo3d" id="logo3d" aria-hidden="true">
+    <svg class="flat" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-680 -640 1360 1200"><path fill="currentColor" fill-rule="evenodd" d="M0 -600L640 -40L560 -40L0 -500L-560 -40L-640 -40ZM300 -500L400 -500L400 -330L300 -420ZM-470 -10L0 -420L470 -10L470 520L-470 520ZM-72.6 264.8Q -83.8 290.0 -101.7 309.3Q -119.6 328.6 -141.4 342.1Q -163.3 355.5 -188.5 362.2Q -213.7 369.0 -239.4 369.0Q -294.3 369.0 -324.6 336.2Q -354.8 303.4 -354.8 231.8Q -354.8 206.6 -350.6 174.9Q -346.4 143.3 -336.9 111.1Q -327.4 78.9 -312.2 48.1Q -297.1 17.3 -275.3 -6.8Q -253.4 -30.9 -224.0 -45.4Q -194.6 -60.0 -157.1 -60.0Q -138.6 -60.0 -121.8 -55.8Q -105.0 -51.6 -92.7 -42.6Q -80.4 -33.7 -73.1 -19.1Q -65.8 -4.6 -65.8 16.2Q -65.8 37.4 -74.8 52.0Q -83.8 66.6 -105.0 66.6Q -111.8 66.6 -120.4 64.0Q -129.1 61.5 -137.0 52.0Q -126.9 47.0 -119.0 31.6Q -111.2 16.2 -111.2 1.0Q -111.2 -13.0 -119.0 -23.3Q -126.9 -33.7 -143.1 -33.7Q -159.4 -33.7 -174.5 -22.2Q -189.6 -10.7 -202.8 8.6Q -215.9 27.9 -226.8 54.0Q -237.8 80.0 -245.6 108.8Q -253.4 137.7 -257.6 167.9Q -261.8 198.2 -261.8 226.2Q -261.8 246.3 -259.0 263.1Q -256.2 279.9 -249.0 292.2Q -241.7 304.6 -228.5 311.3Q -215.4 318.0 -195.2 318.0Q -163.3 318.0 -134.2 302.0Q -105.0 286.1 -85.4 259.2ZM 209.1 360.0 245.0 108.6 139.7 360.0H 63.0L 74.2 107.4L -19.4 360.0H -64.2L 78.1 -24.7Q 36.1 -10.7 12.6 21.2Q -11.0 53.1 -11.0 101.3Q -11.0 111.4 -9.8 117.8Q -8.7 124.2 -7.6 128.4Q -6.5 132.6 -5.1 135.4Q -3.7 138.2 -3.1 139.9Q -30.0 139.9 -46.5 128.4Q -63.0 117.0 -63.0 89.5Q -63.0 62.6 -47.1 35.8Q -31.1 8.9 -5.9 -12.4Q 19.3 -33.7 50.9 -46.8Q 82.6 -60.0 113.9 -60.0Q 136.9 -60.0 157.6 -52.2L 144.7 243.0L 267.9 -52.2H 348.6L 289.8 360.0Z"/></svg>
+    <canvas id="logoCanvas"></canvas>
+  </div>
+  <div class="gate-name">Couvertures Montérégiennes<small>Entrepreneur en toiture · Depuis 2001</small></div>
+  <p class="gate-q" id="gateQ">Choisissez votre langue <span>· Choose your language</span></p>
+  <div class="gate-langs">
+    <button type="button" class="btn btn-accent" data-pick="fr">Français</button>
+    <button type="button" class="btn btn-line" data-pick="en">English</button>
+  </div>
+  <div class="vibes" role="group" aria-label="Ambiance / Vibe" data-vibes>
+    <span class="vibe-name" data-vibe-label>Bleu</span>
+  </div>
+  <p class="gate-hint">Glissez le logo · Drag the logo</p>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Couvertures Montérégiennes"><svg class="mk" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-680 -640 1360 1200"><path fill="currentColor" fill-rule="evenodd" d="M0 -600L640 -40L560 -40L0 -500L-560 -40L-640 -40ZM300 -500L400 -500L400 -330L300 -420ZM-470 -10L0 -420L470 -10L470 520L-470 520ZM-72.6 264.8Q -83.8 290.0 -101.7 309.3Q -119.6 328.6 -141.4 342.1Q -163.3 355.5 -188.5 362.2Q -213.7 369.0 -239.4 369.0Q -294.3 369.0 -324.6 336.2Q -354.8 303.4 -354.8 231.8Q -354.8 206.6 -350.6 174.9Q -346.4 143.3 -336.9 111.1Q -327.4 78.9 -312.2 48.1Q -297.1 17.3 -275.3 -6.8Q -253.4 -30.9 -224.0 -45.4Q -194.6 -60.0 -157.1 -60.0Q -138.6 -60.0 -121.8 -55.8Q -105.0 -51.6 -92.7 -42.6Q -80.4 -33.7 -73.1 -19.1Q -65.8 -4.6 -65.8 16.2Q -65.8 37.4 -74.8 52.0Q -83.8 66.6 -105.0 66.6Q -111.8 66.6 -120.4 64.0Q -129.1 61.5 -137.0 52.0Q -126.9 47.0 -119.0 31.6Q -111.2 16.2 -111.2 1.0Q -111.2 -13.0 -119.0 -23.3Q -126.9 -33.7 -143.1 -33.7Q -159.4 -33.7 -174.5 -22.2Q -189.6 -10.7 -202.8 8.6Q -215.9 27.9 -226.8 54.0Q -237.8 80.0 -245.6 108.8Q -253.4 137.7 -257.6 167.9Q -261.8 198.2 -261.8 226.2Q -261.8 246.3 -259.0 263.1Q -256.2 279.9 -249.0 292.2Q -241.7 304.6 -228.5 311.3Q -215.4 318.0 -195.2 318.0Q -163.3 318.0 -134.2 302.0Q -105.0 286.1 -85.4 259.2ZM 209.1 360.0 245.0 108.6 139.7 360.0H 63.0L 74.2 107.4L -19.4 360.0H -64.2L 78.1 -24.7Q 36.1 -10.7 12.6 21.2Q -11.0 53.1 -11.0 101.3Q -11.0 111.4 -9.8 117.8Q -8.7 124.2 -7.6 128.4Q -6.5 132.6 -5.1 135.4Q -3.7 138.2 -3.1 139.9Q -30.0 139.9 -46.5 128.4Q -63.0 117.0 -63.0 89.5Q -63.0 62.6 -47.1 35.8Q -31.1 8.9 -5.9 -12.4Q 19.3 -33.7 50.9 -46.8Q 82.6 -60.0 113.9 -60.0Q 136.9 -60.0 157.6 -52.2L 144.7 243.0L 267.9 -52.2H 348.6L 289.8 360.0Z"/></svg><svg class="word" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 -800 5700 1840"><path fill="currentColor" d="M549.0 -170.0Q 529.0 -125.0 497.0 -90.5Q 465.0 -56.0 426.0 -32.0Q 387.0 -8.0 342.0 4.0Q 297.0 16.0 251.0 16.0Q 153.0 16.0 99.0 -42.5Q 45.0 -101.0 45.0 -229.0Q 45.0 -274.0 52.5 -330.5Q 60.0 -387.0 77.0 -444.5Q 94.0 -502.0 121.0 -557.0Q 148.0 -612.0 187.0 -655.0Q 226.0 -698.0 278.5 -724.0Q 331.0 -750.0 398.0 -750.0Q 431.0 -750.0 461.0 -742.5Q 491.0 -735.0 513.0 -719.0Q 535.0 -703.0 548.0 -677.0Q 561.0 -651.0 561.0 -614.0Q 561.0 -576.0 545.0 -550.0Q 529.0 -524.0 491.0 -524.0Q 479.0 -524.0 463.5 -528.5Q 448.0 -533.0 434.0 -550.0Q 452.0 -559.0 466.0 -586.5Q 480.0 -614.0 480.0 -641.0Q 480.0 -666.0 466.0 -684.5Q 452.0 -703.0 423.0 -703.0Q 394.0 -703.0 367.0 -682.5Q 340.0 -662.0 316.5 -627.5Q 293.0 -593.0 273.5 -546.5Q 254.0 -500.0 240.0 -448.5Q 226.0 -397.0 218.5 -343.0Q 211.0 -289.0 211.0 -239.0Q 211.0 -203.0 216.0 -173.0Q 221.0 -143.0 234.0 -121.0Q 247.0 -99.0 270.5 -87.0Q 294.0 -75.0 330.0 -75.0Q 387.0 -75.0 439.0 -103.5Q 491.0 -132.0 526.0 -180.0ZM 784.0 -505.0Q 910.0 -505.0 912.0 -348.0Q 916.0 -347.0 923.0 -347.0Q 940.0 -347.0 960.5 -352.0Q 981.0 -357.0 1001.5 -365.5Q 1022.0 -374.0 1041.5 -385.0Q 1061.0 -396.0 1077.0 -407.0L 1086.0 -380.0Q 1057.0 -349.0 1010.5 -327.5Q 964.0 -306.0 910.0 -297.0Q 904.0 -227.0 883.0 -171.0Q 862.0 -115.0 830.0 -75.5Q 798.0 -36.0 757.0 -15.0Q 716.0 6.0 670.0 6.0Q 635.0 6.0 605.5 -2.5Q 576.0 -11.0 555.0 -30.0Q 534.0 -49.0 522.0 -79.0Q 510.0 -109.0 510.0 -152.0Q 510.0 -181.0 516.0 -218.0Q 522.0 -255.0 535.5 -294.5Q 549.0 -334.0 570.0 -371.5Q 591.0 -409.0 621.5 -439.0Q 652.0 -469.0 692.0 -487.0Q 732.0 -505.0 784.0 -505.0ZM 710.0 -88.0Q 728.0 -88.0 746.5 -103.5Q 765.0 -119.0 780.5 -146.5Q 796.0 -174.0 808.0 -212.0Q 820.0 -250.0 826.0 -294.0Q 810.0 -298.0 804.5 -309.5Q 799.0 -321.0 799.0 -336.0Q 799.0 -357.0 807.5 -370.5Q 816.0 -384.0 830.0 -389.0Q 828.0 -420.0 819.5 -432.5Q 811.0 -445.0 792.0 -445.0Q 765.0 -445.0 741.0 -415.5Q 717.0 -386.0 699.0 -343.5Q 681.0 -301.0 670.0 -253.5Q 659.0 -206.0 659.0 -169.0Q 659.0 -144.0 661.5 -128.5Q 664.0 -113.0 670.0 -104.0Q 676.0 -95.0 686.0 -91.5Q 696.0 -88.0 710.0 -88.0ZM 1422.0 -500.0 1350.0 -160.0Q 1346.0 -143.0 1346.0 -128.0Q 1346.0 -107.0 1356.0 -99.0Q 1366.0 -91.0 1387.0 -91.0Q 1416.0 -91.0 1436.5 -116.0Q 1457.0 -141.0 1468.0 -179.0H 1510.0Q 1489.0 -118.0 1462.5 -81.5Q 1436.0 -45.0 1408.5 -25.5Q 1381.0 -6.0 1355.0 0.0Q 1329.0 6.0 1309.0 6.0Q 1266.0 6.0 1240.5 -18.0Q 1215.0 -42.0 1210.0 -89.0Q 1191.0 -58.0 1171.5 -39.5Q 1152.0 -21.0 1133.0 -11.0Q 1114.0 -1.0 1096.0 2.5Q 1078.0 6.0 1062.0 6.0Q 1017.0 6.0 986.0 -22.5Q 955.0 -51.0 955.0 -114.0Q 955.0 -141.0 963.0 -179.0L 1031.0 -500.0H 1175.0L 1103.0 -160.0Q 1100.0 -145.0 1100.0 -132.0Q 1100.0 -115.0 1106.5 -103.0Q 1113.0 -91.0 1130.0 -91.0Q 1159.0 -91.0 1179.0 -116.0Q 1199.0 -141.0 1210.0 -179.0L 1278.0 -500.0ZM 1804.0 -520.0Q 1822.0 -520.0 1834.0 -512.5Q 1846.0 -505.0 1853.5 -493.0Q 1861.0 -481.0 1864.0 -465.0Q 1867.0 -449.0 1867.0 -433.0Q 1867.0 -393.0 1860.0 -345.0Q 1853.0 -297.0 1838.5 -248.0Q 1824.0 -199.0 1801.0 -153.5Q 1778.0 -108.0 1746.5 -72.5Q 1715.0 -37.0 1674.0 -15.5Q 1633.0 6.0 1582.0 6.0Q 1525.0 6.0 1492.0 -23.0Q 1459.0 -52.0 1459.0 -112.0Q 1459.0 -120.0 1460.0 -133.0Q 1461.0 -146.0 1464.0 -160.0L 1536.0 -500.0H 1680.0L 1608.0 -160.0Q 1603.0 -137.0 1603.0 -124.0Q 1603.0 -109.0 1611.0 -100.0Q 1619.0 -91.0 1637.0 -91.0Q 1661.0 -91.0 1683.5 -108.0Q 1706.0 -125.0 1725.5 -153.0Q 1745.0 -181.0 1760.5 -216.5Q 1776.0 -252.0 1787.0 -289.5Q 1798.0 -327.0 1804.0 -362.0Q 1810.0 -397.0 1810.0 -425.0Q 1808.0 -420.0 1796.0 -417.5Q 1784.0 -415.0 1778.0 -415.0Q 1760.0 -415.0 1751.0 -432.0Q 1742.0 -449.0 1742.0 -466.0Q 1742.0 -489.0 1757.0 -504.5Q 1772.0 -520.0 1804.0 -520.0ZM 2017.0 -162.0Q 2017.0 -111.0 2035.0 -94.5Q 2053.0 -78.0 2089.0 -78.0Q 2119.0 -78.0 2143.0 -86.0Q 2167.0 -94.0 2188.0 -107.5Q 2209.0 -121.0 2228.0 -139.5Q 2247.0 -158.0 2266.0 -179.0H 2300.0Q 2279.0 -144.0 2252.0 -111.0Q 2225.0 -78.0 2191.0 -52.0Q 2157.0 -26.0 2116.0 -10.0Q 2075.0 6.0 2025.0 6.0Q 1954.0 6.0 1911.5 -31.0Q 1869.0 -68.0 1869.0 -153.0Q 1869.0 -182.0 1875.0 -219.0Q 1881.0 -256.0 1893.5 -295.0Q 1906.0 -334.0 1927.0 -371.5Q 1948.0 -409.0 1978.0 -439.0Q 2008.0 -469.0 2048.0 -487.0Q 2088.0 -505.0 2139.0 -505.0Q 2172.0 -505.0 2193.5 -497.0Q 2215.0 -489.0 2227.5 -475.5Q 2240.0 -462.0 2244.5 -445.0Q 2249.0 -428.0 2249.0 -409.0Q 2249.0 -367.0 2230.0 -330.0Q 2211.0 -293.0 2179.0 -265.5Q 2147.0 -238.0 2105.5 -221.5Q 2064.0 -205.0 2019.0 -202.0Q 2018.0 -191.0 2017.5 -181.0Q 2017.0 -171.0 2017.0 -162.0ZM 2172.0 -411.0Q 2172.0 -430.0 2166.5 -441.0Q 2161.0 -452.0 2147.0 -452.0Q 2128.0 -452.0 2110.0 -434.0Q 2092.0 -416.0 2076.0 -387.5Q 2060.0 -359.0 2047.5 -323.0Q 2035.0 -287.0 2027.0 -250.0Q 2056.0 -252.0 2082.5 -266.0Q 2109.0 -280.0 2129.0 -302.0Q 2149.0 -324.0 2160.5 -352.5Q 2172.0 -381.0 2172.0 -411.0ZM 2478.0 -500.0 2464.0 -437.0Q 2493.0 -465.0 2524.5 -485.0Q 2556.0 -505.0 2586.0 -505.0Q 2620.0 -505.0 2637.5 -482.0Q 2655.0 -459.0 2655.0 -430.0Q 2655.0 -417.0 2650.5 -404.0Q 2646.0 -391.0 2637.0 -380.5Q 2628.0 -370.0 2614.5 -363.5Q 2601.0 -357.0 2583.0 -357.0Q 2562.0 -357.0 2554.5 -367.0Q 2547.0 -377.0 2544.0 -388.5Q 2541.0 -400.0 2538.5 -410.0Q 2536.0 -420.0 2525.0 -420.0Q 2506.0 -420.0 2489.0 -409.0Q 2472.0 -398.0 2452.0 -380.0L 2372.0 0.0H 2228.0L 2334.0 -500.0ZM 2888.0 -658.0 2854.0 -500.0H 2914.0L 2906.0 -460.0H 2846.0L 2782.0 -160.0Q 2778.0 -143.0 2778.0 -128.0Q 2778.0 -107.0 2788.0 -99.0Q 2798.0 -91.0 2819.0 -91.0Q 2848.0 -91.0 2873.0 -116.0Q 2898.0 -141.0 2909.0 -179.0H 2951.0Q 2930.0 -118.0 2902.0 -81.5Q 2874.0 -45.0 2845.0 -25.5Q 2816.0 -6.0 2788.5 0.0Q 2761.0 6.0 2741.0 6.0Q 2696.0 6.0 2665.0 -22.5Q 2634.0 -51.0 2634.0 -114.0Q 2634.0 -141.0 2642.0 -179.0L 2702.0 -460.0H 2669.0L 2677.0 -500.0H 2710.0L 2740.0 -638.0ZM 3368.0 -500.0 3296.0 -160.0Q 3292.0 -143.0 3292.0 -128.0Q 3292.0 -107.0 3302.0 -99.0Q 3312.0 -91.0 3333.0 -91.0Q 3362.0 -91.0 3382.5 -116.0Q 3403.0 -141.0 3414.0 -179.0H 3456.0Q 3435.0 -118.0 3408.5 -81.5Q 3382.0 -45.0 3354.5 -25.5Q 3327.0 -6.0 3301.0 0.0Q 3275.0 6.0 3255.0 6.0Q 3212.0 6.0 3186.5 -18.0Q 3161.0 -42.0 3156.0 -89.0Q 3137.0 -58.0 3117.5 -39.5Q 3098.0 -21.0 3079.0 -11.0Q 3060.0 -1.0 3042.0 2.5Q 3024.0 6.0 3008.0 6.0Q 2963.0 6.0 2932.0 -22.5Q 2901.0 -51.0 2901.0 -114.0Q 2901.0 -141.0 2909.0 -179.0L 2977.0 -500.0H 3121.0L 3049.0 -160.0Q 3046.0 -145.0 3046.0 -132.0Q 3046.0 -115.0 3052.5 -103.0Q 3059.0 -91.0 3076.0 -91.0Q 3105.0 -91.0 3125.0 -116.0Q 3145.0 -141.0 3156.0 -179.0L 3224.0 -500.0ZM 3626.0 -500.0 3612.0 -437.0Q 3641.0 -465.0 3672.5 -485.0Q 3704.0 -505.0 3734.0 -505.0Q 3768.0 -505.0 3785.5 -482.0Q 3803.0 -459.0 3803.0 -430.0Q 3803.0 -417.0 3798.5 -404.0Q 3794.0 -391.0 3785.0 -380.5Q 3776.0 -370.0 3762.5 -363.5Q 3749.0 -357.0 3731.0 -357.0Q 3710.0 -357.0 3702.5 -367.0Q 3695.0 -377.0 3692.0 -388.5Q 3689.0 -400.0 3686.5 -410.0Q 3684.0 -420.0 3673.0 -420.0Q 3654.0 -420.0 3637.0 -409.0Q 3620.0 -398.0 3600.0 -380.0L 3520.0 0.0H 3376.0L 3482.0 -500.0ZM 3925.0 -162.0Q 3925.0 -111.0 3943.0 -94.5Q 3961.0 -78.0 3997.0 -78.0Q 4027.0 -78.0 4051.0 -86.0Q 4075.0 -94.0 4096.0 -107.5Q 4117.0 -121.0 4136.0 -139.5Q 4155.0 -158.0 4174.0 -179.0H 4208.0Q 4187.0 -144.0 4160.0 -111.0Q 4133.0 -78.0 4099.0 -52.0Q 4065.0 -26.0 4024.0 -10.0Q 3983.0 6.0 3933.0 6.0Q 3862.0 6.0 3819.5 -31.0Q 3777.0 -68.0 3777.0 -153.0Q 3777.0 -182.0 3783.0 -219.0Q 3789.0 -256.0 3801.5 -295.0Q 3814.0 -334.0 3835.0 -371.5Q 3856.0 -409.0 3886.0 -439.0Q 3916.0 -469.0 3956.0 -487.0Q 3996.0 -505.0 4047.0 -505.0Q 4080.0 -505.0 4101.5 -497.0Q 4123.0 -489.0 4135.5 -475.5Q 4148.0 -462.0 4152.5 -445.0Q 4157.0 -428.0 4157.0 -409.0Q 4157.0 -367.0 4138.0 -330.0Q 4119.0 -293.0 4087.0 -265.5Q 4055.0 -238.0 4013.5 -221.5Q 3972.0 -205.0 3927.0 -202.0Q 3926.0 -191.0 3925.5 -181.0Q 3925.0 -171.0 3925.0 -162.0ZM 4080.0 -411.0Q 4080.0 -430.0 4074.5 -441.0Q 4069.0 -452.0 4055.0 -452.0Q 4036.0 -452.0 4018.0 -434.0Q 4000.0 -416.0 3984.0 -387.5Q 3968.0 -359.0 3955.5 -323.0Q 3943.0 -287.0 3935.0 -250.0Q 3964.0 -252.0 3990.5 -266.0Q 4017.0 -280.0 4037.0 -302.0Q 4057.0 -324.0 4068.5 -352.5Q 4080.0 -381.0 4080.0 -411.0ZM 4598.0 -179.0Q 4559.0 -134.0 4519.5 -104.0Q 4480.0 -74.0 4445.0 -54.0Q 4429.0 -37.0 4410.0 -26.0Q 4391.0 -15.0 4370.0 -7.5Q 4349.0 0.0 4328.0 3.0Q 4307.0 6.0 4288.0 6.0Q 4250.0 6.0 4222.5 -5.5Q 4195.0 -17.0 4177.0 -35.0Q 4159.0 -53.0 4150.5 -76.0Q 4142.0 -99.0 4142.0 -122.0Q 4142.0 -157.0 4158.0 -181.0Q 4174.0 -205.0 4195.0 -215.0Q 4237.0 -290.0 4266.0 -363.5Q 4295.0 -437.0 4318.0 -511.0L 4466.0 -531.0Q 4470.0 -434.0 4474.0 -374.0Q 4478.0 -314.0 4481.0 -276.5Q 4484.0 -239.0 4486.0 -215.5Q 4488.0 -192.0 4488.0 -167.0Q 4488.0 -145.0 4484.0 -129.0Q 4527.0 -154.0 4556.0 -179.0ZM 4266.0 -179.0Q 4266.0 -161.0 4254.0 -145.5Q 4242.0 -130.0 4222.0 -130.0Q 4214.0 -130.0 4206.5 -132.5Q 4199.0 -135.0 4195.0 -143.0Q 4195.0 -108.0 4209.0 -90.5Q 4223.0 -73.0 4256.0 -73.0Q 4272.0 -73.0 4288.0 -77.5Q 4304.0 -82.0 4316.0 -93.0Q 4328.0 -104.0 4335.5 -122.0Q 4343.0 -140.0 4343.0 -166.0Q 4343.0 -185.0 4341.5 -203.0Q 4340.0 -221.0 4337.5 -246.0Q 4335.0 -271.0 4331.5 -308.0Q 4328.0 -345.0 4324.0 -403.0Q 4309.0 -354.0 4288.5 -308.0Q 4268.0 -262.0 4243.0 -214.0Q 4253.0 -209.0 4259.5 -200.5Q 4266.0 -192.0 4266.0 -179.0ZM1330.6 537.6Q 1330.6 497.9 1302.5 497.9Q 1281.4 497.9 1265.8 518.9Q 1250.2 540.0 1241.6 569.6L 1188.6 820.0H 1076.3L 1133.2 550.9Q 1135.6 541.5 1135.6 531.4Q 1135.6 518.1 1130.5 507.6Q 1125.4 497.1 1112.2 497.1Q 1089.5 497.1 1073.5 518.5Q 1057.6 540.0 1049.0 569.6L 995.9 820.0H 883.6L 966.3 430.0H 1078.6L 1070.0 470.6Q 1095.0 442.5 1120.0 434.3Q 1144.9 426.1 1165.2 426.1Q 1194.1 426.1 1215.5 440.1Q 1237.0 454.2 1244.8 493.2Q 1258.8 471.3 1273.6 458.5Q 1288.4 445.6 1302.9 438.6Q 1317.3 431.6 1330.2 429.2Q 1343.0 426.9 1354.0 426.9Q 1391.4 426.9 1416.0 447.6Q 1440.5 468.2 1440.5 515.0Q 1440.5 538.4 1434.7 566.9Q 1428.8 595.4 1421.8 623.0Q 1414.8 650.7 1409.0 675.3Q 1403.1 699.9 1403.1 716.3Q 1403.1 731.1 1409.7 740.0Q 1416.4 749.0 1434.3 749.0Q 1446.8 749.0 1456.5 744.0Q 1466.3 738.9 1473.7 729.9Q 1481.1 720.9 1487.3 708.5Q 1493.6 696.0 1499.8 680.4H 1532.6Q 1516.2 728.7 1497.5 757.2Q 1478.8 785.7 1459.3 800.5Q 1439.8 815.3 1421.4 820.0Q 1403.1 824.7 1387.5 824.7Q 1361.8 824.7 1344.2 817.3Q 1326.7 809.9 1315.7 797.4Q 1304.8 784.9 1300.1 768.9Q 1295.5 752.9 1295.5 736.5Q 1295.5 717.0 1300.9 690.1Q 1306.4 663.2 1313.0 635.9Q 1319.6 608.6 1325.1 582.5Q 1330.6 556.4 1330.6 537.6ZM 1702.6 426.1Q 1800.9 426.1 1802.5 548.6Q 1805.6 549.3 1811.0 549.3Q 1824.3 549.3 1840.3 545.4Q 1856.3 541.5 1872.3 534.9Q 1888.3 528.3 1903.5 519.7Q 1918.7 511.1 1931.2 502.5L 1938.2 523.6Q 1915.6 547.8 1879.3 564.5Q 1843.0 581.3 1800.9 588.3Q 1796.2 642.9 1779.8 686.6Q 1763.5 730.3 1738.5 761.1Q 1713.5 791.9 1681.6 808.3Q 1649.6 824.7 1613.7 824.7Q 1586.4 824.7 1563.4 818.0Q 1540.4 811.4 1524.0 796.6Q 1507.6 781.8 1498.3 758.4Q 1488.9 735.0 1488.9 701.4Q 1488.9 678.8 1493.6 650.0Q 1498.3 621.1 1508.8 590.3Q 1519.3 559.5 1535.7 530.2Q 1552.1 501.0 1575.9 477.6Q 1599.7 454.2 1630.9 440.1Q 1662.1 426.1 1702.6 426.1ZM 1644.9 751.4Q 1658.9 751.4 1673.4 739.3Q 1687.8 727.2 1699.9 705.7Q 1712.0 684.3 1721.3 654.6Q 1730.7 625.0 1735.4 590.7Q 1722.9 587.6 1718.6 578.6Q 1714.3 569.6 1714.3 557.9Q 1714.3 541.5 1721.0 531.0Q 1727.6 520.5 1738.5 516.6Q 1736.9 492.4 1730.3 482.6Q 1723.7 472.9 1708.9 472.9Q 1687.8 472.9 1669.1 495.9Q 1650.4 518.9 1636.3 552.1Q 1622.3 585.2 1613.7 622.3Q 1605.1 659.3 1605.1 688.2Q 1605.1 707.7 1607.1 719.8Q 1609.0 731.9 1613.7 738.9Q 1618.4 745.9 1626.2 748.6Q 1634.0 751.4 1644.9 751.4ZM 2066.9 537.6Q 2066.9 497.9 2038.8 497.9Q 2017.7 497.9 2002.1 518.9Q 1986.5 540.0 1978.0 569.6L 1924.9 820.0H 1812.6L 1895.3 430.0H 2007.6L 1999.0 470.6Q 2024.0 442.5 2048.2 434.7Q 2072.3 426.9 2090.3 426.9Q 2127.7 426.9 2152.3 447.6Q 2176.9 468.2 2176.9 515.0Q 2176.9 538.4 2171.0 566.9Q 2165.2 595.4 2158.1 623.0Q 2151.1 650.7 2145.3 675.3Q 2139.4 699.9 2139.4 716.3Q 2139.4 731.1 2146.1 740.0Q 2152.7 749.0 2170.6 749.0Q 2183.1 749.0 2192.9 744.0Q 2202.6 738.9 2210.0 729.9Q 2217.4 720.9 2223.7 708.5Q 2229.9 696.0 2236.1 680.4H 2268.9Q 2252.5 728.7 2233.8 757.2Q 2215.1 785.7 2195.6 800.5Q 2176.1 815.3 2157.8 820.0Q 2139.4 824.7 2123.8 824.7Q 2098.1 824.7 2080.5 817.3Q 2063.0 809.9 2052.1 797.4Q 2041.1 784.9 2036.5 768.9Q 2031.8 752.9 2031.8 736.5Q 2031.8 717.0 2037.2 690.1Q 2042.7 663.2 2049.3 635.9Q 2056.0 608.6 2061.4 582.5Q 2066.9 556.4 2066.9 537.6ZM 2428.0 306.8 2401.5 430.0H 2448.3L 2442.1 461.2H 2395.3L 2345.3 695.2Q 2342.2 708.5 2342.2 720.2Q 2342.2 736.5 2350.0 742.8Q 2357.8 749.0 2374.2 749.0Q 2396.8 749.0 2416.3 729.5Q 2435.8 710.0 2444.4 680.4H 2477.2Q 2460.8 728.0 2438.9 756.4Q 2417.1 784.9 2394.5 800.1Q 2371.9 815.3 2350.4 820.0Q 2329.0 824.7 2313.4 824.7Q 2278.3 824.7 2254.1 802.5Q 2229.9 780.2 2229.9 731.1Q 2229.9 710.0 2236.1 680.4L 2282.9 461.2H 2257.2L 2263.4 430.0H 2289.2L 2312.6 322.4ZM 2549.7 693.6Q 2549.7 733.4 2563.7 746.3Q 2577.8 759.2 2605.9 759.2Q 2629.3 759.2 2648.0 752.9Q 2666.7 746.7 2683.1 736.1Q 2699.5 725.6 2714.3 711.2Q 2729.1 696.8 2743.9 680.4H 2770.4Q 2754.1 707.7 2733.0 733.4Q 2711.9 759.2 2685.4 779.4Q 2658.9 799.7 2626.9 812.2Q 2594.9 824.7 2555.9 824.7Q 2500.6 824.7 2467.4 795.8Q 2434.3 767.0 2434.3 700.7Q 2434.3 678.0 2438.9 649.2Q 2443.6 620.3 2453.4 589.9Q 2463.1 559.5 2479.5 530.2Q 2495.9 501.0 2519.3 477.6Q 2542.7 454.2 2573.9 440.1Q 2605.1 426.1 2644.9 426.1Q 2670.6 426.1 2687.4 432.3Q 2704.1 438.6 2713.9 449.1Q 2723.6 459.6 2727.2 472.9Q 2730.7 486.2 2730.7 501.0Q 2730.7 533.7 2715.8 562.6Q 2701.0 591.5 2676.1 612.9Q 2651.1 634.4 2618.7 647.2Q 2586.4 660.1 2551.3 662.4Q 2550.5 671.0 2550.1 678.8Q 2549.7 686.6 2549.7 693.6ZM 2666.7 235.0H 2748.6L 2654.2 382.4H 2595.7ZM 2670.6 499.4Q 2670.6 484.6 2666.3 476.0Q 2662.0 467.4 2651.1 467.4Q 2636.3 467.4 2622.2 481.5Q 2608.2 495.5 2595.7 517.8Q 2583.2 540.0 2573.5 568.1Q 2563.7 596.1 2557.5 625.0Q 2580.1 623.4 2600.8 612.5Q 2621.5 601.6 2637.1 584.4Q 2652.7 567.3 2661.6 545.0Q 2670.6 522.8 2670.6 499.4ZM 2909.3 430.0 2898.4 479.1Q 2921.0 457.3 2945.6 441.7Q 2970.1 426.1 2993.5 426.1Q 3020.0 426.1 3033.7 444.0Q 3047.3 462.0 3047.3 484.6Q 3047.3 494.7 3043.8 504.9Q 3040.3 515.0 3033.3 523.2Q 3026.3 531.4 3015.8 536.5Q 3005.2 541.5 2991.2 541.5Q 2974.8 541.5 2969.0 533.7Q 2963.1 525.9 2960.8 517.0Q 2958.4 508.0 2956.5 500.2Q 2954.5 492.4 2945.9 492.4Q 2931.1 492.4 2917.9 501.0Q 2904.6 509.6 2889.0 523.6L 2826.6 820.0H 2714.3L 2797.0 430.0ZM 3142.5 693.6Q 3142.5 733.4 3156.5 746.3Q 3170.6 759.2 3198.7 759.2Q 3222.1 759.2 3240.8 752.9Q 3259.5 746.7 3275.9 736.1Q 3292.3 725.6 3307.1 711.2Q 3321.9 696.8 3336.7 680.4H 3363.2Q 3346.9 707.7 3325.8 733.4Q 3304.7 759.2 3278.2 779.4Q 3251.7 799.7 3219.7 812.2Q 3187.7 824.7 3148.7 824.7Q 3093.4 824.7 3060.2 795.8Q 3027.1 767.0 3027.1 700.7Q 3027.1 678.0 3031.7 649.2Q 3036.4 620.3 3046.2 589.9Q 3055.9 559.5 3072.3 530.2Q 3088.7 501.0 3112.1 477.6Q 3135.5 454.2 3166.7 440.1Q 3197.9 426.1 3237.7 426.1Q 3263.4 426.1 3280.2 432.3Q 3296.9 438.6 3306.7 449.1Q 3316.4 459.6 3320.0 472.9Q 3323.5 486.2 3323.5 501.0Q 3323.5 533.7 3308.6 562.6Q 3293.8 591.5 3268.9 612.9Q 3243.9 634.4 3211.5 647.2Q 3179.2 660.1 3144.1 662.4Q 3143.3 671.0 3142.9 678.8Q 3142.5 686.6 3142.5 693.6ZM 3259.5 235.0H 3341.4L 3247.0 382.4H 3188.5ZM 3263.4 499.4Q 3263.4 484.6 3259.1 476.0Q 3254.8 467.4 3243.9 467.4Q 3229.1 467.4 3215.0 481.5Q 3201.0 495.5 3188.5 517.8Q 3176.0 540.0 3166.3 568.1Q 3156.5 596.1 3150.3 625.0Q 3172.9 623.4 3193.6 612.5Q 3214.3 601.6 3229.9 584.4Q 3245.5 567.3 3254.4 545.0Q 3263.4 522.8 3263.4 499.4ZM 3711.1 430.0 3633.9 791.9Q 3669.8 779.4 3692.8 755.3Q 3715.8 731.1 3732.2 680.4H 3764.9Q 3753.2 719.4 3737.2 745.1Q 3721.3 770.9 3702.5 787.2Q 3683.8 803.6 3664.3 812.6Q 3644.8 821.6 3626.9 826.2L 3615.2 882.4Q 3606.6 924.5 3590.6 950.3Q 3574.6 976.0 3555.5 990.4Q 3536.4 1004.9 3515.3 1009.9Q 3494.3 1015.0 3474.8 1015.0Q 3438.9 1015.0 3413.2 996.3Q 3387.4 977.6 3387.4 939.3Q 3387.4 915.2 3399.1 896.4Q 3410.8 877.7 3429.2 863.7Q 3447.5 849.6 3470.1 839.9Q 3492.7 830.1 3514.6 823.1L 3529.4 756.8Q 3512.2 777.9 3488.4 793.5Q 3464.6 809.1 3430.3 809.1Q 3410.0 809.1 3391.7 802.5Q 3373.4 795.8 3358.6 781.0Q 3343.7 766.2 3335.2 742.4Q 3326.6 718.6 3326.6 683.5Q 3326.6 658.5 3332.0 630.1Q 3337.5 601.6 3348.4 572.7Q 3359.3 543.9 3375.7 517.4Q 3392.1 490.8 3414.7 470.6Q 3437.3 450.3 3465.0 438.2Q 3492.7 426.1 3527.0 426.1Q 3536.4 426.1 3546.9 427.3Q 3557.5 428.4 3566.4 432.7Q 3575.4 437.0 3582.0 444.8Q 3588.7 452.6 3591.0 466.7L 3598.8 430.0ZM 3551.2 474.5Q 3526.3 474.5 3506.0 495.9Q 3485.7 517.4 3471.7 547.8Q 3457.6 578.2 3449.8 612.5Q 3442.0 646.8 3442.0 672.6Q 3442.0 695.2 3446.3 707.3Q 3450.6 719.4 3456.5 725.2Q 3462.3 731.1 3468.9 732.2Q 3475.6 733.4 3481.0 733.4Q 3498.2 733.4 3519.6 716.3Q 3541.1 699.1 3548.9 664.8L 3583.2 503.3Q 3582.4 496.3 3575.8 485.4Q 3569.2 474.5 3551.2 474.5ZM 3430.3 928.4Q 3430.3 937.0 3437.0 945.6Q 3443.6 954.2 3456.8 954.2Q 3469.3 954.2 3481.8 937.0Q 3494.3 919.8 3502.1 884.7L 3506.8 862.1Q 3491.9 867.6 3477.9 874.2Q 3463.9 880.8 3453.3 889.0Q 3442.8 897.2 3436.6 907.0Q 3430.3 916.7 3430.3 928.4ZM 3800.8 326.3Q 3800.8 300.5 3818.8 282.2Q 3836.7 263.9 3862.4 263.9Q 3888.2 263.9 3906.5 282.2Q 3924.8 300.5 3924.8 326.3Q 3924.8 352.0 3906.5 369.9Q 3888.2 387.9 3862.4 387.9Q 3836.7 387.9 3818.8 369.9Q 3800.8 352.0 3800.8 326.3ZM 3897.5 430.0 3841.4 695.2Q 3838.3 708.5 3838.3 720.2Q 3838.3 736.5 3846.1 742.8Q 3853.9 749.0 3870.2 749.0Q 3892.9 749.0 3912.4 729.5Q 3931.9 710.0 3940.4 680.4H 3973.2Q 3956.8 728.0 3935.0 756.4Q 3913.1 784.9 3890.5 800.1Q 3867.9 815.3 3846.5 820.0Q 3825.0 824.7 3809.4 824.7Q 3774.3 824.7 3750.1 802.5Q 3725.9 780.2 3725.9 731.1Q 3725.9 710.0 3732.2 680.4L 3785.2 430.0ZM 4045.7 693.6Q 4045.7 733.4 4059.8 746.3Q 4073.8 759.2 4101.9 759.2Q 4125.3 759.2 4144.0 752.9Q 4162.7 746.7 4179.1 736.1Q 4195.5 725.6 4210.3 711.2Q 4225.1 696.8 4240.0 680.4H 4266.5Q 4250.1 707.7 4229.0 733.4Q 4208.0 759.2 4181.5 779.4Q 4154.9 799.7 4123.0 812.2Q 4091.0 824.7 4052.0 824.7Q 3996.6 824.7 3963.5 795.8Q 3930.3 767.0 3930.3 700.7Q 3930.3 678.0 3935.0 649.2Q 3939.7 620.3 3949.4 589.9Q 3959.2 559.5 3975.5 530.2Q 3991.9 501.0 4015.3 477.6Q 4038.7 454.2 4069.9 440.1Q 4101.1 426.1 4140.9 426.1Q 4166.6 426.1 4183.4 432.3Q 4200.2 438.6 4209.9 449.1Q 4219.7 459.6 4223.2 472.9Q 4226.7 486.2 4226.7 501.0Q 4226.7 533.7 4211.9 562.6Q 4197.1 591.5 4172.1 612.9Q 4147.1 634.4 4114.8 647.2Q 4082.4 660.1 4047.3 662.4Q 4046.5 671.0 4046.1 678.8Q 4045.7 686.6 4045.7 693.6ZM 4166.6 499.4Q 4166.6 484.6 4162.4 476.0Q 4158.1 467.4 4147.1 467.4Q 4132.3 467.4 4118.3 481.5Q 4104.2 495.5 4091.8 517.8Q 4079.3 540.0 4069.5 568.1Q 4059.8 596.1 4053.5 625.0Q 4076.2 623.4 4096.8 612.5Q 4117.5 601.6 4133.1 584.4Q 4148.7 567.3 4157.7 545.0Q 4166.6 522.8 4166.6 499.4ZM 4464.6 537.6Q 4464.6 497.9 4436.5 497.9Q 4415.5 497.9 4399.9 518.9Q 4384.3 540.0 4375.7 569.6L 4322.6 820.0H 4210.3L 4293.0 430.0H 4405.3L 4396.7 470.6Q 4421.7 442.5 4445.9 434.7Q 4470.1 426.9 4488.0 426.9Q 4525.4 426.9 4550.0 447.6Q 4574.6 468.2 4574.6 515.0Q 4574.6 538.4 4568.7 566.9Q 4562.9 595.4 4555.9 623.0Q 4548.8 650.7 4543.0 675.3Q 4537.1 699.9 4537.1 716.3Q 4537.1 731.1 4543.8 740.0Q 4550.4 749.0 4568.3 749.0Q 4580.8 749.0 4590.6 744.0Q 4600.3 738.9 4607.7 729.9Q 4615.1 720.9 4621.4 708.5Q 4627.6 696.0 4633.9 680.4H 4666.6Q 4650.2 728.7 4631.5 757.2Q 4612.8 785.7 4593.3 800.5Q 4573.8 815.3 4555.5 820.0Q 4537.1 824.7 4521.5 824.7Q 4495.8 824.7 4478.2 817.3Q 4460.7 809.9 4449.8 797.4Q 4438.9 784.9 4434.2 768.9Q 4429.5 752.9 4429.5 736.5Q 4429.5 717.0 4435.0 690.1Q 4440.4 663.2 4447.1 635.9Q 4453.7 608.6 4459.1 582.5Q 4464.6 556.4 4464.6 537.6ZM 4858.5 537.6Q 4858.5 497.9 4830.4 497.9Q 4809.4 497.9 4793.8 518.9Q 4778.2 540.0 4769.6 569.6L 4716.5 820.0H 4604.2L 4686.9 430.0H 4799.2L 4790.6 470.6Q 4815.6 442.5 4839.8 434.7Q 4864.0 426.9 4881.9 426.9Q 4919.3 426.9 4943.9 447.6Q 4968.5 468.2 4968.5 515.0Q 4968.5 538.4 4962.6 566.9Q 4956.8 595.4 4949.8 623.0Q 4942.7 650.7 4936.9 675.3Q 4931.0 699.9 4931.0 716.3Q 4931.0 731.1 4937.7 740.0Q 4944.3 749.0 4962.2 749.0Q 4974.7 749.0 4984.5 744.0Q 4994.2 738.9 5001.6 729.9Q 5009.0 720.9 5015.3 708.5Q 5021.5 696.0 5027.8 680.4H 5060.5Q 5044.1 728.7 5025.4 757.2Q 5006.7 785.7 4987.2 800.5Q 4967.7 815.3 4949.4 820.0Q 4931.0 824.7 4915.4 824.7Q 4889.7 824.7 4872.1 817.3Q 4854.6 809.9 4843.7 797.4Q 4832.8 784.9 4828.1 768.9Q 4823.4 752.9 4823.4 736.5Q 4823.4 717.0 4828.9 690.1Q 4834.3 663.2 4841.0 635.9Q 4847.6 608.6 4853.0 582.5Q 4858.5 556.4 4858.5 537.6ZM 5133.1 693.6Q 5133.1 733.4 5147.1 746.3Q 5161.1 759.2 5189.2 759.2Q 5212.6 759.2 5231.3 752.9Q 5250.1 746.7 5266.4 736.1Q 5282.8 725.6 5297.6 711.2Q 5312.5 696.8 5327.3 680.4H 5353.8Q 5337.4 707.7 5316.4 733.4Q 5295.3 759.2 5268.8 779.4Q 5242.3 799.7 5210.3 812.2Q 5178.3 824.7 5139.3 824.7Q 5083.9 824.7 5050.8 795.8Q 5017.6 767.0 5017.6 700.7Q 5017.6 678.0 5022.3 649.2Q 5027.0 620.3 5036.7 589.9Q 5046.5 559.5 5062.9 530.2Q 5079.2 501.0 5102.6 477.6Q 5126.0 454.2 5157.2 440.1Q 5188.4 426.1 5228.2 426.1Q 5254.0 426.1 5270.7 432.3Q 5287.5 438.6 5297.2 449.1Q 5307.0 459.6 5310.5 472.9Q 5314.0 486.2 5314.0 501.0Q 5314.0 533.7 5299.2 562.6Q 5284.4 591.5 5259.4 612.9Q 5234.5 634.4 5202.1 647.2Q 5169.7 660.1 5134.6 662.4Q 5133.8 671.0 5133.4 678.8Q 5133.1 686.6 5133.1 693.6ZM 5254.0 499.4Q 5254.0 484.6 5249.7 476.0Q 5245.4 467.4 5234.5 467.4Q 5219.6 467.4 5205.6 481.5Q 5191.6 495.5 5179.1 517.8Q 5166.6 540.0 5156.9 568.1Q 5147.1 596.1 5140.9 625.0Q 5163.5 623.4 5184.2 612.5Q 5204.8 601.6 5220.4 584.4Q 5236.0 567.3 5245.0 545.0Q 5254.0 522.8 5254.0 499.4ZM 5658.0 680.4Q 5627.6 715.5 5596.8 738.9Q 5566.0 762.3 5538.7 777.9Q 5526.2 791.1 5511.4 799.7Q 5496.5 808.3 5480.2 814.1Q 5463.8 820.0 5447.4 822.3Q 5431.0 824.7 5416.2 824.7Q 5386.6 824.7 5365.1 815.7Q 5343.7 806.7 5329.6 792.7Q 5315.6 778.7 5308.9 760.7Q 5302.3 742.8 5302.3 724.8Q 5302.3 697.5 5314.8 678.8Q 5327.3 660.1 5343.7 652.3Q 5376.4 593.8 5399.0 536.5Q 5421.7 479.1 5439.6 421.4L 5555.0 405.8Q 5558.2 481.5 5561.3 528.3Q 5564.4 575.1 5566.7 604.3Q 5569.1 633.6 5570.6 651.9Q 5572.2 670.2 5572.2 689.7Q 5572.2 706.9 5569.1 719.4Q 5602.6 699.9 5625.2 680.4ZM 5399.0 680.4Q 5399.0 694.4 5389.7 706.5Q 5380.3 718.6 5364.7 718.6Q 5358.5 718.6 5352.6 716.6Q 5346.8 714.7 5343.7 708.5Q 5343.7 735.8 5354.6 749.4Q 5365.5 763.1 5391.2 763.1Q 5403.7 763.1 5416.2 759.5Q 5428.7 756.0 5438.0 747.5Q 5447.4 738.9 5453.2 724.8Q 5459.1 710.8 5459.1 690.5Q 5459.1 675.7 5457.9 661.7Q 5456.8 647.6 5454.8 628.1Q 5452.9 608.6 5450.1 579.8Q 5447.4 550.9 5444.3 505.7Q 5432.6 543.9 5416.6 579.8Q 5400.6 615.6 5381.1 653.1Q 5388.9 657.0 5394.0 663.6Q 5399.0 670.2 5399.0 680.4Z"/></svg></a>
+    <nav class="nav-links" aria-label="Menu">
+      <a href="#pose"><span data-fr>Toit blanc</span><span data-en>White roof</span></a>
+      <a href="#services"><span data-fr>Services</span><span data-en>Services</span></a>
+      <a href="#comparer"><span data-fr>Comparer</span><span data-en>Compare</span></a>
+      <a href="#soumission"><span data-fr>Soumission</span><span data-en>Estimate</span></a>
+    </nav>
+    <div class="nav-right">
+      <div class="vibes" role="group" aria-label="Ambiance / Vibe" data-vibes>
+        <span class="vibe-name" data-vibe-label>Bleu</span>
+      </div>
+      <div class="lang" role="group" aria-label="Langue / Language">
+        <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-accent" href="#soumission"><span data-fr>Estimation gratuite</span><span data-en>Free estimate</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:0">
+    <picture class="hero-photo"><img src="assets/hero-1920.jpg" srcset="assets/hero-1100.jpg 1100w, assets/hero-1920.jpg 1920w" sizes="100vw" alt="Toit plat commercial en membrane TPO blanche posé par Couvertures Montérégiennes, vu du drone" fetchpriority="high" decoding="async"></picture>
+    <div class="wrap">
+      <span class="book"><i></i><span data-fr>Soumission et urgence · Montréal, Laval, Rive-Sud</span><span data-en>Estimates and emergencies · Montréal, Laval, South Shore</span></span>
+      <h1 data-fr>Toits plats. <em>Toits blancs.</em></h1>
+      <h1 data-en>Flat roofs. <em>White roofs.</em></h1>
+      <p class="hero-sub" data-fr>Des milliers de toits résidentiels à Montréal, sur la Rive-Sud et la Rive-Nord, et des centaines de projets commerciaux. Membrane TPO, élastomère et PVC, depuis 2001.</p>
+      <p class="hero-sub" data-en>Thousands of residential roofs in Montréal, on the South Shore and the North Shore, and hundreds of commercial projects. TPO, elastomeric and PVC membranes, since 2001.</p>
+      <div class="hero-cta">
+        <a class="btn btn-accent" href="#soumission"><span data-fr>Obtenir une estimation</span><span data-en>Get an estimate</span><span class="arr">→</span></a>
+        <a class="btn btn-line btn-call" data-call href="tel:+14505362121"><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-fr>Appeler</span><span data-en>Call</span> <span class="num">450 536-2121</span></a>
+      </div>
+      <div class="sectors" aria-hidden="true"><span data-fr>Commercial</span><span data-en>Commercial</span><span data-fr>Industriel</span><span data-en>Industrial</span><span data-fr>Institutionnel</span><span data-en>Institutional</span><span data-fr>Résidentiel</span><span data-en>Residential</span></div>
+    </div>
+    <div class="hero-tag" data-fr>Photo : un toit TPO de Couvertures Montérégiennes</div>
+    <div class="hero-tag" data-en>Photo: a Couvertures Montérégiennes TPO roof</div>
+  </section>
+
+  <div class="sheet">
+  <div class="facts">
+    <div class="wrap">
+      <div class="fact rv"><b>2001</b><span data-fr>fondée à Saint-Jean-Baptiste</span><span data-en>founded in Saint-Jean-Baptiste</span></div>
+      <div class="fact rv"><b>10–35</b><span data-fr>ans de garantie TPO, matériel et main-d'œuvre</span><span data-en>year TPO warranty, materials and labour</span></div>
+      <div class="fact rv"><b>Elevate</b><span data-fr>premiers répondants pour leurs appels de service au Québec</span><span data-en>first responders for their service calls in Québec</span></div>
+      <div class="fact rv"><b>RBQ</b><span>8267-7782-13</span></div>
+    </div>
+  </div>
+
+  <section class="pose" id="pose" aria-label="Pose d'un toit TPO / Installing a TPO roof">
+    <div class="pose-pin">
+      <canvas id="roof3d" aria-hidden="true"></canvas>
+      <div class="wrap pose-ui">
+        <div class="head2">
+          <span class="tag" data-fr>Comment on pose un toit blanc</span><span class="tag" data-en>How we install a white roof</span>
+          <h2 data-fr>Du gravier noir <em>au TPO blanc</em></h2><h2 data-en>From black gravel <em>to white TPO</em></h2>
+        </div>
+        <ol class="steps" id="steps">
+          <li class="st"><i>00</i><b data-fr>Le vieux toit</b><b data-en>The old roof</b><p data-fr>Asphalte et gravier : noir, il absorbe la chaleur du soleil. Rosemont et Outremont l'interdisent depuis 2015.</p><p data-en>Asphalt and gravel: black, it soaks up the sun's heat. Rosemont and Outremont have banned it since 2015.</p></li>
+          <li class="st"><i>01</i><b data-fr>Panneau polyiso ½ po</b><b data-en>½ in. polyiso board</b><p data-fr>Polyisocyanurate haute densité : un support très rigide et imputrescible, qui absorbe la grêle et la circulation.</p><p data-en>High-density polyisocyanurate: a very rigid, rot-proof base that absorbs hail and foot traffic.</p></li>
+          <li class="st"><i>02</i><b data-fr>Membrane vissée</b><b data-en>Membrane screwed down</b><p data-fr>Rouleaux de 5 à 12 pi sur 100 pi. Des rondelles dentelées sont vissées sous chaque joint, au périmètre et autour de chaque détail.</p><p data-en>Rolls 5 to 12 ft wide by 100 ft long. Barbed plates are screwed under every seam, around the perimeter and around every detail.</p></li>
+          <li class="st"><i>03</i><b data-fr>Joints soudés au robot</b><b data-en>Seams robot-welded</b><p data-fr>Soudés à l'air très chaud, sans flamme. Tous les joints sont vérifiés après chaque journée de chantier.</p><p data-en>Welded with very hot air, no flame. Every seam is checked after each day on site.</p></li>
+          <li class="st"><i>04</i><b data-fr>Unités mécaniques</b><b data-en>Mechanical units</b><p data-fr>Les boîtes d'unités mécaniques sont fabriquées et testées à l'eau en atelier, avant d'arriver sur le chantier.</p><p data-en>Mechanical unit curbs are built and water-tested in the shop before they reach the site.</p></li>
+        </ol>
+        <div class="rail" aria-hidden="true"><i></i></div>
+      </div>
+      <div class="pose-done" id="poseDone">
+        <b data-fr>Il renvoie le soleil.</b><b data-en>It sends the sun back.</b>
+        <p data-fr>L'indice de réflectivité solaire du TPO blanc surpasse les exigences ENERGY STAR de l'EPA et des règlements municipaux du Québec.</p>
+        <p data-en>White TPO's solar reflectance index beats the EPA ENERGY STAR requirements and Québec municipal bylaws.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head rv">
+        <div><span class="tag" data-fr>Services</span><span class="tag" data-en>Services</span>
+          <h2 data-fr>Du toit d'usine <em>au triplex</em></h2><h2 data-en>From factory roofs <em>to triplexes</em></h2></div>
+        <p data-fr>Une flotte de véhicules, les équipements spécialisés et une main-d'œuvre qualifiée pour vos projets de toit plat commercial et résidentiel.</p>
+        <p data-en>A fleet of vehicles, specialised equipment and a skilled crew for your commercial and residential flat-roof projects.</p>
+      </div>
+      <div class="svcs">
+        <article class="svc rv"><img src="assets/hvac.jpg" alt="Grand toit commercial blanc avec unités mécaniques" loading="lazy" decoding="async"><span class="k" data-fr>Commercial · industriel · institutionnel</span><span class="k" data-en>Commercial · industrial · institutional</span><h3 data-fr>Toiture commerciale</h3><h3 data-en>Commercial roofing</h3><p data-fr>Des centaines de projets commerciaux. Soumission sur plans et devis, à prix forfaitaire, ou à taux horaire pour certains projets spéciaux.</p><p data-en>Hundreds of commercial projects. Bids from plans and specs at a fixed price, or hourly for some special projects.</p></article>
+        <article class="svc rv"><img src="assets/kneel.jpg" alt="Couvreur qui pose une membrane TPO blanche" loading="lazy" decoding="async"><span class="k">TPO · élastomère · PVC</span><h3 data-fr>Toit blanc résidentiel</h3><h3 data-en>Residential white roof</h3><p data-fr>Nos estimateurs sont constamment sur la route et prêts à vous rencontrer pour un remplacement ou une réfection.</p><p data-en>Our estimators are always on the road and ready to meet you about a replacement or a re-roof.</p></article>
+        <article class="svc rv"><img src="assets/skylights.jpg" alt="Toit blanc avec puits de lumière et cheminée de brique" loading="lazy" decoding="async"><span class="k" data-fr>En tout genre</span><span class="k" data-en>All kinds</span><h3 data-fr>Réparation de toiture</h3><h3 data-en>Roof repair</h3><p data-fr>Des milliers de réparations sur l'asphalte et gravier, l'élastomère et le TPO. Montrez-nous l'état de votre toit directement par téléphone.</p><p data-en>Thousands of repairs on asphalt and gravel, elastomeric and TPO. Show us your roof right over the phone.</p></article>
+      </div>
+      <div class="more rv">
+        <div><b data-fr>Étanchéité</b><b data-en>Waterproofing</b><p data-fr>Membranes sur fondations, bassins d'eau, garages souterrains et toitures végétales.</p><p data-en>Membranes on foundations, water basins, underground garages and green roofs.</p></div>
+        <div><b data-fr>Investigation et thermographie</b><b data-en>Investigation and thermography</b><p data-fr>La thermographie infrarouge repère l'isolant humide et les infiltrations.</p><p data-en>Infrared thermography finds wet insulation and leaks.</p></div>
+        <div><b data-fr>Inspection et estimation</b><b data-en>Inspection and estimate</b><p data-fr>L'heure juste sur l'état de votre toit, et toutes les options de matériaux.</p><p data-en>A straight answer on your roof's condition, and every material option.</p></div>
+        <div><b data-fr>Isolation et ventilation</b><b data-en>Insulation and ventilation</b><p data-fr>De la cellulose soufflée à l'uréthane giclé, et la ventilation corrigée au besoin.</p><p data-en>From blown cellulose to spray urethane, with ventilation corrected where needed.</p></div>
+        <div><b data-fr>Gouttières et ferblanterie</b><b data-en>Gutters and tinsmithing</b><p data-fr>Gouttières sans joints sur mesure; corniches et fleurons recréés par nos ferblantiers-artisans.</p><p data-en>Custom seamless gutters; cornices and finials recreated by our tinsmiths.</p></div>
+        <div><b data-fr>Toits verts</b><b data-en>Green roofs</b><p data-fr>Une division spécialisée : toits extensifs et intensifs, terrasses et espaces maraîchers.</p><p data-en>A dedicated division: extensive and intensive green roofs, terraces and rooftop gardens.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="comparer" style="padding-top:0">
+    <div class="wrap cmp">
+      <div class="rv">
+        <span class="tag" data-fr>Options pour toit plat</span><span class="tag" data-en>Flat-roof options</span>
+        <h2 data-fr>Quel revêtement <em>pour votre toit?</em></h2><h2 data-en>Which membrane <em>for your roof?</em></h2>
+        <p style="color:var(--muted);max-width:44ch;margin:18px 0 0" data-fr>Aucun système ne convient à tous les bâtiments. Voici notre comparatif des principaux systèmes éprouvés au Québec.</p>
+        <p style="color:var(--muted);max-width:44ch;margin:18px 0 0" data-en>No system suits every building. Here is our comparison of the main proven systems in Québec.</p>
+        <div class="cmp-pick" id="cmpPick" role="group" aria-label="Système / System"></div>
+      </div>
+      <div class="cmp-card rv" aria-live="polite">
+        <p class="cmp-name" id="cmpName"></p>
+        <p class="cmp-desc" id="cmpDesc"></p>
+        <div id="cmpRows"></div>
+        <p class="note" data-fr>Tableau de Couvertures Montérégiennes, à titre indicatif. Prix basés sur une petite surface (moins de 2000 pi²).</p>
+        <p class="note" data-en>Couvertures Montérégiennes' table, for guidance only. Prices based on a small area (under 2,000 sq ft).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="winter" id="hiver">
+    <img src="assets/snow-crew.jpg" alt="" loading="lazy" decoding="async">
+    <div class="wrap">
+      <span class="tag" data-fr>Déneigement de toiture</span><span class="tag" data-en>Roof snow removal</span>
+      <h2 data-fr>N'attendez pas <em>le gel-dégel.</em></h2><h2 data-en>Don't wait for <em>the freeze-thaw.</em></h2>
+      <p class="lead" data-fr>Des centaines de déneigements de toitures commerciales et résidentielles par année, de façon sécuritaire, avec l'équipement pour disposer de la neige.</p>
+      <p class="lead" data-en>Hundreds of commercial and residential roof snow removals every year, done safely, with the equipment to haul the snow away.</p>
+      <ul class="risks">
+        <li data-fr>Trop de neige bouche les ventilateurs et les sorties mécaniques.</li><li data-en>Too much snow blocks fans and mechanical vents.</li>
+        <li data-fr>Un changement brusque de température forme du frasil et des blocs de glace qui bloquent le drainage.</li><li data-en>A sudden temperature swing forms slush and ice blocks that stop the drains.</li>
+        <li data-fr>Trop de neige et de glace peut affecter la structure du bâtiment.</li><li data-en>Too much snow and ice can strain the building's structure.</li>
+      </ul>
+      <div class="row">
+        <a class="btn btn-accent btn-call" data-call href="tel:+14505362121"><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-fr>Estimation rapide au téléphone</span><span data-en>Quick estimate by phone</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder" id="equipe">
+    <div class="wrap">
+      <figure class="rv"><img src="assets/raymond.jpg" alt="Raymond Tremblay, fondateur de Couvertures Montérégiennes, devant l'enseigne de l'entreprise" loading="lazy" decoding="async"></figure>
+      <div class="rv">
+        <span class="tag" data-fr>Pourquoi nous</span><span class="tag" data-en>Why us</span>
+        <blockquote data-fr>La référence en membrane <em>mono-couche</em> au Québec.</blockquote>
+        <blockquote data-en>The reference for <em>single-ply</em> membranes in Québec.</blockquote>
+        <p data-fr>Avec plus de 37 ans d'expérience en toiture, le fondateur, M. Raymond Tremblay, s'est bâti une solide réputation d'excellence, de fiabilité et d'intégrité. Du toit plat TPO à la toiture métallique ou aux bardeaux, d'une terrasse sur le toit à une grande zone industrielle, nous avons les experts et les équipements.</p>
+        <p data-en>With over 37 years in roofing, founder Raymond Tremblay has built a solid reputation for excellence, reliability and integrity. From TPO flat roofs to metal roofs or shingles, from a rooftop terrace to a large industrial site, we have the experts and the equipment.</p>
+        <ul class="brands" aria-label="Accréditations / Accreditations"><li>Elevate</li><li>GAF</li><li>Johns Manville</li><li>Sika</li><li>BP</li><li>Lexcor</li></ul>
+        <p class="hire"><i></i><span data-fr>Nous embauchons : toujours à la recherche de talents en toiture</span><span data-en>We're hiring: always looking for roofing talent</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="realisations" style="padding-top:0">
+    <div class="wrap">
+      <div class="head rv">
+        <div><span class="tag" data-fr>Réalisations</span><span class="tag" data-en>Our work</span>
+          <h2 data-fr>Sur nos chantiers</h2><h2 data-en>On our sites</h2></div>
+      </div>
+      <div class="gallery">
+        <div class="ph big rv"><img src="assets/weld.jpg" alt="Équipe qui soude une membrane TPO avec un robot soudeur" loading="lazy" decoding="async"><span data-fr>Soudure au robot</span><span data-en>Robot welding</span></div>
+        <div class="ph rv"><img src="assets/rolls.jpg" alt="Rouleaux de membrane TPO sur un toit" loading="lazy" decoding="async"><span data-fr>Rouleaux TPO</span><span data-en>TPO rolls</span></div>
+        <div class="ph rv"><img src="assets/polyiso.jpg" alt="Panneaux de polyisocyanurate posés sur un toit" loading="lazy" decoding="async"><span data-fr>Polyiso</span><span data-en>Polyiso</span></div>
+        <div class="ph wide rv"><img src="assets/crew.jpg" alt="Couvreurs avec harnais sur un toit plat" loading="lazy" decoding="async"><span data-fr>L'équipe</span><span data-en>The crew</span></div>
+        <div class="ph rv"><img src="assets/unroll.jpg" alt="Deux couvreurs déroulent une membrane blanche" loading="lazy" decoding="async"><span data-fr>Déroulage</span><span data-en>Unrolling</span></div>
+        <div class="ph rv"><img src="assets/snow-edge.jpg" alt="Déneigement d'un toit commercial avec garde-corps" loading="lazy" decoding="async"><span data-fr>Déneigement</span><span data-en>Snow removal</span></div>
+        <div class="ph wide rv"><img src="assets/truck.jpg" alt="Camion Couvertures Montérégiennes" loading="lazy" decoding="async"><span data-fr>Notre flotte</span><span data-en>Our fleet</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="soumission">
+    <div class="wrap split">
+      <div class="rv">
+        <span class="tag" data-fr>Estimation gratuite</span><span class="tag" data-en>Free estimate</span>
+        <h2 data-fr>Parlez-nous <em>de votre toit</em></h2><h2 data-en>Tell us <em>about your roof</em></h2>
+        <form id="quote">
+          <label for="q-name"><span data-fr>Prénom et nom</span><span data-en>Full name</span><input id="q-name" required autocomplete="name"></label>
+          <label for="q-phone"><span data-fr>Téléphone</span><span data-en>Phone</span><input id="q-phone" type="tel" required autocomplete="tel"></label>
+          <label for="q-addr"><span data-fr>Adresse du bâtiment</span><span data-en>Building address</span><input id="q-addr" autocomplete="street-address"></label>
+          <label for="q-city"><span data-fr>Ville</span><span data-en>City</span><input id="q-city" autocomplete="address-level2"></label>
+          <label for="q-type"><span data-fr>Type de bâtiment</span><span data-en>Building type</span>
+            <select id="q-type"><option>Commercial, industriel / Commercial, industrial</option><option>Duplex</option><option>Triplex</option><option>Unifamilial / Single-family</option><option>Autre / Other</option></select></label>
+          <label for="q-roof"><span data-fr>Couverture existante</span><span data-en>Existing roof</span>
+            <select id="q-roof"><option>Asphalte et gravier / Asphalt and gravel</option><option>Membrane élastomère / Elastomeric</option><option>Construction neuve / New build</option><option>Autre / Other</option></select></label>
+          <label for="q-floors"><span data-fr>Nombre d'étages</span><span data-en>Number of storeys</span><input id="q-floors" inputmode="numeric"></label>
+          <label for="q-age"><span data-fr>Âge du toit existant</span><span data-en>Age of existing roof</span><input id="q-age"></label>
+          <label class="full" for="q-msg"><span data-fr>Infos supplémentaires</span><span data-en>More details</span><textarea id="q-msg"></textarea></label>
+          <div class="full"><button class="btn btn-accent" type="submit"><span data-fr>Demander mon estimation</span><span data-en>Request my estimate</span><span class="arr">→</span></button></div>
+          <p class="sent" id="sent" hidden><span data-fr>Maquette : sur le vrai site, la demande arrive directement à info@couvertures.ca.</span><span data-en>Sample: on the live site, requests go straight to info@couvertures.ca.</span></p>
+        </form>
+      </div>
+      <div class="contact-side rv">
+        <div><b data-fr>Soumission et urgence</b><b data-en>Estimates and emergencies</b><a class="btn btn-accent btn-call" data-call href="tel:+14505362121"><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span>450 536-2121</span></a><small data-fr>Sans frais : 1 888 539-2121</small><small data-en>Toll-free: 1 888 539-2121</small></div>
+        <div><b data-fr>Courriel</b><b data-en>Email</b><a href="mailto:info@couvertures.ca">info@couvertures.ca</a></div>
+        <div><b data-fr>Adresse</b><b data-en>Address</b>3280, rue Principale<br>Saint-Jean-Baptiste (Québec) J0L 2B0</div>
+        <div><b data-fr>Zones desservies</b><b data-en>Service area</b><span data-fr>Montréal, Laval et Rive-Sud</span><span data-en>Montréal, Laval and South Shore</span></div>
+        <div><b>RBQ</b>8267-7782-13</div>
+      </div>
+    </div>
+  </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <svg class="word" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 -800 5700 1840"><path fill="currentColor" d="M549.0 -170.0Q 529.0 -125.0 497.0 -90.5Q 465.0 -56.0 426.0 -32.0Q 387.0 -8.0 342.0 4.0Q 297.0 16.0 251.0 16.0Q 153.0 16.0 99.0 -42.5Q 45.0 -101.0 45.0 -229.0Q 45.0 -274.0 52.5 -330.5Q 60.0 -387.0 77.0 -444.5Q 94.0 -502.0 121.0 -557.0Q 148.0 -612.0 187.0 -655.0Q 226.0 -698.0 278.5 -724.0Q 331.0 -750.0 398.0 -750.0Q 431.0 -750.0 461.0 -742.5Q 491.0 -735.0 513.0 -719.0Q 535.0 -703.0 548.0 -677.0Q 561.0 -651.0 561.0 -614.0Q 561.0 -576.0 545.0 -550.0Q 529.0 -524.0 491.0 -524.0Q 479.0 -524.0 463.5 -528.5Q 448.0 -533.0 434.0 -550.0Q 452.0 -559.0 466.0 -586.5Q 480.0 -614.0 480.0 -641.0Q 480.0 -666.0 466.0 -684.5Q 452.0 -703.0 423.0 -703.0Q 394.0 -703.0 367.0 -682.5Q 340.0 -662.0 316.5 -627.5Q 293.0 -593.0 273.5 -546.5Q 254.0 -500.0 240.0 -448.5Q 226.0 -397.0 218.5 -343.0Q 211.0 -289.0 211.0 -239.0Q 211.0 -203.0 216.0 -173.0Q 221.0 -143.0 234.0 -121.0Q 247.0 -99.0 270.5 -87.0Q 294.0 -75.0 330.0 -75.0Q 387.0 -75.0 439.0 -103.5Q 491.0 -132.0 526.0 -180.0ZM 784.0 -505.0Q 910.0 -505.0 912.0 -348.0Q 916.0 -347.0 923.0 -347.0Q 940.0 -347.0 960.5 -352.0Q 981.0 -357.0 1001.5 -365.5Q 1022.0 -374.0 1041.5 -385.0Q 1061.0 -396.0 1077.0 -407.0L 1086.0 -380.0Q 1057.0 -349.0 1010.5 -327.5Q 964.0 -306.0 910.0 -297.0Q 904.0 -227.0 883.0 -171.0Q 862.0 -115.0 830.0 -75.5Q 798.0 -36.0 757.0 -15.0Q 716.0 6.0 670.0 6.0Q 635.0 6.0 605.5 -2.5Q 576.0 -11.0 555.0 -30.0Q 534.0 -49.0 522.0 -79.0Q 510.0 -109.0 510.0 -152.0Q 510.0 -181.0 516.0 -218.0Q 522.0 -255.0 535.5 -294.5Q 549.0 -334.0 570.0 -371.5Q 591.0 -409.0 621.5 -439.0Q 652.0 -469.0 692.0 -487.0Q 732.0 -505.0 784.0 -505.0ZM 710.0 -88.0Q 728.0 -88.0 746.5 -103.5Q 765.0 -119.0 780.5 -146.5Q 796.0 -174.0 808.0 -212.0Q 820.0 -250.0 826.0 -294.0Q 810.0 -298.0 804.5 -309.5Q 799.0 -321.0 799.0 -336.0Q 799.0 -357.0 807.5 -370.5Q 816.0 -384.0 830.0 -389.0Q 828.0 -420.0 819.5 -432.5Q 811.0 -445.0 792.0 -445.0Q 765.0 -445.0 741.0 -415.5Q 717.0 -386.0 699.0 -343.5Q 681.0 -301.0 670.0 -253.5Q 659.0 -206.0 659.0 -169.0Q 659.0 -144.0 661.5 -128.5Q 664.0 -113.0 670.0 -104.0Q 676.0 -95.0 686.0 -91.5Q 696.0 -88.0 710.0 -88.0ZM 1422.0 -500.0 1350.0 -160.0Q 1346.0 -143.0 1346.0 -128.0Q 1346.0 -107.0 1356.0 -99.0Q 1366.0 -91.0 1387.0 -91.0Q 1416.0 -91.0 1436.5 -116.0Q 1457.0 -141.0 1468.0 -179.0H 1510.0Q 1489.0 -118.0 1462.5 -81.5Q 1436.0 -45.0 1408.5 -25.5Q 1381.0 -6.0 1355.0 0.0Q 1329.0 6.0 1309.0 6.0Q 1266.0 6.0 1240.5 -18.0Q 1215.0 -42.0 1210.0 -89.0Q 1191.0 -58.0 1171.5 -39.5Q 1152.0 -21.0 1133.0 -11.0Q 1114.0 -1.0 1096.0 2.5Q 1078.0 6.0 1062.0 6.0Q 1017.0 6.0 986.0 -22.5Q 955.0 -51.0 955.0 -114.0Q 955.0 -141.0 963.0 -179.0L 1031.0 -500.0H 1175.0L 1103.0 -160.0Q 1100.0 -145.0 1100.0 -132.0Q 1100.0 -115.0 1106.5 -103.0Q 1113.0 -91.0 1130.0 -91.0Q 1159.0 -91.0 1179.0 -116.0Q 1199.0 -141.0 1210.0 -179.0L 1278.0 -500.0ZM 1804.0 -520.0Q 1822.0 -520.0 1834.0 -512.5Q 1846.0 -505.0 1853.5 -493.0Q 1861.0 -481.0 1864.0 -465.0Q 1867.0 -449.0 1867.0 -433.0Q 1867.0 -393.0 1860.0 -345.0Q 1853.0 -297.0 1838.5 -248.0Q 1824.0 -199.0 1801.0 -153.5Q 1778.0 -108.0 1746.5 -72.5Q 1715.0 -37.0 1674.0 -15.5Q 1633.0 6.0 1582.0 6.0Q 1525.0 6.0 1492.0 -23.0Q 1459.0 -52.0 1459.0 -112.0Q 1459.0 -120.0 1460.0 -133.0Q 1461.0 -146.0 1464.0 -160.0L 1536.0 -500.0H 1680.0L 1608.0 -160.0Q 1603.0 -137.0 1603.0 -124.0Q 1603.0 -109.0 1611.0 -100.0Q 1619.0 -91.0 1637.0 -91.0Q 1661.0 -91.0 1683.5 -108.0Q 1706.0 -125.0 1725.5 -153.0Q 1745.0 -181.0 1760.5 -216.5Q 1776.0 -252.0 1787.0 -289.5Q 1798.0 -327.0 1804.0 -362.0Q 1810.0 -397.0 1810.0 -425.0Q 1808.0 -420.0 1796.0 -417.5Q 1784.0 -415.0 1778.0 -415.0Q 1760.0 -415.0 1751.0 -432.0Q 1742.0 -449.0 1742.0 -466.0Q 1742.0 -489.0 1757.0 -504.5Q 1772.0 -520.0 1804.0 -520.0ZM 2017.0 -162.0Q 2017.0 -111.0 2035.0 -94.5Q 2053.0 -78.0 2089.0 -78.0Q 2119.0 -78.0 2143.0 -86.0Q 2167.0 -94.0 2188.0 -107.5Q 2209.0 -121.0 2228.0 -139.5Q 2247.0 -158.0 2266.0 -179.0H 2300.0Q 2279.0 -144.0 2252.0 -111.0Q 2225.0 -78.0 2191.0 -52.0Q 2157.0 -26.0 2116.0 -10.0Q 2075.0 6.0 2025.0 6.0Q 1954.0 6.0 1911.5 -31.0Q 1869.0 -68.0 1869.0 -153.0Q 1869.0 -182.0 1875.0 -219.0Q 1881.0 -256.0 1893.5 -295.0Q 1906.0 -334.0 1927.0 -371.5Q 1948.0 -409.0 1978.0 -439.0Q 2008.0 -469.0 2048.0 -487.0Q 2088.0 -505.0 2139.0 -505.0Q 2172.0 -505.0 2193.5 -497.0Q 2215.0 -489.0 2227.5 -475.5Q 2240.0 -462.0 2244.5 -445.0Q 2249.0 -428.0 2249.0 -409.0Q 2249.0 -367.0 2230.0 -330.0Q 2211.0 -293.0 2179.0 -265.5Q 2147.0 -238.0 2105.5 -221.5Q 2064.0 -205.0 2019.0 -202.0Q 2018.0 -191.0 2017.5 -181.0Q 2017.0 -171.0 2017.0 -162.0ZM 2172.0 -411.0Q 2172.0 -430.0 2166.5 -441.0Q 2161.0 -452.0 2147.0 -452.0Q 2128.0 -452.0 2110.0 -434.0Q 2092.0 -416.0 2076.0 -387.5Q 2060.0 -359.0 2047.5 -323.0Q 2035.0 -287.0 2027.0 -250.0Q 2056.0 -252.0 2082.5 -266.0Q 2109.0 -280.0 2129.0 -302.0Q 2149.0 -324.0 2160.5 -352.5Q 2172.0 -381.0 2172.0 -411.0ZM 2478.0 -500.0 2464.0 -437.0Q 2493.0 -465.0 2524.5 -485.0Q 2556.0 -505.0 2586.0 -505.0Q 2620.0 -505.0 2637.5 -482.0Q 2655.0 -459.0 2655.0 -430.0Q 2655.0 -417.0 2650.5 -404.0Q 2646.0 -391.0 2637.0 -380.5Q 2628.0 -370.0 2614.5 -363.5Q 2601.0 -357.0 2583.0 -357.0Q 2562.0 -357.0 2554.5 -367.0Q 2547.0 -377.0 2544.0 -388.5Q 2541.0 -400.0 2538.5 -410.0Q 2536.0 -420.0 2525.0 -420.0Q 2506.0 -420.0 2489.0 -409.0Q 2472.0 -398.0 2452.0 -380.0L 2372.0 0.0H 2228.0L 2334.0 -500.0ZM 2888.0 -658.0 2854.0 -500.0H 2914.0L 2906.0 -460.0H 2846.0L 2782.0 -160.0Q 2778.0 -143.0 2778.0 -128.0Q 2778.0 -107.0 2788.0 -99.0Q 2798.0 -91.0 2819.0 -91.0Q 2848.0 -91.0 2873.0 -116.0Q 2898.0 -141.0 2909.0 -179.0H 2951.0Q 2930.0 -118.0 2902.0 -81.5Q 2874.0 -45.0 2845.0 -25.5Q 2816.0 -6.0 2788.5 0.0Q 2761.0 6.0 2741.0 6.0Q 2696.0 6.0 2665.0 -22.5Q 2634.0 -51.0 2634.0 -114.0Q 2634.0 -141.0 2642.0 -179.0L 2702.0 -460.0H 2669.0L 2677.0 -500.0H 2710.0L 2740.0 -638.0ZM 3368.0 -500.0 3296.0 -160.0Q 3292.0 -143.0 3292.0 -128.0Q 3292.0 -107.0 3302.0 -99.0Q 3312.0 -91.0 3333.0 -91.0Q 3362.0 -91.0 3382.5 -116.0Q 3403.0 -141.0 3414.0 -179.0H 3456.0Q 3435.0 -118.0 3408.5 -81.5Q 3382.0 -45.0 3354.5 -25.5Q 3327.0 -6.0 3301.0 0.0Q 3275.0 6.0 3255.0 6.0Q 3212.0 6.0 3186.5 -18.0Q 3161.0 -42.0 3156.0 -89.0Q 3137.0 -58.0 3117.5 -39.5Q 3098.0 -21.0 3079.0 -11.0Q 3060.0 -1.0 3042.0 2.5Q 3024.0 6.0 3008.0 6.0Q 2963.0 6.0 2932.0 -22.5Q 2901.0 -51.0 2901.0 -114.0Q 2901.0 -141.0 2909.0 -179.0L 2977.0 -500.0H 3121.0L 3049.0 -160.0Q 3046.0 -145.0 3046.0 -132.0Q 3046.0 -115.0 3052.5 -103.0Q 3059.0 -91.0 3076.0 -91.0Q 3105.0 -91.0 3125.0 -116.0Q 3145.0 -141.0 3156.0 -179.0L 3224.0 -500.0ZM 3626.0 -500.0 3612.0 -437.0Q 3641.0 -465.0 3672.5 -485.0Q 3704.0 -505.0 3734.0 -505.0Q 3768.0 -505.0 3785.5 -482.0Q 3803.0 -459.0 3803.0 -430.0Q 3803.0 -417.0 3798.5 -404.0Q 3794.0 -391.0 3785.0 -380.5Q 3776.0 -370.0 3762.5 -363.5Q 3749.0 -357.0 3731.0 -357.0Q 3710.0 -357.0 3702.5 -367.0Q 3695.0 -377.0 3692.0 -388.5Q 3689.0 -400.0 3686.5 -410.0Q 3684.0 -420.0 3673.0 -420.0Q 3654.0 -420.0 3637.0 -409.0Q 3620.0 -398.0 3600.0 -380.0L 3520.0 0.0H 3376.0L 3482.0 -500.0ZM 3925.0 -162.0Q 3925.0 -111.0 3943.0 -94.5Q 3961.0 -78.0 3997.0 -78.0Q 4027.0 -78.0 4051.0 -86.0Q 4075.0 -94.0 4096.0 -107.5Q 4117.0 -121.0 4136.0 -139.5Q 4155.0 -158.0 4174.0 -179.0H 4208.0Q 4187.0 -144.0 4160.0 -111.0Q 4133.0 -78.0 4099.0 -52.0Q 4065.0 -26.0 4024.0 -10.0Q 3983.0 6.0 3933.0 6.0Q 3862.0 6.0 3819.5 -31.0Q 3777.0 -68.0 3777.0 -153.0Q 3777.0 -182.0 3783.0 -219.0Q 3789.0 -256.0 3801.5 -295.0Q 3814.0 -334.0 3835.0 -371.5Q 3856.0 -409.0 3886.0 -439.0Q 3916.0 -469.0 3956.0 -487.0Q 3996.0 -505.0 4047.0 -505.0Q 4080.0 -505.0 4101.5 -497.0Q 4123.0 -489.0 4135.5 -475.5Q 4148.0 -462.0 4152.5 -445.0Q 4157.0 -428.0 4157.0 -409.0Q 4157.0 -367.0 4138.0 -330.0Q 4119.0 -293.0 4087.0 -265.5Q 4055.0 -238.0 4013.5 -221.5Q 3972.0 -205.0 3927.0 -202.0Q 3926.0 -191.0 3925.5 -181.0Q 3925.0 -171.0 3925.0 -162.0ZM 4080.0 -411.0Q 4080.0 -430.0 4074.5 -441.0Q 4069.0 -452.0 4055.0 -452.0Q 4036.0 -452.0 4018.0 -434.0Q 4000.0 -416.0 3984.0 -387.5Q 3968.0 -359.0 3955.5 -323.0Q 3943.0 -287.0 3935.0 -250.0Q 3964.0 -252.0 3990.5 -266.0Q 4017.0 -280.0 4037.0 -302.0Q 4057.0 -324.0 4068.5 -352.5Q 4080.0 -381.0 4080.0 -411.0ZM 4598.0 -179.0Q 4559.0 -134.0 4519.5 -104.0Q 4480.0 -74.0 4445.0 -54.0Q 4429.0 -37.0 4410.0 -26.0Q 4391.0 -15.0 4370.0 -7.5Q 4349.0 0.0 4328.0 3.0Q 4307.0 6.0 4288.0 6.0Q 4250.0 6.0 4222.5 -5.5Q 4195.0 -17.0 4177.0 -35.0Q 4159.0 -53.0 4150.5 -76.0Q 4142.0 -99.0 4142.0 -122.0Q 4142.0 -157.0 4158.0 -181.0Q 4174.0 -205.0 4195.0 -215.0Q 4237.0 -290.0 4266.0 -363.5Q 4295.0 -437.0 4318.0 -511.0L 4466.0 -531.0Q 4470.0 -434.0 4474.0 -374.0Q 4478.0 -314.0 4481.0 -276.5Q 4484.0 -239.0 4486.0 -215.5Q 4488.0 -192.0 4488.0 -167.0Q 4488.0 -145.0 4484.0 -129.0Q 4527.0 -154.0 4556.0 -179.0ZM 4266.0 -179.0Q 4266.0 -161.0 4254.0 -145.5Q 4242.0 -130.0 4222.0 -130.0Q 4214.0 -130.0 4206.5 -132.5Q 4199.0 -135.0 4195.0 -143.0Q 4195.0 -108.0 4209.0 -90.5Q 4223.0 -73.0 4256.0 -73.0Q 4272.0 -73.0 4288.0 -77.5Q 4304.0 -82.0 4316.0 -93.0Q 4328.0 -104.0 4335.5 -122.0Q 4343.0 -140.0 4343.0 -166.0Q 4343.0 -185.0 4341.5 -203.0Q 4340.0 -221.0 4337.5 -246.0Q 4335.0 -271.0 4331.5 -308.0Q 4328.0 -345.0 4324.0 -403.0Q 4309.0 -354.0 4288.5 -308.0Q 4268.0 -262.0 4243.0 -214.0Q 4253.0 -209.0 4259.5 -200.5Q 4266.0 -192.0 4266.0 -179.0ZM1330.6 537.6Q 1330.6 497.9 1302.5 497.9Q 1281.4 497.9 1265.8 518.9Q 1250.2 540.0 1241.6 569.6L 1188.6 820.0H 1076.3L 1133.2 550.9Q 1135.6 541.5 1135.6 531.4Q 1135.6 518.1 1130.5 507.6Q 1125.4 497.1 1112.2 497.1Q 1089.5 497.1 1073.5 518.5Q 1057.6 540.0 1049.0 569.6L 995.9 820.0H 883.6L 966.3 430.0H 1078.6L 1070.0 470.6Q 1095.0 442.5 1120.0 434.3Q 1144.9 426.1 1165.2 426.1Q 1194.1 426.1 1215.5 440.1Q 1237.0 454.2 1244.8 493.2Q 1258.8 471.3 1273.6 458.5Q 1288.4 445.6 1302.9 438.6Q 1317.3 431.6 1330.2 429.2Q 1343.0 426.9 1354.0 426.9Q 1391.4 426.9 1416.0 447.6Q 1440.5 468.2 1440.5 515.0Q 1440.5 538.4 1434.7 566.9Q 1428.8 595.4 1421.8 623.0Q 1414.8 650.7 1409.0 675.3Q 1403.1 699.9 1403.1 716.3Q 1403.1 731.1 1409.7 740.0Q 1416.4 749.0 1434.3 749.0Q 1446.8 749.0 1456.5 744.0Q 1466.3 738.9 1473.7 729.9Q 1481.1 720.9 1487.3 708.5Q 1493.6 696.0 1499.8 680.4H 1532.6Q 1516.2 728.7 1497.5 757.2Q 1478.8 785.7 1459.3 800.5Q 1439.8 815.3 1421.4 820.0Q 1403.1 824.7 1387.5 824.7Q 1361.8 824.7 1344.2 817.3Q 1326.7 809.9 1315.7 797.4Q 1304.8 784.9 1300.1 768.9Q 1295.5 752.9 1295.5 736.5Q 1295.5 717.0 1300.9 690.1Q 1306.4 663.2 1313.0 635.9Q 1319.6 608.6 1325.1 582.5Q 1330.6 556.4 1330.6 537.6ZM 1702.6 426.1Q 1800.9 426.1 1802.5 548.6Q 1805.6 549.3 1811.0 549.3Q 1824.3 549.3 1840.3 545.4Q 1856.3 541.5 1872.3 534.9Q 1888.3 528.3 1903.5 519.7Q 1918.7 511.1 1931.2 502.5L 1938.2 523.6Q 1915.6 547.8 1879.3 564.5Q 1843.0 581.3 1800.9 588.3Q 1796.2 642.9 1779.8 686.6Q 1763.5 730.3 1738.5 761.1Q 1713.5 791.9 1681.6 808.3Q 1649.6 824.7 1613.7 824.7Q 1586.4 824.7 1563.4 818.0Q 1540.4 811.4 1524.0 796.6Q 1507.6 781.8 1498.3 758.4Q 1488.9 735.0 1488.9 701.4Q 1488.9 678.8 1493.6 650.0Q 1498.3 621.1 1508.8 590.3Q 1519.3 559.5 1535.7 530.2Q 1552.1 501.0 1575.9 477.6Q 1599.7 454.2 1630.9 440.1Q 1662.1 426.1 1702.6 426.1ZM 1644.9 751.4Q 1658.9 751.4 1673.4 739.3Q 1687.8 727.2 1699.9 705.7Q 1712.0 684.3 1721.3 654.6Q 1730.7 625.0 1735.4 590.7Q 1722.9 587.6 1718.6 578.6Q 1714.3 569.6 1714.3 557.9Q 1714.3 541.5 1721.0 531.0Q 1727.6 520.5 1738.5 516.6Q 1736.9 492.4 1730.3 482.6Q 1723.7 472.9 1708.9 472.9Q 1687.8 472.9 1669.1 495.9Q 1650.4 518.9 1636.3 552.1Q 1622.3 585.2 1613.7 622.3Q 1605.1 659.3 1605.1 688.2Q 1605.1 707.7 1607.1 719.8Q 1609.0 731.9 1613.7 738.9Q 1618.4 745.9 1626.2 748.6Q 1634.0 751.4 1644.9 751.4ZM 2066.9 537.6Q 2066.9 497.9 2038.8 497.9Q 2017.7 497.9 2002.1 518.9Q 1986.5 540.0 1978.0 569.6L 1924.9 820.0H 1812.6L 1895.3 430.0H 2007.6L 1999.0 470.6Q 2024.0 442.5 2048.2 434.7Q 2072.3 426.9 2090.3 426.9Q 2127.7 426.9 2152.3 447.6Q 2176.9 468.2 2176.9 515.0Q 2176.9 538.4 2171.0 566.9Q 2165.2 595.4 2158.1 623.0Q 2151.1 650.7 2145.3 675.3Q 2139.4 699.9 2139.4 716.3Q 2139.4 731.1 2146.1 740.0Q 2152.7 749.0 2170.6 749.0Q 2183.1 749.0 2192.9 744.0Q 2202.6 738.9 2210.0 729.9Q 2217.4 720.9 2223.7 708.5Q 2229.9 696.0 2236.1 680.4H 2268.9Q 2252.5 728.7 2233.8 757.2Q 2215.1 785.7 2195.6 800.5Q 2176.1 815.3 2157.8 820.0Q 2139.4 824.7 2123.8 824.7Q 2098.1 824.7 2080.5 817.3Q 2063.0 809.9 2052.1 797.4Q 2041.1 784.9 2036.5 768.9Q 2031.8 752.9 2031.8 736.5Q 2031.8 717.0 2037.2 690.1Q 2042.7 663.2 2049.3 635.9Q 2056.0 608.6 2061.4 582.5Q 2066.9 556.4 2066.9 537.6ZM 2428.0 306.8 2401.5 430.0H 2448.3L 2442.1 461.2H 2395.3L 2345.3 695.2Q 2342.2 708.5 2342.2 720.2Q 2342.2 736.5 2350.0 742.8Q 2357.8 749.0 2374.2 749.0Q 2396.8 749.0 2416.3 729.5Q 2435.8 710.0 2444.4 680.4H 2477.2Q 2460.8 728.0 2438.9 756.4Q 2417.1 784.9 2394.5 800.1Q 2371.9 815.3 2350.4 820.0Q 2329.0 824.7 2313.4 824.7Q 2278.3 824.7 2254.1 802.5Q 2229.9 780.2 2229.9 731.1Q 2229.9 710.0 2236.1 680.4L 2282.9 461.2H 2257.2L 2263.4 430.0H 2289.2L 2312.6 322.4ZM 2549.7 693.6Q 2549.7 733.4 2563.7 746.3Q 2577.8 759.2 2605.9 759.2Q 2629.3 759.2 2648.0 752.9Q 2666.7 746.7 2683.1 736.1Q 2699.5 725.6 2714.3 711.2Q 2729.1 696.8 2743.9 680.4H 2770.4Q 2754.1 707.7 2733.0 733.4Q 2711.9 759.2 2685.4 779.4Q 2658.9 799.7 2626.9 812.2Q 2594.9 824.7 2555.9 824.7Q 2500.6 824.7 2467.4 795.8Q 2434.3 767.0 2434.3 700.7Q 2434.3 678.0 2438.9 649.2Q 2443.6 620.3 2453.4 589.9Q 2463.1 559.5 2479.5 530.2Q 2495.9 501.0 2519.3 477.6Q 2542.7 454.2 2573.9 440.1Q 2605.1 426.1 2644.9 426.1Q 2670.6 426.1 2687.4 432.3Q 2704.1 438.6 2713.9 449.1Q 2723.6 459.6 2727.2 472.9Q 2730.7 486.2 2730.7 501.0Q 2730.7 533.7 2715.8 562.6Q 2701.0 591.5 2676.1 612.9Q 2651.1 634.4 2618.7 647.2Q 2586.4 660.1 2551.3 662.4Q 2550.5 671.0 2550.1 678.8Q 2549.7 686.6 2549.7 693.6ZM 2666.7 235.0H 2748.6L 2654.2 382.4H 2595.7ZM 2670.6 499.4Q 2670.6 484.6 2666.3 476.0Q 2662.0 467.4 2651.1 467.4Q 2636.3 467.4 2622.2 481.5Q 2608.2 495.5 2595.7 517.8Q 2583.2 540.0 2573.5 568.1Q 2563.7 596.1 2557.5 625.0Q 2580.1 623.4 2600.8 612.5Q 2621.5 601.6 2637.1 584.4Q 2652.7 567.3 2661.6 545.0Q 2670.6 522.8 2670.6 499.4ZM 2909.3 430.0 2898.4 479.1Q 2921.0 457.3 2945.6 441.7Q 2970.1 426.1 2993.5 426.1Q 3020.0 426.1 3033.7 444.0Q 3047.3 462.0 3047.3 484.6Q 3047.3 494.7 3043.8 504.9Q 3040.3 515.0 3033.3 523.2Q 3026.3 531.4 3015.8 536.5Q 3005.2 541.5 2991.2 541.5Q 2974.8 541.5 2969.0 533.7Q 2963.1 525.9 2960.8 517.0Q 2958.4 508.0 2956.5 500.2Q 2954.5 492.4 2945.9 492.4Q 2931.1 492.4 2917.9 501.0Q 2904.6 509.6 2889.0 523.6L 2826.6 820.0H 2714.3L 2797.0 430.0ZM 3142.5 693.6Q 3142.5 733.4 3156.5 746.3Q 3170.6 759.2 3198.7 759.2Q 3222.1 759.2 3240.8 752.9Q 3259.5 746.7 3275.9 736.1Q 3292.3 725.6 3307.1 711.2Q 3321.9 696.8 3336.7 680.4H 3363.2Q 3346.9 707.7 3325.8 733.4Q 3304.7 759.2 3278.2 779.4Q 3251.7 799.7 3219.7 812.2Q 3187.7 824.7 3148.7 824.7Q 3093.4 824.7 3060.2 795.8Q 3027.1 767.0 3027.1 700.7Q 3027.1 678.0 3031.7 649.2Q 3036.4 620.3 3046.2 589.9Q 3055.9 559.5 3072.3 530.2Q 3088.7 501.0 3112.1 477.6Q 3135.5 454.2 3166.7 440.1Q 3197.9 426.1 3237.7 426.1Q 3263.4 426.1 3280.2 432.3Q 3296.9 438.6 3306.7 449.1Q 3316.4 459.6 3320.0 472.9Q 3323.5 486.2 3323.5 501.0Q 3323.5 533.7 3308.6 562.6Q 3293.8 591.5 3268.9 612.9Q 3243.9 634.4 3211.5 647.2Q 3179.2 660.1 3144.1 662.4Q 3143.3 671.0 3142.9 678.8Q 3142.5 686.6 3142.5 693.6ZM 3259.5 235.0H 3341.4L 3247.0 382.4H 3188.5ZM 3263.4 499.4Q 3263.4 484.6 3259.1 476.0Q 3254.8 467.4 3243.9 467.4Q 3229.1 467.4 3215.0 481.5Q 3201.0 495.5 3188.5 517.8Q 3176.0 540.0 3166.3 568.1Q 3156.5 596.1 3150.3 625.0Q 3172.9 623.4 3193.6 612.5Q 3214.3 601.6 3229.9 584.4Q 3245.5 567.3 3254.4 545.0Q 3263.4 522.8 3263.4 499.4ZM 3711.1 430.0 3633.9 791.9Q 3669.8 779.4 3692.8 755.3Q 3715.8 731.1 3732.2 680.4H 3764.9Q 3753.2 719.4 3737.2 745.1Q 3721.3 770.9 3702.5 787.2Q 3683.8 803.6 3664.3 812.6Q 3644.8 821.6 3626.9 826.2L 3615.2 882.4Q 3606.6 924.5 3590.6 950.3Q 3574.6 976.0 3555.5 990.4Q 3536.4 1004.9 3515.3 1009.9Q 3494.3 1015.0 3474.8 1015.0Q 3438.9 1015.0 3413.2 996.3Q 3387.4 977.6 3387.4 939.3Q 3387.4 915.2 3399.1 896.4Q 3410.8 877.7 3429.2 863.7Q 3447.5 849.6 3470.1 839.9Q 3492.7 830.1 3514.6 823.1L 3529.4 756.8Q 3512.2 777.9 3488.4 793.5Q 3464.6 809.1 3430.3 809.1Q 3410.0 809.1 3391.7 802.5Q 3373.4 795.8 3358.6 781.0Q 3343.7 766.2 3335.2 742.4Q 3326.6 718.6 3326.6 683.5Q 3326.6 658.5 3332.0 630.1Q 3337.5 601.6 3348.4 572.7Q 3359.3 543.9 3375.7 517.4Q 3392.1 490.8 3414.7 470.6Q 3437.3 450.3 3465.0 438.2Q 3492.7 426.1 3527.0 426.1Q 3536.4 426.1 3546.9 427.3Q 3557.5 428.4 3566.4 432.7Q 3575.4 437.0 3582.0 444.8Q 3588.7 452.6 3591.0 466.7L 3598.8 430.0ZM 3551.2 474.5Q 3526.3 474.5 3506.0 495.9Q 3485.7 517.4 3471.7 547.8Q 3457.6 578.2 3449.8 612.5Q 3442.0 646.8 3442.0 672.6Q 3442.0 695.2 3446.3 707.3Q 3450.6 719.4 3456.5 725.2Q 3462.3 731.1 3468.9 732.2Q 3475.6 733.4 3481.0 733.4Q 3498.2 733.4 3519.6 716.3Q 3541.1 699.1 3548.9 664.8L 3583.2 503.3Q 3582.4 496.3 3575.8 485.4Q 3569.2 474.5 3551.2 474.5ZM 3430.3 928.4Q 3430.3 937.0 3437.0 945.6Q 3443.6 954.2 3456.8 954.2Q 3469.3 954.2 3481.8 937.0Q 3494.3 919.8 3502.1 884.7L 3506.8 862.1Q 3491.9 867.6 3477.9 874.2Q 3463.9 880.8 3453.3 889.0Q 3442.8 897.2 3436.6 907.0Q 3430.3 916.7 3430.3 928.4ZM 3800.8 326.3Q 3800.8 300.5 3818.8 282.2Q 3836.7 263.9 3862.4 263.9Q 3888.2 263.9 3906.5 282.2Q 3924.8 300.5 3924.8 326.3Q 3924.8 352.0 3906.5 369.9Q 3888.2 387.9 3862.4 387.9Q 3836.7 387.9 3818.8 369.9Q 3800.8 352.0 3800.8 326.3ZM 3897.5 430.0 3841.4 695.2Q 3838.3 708.5 3838.3 720.2Q 3838.3 736.5 3846.1 742.8Q 3853.9 749.0 3870.2 749.0Q 3892.9 749.0 3912.4 729.5Q 3931.9 710.0 3940.4 680.4H 3973.2Q 3956.8 728.0 3935.0 756.4Q 3913.1 784.9 3890.5 800.1Q 3867.9 815.3 3846.5 820.0Q 3825.0 824.7 3809.4 824.7Q 3774.3 824.7 3750.1 802.5Q 3725.9 780.2 3725.9 731.1Q 3725.9 710.0 3732.2 680.4L 3785.2 430.0ZM 4045.7 693.6Q 4045.7 733.4 4059.8 746.3Q 4073.8 759.2 4101.9 759.2Q 4125.3 759.2 4144.0 752.9Q 4162.7 746.7 4179.1 736.1Q 4195.5 725.6 4210.3 711.2Q 4225.1 696.8 4240.0 680.4H 4266.5Q 4250.1 707.7 4229.0 733.4Q 4208.0 759.2 4181.5 779.4Q 4154.9 799.7 4123.0 812.2Q 4091.0 824.7 4052.0 824.7Q 3996.6 824.7 3963.5 795.8Q 3930.3 767.0 3930.3 700.7Q 3930.3 678.0 3935.0 649.2Q 3939.7 620.3 3949.4 589.9Q 3959.2 559.5 3975.5 530.2Q 3991.9 501.0 4015.3 477.6Q 4038.7 454.2 4069.9 440.1Q 4101.1 426.1 4140.9 426.1Q 4166.6 426.1 4183.4 432.3Q 4200.2 438.6 4209.9 449.1Q 4219.7 459.6 4223.2 472.9Q 4226.7 486.2 4226.7 501.0Q 4226.7 533.7 4211.9 562.6Q 4197.1 591.5 4172.1 612.9Q 4147.1 634.4 4114.8 647.2Q 4082.4 660.1 4047.3 662.4Q 4046.5 671.0 4046.1 678.8Q 4045.7 686.6 4045.7 693.6ZM 4166.6 499.4Q 4166.6 484.6 4162.4 476.0Q 4158.1 467.4 4147.1 467.4Q 4132.3 467.4 4118.3 481.5Q 4104.2 495.5 4091.8 517.8Q 4079.3 540.0 4069.5 568.1Q 4059.8 596.1 4053.5 625.0Q 4076.2 623.4 4096.8 612.5Q 4117.5 601.6 4133.1 584.4Q 4148.7 567.3 4157.7 545.0Q 4166.6 522.8 4166.6 499.4ZM 4464.6 537.6Q 4464.6 497.9 4436.5 497.9Q 4415.5 497.9 4399.9 518.9Q 4384.3 540.0 4375.7 569.6L 4322.6 820.0H 4210.3L 4293.0 430.0H 4405.3L 4396.7 470.6Q 4421.7 442.5 4445.9 434.7Q 4470.1 426.9 4488.0 426.9Q 4525.4 426.9 4550.0 447.6Q 4574.6 468.2 4574.6 515.0Q 4574.6 538.4 4568.7 566.9Q 4562.9 595.4 4555.9 623.0Q 4548.8 650.7 4543.0 675.3Q 4537.1 699.9 4537.1 716.3Q 4537.1 731.1 4543.8 740.0Q 4550.4 749.0 4568.3 749.0Q 4580.8 749.0 4590.6 744.0Q 4600.3 738.9 4607.7 729.9Q 4615.1 720.9 4621.4 708.5Q 4627.6 696.0 4633.9 680.4H 4666.6Q 4650.2 728.7 4631.5 757.2Q 4612.8 785.7 4593.3 800.5Q 4573.8 815.3 4555.5 820.0Q 4537.1 824.7 4521.5 824.7Q 4495.8 824.7 4478.2 817.3Q 4460.7 809.9 4449.8 797.4Q 4438.9 784.9 4434.2 768.9Q 4429.5 752.9 4429.5 736.5Q 4429.5 717.0 4435.0 690.1Q 4440.4 663.2 4447.1 635.9Q 4453.7 608.6 4459.1 582.5Q 4464.6 556.4 4464.6 537.6ZM 4858.5 537.6Q 4858.5 497.9 4830.4 497.9Q 4809.4 497.9 4793.8 518.9Q 4778.2 540.0 4769.6 569.6L 4716.5 820.0H 4604.2L 4686.9 430.0H 4799.2L 4790.6 470.6Q 4815.6 442.5 4839.8 434.7Q 4864.0 426.9 4881.9 426.9Q 4919.3 426.9 4943.9 447.6Q 4968.5 468.2 4968.5 515.0Q 4968.5 538.4 4962.6 566.9Q 4956.8 595.4 4949.8 623.0Q 4942.7 650.7 4936.9 675.3Q 4931.0 699.9 4931.0 716.3Q 4931.0 731.1 4937.7 740.0Q 4944.3 749.0 4962.2 749.0Q 4974.7 749.0 4984.5 744.0Q 4994.2 738.9 5001.6 729.9Q 5009.0 720.9 5015.3 708.5Q 5021.5 696.0 5027.8 680.4H 5060.5Q 5044.1 728.7 5025.4 757.2Q 5006.7 785.7 4987.2 800.5Q 4967.7 815.3 4949.4 820.0Q 4931.0 824.7 4915.4 824.7Q 4889.7 824.7 4872.1 817.3Q 4854.6 809.9 4843.7 797.4Q 4832.8 784.9 4828.1 768.9Q 4823.4 752.9 4823.4 736.5Q 4823.4 717.0 4828.9 690.1Q 4834.3 663.2 4841.0 635.9Q 4847.6 608.6 4853.0 582.5Q 4858.5 556.4 4858.5 537.6ZM 5133.1 693.6Q 5133.1 733.4 5147.1 746.3Q 5161.1 759.2 5189.2 759.2Q 5212.6 759.2 5231.3 752.9Q 5250.1 746.7 5266.4 736.1Q 5282.8 725.6 5297.6 711.2Q 5312.5 696.8 5327.3 680.4H 5353.8Q 5337.4 707.7 5316.4 733.4Q 5295.3 759.2 5268.8 779.4Q 5242.3 799.7 5210.3 812.2Q 5178.3 824.7 5139.3 824.7Q 5083.9 824.7 5050.8 795.8Q 5017.6 767.0 5017.6 700.7Q 5017.6 678.0 5022.3 649.2Q 5027.0 620.3 5036.7 589.9Q 5046.5 559.5 5062.9 530.2Q 5079.2 501.0 5102.6 477.6Q 5126.0 454.2 5157.2 440.1Q 5188.4 426.1 5228.2 426.1Q 5254.0 426.1 5270.7 432.3Q 5287.5 438.6 5297.2 449.1Q 5307.0 459.6 5310.5 472.9Q 5314.0 486.2 5314.0 501.0Q 5314.0 533.7 5299.2 562.6Q 5284.4 591.5 5259.4 612.9Q 5234.5 634.4 5202.1 647.2Q 5169.7 660.1 5134.6 662.4Q 5133.8 671.0 5133.4 678.8Q 5133.1 686.6 5133.1 693.6ZM 5254.0 499.4Q 5254.0 484.6 5249.7 476.0Q 5245.4 467.4 5234.5 467.4Q 5219.6 467.4 5205.6 481.5Q 5191.6 495.5 5179.1 517.8Q 5166.6 540.0 5156.9 568.1Q 5147.1 596.1 5140.9 625.0Q 5163.5 623.4 5184.2 612.5Q 5204.8 601.6 5220.4 584.4Q 5236.0 567.3 5245.0 545.0Q 5254.0 522.8 5254.0 499.4ZM 5658.0 680.4Q 5627.6 715.5 5596.8 738.9Q 5566.0 762.3 5538.7 777.9Q 5526.2 791.1 5511.4 799.7Q 5496.5 808.3 5480.2 814.1Q 5463.8 820.0 5447.4 822.3Q 5431.0 824.7 5416.2 824.7Q 5386.6 824.7 5365.1 815.7Q 5343.7 806.7 5329.6 792.7Q 5315.6 778.7 5308.9 760.7Q 5302.3 742.8 5302.3 724.8Q 5302.3 697.5 5314.8 678.8Q 5327.3 660.1 5343.7 652.3Q 5376.4 593.8 5399.0 536.5Q 5421.7 479.1 5439.6 421.4L 5555.0 405.8Q 5558.2 481.5 5561.3 528.3Q 5564.4 575.1 5566.7 604.3Q 5569.1 633.6 5570.6 651.9Q 5572.2 670.2 5572.2 689.7Q 5572.2 706.9 5569.1 719.4Q 5602.6 699.9 5625.2 680.4ZM 5399.0 680.4Q 5399.0 694.4 5389.7 706.5Q 5380.3 718.6 5364.7 718.6Q 5358.5 718.6 5352.6 716.6Q 5346.8 714.7 5343.7 708.5Q 5343.7 735.8 5354.6 749.4Q 5365.5 763.1 5391.2 763.1Q 5403.7 763.1 5416.2 759.5Q 5428.7 756.0 5438.0 747.5Q 5447.4 738.9 5453.2 724.8Q 5459.1 710.8 5459.1 690.5Q 5459.1 675.7 5457.9 661.7Q 5456.8 647.6 5454.8 628.1Q 5452.9 608.6 5450.1 579.8Q 5447.4 550.9 5444.3 505.7Q 5432.6 543.9 5416.6 579.8Q 5400.6 615.6 5381.1 653.1Q 5388.9 657.0 5394.0 663.6Q 5399.0 670.2 5399.0 680.4Z"/></svg>
+    <span>© 2026 Couvertures Montérégiennes · <a href="#top" data-fr>Politique de confidentialité (Loi 25)</a><a href="#top" data-en>Privacy policy (Law 25)</a></span>
+    <span data-fr>Site par WeUnfolded Web</span><span data-en>Site by WeUnfolded Web</span>
+  </div>
+</footer>
+
+<div class="mock"><span data-fr>Maquette · WeUnfolded Web</span><span data-en>Sample · WeUnfolded Web</span></div>
+<div class="callbar"><a class="btn btn-accent btn-call" data-call href="tel:+14505362121"><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-fr>Appeler</span><span data-en>Call</span></a><a class="btn btn-line" href="#soumission"><span data-fr>Estimation</span><span data-en>Estimate</span></a></div>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var root=document.documentElement;
+  function setLang(l){
+    root.lang=l;
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
+    setVibe(root.dataset.vibe);tick();
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
+  var VIBES=[
+    {id:'bleu',fr:'Bleu',en:'Blue',a:'#0b1a2e',b:'#2f86ff'},
+    {id:'membrane',fr:'Membrane',en:'Membrane',a:'#1a2027',b:'#e4ebf1'},
+    {id:'vert',fr:'Toit vert',en:'Green roof',a:'#0f1a14',b:'#4cbb6b'}
+  ];
+  document.querySelectorAll('[data-vibes]').forEach(function(g){
+    var label=g.querySelector('[data-vibe-label]');
+    VIBES.forEach(function(v){
+      var b=document.createElement('button');b.type='button';b.dataset.vibe=v.id;
+      b.style.setProperty('--a',v.a);b.style.setProperty('--b',v.b);
+      b.setAttribute('aria-label',v.fr+' / '+v.en);b.title=v.fr+' / '+v.en;
+      b.addEventListener('click',function(){setVibe(v.id)});
+      g.insertBefore(b,label);
+    });
+  });
+  function setVibe(id){
+    var v=VIBES.filter(function(x){return x.id===id})[0]||VIBES[0];
+    root.dataset.vibe=v.id;
+    document.querySelectorAll('[data-vibes] button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.vibe===v.id)});
+    document.querySelectorAll('[data-vibe-label]').forEach(function(s){s.textContent=root.lang==='en'?v.en:v.fr});
+    try{localStorage.setItem('cm-vibe',v.id)}catch(e){}
+    window.dispatchEvent(new Event('vibechange'));
+  }
+  // live clock (Montreal time)
+  function tick(){
+    var d=new Date(),t;
+    try{t=new Intl.DateTimeFormat(root.lang==='en'?'en-CA':'fr-CA',{hour:'numeric',minute:'2-digit',hour12:root.lang==='en',timeZone:'America/Toronto'}).format(d)}catch(e){t=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+    document.querySelectorAll('[data-clock]').forEach(function(b){b.textContent=t});
+  }
+  setInterval(tick,15000);
+  var saved=null;try{saved=localStorage.getItem('cm-vibe')}catch(e){}
+  var hm=/^#(fr|en)(?:-(bleu|membrane|vert))?$/.exec(location.hash);
+  if(hm&&hm[2])saved=hm[2];
+  setVibe(saved||'bleu');tick();
+  // call buttons
+  var digits=(root.dataset.phone||'').replace(/\D/g,'').replace(/^1(?=\d{10}$)/,'');
+  if(digits.length===10){
+    var pretty='('+digits.slice(0,3)+') '+digits.slice(3,6)+'-'+digits.slice(6);
+    document.querySelectorAll('[data-call]').forEach(function(a){a.href='tel:+1'+digits;a.setAttribute('aria-label','Appeler / Call '+pretty)});
+    document.querySelectorAll('[data-phone-text]').forEach(function(s){s.textContent=pretty});
+  }
+  var gate=document.getElementById('gate');
+  if(hm){setLang(hm[1]);gate.hidden=true}else document.body.style.overflow='hidden';
+  gate.querySelectorAll('[data-pick]').forEach(function(b){
+    b.addEventListener('click',function(){
+      setLang(b.dataset.pick);
+      gate.classList.add('closed');document.body.style.overflow='';
+      window.dispatchEvent(new Event('gateopening'));
+      setTimeout(function(){gate.hidden=true},900);
+    });
+  });
+  var nav=document.getElementById('nav');
+  function onScroll(){nav.classList.toggle('solid',window.scrollY>40)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,lenis=null;
+  if(window.Lenis&&!reduce){
+    lenis=new Lenis({duration:1.35,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true,wheelMultiplier:.9});
+    (function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(performance.now());
+    if(!gate.hidden)lenis.stop();
+    window.addEventListener('gateopening',function(){lenis.start()});
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click',function(e){
+        if(a.getAttribute('href').indexOf('tel:')===0)return;
+        var id=a.getAttribute('href');var el=id==='#top'?0:document.querySelector(id);
+        if(el===null)return;e.preventDefault();lenis.scrollTo(el,{offset:id==='#top'?0:-76,duration:1.6});
+      });
+    });
+  }
+  var hero=document.querySelector('.hero');
+  function heroProgress(){var p=Math.min(1,Math.max(0,window.scrollY/(hero.offsetHeight||1)));hero.style.setProperty('--p',p.toFixed(3));window.__heroCovered=p>=1}
+  window.addEventListener('scroll',heroProgress,{passive:true});heroProgress();
+  ['.facts .wrap','.svcs','.gallery','.more'].forEach(function(sel){
+    var g=document.querySelector(sel);if(!g)return;
+    Array.prototype.forEach.call(g.children,function(c,i){c.style.setProperty('--i',i%8)});
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  }else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
+  document.getElementById('quote').addEventListener('submit',function(e){e.preventDefault();document.getElementById('sent').hidden=false});
+})();
+</script>
+
+<script>
+/* ================= Flat-roof comparison (values from their own table) ================= */
+(function(){
+  var root=document.documentElement;
+  // level 1-4 (4 = best for the owner); words are theirs
+  var C=[
+    {fr:'Durée de vie',en:'Lifespan'},{fr:'Coût annuel',en:'Yearly cost'},{fr:"Prix à l'achat",en:'Purchase price'},
+    {fr:'Robustesse',en:'Toughness'},{fr:'Versatilité',en:'Versatility'},{fr:'Réflectivité',en:'Reflectivity'},{fr:'Écologique',en:'Eco value'}];
+  var S=[
+    {id:'tpo',n:'TPO',fr:"Membrane typiquement blanche, renforcée de polyester et fixée mécaniquement. Jonctions fusionnées à l'air très chaud.",en:'Typically white membrane, polyester-reinforced and mechanically fastened. Seams fused with very hot air.',
+      v:[[3,'bonne','good'],[4,'très économique','very low'],[4,'faible','low'],[2,'moyenne','average'],[3,'bonne','good'],[4,'très bonne','very good'],[4,'très bon','very good']]},
+    {id:'elasto',n:'Élastomère',ne:'Elastomeric',fr:'Bitume modifié SBS en deux couches fusionnées au chalumeau. Fini granulé, large palette de couleurs.',en:'SBS-modified bitumen in two torch-fused plies. Granulated finish in many colours.',
+      v:[[3,'bonne','good'],[2,'moyen','medium'],[1,'élevé','high'],[3,'robuste','tough'],[4,'très bonne','very good'],[2,'moyenne','average'],[1,'faible','low']]},
+    {id:'pvc',n:'PVC',fr:'Propriétés thermoplastiques très semblables au TPO; jonctions fusionnées de la même façon.',en:'Thermoplastic properties very close to TPO; seams fused the same way.',
+      v:[[3,'bonne','good'],[3,'économique','low'],[2,'moyen','medium'],[2,'moyenne','average'],[3,'bonne','good'],[4,'très bonne','very good'],[1,'faible','low']]},
+    {id:'ag',n:'Asphalte et gravier',ne:'Asphalt and gravel',fr:"Multicouche conventionnel. En perte de popularité; certains règlements municipaux l'interdisent déjà.",en:'Conventional built-up roof. Losing ground; some municipal bylaws already ban it.',
+      v:[[1,'faible','low'],[1,'élevé','high'],[4,'faible','low'],[4,'très robuste','very tough'],[1,'mauvaise','poor'],[1,'faible','low'],[1,'très faible','very low']]}
+  ];
+  var pick=document.getElementById('cmpPick'),rows=document.getElementById('cmpRows'),cur='tpo';
+  S.forEach(function(s){var b=document.createElement('button');b.type='button';b.dataset.id=s.id;b.addEventListener('click',function(){cur=s.id;draw()});pick.appendChild(b)});
+  rows.innerHTML=C.map(function(c,i){return '<div class="crit"><span></span><div class="meter">'+[0,1,2,3].map(function(j){return '<i style="--j:'+j+'"></i>'}).join('')+'</div><em></em></div>'}).join('');
+  function draw(){
+    var en=root.lang==='en',s=S.filter(function(x){return x.id===cur})[0];
+    pick.querySelectorAll('button').forEach(function(b){var x=S.filter(function(y){return y.id===b.dataset.id})[0];b.textContent=en&&x.ne?x.ne:x.n;b.setAttribute('aria-pressed',b.dataset.id===cur)});
+    document.getElementById('cmpName').textContent=en&&s.ne?s.ne:s.n;
+    document.getElementById('cmpDesc').textContent=en?s.en:s.fr;
+    rows.querySelectorAll('.crit').forEach(function(r,i){
+      r.querySelector('span').textContent=en?C[i].en:C[i].fr;
+      r.querySelectorAll('.meter i').forEach(function(m,j){m.classList.toggle('on',j<s.v[i][0])});
+      r.querySelector('em').textContent=en?s.v[i][2]:s.v[i][1];
+    });
+  }
+  draw();new MutationObserver(draw).observe(root,{attributes:true,attributeFilter:['lang']});
+})();
+</script>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const col = (n) => new THREE.Color(css(n));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const phone = matchMedia('(max-width: 900px), (pointer: coarse)').matches;
+const clamp01 = (x) => Math.min(1, Math.max(0, x));
+const ease = (k) => 1 - Math.pow(1 - k, 3);
+
+/* ================= Hero: living drone photo (slow push + sun glint sliding over the white membrane) ================= */
+(function living(){
+  const wrap = document.querySelector('.hero-photo'); if (!wrap) return;
+  const img = wrap.querySelector('img');
+  const cv = document.createElement('canvas'); wrap.appendChild(cv);
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: false, alpha: false }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, phone ? 1.5 : 2));
+  const scene = new THREE.Scene(), cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+  const POS = new THREE.Vector2(0.45, 0.55), IMG_ASPECT = 1920 / 1080;
+  const u = { tex: { value: null }, t: { value: 0 }, off: { value: new THREE.Vector2() }, size: { value: new THREE.Vector2(1, 1) } };
+  scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.ShaderMaterial({
+    uniforms: u, depthWrite: false,
+    vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0., 1.); }',
+    fragmentShader: `
+      uniform sampler2D tex; uniform float t; uniform vec2 off; uniform vec2 size; varying vec2 vUv;
+      void main(){
+        vec2 p = off + vec2(vUv.x, 1. - vUv.y) * size;              // image coords, y down
+        vec3 c = texture2D(tex, vec2(p.x, 1. - p.y)).rgb;
+        float l = dot(c, vec3(.299, .587, .114));
+        float white = smoothstep(.62, .82, l) * (1. - smoothstep(.12, .3, max(c.r, max(c.g, c.b)) - min(c.r, min(c.g, c.b))));
+        // a soft glint band sweeping across the roof every ~9 s, driven in screen space so phones see it too
+        float k = fract(t / 9.);
+        float band = exp(-pow((vUv.x + (1. - vUv.y) * .55 - (k * 2.2 - .45)) * 7., 2.));
+        c += white * band * .22 * vec3(1., .98, .94);
+        gl_FragColor = vec4(c, 1.);
+      }`
+  })));
+  new THREE.TextureLoader().load(img.currentSrc || img.src, (tx) => {
+    tx.minFilter = THREE.LinearFilter; tx.generateMipmaps = false; tx.colorSpace = THREE.NoColorSpace; u.tex.value = tx;
+    let W = 1, H = 1;
+    const fit = () => { W = cv.clientWidth; H = cv.clientHeight; if (W && H) renderer.setSize(W, H, false); };
+    new ResizeObserver(fit).observe(cv); fit();
+    let visible = true; new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(cv);
+    const T0 = performance.now(); let shown = false;
+    renderer.setAnimationLoop((now) => {
+      if (!visible || window.__heroCovered) return;
+      const t = (now - T0) / 1000, A = W / H; let sx = 1, sy = 1;
+      if (A > IMG_ASPECT) sy = IMG_ASPECT / A; else sx = A / IMG_ASPECT;
+      const k = reduce ? 0 : (1 - Math.cos(t / 26 * Math.PI)) / 2;
+      const zoom = 1.02 + 0.08 * k, size = u.size.value.set(sx / zoom, sy / zoom);
+      u.off.value.set(POS.x * (1 - size.x) + 0.01 * k * size.x, (A < 1 ? .72 : POS.y) * (1 - size.y));
+      u.t.value = reduce ? 3 : t;
+      renderer.render(scene, cam);
+      if (!shown) { shown = true; wrap.classList.add('is-live'); }
+    });
+  });
+})();
+
+/* ================= Signature: a TPO roof installs itself as you scroll ================= */
+(function roof(){
+  const sec = document.getElementById('pose'), canvas = document.getElementById('roof3d');
+  const steps = [...document.querySelectorAll('#steps .st')], rail = sec.querySelector('.rail'), done = document.getElementById('poseDone');
+  // step windows on the 0-1 scroll progress: old roof, polyiso, membrane, welding, units, then the sun
+  const W8 = [[0, .1], [.1, .3], [.3, .55], [.55, .74], [.74, .86]];
+  let prog = 0;
+  const measure = () => { const r = sec.getBoundingClientRect(); prog = clamp01(-r.top / Math.max(1, r.height - innerHeight)); };
+  const ui = () => {
+    let cur = 0; W8.forEach((w, i) => { if (prog >= w[0]) cur = i; });
+    steps.forEach((s, i) => { s.classList.toggle('on', i === cur && prog < .9); s.classList.toggle('done', i < cur); });
+    rail.style.setProperty('--pp', prog.toFixed(3)); done.classList.toggle('on', prog >= .88);
+  };
+  addEventListener('scroll', () => { measure(); ui(); }, { passive: true }); measure(); ui();
+
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, phone ? 1.5 : 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.shadowMap.enabled = !phone; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+  scene.fog = new THREE.Fog(0x000000, 160, 520);
+  const camera = new THREE.PerspectiveCamera(32, 1, 1, 1200);
+  const std = (c, r = .8, m = 0) => new THREE.MeshStandardMaterial({ color: c, roughness: r, metalness: m });
+  const box = (w, h, d, mat, x, y, z, parent = scene) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); m.castShadow = m.receiveShadow = !phone; parent.add(m); return m; };
+
+  // ground + a low commercial building (1 unit = 1 m): 48 m x 30 m, 10 m high
+  const BW = 48, BD = 30, BH = 10;
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(3000, 3000), std(0x1f262c, 1)); ground.rotation.x = -Math.PI / 2; ground.receiveShadow = !phone; scene.add(ground);
+  const lot = new THREE.Mesh(new THREE.PlaneGeometry(90, 70), std(0x3a3f45, .95)); lot.rotation.x = -Math.PI / 2; lot.position.set(4, .02, 6); lot.receiveShadow = !phone; scene.add(lot);
+  const wall = std(0xb9b3a7, .9), coping = std(0x8d949b, .5, .6), glass = std(0x15202b, .2, .7);
+  box(BW, BH, BD, wall, 0, BH / 2, 0);
+  for (let x = -20; x <= 20; x += 5) { box(3.4, 1.6, .2, glass, x, 6.2, BD / 2 + .02); box(3.4, 1.6, .2, glass, x, 2.6, BD / 2 + .02); }
+  for (let z = -11; z <= 11; z += 5.5) box(.2, 1.6, 3.4, glass, BW / 2 + .02, 6.2, z);
+  box(10, 4, .3, glass, -14, 2, BD / 2 + .05);
+  // parapet with metal coping
+  const PH = .9, PT = .35;
+  box(BW + PT * 2, PH, PT, coping, 0, BH + PH / 2, BD / 2 + PT / 2); box(BW + PT * 2, PH, PT, coping, 0, BH + PH / 2, -BD / 2 - PT / 2);
+  box(PT, PH, BD, coping, BW / 2 + PT / 2, BH + PH / 2, 0); box(PT, PH, BD, coping, -BW / 2 - PT / 2, BH + PH / 2, 0);
+  // a few trees and a neighbour block for scale
+  const leaf = std(0x2f4a33, 1), trunk = std(0x3b2e25, 1);
+  [[-40, 30], [-34, 38], [36, 32], [44, 22], [-46, -10], [30, -34]].forEach(([x, z], i) => { box(.6, 3, .6, trunk, x, 1.5, z); const c = new THREE.Mesh(new THREE.IcosahedronGeometry(3 + (i % 3), 0), leaf); c.position.set(x, 5 + (i % 2), z); c.castShadow = !phone; scene.add(c); });
+  box(26, 7, 20, std(0x6f675d, .95), -70, 3.5, -40); box(30, 12, 18, std(0x5d636a, .95), 70, 6, -60);
+
+  // 00 old roof: asphalt and gravel (speckled canvas texture)
+  const gc = document.createElement('canvas'); gc.width = gc.height = 512; const g = gc.getContext('2d');
+  g.fillStyle = '#232528'; g.fillRect(0, 0, 512, 512);
+  for (let i = 0; i < 9000; i++) { const v = 40 + Math.random() * 90 | 0; g.fillStyle = `rgb(${v},${v},${v - 2})`; g.fillRect(Math.random() * 512, Math.random() * 512, 1 + Math.random() * 2.4, 1 + Math.random() * 2.4); }
+  const gTex = new THREE.CanvasTexture(gc); gTex.wrapS = gTex.wrapT = THREE.RepeatWrapping; gTex.repeat.set(4, 2.5); gTex.colorSpace = THREE.SRGBColorSpace;
+  const gravelMat = new THREE.MeshStandardMaterial({ map: gTex, roughness: 1, emissive: new THREE.Color(0x7a2a10), emissiveIntensity: 0 });
+  const gravel = new THREE.Mesh(new THREE.PlaneGeometry(BW, BD), gravelMat); gravel.rotation.x = -Math.PI / 2; gravel.position.y = BH + .02; gravel.receiveShadow = !phone; scene.add(gravel);
+
+  // 01 polyiso boards, 4 x 8 ft (1.2 x 2.4 m), laid in a running bond
+  const bw = 2.4, bd = 1.2, BT = .12, nx = BW / bw, nz = BD / bd, NB = nx * nz;
+  const boards = new THREE.InstancedMesh(new THREE.BoxGeometry(bw - .03, BT, bd - .03), std(0xffffff, .85), NB);
+  boards.receiveShadow = !phone; scene.add(boards);
+  const order = [], bc = new THREE.Color();
+  for (let j = 0; j < nz; j++) for (let i = 0; i < nx; i++) order.push({ x: -BW / 2 + bw / 2 + i * bw, z: -BD / 2 + bd / 2 + j * bd, k: (i + j * 1.6) / (nx + nz * 1.6) });
+  order.forEach((o, i) => { bc.setHSL(.54, .32, .5 + Math.random() * .05); boards.setColorAt(i, bc); });
+  const M = new THREE.Matrix4(), Q = new THREE.Quaternion(), V = new THREE.Vector3(), S = new THREE.Vector3();
+
+  // 02 membrane: 10 ft (3 m) strips running the length of the roof, unrolled one after the other
+  const SW = 3, NS = BD / SW, roofY = BH + .02 + BT;
+  const memMat = new THREE.MeshStandardMaterial({ color: 0xf3f6f9, roughness: .42, metalness: 0, envMapIntensity: .8 });
+  const rollMat = new THREE.MeshStandardMaterial({ color: 0xf6f8fa, roughness: .4 });
+  const strips = [], rolls = [];
+  for (let s = 0; s < NS; s++) {
+    const geo = new THREE.BoxGeometry(BW, .04, SW + .12); geo.translate(BW / 2, 0, 0);
+    const m = new THREE.Mesh(geo, memMat); m.position.set(-BW / 2, roofY + .02 + s * .002, -BD / 2 + SW / 2 + s * SW); m.receiveShadow = !phone; scene.add(m); strips.push(m);
+    const r = new THREE.Mesh(new THREE.CylinderGeometry(.32, .32, SW, 20), rollMat); r.rotation.x = Math.PI / 2; r.castShadow = !phone; scene.add(r); rolls.push(r);
+  }
+  // barbed plates along each seam (under the overlap: they show, then the next strip covers them)
+  const plateGeo = new THREE.CylinderGeometry(.16, .16, .03, 12), NP = Math.floor(BW / 1.2);
+  const plates = new THREE.InstancedMesh(plateGeo, std(0xd2a646, .4, .8), NP * (NS - 1)); scene.add(plates);
+  // 03 hot-air welding robot + bright weld line on every seam
+  const weldMat = new THREE.MeshBasicMaterial({ color: 0x2f86ff, toneMapped: false, transparent: true });
+  const welds = [];
+  for (let s = 1; s < NS; s++) { const geo = new THREE.BoxGeometry(BW, .03, .14); geo.translate(BW / 2, 0, 0); const w = new THREE.Mesh(geo, weldMat); w.position.set(-BW / 2, roofY + .06, -BD / 2 + s * SW + .05); scene.add(w); welds.push(w); }
+  const robot = new THREE.Group(); scene.add(robot);
+  box(.9, .45, .6, std(0x1f8a4c, .5, .2), 0, .35, 0, robot); box(.1, 1.1, .1, std(0x222222, .5, .5), -.7, .8, 0, robot).rotation.z = .6;
+  const nozzle = new THREE.Mesh(new THREE.SphereGeometry(.14, 10, 8), new THREE.MeshBasicMaterial({ color: 0xffb347, toneMapped: false })); nozzle.position.set(.5, .1, 0); robot.add(nozzle);
+  const glow = new THREE.PointLight(0xff9a3c, 6, 6, 2); glow.position.set(.6, .3, 0); robot.add(glow);
+  // 04 mechanical units on shop-built, water-tested curbs, lowered in place
+  const unitMat = std(0x9aa3ab, .45, .6), curbMat = memMat;
+  const units = [[-12, -6, 4, 2.4], [6, 5, 3.4, 2.2], [16, -8, 2.6, 1.8]].map(([x, z, w, d]) => {
+    const u = new THREE.Group(); u.userData.y = roofY; u.position.set(x, roofY, z); scene.add(u);
+    box(w + .6, .6, d + .6, curbMat, 0, .3, 0, u); box(w, 1.5, d, unitMat, 0, 1.35, 0, u); box(w * .7, .12, d * .7, std(0x5b646c, .5, .5), 0, 2.16, 0, u);
+    return u;
+  });
+
+  // sun + rays: absorbed by the gravel, bounced back by the white membrane
+  const hemi = new THREE.HemisphereLight(0xcfe0ff, 0x30302c, .9); scene.add(hemi);
+  const sun = new THREE.DirectionalLight(0xfff1dc, 2.6); sun.position.set(80, 70, -110); sun.castShadow = !phone;
+  sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, { left: -60, right: 60, top: 50, bottom: -50, near: 10, far: 300 }); sun.shadow.bias = -.0004;
+  scene.add(sun);
+  const SUN = new THREE.Vector3(96, 40, -150);
+  const sunBall = new THREE.Mesh(new THREE.SphereGeometry(4, 24, 16), new THREE.MeshBasicMaterial({ color: 0xffd27a, toneMapped: false })); sunBall.position.copy(SUN); scene.add(sunBall);
+  const rayIn = new THREE.LineDashedMaterial({ color: 0xffc35a, dashSize: 1.6, gapSize: 1.2, transparent: true, opacity: .9 });
+  const rayOut = new THREE.LineDashedMaterial({ color: 0xffffff, dashSize: 1.6, gapSize: 1.2, transparent: true, opacity: 0 });
+  const hits = [[-14, -6], [-4, 6], [6, -4], [14, 8], [2, -10]];
+  const rays = hits.map(([x, z]) => {
+    const hit = new THREE.Vector3(x, roofY + .1, z), dir = hit.clone().sub(SUN).normalize();
+    const out = hit.clone().add(new THREE.Vector3(dir.x, -dir.y, dir.z).multiplyScalar(36));
+    const a = new THREE.Line(new THREE.BufferGeometry().setFromPoints([SUN, hit]), rayIn); a.computeLineDistances(); scene.add(a);
+    const b = new THREE.Line(new THREE.BufferGeometry().setFromPoints([hit, out]), rayOut); b.computeLineDistances(); scene.add(b);
+    return [a, b];
+  });
+
+  const sky = document.createElement('canvas'); sky.width = 2; sky.height = 256; const skyTex = new THREE.CanvasTexture(sky); skyTex.colorSpace = THREE.SRGBColorSpace;
+  const paintSky = () => { const c = sky.getContext('2d'), gr = c.createLinearGradient(0, 0, 0, 256), h = css('--hero');
+    gr.addColorStop(0, h); gr.addColorStop(.62, `color-mix(in srgb, ${css('--win')} 30%, ${h})`); gr.addColorStop(1, `color-mix(in srgb, ${css('--win')} 55%, ${h})`);
+    c.fillStyle = h; c.fillRect(0, 0, 2, 256); c.fillStyle = gr; c.fillRect(0, 0, 2, 256); skyTex.needsUpdate = true; };
+  const applyVibe = () => { paintSky(); const h = col('--hero'); scene.background = skyTex; scene.fog.color = h.clone().lerp(col('--win'), .5); weldMat.color = col('--accent'); memMat.color = col('--membrane'); };
+  applyVibe(); addEventListener('vibechange', applyVibe);
+
+  let wide = true;
+  const fit = () => { const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = w / h; wide = w / h > 1.1; camera.updateProjectionMatrix(); };
+  new ResizeObserver(fit).observe(canvas); fit();
+  let visible = false; new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(sec);
+  const look = new THREE.Vector3(), ptr = { x: 0, y: 0 };
+  addEventListener('pointermove', (e) => { ptr.x = e.clientX / innerWidth - .5; ptr.y = e.clientY / innerHeight - .5; }, { passive: true });
+  const win = (i) => clamp01((prog - W8[i][0]) / (W8[i][1] - W8[i][0]));
+
+  const frame = (t) => {
+    // 00 heat glow on the black roof, fading once the boards cover it
+    const p1 = win(1), p2 = win(2), p3 = win(3), p4 = win(4), pS = clamp01((prog - .86) / .08);
+    gravelMat.emissiveIntensity = (1 - p1) * (.035 + .025 * Math.sin(t * 2.2));
+    // 01 boards drop in, sweeping diagonally across the roof
+    order.forEach((o, i) => {
+      const l = ease(clamp01((p1 - o.k * .82) / .18));
+      const sc = l > 0 ? 1 : 0;
+      V.set(o.x, BH + .02 + BT / 2 + (1 - l) * 5, o.z); S.set(sc, sc, sc); M.compose(V, Q, S); boards.setMatrixAt(i, M);
+    });
+    boards.instanceMatrix.needsUpdate = true;
+    // 02 strips unroll one after the other; the roll rides the leading edge
+    let pi = 0;
+    strips.forEach((m, s) => {
+      const l = clamp01(p2 * NS - s), e = l > 0 ? Math.max(.001, ease(l)) : .001;
+      m.scale.x = e; m.visible = l > 0;
+      const r = rolls[s]; r.visible = l > 0 && l < 1; r.position.set(-BW / 2 + BW * e, roofY + .34, m.position.z); r.rotation.y = 0; r.rotation.z = -e * 40;
+      if (s < NS - 1) {
+        const next = clamp01(p2 * NS - s - 1);
+        for (let k = 0; k < NP; k++) {
+          const x = -BW / 2 + .6 + k * 1.2, f = (x + BW / 2) / BW;
+          const on = l >= f && !(ease(next) >= f);
+          V.set(x, roofY + .06, -BD / 2 + (s + 1) * SW - .2); S.setScalar(on ? 1 : 0); M.compose(V, Q, S); plates.setMatrixAt(pi++, M);
+        }
+      }
+    });
+    plates.instanceMatrix.needsUpdate = true;
+    // 03 the robot welds each seam in turn
+    let rs = -1, rf = 0;
+    welds.forEach((w, s) => { const l = clamp01(p3 * welds.length - s); w.scale.x = Math.max(.001, l); w.visible = l > 0; if (l > 0 && l < 1) { rs = s; rf = l; } });
+    robot.visible = rs >= 0;
+    if (rs >= 0) { robot.position.set(-BW / 2 + BW * rf, roofY + .02, welds[rs].position.z); nozzle.material.color.setHSL(.08, 1, .6 + .1 * Math.sin(t * 20)); }
+    // 04 units come down onto their curbs
+    units.forEach((u, i) => { const l = ease(clamp01(p4 * 1.6 - i * .3)); u.position.y = u.userData.y + (1 - l) * 12; u.visible = l > 0; });
+    // sun: incoming rays always; reflected rays once the roof is white
+    rayIn.opacity = .8; rayOut.opacity = pS * .95;
+    rayIn.dashSize = rayOut.dashSize = 1.6 + .25 * Math.sin(t * 2);
+    sunBall.material.color.setHSL(.11, 1, .62 + .03 * Math.sin(t * 3));
+    // weld lines glow in the accent while welding, then settle to a faint seam
+    weldMat.opacity = 1 - p4 * .75;
+    // camera: three-quarter aerial view that swings around as the roof goes on
+    const az = -.85 + prog * .5 + ptr.x * .1, el = .3 - prog * .06 - ptr.y * .04;
+    const R = !wide ? 200 : phone ? 150 : 118;
+    camera.position.set(Math.sin(az) * Math.cos(el) * R, BH + Math.sin(el) * R, Math.cos(az) * Math.cos(el) * R);
+    look.set(6, BH + 6, -6); camera.lookAt(look);
+    if (wide) camera.setViewOffset(canvas.clientWidth, canvas.clientHeight, -canvas.clientWidth * .2, 0, canvas.clientWidth, canvas.clientHeight); else camera.setViewOffset(canvas.clientWidth, canvas.clientHeight, 0, canvas.clientHeight * .12, canvas.clientWidth, canvas.clientHeight);
+    renderer.render(scene, camera);
+  };
+  frame(0);
+  const T0 = performance.now();
+  renderer.setAnimationLoop((now) => { if (!visible) return; frame(reduce ? 0 : (now - T0) / 1000); });
+})();
+
+(function logo(){
+  const gate = document.getElementById('gate');
+  const wrap = document.getElementById('logo3d');
+  const canvas = document.getElementById('logoCanvas');
+  const MARK = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-680 -640 1360 1200"><path fill="#000" fill-rule="evenodd" d="M0 -600L640 -40L560 -40L0 -500L-560 -40L-640 -40ZM300 -500L400 -500L400 -330L300 -420ZM-470 -10L0 -420L470 -10L470 520L-470 520ZM-72.6 264.8Q -83.8 290.0 -101.7 309.3Q -119.6 328.6 -141.4 342.1Q -163.3 355.5 -188.5 362.2Q -213.7 369.0 -239.4 369.0Q -294.3 369.0 -324.6 336.2Q -354.8 303.4 -354.8 231.8Q -354.8 206.6 -350.6 174.9Q -346.4 143.3 -336.9 111.1Q -327.4 78.9 -312.2 48.1Q -297.1 17.3 -275.3 -6.8Q -253.4 -30.9 -224.0 -45.4Q -194.6 -60.0 -157.1 -60.0Q -138.6 -60.0 -121.8 -55.8Q -105.0 -51.6 -92.7 -42.6Q -80.4 -33.7 -73.1 -19.1Q -65.8 -4.6 -65.8 16.2Q -65.8 37.4 -74.8 52.0Q -83.8 66.6 -105.0 66.6Q -111.8 66.6 -120.4 64.0Q -129.1 61.5 -137.0 52.0Q -126.9 47.0 -119.0 31.6Q -111.2 16.2 -111.2 1.0Q -111.2 -13.0 -119.0 -23.3Q -126.9 -33.7 -143.1 -33.7Q -159.4 -33.7 -174.5 -22.2Q -189.6 -10.7 -202.8 8.6Q -215.9 27.9 -226.8 54.0Q -237.8 80.0 -245.6 108.8Q -253.4 137.7 -257.6 167.9Q -261.8 198.2 -261.8 226.2Q -261.8 246.3 -259.0 263.1Q -256.2 279.9 -249.0 292.2Q -241.7 304.6 -228.5 311.3Q -215.4 318.0 -195.2 318.0Q -163.3 318.0 -134.2 302.0Q -105.0 286.1 -85.4 259.2ZM 209.1 360.0 245.0 108.6 139.7 360.0H 63.0L 74.2 107.4L -19.4 360.0H -64.2L 78.1 -24.7Q 36.1 -10.7 12.6 21.2Q -11.0 53.1 -11.0 101.3Q -11.0 111.4 -9.8 117.8Q -8.7 124.2 -7.6 128.4Q -6.5 132.6 -5.1 135.4Q -3.7 138.2 -3.1 139.9Q -30.0 139.9 -46.5 128.4Q -63.0 117.0 -63.0 89.5Q -63.0 62.6 -47.1 35.8Q -31.1 8.9 -5.9 -12.4Q 19.3 -33.7 50.9 -46.8Q 82.6 -60.0 113.9 -60.0Q 136.9 -60.0 157.6 -52.2L 144.7 243.0L 267.9 -52.2H 348.6L 289.8 360.0Z"/></svg>`;
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+  const camera = new THREE.PerspectiveCamera(26, 1, 10, 60000);
+  const shapes = [];
+  new SVGLoader().parse(MARK).paths.forEach((p) => SVGLoader.createShapes(p).forEach((s) => shapes.push(s)));
+  const geo = new THREE.ExtrudeGeometry(shapes, { depth: 200, curveSegments: phone ? 10 : 24, bevelEnabled: true, bevelThickness: 22, bevelSize: 10, bevelSegments: phone ? 3 : 6 });
+  geo.center(); geo.computeBoundingBox();
+  const width = geo.boundingBox.max.x - geo.boundingBox.min.x;
+  const mat = new THREE.MeshPhysicalMaterial({ metalness: 0.6, roughness: 0.25, clearcoat: 0.8, clearcoatRoughness: 0.15 });
+  const mesh = new THREE.Mesh(geo, mat); mesh.rotation.x = Math.PI;
+  const group = new THREE.Group(); group.add(mesh); scene.add(group);
+  const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(0, 0, 4000); scene.add(key);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+  const applyVibe = () => mat.color = col('--accent');
+  applyVibe(); addEventListener('vibechange', applyVibe);
+  const fit = () => {
+    const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
+    renderer.setSize(w, h, false); camera.aspect = w / h;
+    const hfov = 2 * Math.atan(Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * camera.aspect);
+    camera.position.set(0, 0, (width / 0.62) / 2 / Math.tan(hfov / 2));
+    camera.near = camera.position.z / 20; camera.far = camera.position.z * 4; camera.updateProjectionMatrix();
+  };
+  new ResizeObserver(fit).observe(canvas); fit();
+  const ptr = { x: 0, y: 0 }; let drag = null, spin = 0, vel = 0, tiltX = 0;
+  const onMove = (e) => {
+    ptr.x = e.clientX / innerWidth * 2 - 1; ptr.y = e.clientY / innerHeight * 2 - 1;
+    if (drag) { const dx = e.clientX - drag.x; vel = dx * 0.012; spin += vel; tiltX = Math.max(-0.6, Math.min(0.6, tiltX + (e.clientY - drag.y) * 0.006)); drag.x = e.clientX; drag.y = e.clientY; }
+  };
+  wrap.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY }; wrap.setPointerCapture(e.pointerId); });
+  const end = () => { drag = null; };
+  wrap.addEventListener('pointerup', end); wrap.addEventListener('pointercancel', end);
+  addEventListener('pointermove', onMove, { passive: true });
+  const t0 = performance.now(); let shown = false;
+  const ease = (k) => 1 - Math.pow(1 - k, 3);
+  renderer.setAnimationLoop((now) => {
+    if (gate.hidden) { renderer.setAnimationLoop(null); removeEventListener('pointermove', onMove); geo.dispose(); mat.dispose(); pmrem.dispose(); renderer.dispose(); return; }
+    const t = (now - t0) / 1000, intro = reduce ? 1 : ease(Math.min(t / 1.8, 1));
+    if (!drag) { vel *= 0.95; spin += vel; spin *= 0.985; tiltX *= 0.96; }
+    const f = reduce ? 0 : 1;
+    group.rotation.y = spin + ptr.x * 0.45 + Math.cos(t * 0.6) * 0.12 * f - (1 - intro) * 1.2;
+    group.rotation.x = tiltX + ptr.y * 0.3 + Math.sin(t * 0.8) * 0.05 * f + 0.08;
+    group.position.y = Math.sin(t * 1.1) * width * 0.005 * f;
+    group.scale.setScalar(0.86 + 0.14 * intro);
+    key.position.set(ptr.x * 3000, -ptr.y * 2000 + 800, 4000);
+    renderer.render(scene, camera);
+    if (!shown) { shown = true; wrap.classList.add('webgl'); }
+  });
+})();
+</script>
+</body>
+</html>

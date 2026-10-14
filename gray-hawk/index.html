@@ -1,0 +1,1130 @@
+<!doctype html>
+<html lang="fr" data-vibe="hawk" data-phone="6136320921">
+<!-- Business phone: the 10 digits in data-phone above. Every "Appeler" button dials it. -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Gray Hawk</title>
+<meta name="description" content="Plomberie, chauffage et climatisation à Hawkesbury. Service de réparation 24 h en Ontario et au Québec. Résidentiel, commercial et industriel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,600;1,700&family=Hanken+Grotesk:wght@400;500;600&family=Chivo+Mono:wght@400;500&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* Layout: a 24 h plumbing & heating shop. Hero = their mechanical room in 3D, copper lines growing in with
+   hot and cold water pulsing through; signature = "what's happening at your place?": pick the symptom,
+   the camera flies to the device in a cut-away house, and you get the first thing to do + who to call. */
+:root{
+  --display:"Chakra Petch","Arial Narrow",sans-serif;
+  --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Chivo Mono",ui-monospace,Menlo,monospace;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  /* Gray Hawk (default): the red badge and charcoal of their logo */
+  --bg:#efefed; --surface:#ffffff; --ink:#18191b; --muted:#5d5f63; --line:#d9dadb;
+  --accent:#d3202a; --accent-ink:#ffffff; --accent-text:#b3141d;
+  --hero:#18191b; --hero-ink:#f3f3f2; --hero-muted:#9b9da1;
+  --hot:#ff4a3d; --cold:#3d9bff; --win:#ffb067; --metal:#b87333;
+}
+:root[data-vibe="cuivre"]{
+  --bg:#f3eee8; --surface:#ffffff; --ink:#1c140f; --muted:#68594d; --line:#e1d6ca;
+  --accent:#d0803f; --accent-ink:#1b0f05; --accent-text:#94501b;
+  --hero:#17110d; --hero-ink:#f7efe7; --hero-muted:#ab9a8b;
+  --hot:#ff7a3a; --cold:#4fb3c9; --win:#ffb067; --metal:#c17a3c;
+}
+:root[data-vibe="givre"]{
+  --bg:#ecf1f5; --surface:#ffffff; --ink:#0f1820; --muted:#53616d; --line:#d0dae2;
+  --accent:#4aa8e8; --accent-ink:#06121c; --accent-text:#1f6b9f;
+  --hero:#0e151c; --hero-ink:#edf4f9; --hero-muted:#8fa2b2;
+  --hot:#ff6a4d; --cold:#6cc6ff; --win:#ffd09a; --metal:#a7afb6;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--body);transition:background-color .6s var(--ease),color .6s var(--ease)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.tag{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:inline-flex;gap:10px;align-items:center}
+.tag::before{content:"";width:16px;height:2px;background:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 15px/1 var(--body);text-decoration:none;border-radius:8px;padding:16px 22px;border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease),background-color .3s,color .3s,border-color .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover{box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 40%,transparent)}
+.btn-line{border-color:color-mix(in srgb,var(--hero-ink) 40%,transparent);color:var(--hero-ink);background:transparent}
+.btn-line:hover{border-color:var(--hero-ink)}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.ph-ic{width:18px;height:18px;flex:none}
+.btn-call{position:relative}
+.btn-call::after{content:"";position:absolute;inset:-4px;border-radius:11px;border:2px solid var(--accent);opacity:0;animation:ring 2.4s var(--ease) infinite;pointer-events:none}
+@keyframes ring{0%{opacity:.7;transform:scale(.97)}70%,100%{opacity:0;transform:scale(1.08)}}
+.btn-call .num{font:500 13px var(--mono);opacity:.85}
+
+/* ---------- Entry gate ---------- */
+.gate{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:24px;text-align:center;color:var(--hero-ink);
+  background:color-mix(in srgb,var(--hero) 74%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:opacity .9s var(--ease),visibility 0s linear .9s}
+html:not(.js) .gate{display:none}
+.gate.closed{opacity:0;visibility:hidden}
+.gate::before{content:"";position:absolute;left:50%;top:40%;width:min(92vw,820px);aspect-ratio:2/1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--win) 18%,transparent),transparent);pointer-events:none}
+.logo3d{position:relative;width:min(60vw,380px);aspect-ratio:4112/2160;cursor:grab;touch-action:none}
+.logo3d:active{cursor:grabbing}
+.logo3d svg.flat{position:absolute;inset:0;width:100%;height:100%;color:var(--accent);transition:opacity .6s}
+.logo3d canvas{position:absolute;left:-30%;top:-45%;width:160%;height:190%;opacity:0;transition:opacity 1s var(--ease);pointer-events:none}
+.logo3d.webgl canvas{opacity:1}
+.logo3d.webgl svg.flat{opacity:0}
+.gate .logo3d{animation:logoIn 1.6s var(--ease) both}
+@keyframes logoIn{from{opacity:0;transform:translateY(26px) scale(.92);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+.gate-name{font:800 clamp(22px,4vw,34px)/1 var(--display);font-stretch:112%;text-transform:uppercase;letter-spacing:.02em}
+.gate-name small{display:block;font:500 11px/1 var(--mono);letter-spacing:.32em;color:var(--hero-muted);margin-top:10px}
+.gate-q{font:500 12px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;margin:4px 0 0;opacity:.9}
+.gate-q span{opacity:.6}
+.gate-langs{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.gate-langs .btn{min-width:170px}
+.gate-hint{font:400 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);margin:0}
+
+/* ---------- Vibes ---------- */
+.vibes{display:inline-flex;align-items:center;gap:6px;padding:5px;border-radius:999px;border:1px solid color-mix(in srgb,currentColor 25%,transparent)}
+.vibes button{width:26px;height:26px;border-radius:50%;border:0;padding:0;cursor:pointer;background:conic-gradient(var(--a) 0 50%,var(--b) 0 100%);transform:rotate(-45deg);transition:transform .3s var(--ease)}
+.vibes button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--hero),0 0 0 3.5px currentColor}
+.vibes button:hover{transform:rotate(-45deg) scale(1.12)}
+.vibe-name{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:0 8px 0 4px;white-space:nowrap}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;color:var(--hero-ink);transition:background-color .4s;padding-top:env(safe-area-inset-top,0px)}
+.nav.solid{background:color-mix(in srgb,var(--hero) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px}
+.brand{display:flex;align-items:center;text-decoration:none;color:var(--hero-ink)}
+.brand svg{height:30px;width:auto}
+.nav-links{display:flex;gap:28px;font:500 14px var(--body)}
+.nav-links a{text-decoration:none;opacity:.8;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang{display:flex;font:500 12px var(--mono)}
+.lang button{background:none;border:0;color:inherit;opacity:.55;cursor:pointer;padding:6px}
+.lang button[aria-pressed="true"]{opacity:1;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--accent)}
+.nav .btn{padding:12px 16px;font-size:14px}
+
+/* ---------- Hero ---------- */
+.hero{position:sticky;top:0;min-height:100svh;display:flex;align-items:flex-end;color:var(--hero-ink);background:var(--hero);overflow:hidden;isolation:isolate}
+#town{position:absolute;inset:0;width:100%;height:100%;z-index:-2;display:block;transform:scale(calc(1 + var(--p,0) * .08));filter:brightness(calc(1 - var(--p,0) * .55));will-change:transform}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,color-mix(in srgb,var(--hero) 50%,transparent) 0%,transparent 24%,transparent 48%,color-mix(in srgb,var(--hero) 94%,transparent) 92%),linear-gradient(90deg,color-mix(in srgb,var(--hero) 78%,transparent),transparent 62%)}
+.hero .wrap{width:100%;padding-block:140px 56px;display:grid;gap:24px;transform:translate3d(0,calc(var(--p,0) * -90px),0);opacity:calc(1 - var(--p,0) * 1.6);will-change:transform,opacity}
+.live{display:inline-flex;align-items:center;gap:10px;justify-self:start;font:500 12px var(--mono);letter-spacing:.08em;color:var(--hero-ink);background:color-mix(in srgb,var(--hero-ink) 8%,transparent);border:1px solid color-mix(in srgb,var(--hero-ink) 16%,transparent);border-radius:999px;padding:8px 14px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:live 1.8s infinite}
+@keyframes live{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 70%,transparent)}100%{box-shadow:0 0 0 10px transparent}}
+.live b{font-weight:500;font-variant-numeric:tabular-nums}
+.hero h1{font:800 clamp(46px,7.4vw,112px)/.9 var(--display);font-stretch:112%;text-transform:uppercase;margin:0;letter-spacing:-.01em;max-width:13ch;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--accent);text-shadow:0 0 40px color-mix(in srgb,var(--win) 40%,transparent)}
+.hero-sub{font-size:clamp(16px,1.6vw,19px);max-width:52ch;color:color-mix(in srgb,var(--hero-ink) 82%,transparent);margin:0}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.sectors{display:flex;gap:20px;flex-wrap:wrap;font:400 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);margin-top:12px}
+.sectors span{display:inline-flex;align-items:center;gap:8px}
+.sectors span::before{content:"";width:6px;height:6px;border-radius:1px;background:var(--win);box-shadow:0 0 8px var(--win)}
+.hero-tag{position:absolute;right:clamp(16px,4vw,40px);bottom:24px;font:400 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);opacity:calc(.75 - var(--p,0) * 2)}
+
+/* ---------- Sheet ---------- */
+.sheet{position:relative;z-index:2;background:var(--bg);border-radius:28px 28px 0 0;overflow:hidden;box-shadow:0 -30px 60px rgba(0,0,0,.3);transition:background-color .6s var(--ease)}
+footer{position:relative;z-index:2}
+.facts{background:var(--hero);color:var(--hero-ink)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:30px 0 30px 24px;display:grid;gap:6px;border-left:1px solid color-mix(in srgb,var(--hero-ink) 12%,transparent)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact b{font:800 42px/1 var(--display);font-stretch:112%;color:var(--accent)}
+.fact span{font-size:13px;color:var(--hero-muted)}
+
+section{padding-block:clamp(72px,10vw,128px)}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+h2{font:800 clamp(36px,5.4vw,72px)/.94 var(--display);font-stretch:112%;text-transform:uppercase;margin:16px 0 0;text-wrap:balance;letter-spacing:-.01em}
+h2 em{font-style:normal;color:var(--accent-text)}
+.head p{color:var(--muted);margin:0;max-width:46ch;justify-self:end}
+
+/* three sectors */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sector{position:relative;border-radius:16px;background:var(--hero);color:var(--hero-ink);padding:28px;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;overflow:hidden;isolation:isolate}
+.sector::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 55% at 75% 20%,color-mix(in srgb,var(--win) 26%,transparent),transparent 70%);opacity:.35;transition:opacity .8s var(--ease)}
+.sector:hover::before,.sector.in::before{opacity:1}
+.sector .n{position:absolute;top:22px;left:28px;font:500 12px var(--mono);color:var(--hero-muted)}
+.sector svg.sil{position:absolute;right:20px;top:24px;width:46%;height:auto;color:color-mix(in srgb,var(--hero-ink) 18%,transparent)}
+.sector svg.sil .w{fill:var(--win);opacity:.15;transition:opacity .6s}
+.sector:hover svg.sil .w,.sector.in svg.sil .w{opacity:1}
+.sector h3{font:800 32px/1 var(--display);font-stretch:112%;text-transform:uppercase;margin:0}
+.sector p{margin:0;color:var(--hero-muted);font-size:15px}
+
+/* residential checklist */
+.jobs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0;padding:0;list-style:none}
+.jobs li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:14px;align-content:start;min-height:140px}
+.led{width:10px;height:10px;border-radius:50%;background:var(--line);transition:background-color .5s,box-shadow .5s;transition-delay:calc(var(--i,0) * 120ms + .4s)}
+.jobs li.in .led{background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.jobs b{font:600 17px/1.25 var(--body)}
+
+/* emergency band */
+.sos{background:var(--hero);color:var(--hero-ink);position:relative;overflow:hidden}
+.sos::before{content:"";position:absolute;inset:-40% -10% auto auto;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 22%,transparent),transparent);pointer-events:none}
+.sos .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center;position:relative}
+.sos h2{margin:14px 0 18px}
+.sos p{color:var(--hero-muted);margin:0 0 26px;max-width:46ch}
+.sos .tag{color:var(--hero-muted)}
+.clock{justify-self:end;text-align:right;display:grid;gap:8px}
+.clock b{font:800 clamp(64px,9vw,128px)/.85 var(--display);font-stretch:112%;font-variant-numeric:tabular-nums;color:var(--accent);text-shadow:0 0 50px color-mix(in srgb,var(--accent) 35%,transparent)}
+.clock span{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted)}
+
+.quote{font:800 clamp(28px,3.8vw,48px)/1.04 var(--display);font-stretch:112%;text-transform:uppercase;margin:18px 0 56px;max-width:24ch;text-wrap:balance}
+.quote em{font-style:normal;color:var(--accent-text)}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.why div{border-top:2px solid var(--ink);padding-top:20px;display:grid;gap:8px}
+.why b{font:800 24px/1 var(--display);font-stretch:112%;text-transform:uppercase}
+.why p{margin:0;color:var(--muted)}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(160px,18vw,240px);gap:12px}
+.ph{position:relative;overflow:hidden;border-radius:12px;background:var(--hero)}
+.ph::before{content:"";position:absolute;inset:0;background:radial-gradient(40% 35% at 70% 35%,color-mix(in srgb,var(--win) 35%,transparent),transparent 70%),linear-gradient(180deg,transparent 55%,color-mix(in srgb,var(--edge) 80%,transparent));transition:transform 1.2s var(--ease)}
+.ph:hover::before{transform:scale(1.08)}
+.ph span{position:absolute;left:14px;bottom:12px;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--hero-muted)}
+.ph.big{grid-column:span 2;grid-row:span 2}
+.ph.wide{grid-column:span 2}
+.ph.big span{color:var(--hero-ink)}
+
+.split{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(32px,6vw,80px);align-items:start}
+.zones{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;padding:0;list-style:none}
+.zones li{border:1px solid var(--line);padding:8px 14px;font-size:14px;border-radius:999px;background:var(--surface)}
+.rating{background:var(--hero);color:var(--hero-ink);padding:34px;display:grid;gap:18px;border-radius:16px}
+.rating .score{display:flex;align-items:baseline;gap:14px}
+.rating b{font:800 88px/.8 var(--display);font-stretch:112%;color:var(--accent)}
+.rating .score span{color:var(--hero-muted);font-size:14px}
+.bars{display:grid;gap:8px;font:400 12px var(--mono);color:var(--hero-muted)}
+.bar{display:grid;grid-template-columns:24px 1fr 28px;gap:10px;align-items:center;font-variant-numeric:tabular-nums}
+.bar i{height:6px;border-radius:6px;background:color-mix(in srgb,var(--hero-ink) 12%,transparent);overflow:hidden;position:relative}
+.bar i::after{content:"";position:absolute;inset:0;width:calc(var(--v) * 1%);background:var(--accent);border-radius:6px;transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--ease)}
+.rating.in .bar i::after{transform:scaleX(1)}
+.rating p{margin:0;color:var(--hero-muted);font-size:13px}
+
+.contact{background:var(--hero);color:var(--hero-ink)}
+.contact h2 em{color:var(--accent)}
+.contact .tag{color:var(--hero-muted)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px;margin-top:8px}
+label{display:grid;gap:8px;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--hero-muted)}
+input,select,textarea{font:16px var(--body);color:var(--hero-ink);background:transparent;border:0;border-bottom:1px solid color-mix(in srgb,var(--hero-ink) 30%,transparent);padding:10px 0;border-radius:0;width:100%;transition:border-color .3s}
+select option{color:#111}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--accent)}
+textarea{min-height:90px;resize:vertical}
+.full{grid-column:1/-1}
+.sent{grid-column:1/-1;margin:0;color:var(--accent);font:500 13px var(--mono)}
+.contact-side{display:grid;gap:22px;align-content:start;color:var(--hero-muted)}
+.contact-side b{display:block;color:var(--hero-ink);font:800 18px var(--display);font-stretch:112%;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px}
+
+footer{background:var(--hero);color:var(--hero-muted);border-top:1px solid color-mix(in srgb,var(--hero-ink) 12%,transparent);font-size:13px;padding-block:36px calc(36px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer svg{height:30px;width:auto;color:var(--hero-ink)}
+
+.mock{position:fixed;left:16px;bottom:16px;z-index:60;font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);padding:8px 12px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.callbar{display:none}
+
+.js .rv{opacity:0;transform:translateY(40px);filter:blur(6px);transition:opacity 1.3s var(--ease),transform 1.3s var(--ease),filter 1.3s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
+.js .rv.in{opacity:1;transform:none;filter:none}
+.js .ph.rv{transform:none;filter:none;clip-path:inset(100% 0 0 0);transition:clip-path 1.4s var(--ease),opacity .6s;transition-delay:calc(var(--i,0) * 110ms)}
+.js .ph.rv.in{clip-path:inset(0 0 0 0)}
+@media (max-width:900px),(pointer:coarse){.js .rv{filter:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv,.js .ph.rv{opacity:1;transform:none;filter:none;clip-path:none}#town,.hero .wrap{transform:none!important;filter:none!important;opacity:1!important}.gate .logo3d{animation:none}.btn-call::after,.live i{animation:none}}
+
+[data-en]{display:none!important}
+html[lang="en"] [data-en]{display:revert!important}
+html[lang="en"] [data-fr]{display:none!important}
+
+@media (max-width:900px){
+  .nav-links{display:none}
+  .facts .wrap{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .head,.split,.sos .wrap{grid-template-columns:1fr}
+  .head p{justify-self:start}
+  .clock{justify-self:start;text-align:left}
+  .trio{grid-template-columns:1fr}
+  .sector{min-height:260px}
+  .jobs{grid-template-columns:1fr 1fr}
+  .why{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .nav .nav-right>.btn,.vibe-name{display:none}
+  form{grid-template-columns:1fr}
+  .callbar{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:55;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--hero)}
+  .callbar .btn{width:100%;padding-inline:12px}
+  .mock{bottom:84px}
+  footer{padding-bottom:110px}
+}
+
+/* ---------- Gray Hawk specific ---------- */
+.sheet{overflow:clip}
+.logo3d{width:min(56vw,320px);aspect-ratio:2240/1160}
+.logo3d canvas{left:-30%;top:-30%;width:160%;height:160%}
+.gate-name{font:italic 700 clamp(28px,4.6vw,44px)/1 var(--display);font-stretch:normal;letter-spacing:.02em;text-transform:uppercase}
+.brand{gap:12px}
+.brand svg.mk{height:30px;width:auto;color:var(--accent)}
+.brand svg.word{height:20px;width:auto;color:var(--hero-ink)}
+footer svg.word{height:24px;width:auto}
+.hero h1,h2,.fact b,.contact-side b,.sec h3,.spec b,.sym-title,.hours b,.hire b{font-family:var(--display);font-style:italic;font-weight:700;font-stretch:normal;text-transform:uppercase}
+.hero h1{font-size:clamp(40px,5.2vw,82px);line-height:.92;max-width:13ch;letter-spacing:-.01em}
+h2 em,.hero h1 em{font-style:inherit}
+h2{font-size:clamp(34px,4.8vw,64px);line-height:.94;letter-spacing:-.01em}
+.fact b{font-size:clamp(30px,3.4vw,44px);line-height:1}
+
+/* hero: the mechanical room */
+.hero{background:radial-gradient(120% 90% at 70% 60%,color-mix(in srgb,var(--metal) 16%,var(--hero)) 0%,var(--hero) 70%)}
+#room{position:absolute;inset:0;width:100%;height:100%;z-index:-2;display:block;transform:scale(calc(1 + var(--p,0) * .06));filter:brightness(calc(1 - var(--p,0) * .5));cursor:grab;touch-action:pan-y}
+#room:active{cursor:grabbing}
+.hero::after{pointer-events:none;background:linear-gradient(180deg,color-mix(in srgb,var(--hero) 60%,transparent) 0%,transparent 22%,transparent 60%,color-mix(in srgb,var(--hero) 94%,transparent) 96%),linear-gradient(90deg,color-mix(in srgb,var(--hero) 86%,transparent),transparent 58%)}
+.hero .wrap{pointer-events:none}
+.hero .wrap>*{pointer-events:auto}
+.status{display:inline-flex;align-items:center;gap:10px;justify-self:start;font:500 12px/1.3 var(--mono);color:var(--hero-ink);background:color-mix(in srgb,var(--hero-ink) 8%,transparent);border:1px solid color-mix(in srgb,var(--hero-ink) 16%,transparent);border-radius:999px;padding:8px 14px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;animation:live 1.8s infinite}
+.status.open i{background:#3ccf6e;box-shadow:0 0 0 0 #3ccf6e}
+.big24{font:italic 700 13px var(--mono);color:var(--accent)}
+.drag-hint{position:absolute;right:clamp(16px,4vw,40px);bottom:24px;font:400 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);opacity:calc(.8 - var(--p,0) * 2)}
+
+/* sectors */
+.secs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.sec figure{margin:0;position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--hero)}
+.sec img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.35) contrast(1.05);transition:transform .8s var(--ease),filter .5s}
+.sec:hover img{transform:scale(1.04);filter:none}
+.sec figure::after{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--accent);transform:skewX(-10deg);transform-origin:bottom}
+.sec>div{padding:22px 24px 26px;display:grid;gap:12px;align-content:start;flex:1}
+.sec h3{font-size:clamp(24px,2.4vw,30px);line-height:1;margin:0}
+.sec p{margin:0;color:var(--muted);font-size:15px}
+.sec ul{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
+.sec li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+.sec li span:nth-child(n+3){font:400 12px var(--mono);color:var(--muted);text-align:right}
+@media (max-width:900px){.secs{grid-template-columns:1fr}}
+
+/* specialties + products */
+.specs{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:clamp(48px,7vw,80px);border-top:2px solid var(--ink)}
+.spec{padding:20px 18px 6px 0;display:grid;gap:8px;align-content:start;border-right:1px solid var(--line);padding-left:18px}
+.spec:first-child{padding-left:0}.spec:last-child{border-right:0}
+.spec b{font-size:19px;line-height:1.05}
+.spec p{margin:0;color:var(--muted);font-size:14px}
+.prods{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.prods li{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:7px 12px;font-size:14px}
+.prods-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-top:clamp(48px,7vw,80px)}
+.prods-head p{margin:0;color:var(--muted);max-width:52ch}
+@media (max-width:900px){.specs{grid-template-columns:1fr 1fr}.spec{border-right:0;padding-left:0;border-bottom:1px solid var(--line);padding-bottom:16px}}
+@media (max-width:520px){.specs{grid-template-columns:1fr}}
+
+/* signature: symptom → device */
+.diag{background:var(--hero);color:var(--hero-ink)}
+.diag .tag{color:var(--hero-muted)}
+.diag h2 em{font-style:inherit;color:var(--accent)}
+.diag .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(28px,4vw,56px);align-items:start}
+.stage{position:relative;aspect-ratio:4/3;border-radius:18px;overflow:hidden;background:radial-gradient(90% 80% at 50% 40%,color-mix(in srgb,var(--metal) 14%,var(--hero)),var(--hero));position:sticky;top:90px}
+#house{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage-label{position:absolute;left:14px;top:14px;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-ink);background:color-mix(in srgb,var(--hero) 78%,transparent);backdrop-filter:blur(6px);padding:7px 11px;border-radius:999px}
+.panel{display:grid;gap:22px}
+.panel .lead{color:var(--hero-muted);margin:14px 0 0;max-width:40ch}
+.syms{display:grid;gap:8px}
+.syms button{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;font:600 16px var(--body);color:var(--hero-ink);background:color-mix(in srgb,var(--hero-ink) 5%,transparent);border:1px solid color-mix(in srgb,var(--hero-ink) 14%,transparent);border-radius:10px;padding:11px 16px;cursor:pointer;transition:background-color .3s,border-color .3s,transform .3s var(--ease)}
+.syms button:hover{transform:translateX(4px);border-color:color-mix(in srgb,var(--hero-ink) 35%,transparent)}
+.syms button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.syms button small{font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;opacity:.75;white-space:nowrap}
+.card{border-top:1px solid color-mix(in srgb,var(--hero-ink) 16%,transparent);padding-top:22px;display:grid;gap:14px}
+.card[hidden]{display:none}
+.sym-title{font-size:clamp(24px,2.6vw,32px);line-height:1;margin:0}
+.urg{justify-self:start;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:999px;border:1px solid currentColor}
+.urg.now{color:var(--hot)}
+.urg.plan{color:var(--hero-muted)}
+.card dl{margin:0;display:grid;gap:12px}
+.card dt{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--hero-muted)}
+.card dd{margin:4px 0 0;color:color-mix(in srgb,var(--hero-ink) 88%,transparent)}
+.card .btn{justify-self:start}
+.note{font:400 11px/1.6 var(--mono);color:var(--hero-muted);margin:0}
+@media (max-width:900px){.diag .wrap{grid-template-columns:1fr}.stage{position:relative;top:0;aspect-ratio:1/1}}
+
+/* hours + payment + languages */
+.info3{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px}
+.hours{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(22px,3vw,32px);display:grid;gap:14px;align-content:start}
+.hours b{font-size:20px;line-height:1}
+.hours p{margin:0;color:var(--muted);font-size:15px}
+.hours .row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:10px;font-size:15px}
+.hours .row span:last-child{font:500 13px var(--mono);font-variant-numeric:tabular-nums}
+.now-chip{justify-self:start;font:500 12px var(--mono);padding:6px 12px;border-radius:999px;background:var(--ink);color:var(--bg)}
+.pays{display:flex;flex-wrap:wrap;gap:8px}
+.pays span{font:500 12px var(--mono);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+@media (max-width:900px){.info3{grid-template-columns:1fr}}
+
+/* both sides of the bridge */
+.bridge{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.bridge svg{width:100%;height:auto;display:block}
+.bridge .lead{color:var(--muted);max-width:44ch;margin:18px 0 0}
+@media (max-width:900px){.bridge{grid-template-columns:1fr}}
+
+/* hiring */
+.hire{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:clamp(48px,7vw,80px);padding:clamp(22px,3vw,32px);border-radius:14px;background:var(--ink);color:var(--bg)}
+.hire b{font-size:clamp(22px,2.4vw,30px);line-height:1;display:block}
+.hire p{margin:6px 0 0;opacity:.7}
+.hire a{color:var(--bg);font:500 15px var(--mono)}
+
+.contact-side .btn{margin-top:8px}
+.contact-side small{display:block;margin-top:6px;font:400 12px var(--mono);color:var(--hero-muted)}
+@media (max-width:620px){.brand svg.word{display:none}.hero-cta .num{display:none}}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateQ">
+  <div class="logo3d" id="logo3d" aria-hidden="true">
+    <svg class="flat" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-1120 -600 2240 1160"><path fill="currentColor" fill-rule="evenodd" d="M908.7 -560.0L956.8 -553.5L999.3 -534.5L1033.3 -504.4L1056.5 -465.0L1067.4 -419.2L1065.2 -370.0L941.8 330.0L926.7 379.2L899.6 425.0L862.5 464.4L817.8 494.5L768.6 513.5L718.3 520.0L-901.7 520.0L-949.7 513.5L-992.2 494.5L-1026.2 464.4L-1049.5 425.0L-1060.4 379.2L-1058.2 330.0L-934.8 -370.0L-919.6 -419.2L-892.6 -465.0L-855.4 -504.4L-810.7 -534.5L-761.6 -553.5L-711.3 -560.0ZM847.6 -440.0L875.4 -436.3L900.0 -425.3L919.7 -407.8L933.1 -385.0L939.5 -358.5L938.2 -330.0L828.9 290.0L820.1 318.5L804.4 345.0L782.9 367.8L757.1 385.3L728.6 396.3L699.5 400.0L-840.5 400.0L-868.3 396.3L-892.9 385.3L-912.6 367.8L-926.1 345.0L-932.4 318.5L-931.1 290.0L-821.8 -330.0L-813.0 -358.5L-797.4 -385.0L-775.9 -407.8L-750.0 -425.3L-721.5 -436.3L-692.4 -440.0ZM-667.0 206.0 -583.0 -263.0 -458.0 -370.0H -112.0L -11.0 -249.0L -29.0 -150.0H -165.0L -155.0 -207.0L -193.0 -254.0H -398.0L -458.0 -203.0L -524.0 163.0L -482.0 214.0H -273.0L -216.0 166.0L -197.0 56.0H -346.0L -326.0 -60.0H -45.0L -95.0 227.0L -218.0 330.0H -565.0ZM 121.0 -370.0H 257.0L 206.0 -77.0H 501.0L 552.0 -370.0H 688.0L 565.0 330.0H 429.0L 480.0 39.0H 185.0L 134.0 330.0H -2.0Z"/></svg>
+    <canvas id="logoCanvas"></canvas>
+  </div>
+  <div class="gate-name">Gray Hawk<small>Plomberie · Chauffage · Climatisation</small></div>
+  <p class="gate-q" id="gateQ">Choisissez votre langue <span>· Choose your language</span></p>
+  <div class="gate-langs">
+    <button type="button" class="btn btn-accent" data-pick="fr">Français</button>
+    <button type="button" class="btn btn-line" data-pick="en">English</button>
+  </div>
+  <div class="vibes" role="group" aria-label="Ambiance / Vibe" data-vibes>
+    <span class="vibe-name" data-vibe-label>Gray Hawk</span>
+  </div>
+  <p class="gate-hint">Glissez le logo · Drag the logo</p>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Gray Hawk"><svg class="mk" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-1120 -600 2240 1160"><path fill="currentColor" fill-rule="evenodd" d="M908.7 -560.0L956.8 -553.5L999.3 -534.5L1033.3 -504.4L1056.5 -465.0L1067.4 -419.2L1065.2 -370.0L941.8 330.0L926.7 379.2L899.6 425.0L862.5 464.4L817.8 494.5L768.6 513.5L718.3 520.0L-901.7 520.0L-949.7 513.5L-992.2 494.5L-1026.2 464.4L-1049.5 425.0L-1060.4 379.2L-1058.2 330.0L-934.8 -370.0L-919.6 -419.2L-892.6 -465.0L-855.4 -504.4L-810.7 -534.5L-761.6 -553.5L-711.3 -560.0ZM847.6 -440.0L875.4 -436.3L900.0 -425.3L919.7 -407.8L933.1 -385.0L939.5 -358.5L938.2 -330.0L828.9 290.0L820.1 318.5L804.4 345.0L782.9 367.8L757.1 385.3L728.6 396.3L699.5 400.0L-840.5 400.0L-868.3 396.3L-892.9 385.3L-912.6 367.8L-926.1 345.0L-932.4 318.5L-931.1 290.0L-821.8 -330.0L-813.0 -358.5L-797.4 -385.0L-775.9 -407.8L-750.0 -425.3L-721.5 -436.3L-692.4 -440.0ZM-667.0 206.0 -583.0 -263.0 -458.0 -370.0H -112.0L -11.0 -249.0L -29.0 -150.0H -165.0L -155.0 -207.0L -193.0 -254.0H -398.0L -458.0 -203.0L -524.0 163.0L -482.0 214.0H -273.0L -216.0 166.0L -197.0 56.0H -346.0L -326.0 -60.0H -45.0L -95.0 227.0L -218.0 330.0H -565.0ZM 121.0 -370.0H 257.0L 206.0 -77.0H 501.0L 552.0 -370.0H 688.0L 565.0 330.0H 429.0L 480.0 39.0H 185.0L 134.0 330.0H -2.0Z"/></svg><svg class="word" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="3 -730 6029 760"><path fill="currentColor" d="M33 -124 117 -593 242 -700H588L689 -579L671 -480H535L545 -537L507 -584H302L242 -533L176 -167L218 -116H427L484 -164L503 -274H354L374 -390H655L605 -103L482 0H135ZM1329.0 -372 1253.0 -307 1308.0 -232 1267.0 0H1131.0L1167.0 -207L1123.0 -268H901.0L854.0 0H718.0L841.0 -700H1271.0L1366.0 -584ZM921.0 -380H1161.0L1202.0 -415L1226.0 -551L1197.0 -586H957.0ZM1731.0 -700H1855.0L1988.0 0H1850.0L1822.0 -155H1576.0L1490.0 0H1352.0ZM1809.0 -267 1764.0 -533H1762.0L1624.0 -267ZM2313.0 -286 2137.0 -700H2278.0L2394.0 -413H2396.0L2614.0 -700H2771.0L2449.0 -286L2399.0 0H2263.0ZM3156.0 -700H3292.0L3241.0 -407H3536.0L3587.0 -700H3723.0L3600.0 0H3464.0L3515.0 -291H3220.0L3169.0 0H3033.0ZM4069.0 -700H4193.0L4326.0 0H4188.0L4160.0 -155H3914.0L3828.0 0H3690.0ZM4147.0 -267 4102.0 -533H4100.0L3962.0 -267ZM4500.0 -700H4634.0L4632.0 -206H4636.0L4862.0 -700H4964.0L5013.0 -206H5017.0L5189.0 -700H5329.0L5061.0 0H4934.0L4881.0 -492H4877.0L4649.0 0H4522.0ZM5439.0 -700H5575.0L5524.0 -407H5621.0L5841.0 -700H6002.0L5736.0 -351L5896.0 0H5751.0L5618.0 -291H5503.0L5452.0 0H5316.0Z"/></svg></a>
+    <nav class="nav-links" aria-label="Menu">
+      <a href="#services"><span data-fr>Services</span><span data-en>Services</span></a>
+      <a href="#urgence"><span data-fr>Urgence</span><span data-en>Emergency</span></a>
+      <a href="#heures"><span data-fr>Heures</span><span data-en>Hours</span></a>
+      <a href="#contact"><span data-fr>Contact</span><span data-en>Contact</span></a>
+    </nav>
+    <div class="nav-right">
+      <div class="vibes" role="group" aria-label="Ambiance / Vibe" data-vibes>
+        <span class="vibe-name" data-vibe-label>Gray Hawk</span>
+      </div>
+      <div class="lang" role="group" aria-label="Langue / Language">
+        <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-accent" href="#contact"><span data-fr>Estimation gratuite</span><span data-en>Free estimate</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:0">
+    <canvas id="room" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <span class="status" data-status><i></i><span data-status-text>Réparation 24 h</span></span>
+      <h1 data-fr>Fuite? Panne de chauffage? <em>On répond 24 h.</em></h1>
+      <h1 data-en>A leak? No heat? <em>We answer 24 h.</em></h1>
+      <p class="hero-sub" data-fr>Plomberie, chauffage et climatisation à Hawkesbury, en Ontario et au Québec. Des techniciens certifiés pour la réparation, l'installation et l'entretien.</p>
+      <p class="hero-sub" data-en>Plumbing, heating and air conditioning in Hawkesbury, serving Ontario and Québec. Certified technicians for repairs, installation and maintenance.</p>
+      <div class="hero-cta">
+        <a class="btn btn-accent btn-call" data-call href="tel:+16136320921"><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-fr>Appeler</span><span data-en>Call</span> <span class="num">613-632-0921</span></a>
+        <a class="btn btn-line" href="#urgence"><span data-fr>Qu'est-ce qui se passe?</span><span data-en>What's going on?</span><span class="arr">→</span></a>
+      </div>
+      <div class="sectors" aria-hidden="true"><span data-fr>Résidentiel</span><span data-en>Residential</span><span>Commercial</span><span data-fr>Industriel</span><span data-en>Industrial</span></div>
+    </div>
+    <div class="drag-hint" data-fr>Glissez pour tourner</div>
+    <div class="drag-hint" data-en>Drag to turn</div>
+  </section>
+
+  <div class="sheet">
+  <div class="facts">
+    <div class="wrap">
+      <div class="fact rv"><b>24 h</b><span data-fr>service de réparation, plomberie et chauffage</span><span data-en>repair service, plumbing and heating</span></div>
+      <div class="fact rv"><b>ON + QC</b><span data-fr>des deux côtés du pont du Long-Sault</span><span data-en>on both sides of the Long-Sault bridge</span></div>
+      <div class="fact rv"><b>3</b><span data-fr>secteurs : résidentiel, commercial, industriel</span><span data-en>sectors: residential, commercial, industrial</span></div>
+      <div class="fact rv"><b>0 $</b><span data-fr>pour l'estimation</span><span data-en>for the estimate</span></div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head rv">
+        <div><span class="tag" data-fr>Services</span><span class="tag" data-en>Services</span>
+          <h2 data-fr>Des solutions <em>clé en main</em></h2><h2 data-en>Turnkey <em>solutions</em></h2></div>
+        <p data-fr>De la réparation à l'installation en passant par l'entretien, Gray Hawk est la référence en chauffage et en plomberie à Hawkesbury et dans les environs.</p>
+        <p data-en>From repairs to installation to maintenance, Gray Hawk is the go-to for heating and plumbing in Hawkesbury and the surrounding area.</p>
+      </div>
+      <div class="secs">
+        <article class="sec rv">
+          <figure><img src="assets/residentiel.jpg" alt="" loading="lazy" decoding="async"></figure>
+          <div>
+            <h3 data-fr>Résidentiel</h3><h3 data-en>Residential</h3>
+            <p data-fr>La plomberie résidentielle est la pierre angulaire de Gray Hawk.</p><p data-en>Residential plumbing is the cornerstone of Gray Hawk.</p>
+            <ul>
+              <li><span data-fr>Plomberie</span><span data-en>Plumbing</span><span data-fr>tuyauterie, douches, éviers</span><span data-en>piping, showers, sinks</span></li>
+              <li><span data-fr>Chauffage</span><span data-en>Heating</span><span data-fr>fournaise, conversion</span><span data-en>furnace, conversion</span></li>
+              <li><span data-fr>Climatisation</span><span data-en>Air conditioning</span><span data-fr>murale ou centrale</span><span data-en>wall or central</span></li>
+              <li><span data-fr>Traitement de l'eau</span><span data-en>Water treatment</span><span data-fr>adoucisseur</span><span data-en>softener</span></li>
+            </ul>
+          </div>
+        </article>
+        <article class="sec rv">
+          <figure><img src="assets/commercial.jpg" alt="" loading="lazy" decoding="async"></figure>
+          <div>
+            <h3>Commercial</h3>
+            <p data-fr>Restaurant, boutique ou bureau : on se déplace à votre commerce.</p><p data-en>Restaurant, shop or office: we come to your business.</p>
+            <ul>
+              <li><span data-fr>Chauffage</span><span data-en>Heating</span><span data-fr>pour vos employés</span><span data-en>for your staff</span></li>
+              <li><span data-fr>Climatisation</span><span data-en>Air conditioning</span><span data-fr>pour vos clients</span><span data-en>for your customers</span></li>
+              <li><span data-fr>Plomberie</span><span data-en>Plumbing</span><span data-fr>chauffe-eau commercial</span><span data-en>commercial water heaters</span></li>
+            </ul>
+          </div>
+        </article>
+        <article class="sec rv">
+          <figure><img src="assets/industriel.jpg" alt="" loading="lazy" decoding="async"></figure>
+          <div>
+            <h3 data-fr>Industriel</h3><h3 data-en>Industrial</h3>
+            <p data-fr>Plomberie et chauffage industriels : inspection, entretien, réparation et débouchage.</p><p data-en>Industrial plumbing and heating: inspection, maintenance, repair and drain clearing.</p>
+            <ul>
+              <li><span data-fr>Inspection</span><span data-en>Inspection</span><span data-fr>sur demande</span><span data-en>on request</span></li>
+              <li><span data-fr>Entretien</span><span data-en>Maintenance</span><span data-fr>préventif</span><span data-en>preventive</span></li>
+              <li><span data-fr>Remplacement</span><span data-en>Replacement</span><span data-fr>appareils et systèmes</span><span data-en>equipment and systems</span></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="specs">
+        <div class="spec rv"><b data-fr>Géothermie</b><b data-en>Geothermal</b><p data-fr>Une source d'énergie propre et renouvelable, installée par une équipe qui connaît le chauffage géothermique.</p><p data-en>Clean, renewable energy, installed by a crew that knows geothermal heating.</p></div>
+        <div class="spec rv"><b data-fr>Thermopompe</b><b data-en>Heat pump</b><p data-fr>Une température uniforme dans toutes les pièces, pour une maison neuve ou pour remplacer une vieille fournaise.</p><p data-en>Even temperature in every room, for a new home or to replace an old furnace.</p></div>
+        <div class="spec rv"><b data-fr>Adoucisseur d'eau</b><b data-en>Water softener</b><p data-fr>Réduit fortement la dureté causée par les minéraux de l'eau.</p><p data-en>Greatly reduces the hardness caused by minerals in the water.</p></div>
+        <div class="spec rv"><b data-fr>Pompe à eau</b><b data-en>Water pump</b><p data-fr>Votre eau ne vient pas de la municipalité? Installation et réparation de pompes.</p><p data-en>Not on town water? Pump installation and repair.</p></div>
+        <div class="spec rv"><b data-fr>Foyer au gaz</b><b data-en>Gas fireplace</b><p data-fr>Une installation conforme, faite par des techniciens certifiés.</p><p data-en>A to-code installation by certified technicians.</p></div>
+      </div>
+
+      <div class="prods-head rv">
+        <div><span class="tag" data-fr>Produits CVC</span><span class="tag" data-en>HVAC products</span></div>
+        <p data-fr>Construction neuve ou grosse rénovation : nos techniciens vous conseillent les bons produits, et on les installe.</p>
+        <p data-en>New build or major renovation: our technicians recommend the right products, and we install them.</p>
+      </div>
+      <ul class="prods rv">
+        <li data-fr>Robinets</li><li data-en>Faucets</li><li data-fr>Climatiseurs</li><li data-en>Air conditioners</li><li data-fr>Fournaises</li><li data-en>Furnaces</li><li data-fr>Salle de bain : pièces et accessoires</li><li data-en>Bathroom parts and accessories</li><li data-fr>Lavabos</li><li data-en>Basins</li><li data-fr>Toilettes</li><li data-en>Toilets</li><li data-fr>Tuyauterie</li><li data-en>Piping</li><li data-fr>Purificateurs</li><li data-en>Purifiers</li><li data-fr>Chauffe-eau</li><li data-en>Water heaters</li><li data-fr>Foyers au gaz naturel</li><li data-en>Natural gas fireplaces</li><li data-fr>Cuisinières au gaz naturel</li><li data-en>Natural gas ranges</li><li data-fr>Climatiseurs géothermiques</li><li data-en>Geothermal air conditioners</li><li data-fr>Planchers chauffants</li><li data-en>Heated floors</li><li data-fr>Pompes de circulation</li><li data-en>Circulation pumps</li><li data-fr>Barbecues encastrés</li><li data-en>Built-in barbecues</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="diag" id="urgence">
+    <div class="wrap">
+      <div class="stage rv">
+        <canvas id="house" aria-hidden="true"></canvas>
+        <span class="stage-label" id="stageLabel">Hawkesbury · ON</span>
+      </div>
+      <div class="panel rv">
+        <div>
+          <span class="tag" data-fr>Diagnostic rapide</span><span class="tag" data-en>Quick check</span>
+          <h2 data-fr>Qu'est-ce qui <em>se passe?</em></h2><h2 data-en>What's <em>going on?</em></h2>
+          <p class="lead" data-fr>Choisissez ce qui vous arrive. On vous montre l'appareil en cause, quoi faire en attendant, et quand appeler.</p>
+          <p class="lead" data-en>Pick what's happening. We'll show you the equipment involved, what to do in the meantime, and when to call.</p>
+        </div>
+        <div class="syms" id="syms" role="group" aria-label="Symptôme / Symptom"></div>
+        <div class="card" id="card" hidden>
+          <span class="urg" id="urg"></span>
+          <p class="sym-title" id="symTitle"></p>
+          <dl>
+            <div><dt data-fr>En attendant</dt><dt data-en>In the meantime</dt><dd id="symNow"></dd></div>
+            <div><dt data-fr>Ce que Gray Hawk fait</dt><dt data-en>What Gray Hawk does</dt><dd id="symDo"></dd></div>
+          </dl>
+          <a class="btn btn-accent" id="symCta" href="#contact"></a>
+        </div>
+        <p class="note" data-fr>Conseils généraux, pas un diagnostic. En cas d'odeur de gaz, sortez du bâtiment et appelez le 911 ou votre fournisseur de gaz.</p>
+        <p class="note" data-en>General advice, not a diagnosis. If you smell gas, leave the building and call 911 or your gas utility.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="heures">
+    <div class="wrap">
+      <div class="head rv">
+        <div><span class="tag" data-fr>Heures</span><span class="tag" data-en>Hours</span>
+          <h2 data-fr>Le bureau ferme. <em>La ligne, non.</em></h2><h2 data-en>The office closes. <em>The line doesn't.</em></h2></div>
+        <p data-fr>Service en français et en anglais. Les urgences de plomberie et de chauffage sont prises 24 heures sur 24.</p>
+        <p data-en>Service in French and English. Plumbing and heating emergencies are handled 24 hours a day.</p>
+      </div>
+      <div class="info3">
+        <div class="hours rv">
+          <span class="now-chip" data-now>…</span>
+          <div class="row"><span data-fr>Bureau</span><span data-en>Office</span><span data-fr>lun–ven · 9 h–16 h</span><span data-en>Mon–Fri · 9 am–4 pm</span></div>
+          <div class="row"><span data-fr>Réparation</span><span data-en>Repairs</span><span>24 h</span></div>
+          <div class="row"><span data-fr>Estimation</span><span data-en>Estimate</span><span data-fr>gratuite</span><span data-en>free</span></div>
+        </div>
+        <div class="hours rv">
+          <b data-fr>Modes de paiement</b><b data-en>Payment</b>
+          <div class="pays"><span data-fr>Comptant</span><span data-en>Cash</span><span>Interac</span><span>Visa</span><span>Mastercard</span></div>
+          <p data-fr>Payez sur place, comme ça vous arrange.</p><p data-en>Pay on site, however suits you.</p>
+        </div>
+        <div class="hours rv">
+          <b data-fr>Langues</b><b data-en>Languages</b>
+          <div class="pays"><span>Français</span><span>English</span></div>
+          <p data-fr>Une équipe bilingue, des deux côtés de la rivière des Outaouais.</p><p data-en>A bilingual crew, on both sides of the Ottawa River.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="zones" style="padding-top:0">
+    <div class="wrap">
+      <div class="bridge">
+        <div class="rv">
+          <span class="tag" data-fr>Secteurs</span><span class="tag" data-en>Service area</span>
+          <h2 data-fr>Ontario <em>et Québec</em></h2><h2 data-en>Ontario <em>and Québec</em></h2>
+          <p class="lead" data-fr>Hawkesbury et les environs, et les villes en marge du pont du Long-Sault, des deux côtés de la rivière.</p>
+          <p class="lead" data-en>Hawkesbury and the surrounding area, plus the towns around the Long-Sault bridge, on both sides of the river.</p>
+        </div>
+        <svg class="rv" viewBox="0 0 600 340" role="img" aria-label="Hawkesbury (ON) et Grenville (QC), reliés par le pont du Long-Sault">
+          <rect x="0" y="0" width="600" height="340" rx="14" fill="var(--surface)" stroke="var(--line)"/>
+          <path d="M0 150 C120 128 200 176 300 160 S470 120 600 146 L600 206 C480 186 400 222 300 214 S110 196 0 212Z" fill="color-mix(in srgb,var(--cold) 22%,var(--surface))"/>
+          <text x="20" y="200" font-family="Chivo Mono,monospace" font-size="11" letter-spacing="2" fill="var(--muted)">RIVIÈRE DES OUTAOUAIS · OTTAWA RIVER</text>
+          <rect x="286" y="118" width="16" height="132" rx="3" fill="var(--ink)" transform="rotate(-8 294 184)"/>
+          <text x="318" y="126" font-family="Chivo Mono,monospace" font-size="11" fill="var(--muted)">PONT DU LONG-SAULT</text>
+          <circle cx="250" cy="268" r="9" fill="var(--accent)"/><circle cx="250" cy="268" r="20" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".4"/>
+          <text x="276" y="264" font-family="Chakra Petch,sans-serif" font-style="italic" font-weight="700" font-size="24" fill="var(--ink)">HAWKESBURY</text>
+          <text x="276" y="286" font-family="Chivo Mono,monospace" font-size="11" fill="var(--muted)">772, RUE MAIN E · ONTARIO</text>
+          <circle cx="330" cy="86" r="7" fill="var(--ink)"/>
+          <text x="346" y="92" font-family="Chakra Petch,sans-serif" font-style="italic" font-weight="700" font-size="20" fill="var(--ink)">GRENVILLE</text>
+          <text x="346" y="62" font-family="Chivo Mono,monospace" font-size="11" fill="var(--muted)">QUÉBEC</text>
+        </svg>
+      </div>
+      <div class="hire rv">
+        <div><b data-fr>On embauche</b><b data-en>We're hiring</b><p data-fr>Plombiers et entrepreneurs de chauffage d'expérience : envoyez votre CV.</p><p data-en>Experienced plumbers and heating contractors: send your résumé.</p></div>
+        <a href="mailto:hr@grayhawk.on.ca">hr@grayhawk.on.ca →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap split">
+      <div class="rv">
+        <span class="tag" data-fr>Estimation gratuite</span><span class="tag" data-en>Free estimate</span>
+        <h2 data-fr>Demande <em>de service</em></h2><h2 data-en>Service <em>request</em></h2>
+        <form id="quote">
+          <label for="q-name"><span data-fr>Nom</span><span data-en>Name</span><input id="q-name" required autocomplete="name"></label>
+          <label for="q-phone"><span data-fr>Téléphone</span><span data-en>Phone</span><input id="q-phone" type="tel" required autocomplete="tel"></label>
+          <label for="q-email"><span data-fr>Courriel</span><span data-en>Email</span><input id="q-email" type="email" autocomplete="email"></label>
+          <label for="q-type"><span>Type</span>
+            <select id="q-type"><option>Résidentiel / Residential</option><option>Commercial</option><option>Industriel / Industrial</option></select></label>
+          <label for="q-svc"><span>Service</span>
+            <select id="q-svc"><option>Plomberie / Plumbing</option><option>Chauffage / Heating</option><option>Climatisation / Air conditioning</option><option>Autre / Other</option></select></label>
+          <label for="q-model"><span data-fr>Modèle et n° de série</span><span data-en>Model and serial no.</span><input id="q-model" placeholder="—"></label>
+          <label class="full" for="q-msg"><span data-fr>Commentaires</span><span data-en>Comments</span><textarea id="q-msg"></textarea></label>
+          <div class="full"><button class="btn btn-accent" type="submit"><span data-fr>Envoyer ma demande</span><span data-en>Send my request</span><span class="arr">→</span></button></div>
+          <p class="sent" id="sent" hidden><span data-fr>Maquette : sur le vrai site, la demande arrive directement à info@grayhawk.on.ca.</span><span data-en>Sample: on the live site, requests go straight to info@grayhawk.on.ca.</span></p>
+        </form>
+      </div>
+      <div class="contact-side rv">
+        <div><b data-fr>Téléphone · 24 h</b><b data-en>Phone · 24 h</b><a class="btn btn-accent btn-call" data-call href="tel:+16136320921"><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span>613-632-0921</span></a><small data-fr>Télécopieur : 613-632-2681</small><small data-en>Fax: 613-632-2681</small></div>
+        <div><b data-fr>Courriel</b><b data-en>Email</b><a href="mailto:info@grayhawk.on.ca">info@grayhawk.on.ca</a></div>
+        <div><b data-fr>Adresse</b><b data-en>Address</b>772, rue Main E<br>Hawkesbury (Ontario) K6A 1B4</div>
+        <div><b data-fr>Bureau</b><b data-en>Office</b><span data-fr>Lundi au vendredi, 9 h à 16 h</span><span data-en>Monday to Friday, 9 am to 4 pm</span></div>
+      </div>
+    </div>
+  </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <svg class="word" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="3 -730 6029 760"><path fill="currentColor" d="M33 -124 117 -593 242 -700H588L689 -579L671 -480H535L545 -537L507 -584H302L242 -533L176 -167L218 -116H427L484 -164L503 -274H354L374 -390H655L605 -103L482 0H135ZM1329.0 -372 1253.0 -307 1308.0 -232 1267.0 0H1131.0L1167.0 -207L1123.0 -268H901.0L854.0 0H718.0L841.0 -700H1271.0L1366.0 -584ZM921.0 -380H1161.0L1202.0 -415L1226.0 -551L1197.0 -586H957.0ZM1731.0 -700H1855.0L1988.0 0H1850.0L1822.0 -155H1576.0L1490.0 0H1352.0ZM1809.0 -267 1764.0 -533H1762.0L1624.0 -267ZM2313.0 -286 2137.0 -700H2278.0L2394.0 -413H2396.0L2614.0 -700H2771.0L2449.0 -286L2399.0 0H2263.0ZM3156.0 -700H3292.0L3241.0 -407H3536.0L3587.0 -700H3723.0L3600.0 0H3464.0L3515.0 -291H3220.0L3169.0 0H3033.0ZM4069.0 -700H4193.0L4326.0 0H4188.0L4160.0 -155H3914.0L3828.0 0H3690.0ZM4147.0 -267 4102.0 -533H4100.0L3962.0 -267ZM4500.0 -700H4634.0L4632.0 -206H4636.0L4862.0 -700H4964.0L5013.0 -206H5017.0L5189.0 -700H5329.0L5061.0 0H4934.0L4881.0 -492H4877.0L4649.0 0H4522.0ZM5439.0 -700H5575.0L5524.0 -407H5621.0L5841.0 -700H6002.0L5736.0 -351L5896.0 0H5751.0L5618.0 -291H5503.0L5452.0 0H5316.0Z"/></svg>
+    <span>© 2026 Gray Hawk (1991) Co Ltd · <a href="#top" data-fr>Mentions légales</a><a href="#top" data-en>Legal notice</a></span>
+    <span data-fr>Site par WeUnfolded Web</span><span data-en>Site by WeUnfolded Web</span>
+  </div>
+</footer>
+
+<div class="mock"><span data-fr>Maquette · WeUnfolded Web</span><span data-en>Sample · WeUnfolded Web</span></div>
+<div class="callbar"><a class="btn btn-accent btn-call" data-call href="tel:+16136320921"><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-fr>Appeler 24 h</span><span data-en>Call 24 h</span></a><a class="btn btn-line" href="#contact"><span data-fr>Estimation</span><span data-en>Estimate</span></a></div>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var root=document.documentElement;
+  function setLang(l){
+    root.lang=l;
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
+    setVibe(root.dataset.vibe);tick();
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
+  var VIBES=[
+    {id:'hawk',fr:'Gray Hawk',en:'Gray Hawk',a:'#18191b',b:'#d3202a'},
+    {id:'cuivre',fr:'Cuivre',en:'Copper',a:'#17110d',b:'#d0803f'},
+    {id:'givre',fr:'Givre',en:'Frost',a:'#0e151c',b:'#4aa8e8'}
+  ];
+  document.querySelectorAll('[data-vibes]').forEach(function(g){
+    var label=g.querySelector('[data-vibe-label]');
+    VIBES.forEach(function(v){
+      var b=document.createElement('button');b.type='button';b.dataset.vibe=v.id;
+      b.style.setProperty('--a',v.a);b.style.setProperty('--b',v.b);
+      b.setAttribute('aria-label',v.fr+' / '+v.en);b.title=v.fr+' / '+v.en;
+      b.addEventListener('click',function(){setVibe(v.id)});
+      g.insertBefore(b,label);
+    });
+  });
+  function setVibe(id){
+    var v=VIBES.filter(function(x){return x.id===id})[0]||VIBES[0];
+    root.dataset.vibe=v.id;
+    document.querySelectorAll('[data-vibes] button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.vibe===v.id)});
+    document.querySelectorAll('[data-vibe-label]').forEach(function(s){s.textContent=root.lang==='en'?v.en:v.fr});
+    try{localStorage.setItem('gh-vibe',v.id)}catch(e){}
+    window.dispatchEvent(new Event('vibechange'));
+  }
+  // live clock (Montreal time)
+  function tick(){
+    var d=new Date(),t;
+    try{t=new Intl.DateTimeFormat(root.lang==='en'?'en-CA':'fr-CA',{hour:'numeric',minute:'2-digit',hour12:root.lang==='en',timeZone:'America/Toronto'}).format(d)}catch(e){t=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+    document.querySelectorAll('[data-clock]').forEach(function(b){b.textContent=t});
+  }
+  setInterval(tick,15000);
+  var saved=null;try{saved=localStorage.getItem('gh-vibe')}catch(e){}
+  var hm=/^#(fr|en)(?:-(hawk|cuivre|givre))?$/.exec(location.hash);
+  if(hm&&hm[2])saved=hm[2];
+  setVibe(saved||'hawk');tick();
+  // call buttons
+  var digits=(root.dataset.phone||'').replace(/\D/g,'').replace(/^1(?=\d{10}$)/,'');
+  if(digits.length===10){
+    var pretty='('+digits.slice(0,3)+') '+digits.slice(3,6)+'-'+digits.slice(6);
+    document.querySelectorAll('[data-call]').forEach(function(a){a.href='tel:+1'+digits;a.setAttribute('aria-label','Appeler / Call '+pretty)});
+    document.querySelectorAll('[data-phone-text]').forEach(function(s){s.textContent=pretty});
+  }
+  var gate=document.getElementById('gate');
+  if(hm){setLang(hm[1]);gate.hidden=true}else document.body.style.overflow='hidden';
+  gate.querySelectorAll('[data-pick]').forEach(function(b){
+    b.addEventListener('click',function(){
+      setLang(b.dataset.pick);
+      gate.classList.add('closed');document.body.style.overflow='';
+      window.dispatchEvent(new Event('gateopening'));
+      setTimeout(function(){gate.hidden=true},900);
+    });
+  });
+  var nav=document.getElementById('nav');
+  function onScroll(){nav.classList.toggle('solid',window.scrollY>40)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,lenis=null;
+  if(window.Lenis&&!reduce){
+    lenis=new Lenis({duration:1.35,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true,wheelMultiplier:.9});
+    (function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(performance.now());
+    if(!gate.hidden)lenis.stop();
+    window.addEventListener('gateopening',function(){lenis.start()});
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click',function(e){
+        if(a.getAttribute('href').indexOf('tel:')===0)return;
+        var id=a.getAttribute('href');var el=id==='#top'?0:document.querySelector(id);
+        if(el===null)return;e.preventDefault();lenis.scrollTo(el,{offset:id==='#top'?0:-76,duration:1.6});
+      });
+    });
+  }
+  var hero=document.querySelector('.hero');
+  function heroProgress(){var p=Math.min(1,Math.max(0,window.scrollY/(hero.offsetHeight||1)));hero.style.setProperty('--p',p.toFixed(3));window.__heroCovered=p>=1}
+  window.addEventListener('scroll',heroProgress,{passive:true});heroProgress();
+  ['.facts .wrap','.secs','.specs','.prods','.info3'].forEach(function(sel){
+    var g=document.querySelector(sel);if(!g)return;
+    Array.prototype.forEach.call(g.children,function(c,i){c.style.setProperty('--i',i%8)});
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  }else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
+  document.getElementById('quote').addEventListener('submit',function(e){e.preventDefault();document.getElementById('sent').hidden=false});
+})();
+</script>
+
+<script>
+/* office open/closed, in Hawkesbury time */
+(function(){
+  var root=document.documentElement;
+  function draw(){
+    var en=root.lang==='en',p={};
+    new Intl.DateTimeFormat('en-CA',{timeZone:'America/Toronto',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});
+    var h=+p.hour+(+p.minute)/60,wk=['Sat','Sun'].indexOf(p.weekday)<0,open=wk&&h>=9&&h<16;
+    var hero=en?(open?'Office open until 4 pm · repairs 24 h':'Office closed · the 24 h repair line answers'):(open?'Bureau ouvert jusqu’à 16 h · réparation 24 h':'Bureau fermé · la ligne de réparation 24 h répond');
+    var chip=en?(open?'Open now · until 4 pm':'Office closed · 24 h line open'):(open?'Ouvert maintenant · jusqu’à 16 h':'Bureau fermé · ligne 24 h ouverte');
+    document.querySelectorAll('[data-status]').forEach(function(s){s.classList.toggle('open',open);s.querySelector('[data-status-text]').textContent=hero});
+    document.querySelectorAll('[data-now]').forEach(function(s){s.textContent=chip});
+  }
+  draw();setInterval(draw,60000);new MutationObserver(draw).observe(root,{attributes:true,attributeFilter:['lang']});
+})();
+</script>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const root = document.documentElement;
+const css = (n) => getComputedStyle(root).getPropertyValue(n).trim();
+const col = (n) => new THREE.Color(css(n));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const phone = matchMedia('(max-width: 900px), (pointer: coarse)').matches;
+const clamp01 = (x) => Math.min(1, Math.max(0, x));
+const ease = (k) => 1 - Math.pow(1 - k, 3);
+const std = (o) => new THREE.MeshStandardMaterial(Object.assign({ roughness: .7 }, o));
+
+function canvasTex(w, h, draw, rx = 1, ry = 1) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h);
+  const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rx, ry); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t;
+}
+const concreteTex = canvasTex(256, 256, (g, w, h) => {
+  g.fillStyle = '#8a8987'; g.fillRect(0, 0, w, h);
+  for (let i = 0; i < 9000; i++) { const v = 110 + Math.random() * 50 | 0; g.fillStyle = `rgba(${v},${v},${v - 4},.5)`; g.fillRect(Math.random() * w, Math.random() * h, 1.5, 1.5); }
+}, 6, 3);
+const blockTex = canvasTex(256, 256, (g, w, h) => {      // painted cinder-block wall of a basement
+  g.fillStyle = '#5a5957'; g.fillRect(0, 0, w, h);
+  for (let r = 0; r < 8; r++) for (let c = -1; c < 3; c++) { const v = Math.random() * 10; g.fillStyle = `rgb(${104 + v},${103 + v},${100 + v})`; g.fillRect(c * 128 + (r % 2) * 64 + 2, r * 32 + 2, 124, 28); }
+}, 4, 2);
+// a gauge face
+const gaugeTex = canvasTex(256, 256, (g, w) => {
+  g.fillStyle = '#f4f2ee'; g.beginPath(); g.arc(128, 128, 124, 0, Math.PI * 2); g.fill();
+  g.strokeStyle = '#222'; g.lineWidth = 3;
+  for (let i = 0; i <= 20; i++) { const a = Math.PI * .75 + i / 20 * Math.PI * 1.5, r0 = i % 5 ? 96 : 84; g.beginPath(); g.moveTo(128 + Math.cos(a) * r0, 128 + Math.sin(a) * r0); g.lineTo(128 + Math.cos(a) * 110, 128 + Math.sin(a) * 110); g.stroke(); }
+  g.strokeStyle = '#d3202a'; g.lineWidth = 8; g.beginPath(); g.arc(128, 128, 104, Math.PI * 1.95, Math.PI * 2.25); g.stroke();
+  g.fillStyle = '#222'; g.font = '600 22px monospace'; g.textAlign = 'center'; g.fillText('PSI', 128, 190);
+});
+
+/* ---------- pipes: a polyline with rounded elbows → copper tube + a flow sleeve ---------- */
+const flowMat = (hot) => new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  uniforms: { uT: { value: 0 }, uC: { value: new THREE.Color() }, uLen: { value: 10 }, uGrow: { value: 1 } },
+  vertexShader: 'varying vec2 vUv; varying vec3 vN; varying vec3 vV; void main(){ vUv=uv; vec4 mv=modelViewMatrix*vec4(position,1.); vN=normalize(normalMatrix*normal); vV=normalize(-mv.xyz); gl_Position=projectionMatrix*mv; }',
+  fragmentShader: `uniform float uT; uniform vec3 uC; uniform float uLen; uniform float uGrow; varying vec2 vUv; varying vec3 vN; varying vec3 vV;
+    void main(){ if(vUv.x>uGrow) discard; float d=vUv.x*uLen; float s=fract(d/1.6-uT*${hot ? '0.55' : '0.4'}); float pulse=smoothstep(.0,.08,s)*smoothstep(.45,.08,s);
+      float rim=pow(1.-abs(dot(vN,vV)),2.); gl_FragColor=vec4(uC*(pulse*1.4+.12)*(.35+rim*1.4), 1.); }`
+});
+function pipe(pts, r, hot, parent, metal) {
+  const path = new THREE.CurvePath(), R = r * 3.2;
+  const P = pts.map((p) => new THREE.Vector3(...p));
+  let cur = P[0].clone();
+  for (let i = 1; i < P.length; i++) {
+    const a = P[i - 1], b = P[i], next = P[i + 1];
+    const dir = b.clone().sub(a).normalize();
+    const end = next ? b.clone().sub(dir.clone().multiplyScalar(R)) : b.clone();
+    path.add(new THREE.LineCurve3(cur.clone(), end));
+    if (next) { const out = b.clone().add(next.clone().sub(b).normalize().multiplyScalar(R)); path.add(new THREE.QuadraticBezierCurve3(end, b.clone(), out)); cur = out; }
+  }
+  const len = path.getLength(), seg = Math.max(40, Math.round(len * 14));
+  const tube = new THREE.Mesh(new THREE.TubeGeometry(path, seg, r, 14, false), metal);
+  const sleeve = new THREE.Mesh(new THREE.TubeGeometry(path, seg, r * 1.08, 14, false), flowMat(hot));
+  sleeve.material.uniforms.uLen.value = len;
+  tube.castShadow = true; parent.add(tube, sleeve);
+  // fittings at every elbow
+  P.slice(1, -1).forEach((p) => { const f = new THREE.Mesh(new THREE.SphereGeometry(r * 1.35, 16, 12), metal); f.position.copy(p); parent.add(f); f.visible = false; tube.userData.fit = (tube.userData.fit || []).concat(f); });
+  return { tube, sleeve, hot, len, idx: tube.geometry.index.count, path };
+}
+function valve(parent, at, axis, handleCol) {
+  const g = new THREE.Group(); g.position.set(...at); parent.add(g);
+  const brass = std({ color: 0xb08d3c, metalness: .9, roughness: .35 });
+  const body = new THREE.Mesh(new THREE.CylinderGeometry(.11, .11, .34, 16), brass); if (axis === 'x') body.rotation.z = Math.PI / 2; g.add(body);
+  const stem = new THREE.Mesh(new THREE.CylinderGeometry(.025, .025, .22, 8), brass); stem.position.z = .14; stem.rotation.x = Math.PI / 2; g.add(stem);
+  const wheel = new THREE.Group(); wheel.position.z = .26; g.add(wheel);
+  const hm = std({ color: handleCol, roughness: .45, metalness: .2 });
+  wheel.add(new THREE.Mesh(new THREE.TorusGeometry(.14, .022, 8, 28), hm));
+  for (let k = 0; k < 3; k++) { const sp = new THREE.Mesh(new THREE.BoxGeometry(.28, .024, .024), hm); sp.rotation.z = k * Math.PI / 3; wheel.add(sp); }
+  return { g, wheel };
+}
+
+/* ================= Hero: the mechanical room ================= */
+(function room(){
+  const canvas = document.getElementById('room');
+  let renderer; try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, phone ? 1.5 : 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1;
+  renderer.shadowMap.enabled = !phone; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer); scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), .04).texture;
+  const camera = new THREE.PerspectiveCamera(32, 1, .1, 100);
+  const copper = std({ color: css('--metal'), metalness: 1, roughness: .32, envMapIntensity: 1.2 });
+  const wallMat = std({ map: blockTex, roughness: .95 }), floorMat = std({ map: concreteTex, roughness: .9 });
+  const wall = new THREE.Mesh(new THREE.PlaneGeometry(26, 9), wallMat); wall.position.set(0, 4, -1.2); wall.receiveShadow = true; scene.add(wall);
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(26, 12), floorMat); floor.rotation.x = -Math.PI / 2; floor.position.z = 3; floor.receiveShadow = true; scene.add(floor);
+  // water heater
+  const tankMat = std({ color: 0xe9e7e2, roughness: .35, metalness: .1 });
+  const tank = new THREE.Mesh(new THREE.CylinderGeometry(.62, .62, 1.9, 40), tankMat); tank.position.set(-3.4, .95, -.35); tank.castShadow = tank.receiveShadow = true; scene.add(tank);
+  const cap = new THREE.Mesh(new THREE.SphereGeometry(.62, 40, 12, 0, Math.PI * 2, 0, Math.PI / 2), tankMat); cap.scale.y = .25; cap.position.set(-3.4, 1.9, -.35); scene.add(cap);
+  // furnace with louvres and a status LED
+  const furn = new THREE.Group(); furn.position.set(2.7, 0, -.55); scene.add(furn);
+  const fm = std({ color: 0x5c6066, roughness: .45, metalness: .4 });
+  const fb = new THREE.Mesh(new THREE.BoxGeometry(1.3, 1.8, 1), fm); fb.position.y = .9; fb.castShadow = fb.receiveShadow = true; furn.add(fb);
+  for (let i = 0; i < 7; i++) { const l = new THREE.Mesh(new THREE.BoxGeometry(.9, .03, .04), std({ color: 0x2d3034 })); l.position.set(0, .35 + i * .07, .51); furn.add(l); }
+  const led = new THREE.Mesh(new THREE.CircleGeometry(.03, 16), new THREE.MeshBasicMaterial({ color: 0x3ccf6e })); led.position.set(.45, 1.5, .505); furn.add(led);
+  const plenum = new THREE.Mesh(new THREE.BoxGeometry(1.1, 1.6, .9), std({ color: 0xa9adb2, metalness: .8, roughness: .35 })); plenum.position.y = 2.6; furn.add(plenum);
+  const duct = new THREE.Mesh(new THREE.BoxGeometry(9, .55, .8), std({ color: 0xa9adb2, metalness: .8, roughness: .35 })); duct.position.set(4, 3.6, .02); furn.add(duct);
+  // pipes: cold supply (blue pulses), hot runs (red pulses), heating loop
+  const pipes = [
+    pipe([[-7, 0, .25], [-7, 3.1, .25], [5.5, 3.1, .25]], .07, false, scene, copper),          // cold main along the joists
+    pipe([[-3.2, 3.1, .25], [-3.2, 2.6, .25], [-3.2, 2.6, -.2], [-3.2, 1.95, -.2]], .05, false, scene, copper), // drop into the heater
+    pipe([[-3.65, 1.95, -.3], [-3.65, 2.75, -.3], [-3.65, 2.75, .55], [-9, 2.75, .55]], .05, true, scene, copper), // hot out of the heater
+    pipe([[2.35, 1.8, -.55], [2.35, 2.2, -.55], [2.35, 2.2, .7], [-1.4, 2.2, .7], [-1.4, 0, .7]], .055, true, scene, copper), // heating loop supply
+    pipe([[1.95, .5, -.1], [1.95, .5, 1.05], [-.8, .5, 1.05], [-.8, 0, 1.05]], .045, false, scene, copper),     // return
+  ];
+  pipes.forEach((p) => { p.tube.geometry.setDrawRange(0, 0); });
+  const vC = valve(scene, [-5.5, 3.1, .25], 'x', 0x2f6fd6), vH = valve(scene, [-6.2, 2.75, .55], 'x', 0xd3202a), vL = valve(scene, [.3, 2.2, .7], 'x', 0xd3202a);
+  // pressure gauge on the cold main
+  const gauge = new THREE.Group(); gauge.position.set(-1, 3.1, .25); scene.add(gauge);
+  const gStem = new THREE.Mesh(new THREE.CylinderGeometry(.03, .03, .32, 8), std({ color: 0xb08d3c, metalness: .9, roughness: .35 })); gStem.position.y = -.18; gauge.add(gStem);
+  const face = new THREE.Group(); face.position.y = -.48; gauge.add(face);
+  const rim = new THREE.Mesh(new THREE.CylinderGeometry(.22, .22, .08, 32), std({ color: 0x222222, metalness: .6, roughness: .3 })); rim.rotation.x = Math.PI / 2; face.add(rim);
+  const dial = new THREE.Mesh(new THREE.CircleGeometry(.2, 32), new THREE.MeshBasicMaterial({ map: gaugeTex })); dial.position.z = .042; face.add(dial);
+  const needle = new THREE.Mesh(new THREE.BoxGeometry(.012, .17, .006), new THREE.MeshBasicMaterial({ color: 0x111111 })); needle.geometry.translate(0, .07, 0); needle.position.z = .05; face.add(needle);
+  // lights: a bare bulb + accent rim
+  scene.add(new THREE.HemisphereLight(0xcfd6e0, 0x2a2622, .35));
+  const bulb = new THREE.PointLight(0xffc68a, 16, 14, 1.6); bulb.position.set(-.5, 4.6, 2.2); bulb.castShadow = !phone; bulb.shadow.mapSize.set(1024, 1024); bulb.shadow.bias = -.002; scene.add(bulb);
+  const bulbMesh = new THREE.Mesh(new THREE.SphereGeometry(.09, 16, 12), new THREE.MeshBasicMaterial({ color: 0xffe2b8 })); bulbMesh.position.copy(bulb.position);
+  const rimL = new THREE.PointLight(0xffffff, 14, 12, 1.8); rimL.position.set(5, 1.5, 3); scene.add(rimL);
+  scene.fog = new THREE.Fog(0x000000, 10, 26);
+  const vibe = () => {
+    const hot = col('--hot'), cold = col('--cold');
+    pipes.forEach((p) => p.sleeve.material.uniforms.uC.value.copy(p.hot ? hot : cold));
+    copper.color.set(css('--metal')); rimL.color.copy(col('--accent')); scene.fog.color.copy(col('--hero')); scene.background = col('--hero');
+  };
+  vibe(); addEventListener('vibechange', vibe);
+
+  let aspect = 1; const fit = () => { const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = aspect = w / h; camera.updateProjectionMatrix(); };
+  new ResizeObserver(fit).observe(canvas); fit();
+  const orbit = { a: 0, v: 0, drag: null }, mouse = { x: 0, y: 0 };
+  canvas.addEventListener('pointerdown', (e) => { orbit.drag = e.clientX; canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener('pointermove', (e) => { if (orbit.drag === null) return; orbit.v = (e.clientX - orbit.drag) * -.004; orbit.a += orbit.v; orbit.drag = e.clientX; });
+  const end = () => { orbit.drag = null; }; canvas.addEventListener('pointerup', end); canvas.addEventListener('pointercancel', end);
+  addEventListener('pointermove', (e) => { mouse.x = e.clientX / innerWidth - .5; mouse.y = e.clientY / innerHeight - .5; }, { passive: true });
+  let visible = true; new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(canvas);
+
+  let t0 = null; const gate = document.getElementById('gate');
+  const start = () => { if (t0 === null) t0 = performance.now() / 1000 + .3; };
+  if (gate.hidden) start(); addEventListener('gateopening', start); if (reduce) t0 = -100;
+  const look = new THREE.Vector3(-2, 1.9, 0), cam = new THREE.Vector3();
+  renderer.setAnimationLoop((now) => {
+    if (!visible || window.__heroCovered) return;
+    const t = now / 1000, k = t0 === null ? 0 : t - t0;
+    // copper runs in one after another, then water starts to flow
+    pipes.forEach((p, i) => {
+      const g = clamp01((k - i * .35) / 1.4), e = ease(g);
+      p.tube.geometry.setDrawRange(0, Math.floor(p.idx * e / 6) * 6);
+      (p.tube.userData.fit || []).forEach((f) => f.visible = g >= 1);
+      p.sleeve.material.uniforms.uGrow.value = clamp01((k - 2.2 - i * .2) / 1.6);
+      p.sleeve.material.uniforms.uT.value = t;
+    });
+    const vk = ease(clamp01((k - 2) / 1.2));
+    [vC, vH, vL].forEach((v, i) => { v.g.scale.setScalar(Math.max(.001, vk)); v.wheel.rotation.z = -vk * Math.PI * (1 + i * .3); });
+    needle.rotation.z = THREE.MathUtils.lerp(2.35, -.6 - Math.sin(t * 2.3) * .04 - Math.sin(t * 7) * .015, ease(clamp01((k - 3) / 1.5)));
+    led.material.color.set((t * 1.2 | 0) % 2 ? 0x3ccf6e : 0x1d6a3a);
+    if (orbit.drag === null) { orbit.v *= .94; orbit.a += orbit.v; orbit.a *= .995; }
+    const wide = aspect > 1.1, a = -.28 + orbit.a + (reduce ? 0 : Math.sin(t * .1) * .06) + mouse.x * .1;
+    const R = wide ? 12.5 : 17;
+    cam.set(Math.sin(a) * R - 1.6, (wide ? 2.4 : 3) - mouse.y * .5, Math.cos(a) * R);
+    camera.position.lerp(cam, .08); camera.lookAt(look);
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    if (wide) camera.setViewOffset(w, h, -w * .2, h * .02, w, h); else camera.setViewOffset(w, h, 0, h * .2, w, h);
+    renderer.render(scene, camera);
+  });
+})();
+
+/* ================= Signature: symptom → device in a cut-away house ================= */
+const SYMS = [
+  { id: 'leak', fr: "Fuite d'eau", en: 'Water leak', urg: 1, svc: 0, at: 'valve',
+    now: { fr: "Fermez la valve d'entrée d'eau principale (souvent au sous-sol, près du compteur). Si l'eau approche des prises ou du panneau, ne touchez à rien et coupez le courant au disjoncteur principal seulement si c'est sécuritaire.", en: "Shut the main water valve (often in the basement, near the meter). If water is near outlets or the panel, don't touch anything; switch off the main breaker only if it's safe to reach." },
+    gh: { fr: 'Un technicien repère la fuite, répare ou remplace la tuyauterie, et vérifie le reste du réseau.', en: 'A technician finds the leak, repairs or replaces the piping, and checks the rest of the system.' } },
+  { id: 'toilet', fr: 'Toilette bouchée', en: 'Blocked toilet', urg: 1, svc: 0, at: 'toilet',
+    now: { fr: "Ne tirez plus la chasse. Fermez la petite valve derrière la toilette (sens horaire) pour arrêter le remplissage.", en: "Don't flush again. Close the small valve behind the toilet (clockwise) to stop it refilling." },
+    gh: { fr: "Débouchage de la toilette et, au besoin, du drain principal. Si ça revient souvent, on inspecte le drain.", en: 'We clear the toilet and, if needed, the main drain. If it keeps coming back, we inspect the drain.' } },
+  { id: 'heat', fr: 'Panne de chauffage', en: 'No heat', urg: 1, svc: 1, at: 'furnace',
+    now: { fr: "Vérifiez le thermostat (mode chauffage, piles) et le disjoncteur de la fournaise. Notez le modèle et le numéro de série inscrits sur l'appareil : ça accélère la réparation.", en: "Check the thermostat (heat mode, batteries) and the furnace breaker. Note the model and serial number on the unit: it speeds up the repair." },
+    gh: { fr: "Intervention rapide, sur les vieux appareils comme sur les récents. On cherche d'abord la solution la plus rentable pour vous : réparation, changement ou conversion.", en: 'Fast response, on old and new equipment alike. We look for the most cost-effective fix first: repair, replacement or conversion.' } },
+  { id: 'hotw', fr: "Pas d'eau chaude", en: 'No hot water', urg: 0, svc: 0, at: 'heater',
+    now: { fr: "Vérifiez le disjoncteur du chauffe-eau (électrique) ou la veilleuse (gaz). Ne touchez pas à la soupape de sûreté sur le dessus du réservoir.", en: "Check the water heater's breaker (electric) or the pilot light (gas). Leave the relief valve on top of the tank alone." },
+    gh: { fr: 'Réparation ou remplacement du chauffe-eau, résidentiel ou commercial.', en: 'Water heater repair or replacement, residential or commercial.' } },
+  { id: 'ac', fr: 'La clim ne refroidit pas', en: "A/C isn't cooling", urg: 0, svc: 2, at: 'ac',
+    now: { fr: "Vérifiez le filtre et assurez-vous que rien ne bloque l'unité extérieure (feuilles, haie, couvercle d'hiver).", en: 'Check the filter and make sure nothing is blocking the outdoor unit (leaves, hedge, winter cover).' } ,
+    gh: { fr: "Réparation, entretien et nettoyage de climatiseurs muraux et centraux, et de thermopompes.", en: 'Repair, maintenance and cleaning of wall and central air conditioners, and heat pumps.' } },
+];
+(function diag(){
+  const canvas = document.getElementById('house');
+  let renderer; try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, phone ? 1.5 : 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = .9;
+  renderer.shadowMap.enabled = !phone; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer); scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), .04).texture;
+  const camera = new THREE.PerspectiveCamera(34, 1, .1, 200);
+  const box = (w, h, d, m, x, y, z, p = scene) => { const o = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); o.position.set(x, y, z); o.castShadow = o.receiveShadow = true; p.add(o); return o; };
+  const cyl = (r, h, m, x, y, z, seg = 28) => { const o = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, seg), m); o.position.set(x, y, z); o.castShadow = o.receiveShadow = true; scene.add(o); return o; };
+  // the section: soil, basement, ground floor, roof, cut open toward the viewer
+  const soil = std({ color: 0x3a2f27, roughness: 1 }), block = std({ map: blockTex, roughness: .95 }), slab = std({ map: concreteTex });
+  const wallIn = std({ color: 0xa8a196, roughness: .9 }), floorWood = std({ color: 0x9a7552, roughness: .7 }), tile = std({ color: 0xdfe3e4, roughness: .4 });
+  const W = 9, D = 5, G = 2.6, F2 = 2.8;           // width, depth, basement height (below grade), ground-floor height
+  box(W + 6, .3, D + 2, soil, 0, -.15, 0);                    // footing ground
+  box(1.2, G, D + 2, soil, -W / 2 - .6, G / 2, 0);              // soil left of the foundation
+  box(W + 1.2, G, 1, soil, 0, G / 2, -D / 2 - .5);              // soil behind
+  box(3, G, D + 2, soil, W / 2 + 1.5, G / 2, 0);                // soil right (the yard)
+  const lawn = std({ color: 0x3c5a34, roughness: 1 }); box(W + 6, .12, D + 2, lawn, 0, G + .06, -D - 1.5).visible = false;
+  box(3, .14, D + 2, lawn, W / 2 + 1.5, G + .07, 0); box(1.2, .14, D + 2, lawn, -W / 2 - .6, G + .07, 0);
+  box(W, .2, D, slab, 0, .1, 0);                               // basement slab
+  box(W, G, .2, block, 0, G / 2, -D / 2 + .1);                  // basement back wall
+  box(.2, G, D, block, -W / 2 + .1, G / 2, 0); box(.2, G, D, block, W / 2 - .1, G / 2, 0);
+  box(W, .25, D, floorWood, 0, G + .12, 0);                     // ground floor deck
+  box(W, F2, .15, wallIn, 0, G + .25 + F2 / 2, -D / 2 + .075); box(.15, F2, D, wallIn, -W / 2 + .075, G + .25 + F2 / 2, 0); box(.15, F2, D, wallIn, W / 2 - .075, G + .25 + F2 / 2, 0);
+  box(.12, F2, D * .6, wallIn, .6, G + .25 + F2 / 2, -D * .2);  // bathroom partition
+  box(W / 2 + .6 - .1, .02, D, tile, -W / 4 + .3, G + .26, 0); // bathroom tile
+  // roof as a simple gable section
+  const rise = 2.2, shp = new THREE.Shape(); shp.moveTo(-W / 2 - .4, 0); shp.lineTo(W / 2 + .4, 0); shp.lineTo(0, rise); shp.closePath();
+  const roofG = new THREE.ExtrudeGeometry(shp, { depth: D, bevelEnabled: false }); roofG.translate(0, 0, -D / 2);
+  const roof = new THREE.Mesh(roofG, std({ color: 0x2b2c2f, roughness: .9 })); roof.position.y = G + .25 + F2; roof.castShadow = true; scene.add(roof);
+  const roofIn = new THREE.Mesh(new THREE.ShapeGeometry(shp), std({ color: 0x6d675e, side: THREE.DoubleSide })); roofIn.position.set(0, G + .25 + F2, D / 2 + .01); scene.add(roofIn);
+  // devices
+  const white = std({ color: 0xf2f0ec, roughness: .3 }), grey = std({ color: 0x5c6066, roughness: .45, metalness: .4 }), copper = std({ color: css('--metal'), metalness: 1, roughness: .32 });
+  const DEV = {};
+  const furnace = new THREE.Group(); furnace.position.set(2.2, .2, -1.4); scene.add(furnace);
+  box(1.1, 1.6, .9, grey, 0, .8, 0, furnace); box(.9, 1.2, .8, std({ color: 0xa9adb2, metalness: .8, roughness: .35 }), 0, 2.2, 0, furnace).scale.y = .5;
+  DEV.furnace = { obj: furnace, c: new THREE.Vector3(2.2, 1, -1.4) };
+  const heater = new THREE.Group(); heater.position.set(-.4, .2, -1.6); scene.add(heater);
+  const ht = new THREE.Mesh(new THREE.CylinderGeometry(.42, .42, 1.6, 28), white); ht.position.y = .8; ht.castShadow = true; heater.add(ht);
+  DEV.heater = { obj: heater, c: new THREE.Vector3(-.4, 1, -1.6) };
+  const softener = cyl(.2, 1.1, std({ color: 0x2b5ea8, roughness: .4 }), -1.3, .75, -1.8);
+  // main water line + shutoff valve near the foundation wall
+  const lineMat = copper;
+  const main = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(-W / 2 + .3, .4, -.8), new THREE.Vector3(-3.6, .4, -.8), new THREE.Vector3(-3.6, 1.6, -.8), new THREE.Vector3(-3.6, 2.2, -.8), new THREE.Vector3(1.4, 2.2, -.8)], false, 'catmullrom', 0), 120, .045, 10), lineMat); scene.add(main);
+  const mv = valve(scene, [-3.6, 1.2, -.8], 'y', 0x2f6fd6); mv.g.scale.setScalar(1.6);
+  DEV.valve = { obj: mv.g, c: new THREE.Vector3(-3.6, 1.2, -.8) };
+  // bathroom: toilet + vanity
+  const toilet = new THREE.Group(); toilet.position.set(-2.6, G + .27, -1.7); scene.add(toilet);
+  box(.6, .7, .22, white, 0, .75, -.2, toilet); const bowl = new THREE.Mesh(new THREE.CylinderGeometry(.26, .2, .42, 24), white); bowl.position.set(0, .21, .14); bowl.scale.z = 1.3; toilet.add(bowl);
+  box(.56, .05, .6, white, 0, .44, .12, toilet);
+  DEV.toilet = { obj: toilet, c: new THREE.Vector3(-2.6, G + .7, -1.6) };
+  box(1.1, .8, .5, std({ color: 0x3b3f45 }), -.7, G + .65, -2.1); box(1.14, .06, .54, white, -.7, G + 1.08, -2.1);
+  // kitchen side: a counter and a window
+  box(2.6, .9, .6, std({ color: 0x8a6a4c }), 2.6, G + .7, -2.05); box(1.6, 1, .05, std({ color: 0x1a2430, emissive: new THREE.Color(0x6aa0d8), emissiveIntensity: .25 }), 2.6, G + 1.9, -2.38);
+  // outdoor A/C condenser on a pad in the yard
+  const ac = new THREE.Group(); ac.position.set(W / 2 + 1.4, G + .14, .6); scene.add(ac);
+  box(.9, .1, .9, slab, 0, .05, 0, ac); box(.8, .8, .8, std({ color: 0xb9bdc1, metalness: .5, roughness: .4 }), 0, .5, 0, ac);
+  const fan = new THREE.Mesh(new THREE.CylinderGeometry(.32, .32, .03, 24), std({ color: 0x222222 })); fan.position.y = .92; ac.add(fan);
+  DEV.ac = { obj: ac, c: new THREE.Vector3(W / 2 + 1.4, G + .6, .6) };
+  // highlight ring
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(.8, .035, 8, 64), new THREE.MeshBasicMaterial({ color: col('--accent'), transparent: true })); ring.rotation.x = -Math.PI / 2; ring.visible = false; scene.add(ring);
+  const pin = new THREE.PointLight(col('--accent'), 0, 4, 1.6); scene.add(pin);
+  // lights
+  scene.add(new THREE.HemisphereLight(0xdfe6ef, 0x3a2f27, .45));
+  const sun = new THREE.DirectionalLight(0xfff1de, 1.6); sun.position.set(6, 14, 10); sun.castShadow = !phone; sun.shadow.mapSize.set(2048, 2048);
+  Object.assign(sun.shadow.camera, { left: -10, right: 10, top: 10, bottom: -10, near: 1, far: 40 }); sun.shadow.bias = -.0005; scene.add(sun);
+  const base = new THREE.PointLight(0xffc68a, 8, 8, 1.6); base.position.set(0, G - .4, .5); scene.add(base);
+
+  const vibe = () => { ring.material.color.copy(col('--accent')); pin.color.copy(col('--accent')); copper.color.set(css('--metal')); };
+  addEventListener('vibechange', vibe);
+
+  let aspect = 1; const fit = () => { const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = aspect = w / h; camera.updateProjectionMatrix(); };
+  new ResizeObserver(fit).observe(canvas); fit();
+  let visible = true; new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(canvas);
+
+  // camera: overview, or a close look at the chosen device
+  const overview = { pos: new THREE.Vector3(5.5, 6.8, 16.5), look: new THREE.Vector3(.4, 2.9, 0) };
+  let target = overview, active = null;
+  const camPos = overview.pos.clone(), camLook = overview.look.clone();
+  const labels = { valve: { fr: "Sous-sol · valve d'entrée d'eau", en: 'Basement · main water valve' }, toilet: { fr: 'Salle de bain · toilette', en: 'Bathroom · toilet' }, furnace: { fr: 'Sous-sol · fournaise', en: 'Basement · furnace' }, heater: { fr: 'Sous-sol · chauffe-eau', en: 'Basement · water heater' }, ac: { fr: 'Cour · unité extérieure', en: 'Yard · outdoor unit' } };
+
+  const syms = document.getElementById('syms'), card = document.getElementById('card'), stageLabel = document.getElementById('stageLabel');
+  const tx = (o) => root.lang === 'en' ? o.en : o.fr;
+  let cur = null;
+  const render = () => {
+    syms.querySelectorAll('button').forEach((b, i) => { b.firstChild.textContent = tx(SYMS[i]); b.lastChild.textContent = SYMS[i].urg ? (root.lang === 'en' ? 'call now' : 'appelez') : (root.lang === 'en' ? 'book a visit' : 'planifiez'); });
+    if (!cur) { stageLabel.textContent = 'Hawkesbury · ON'; return; }
+    card.hidden = false;
+    const u = document.getElementById('urg'); u.className = 'urg ' + (cur.urg ? 'now' : 'plan');
+    u.textContent = cur.urg ? (root.lang === 'en' ? 'Urgent · 24 h line' : 'Urgent · ligne 24 h') : (root.lang === 'en' ? 'Not urgent · book a visit' : 'Pas urgent · planifiez une visite');
+    document.getElementById('symTitle').textContent = tx(cur);
+    document.getElementById('symNow').textContent = tx(cur.now);
+    document.getElementById('symDo').textContent = tx(cur.gh);
+    const cta = document.getElementById('symCta');
+    if (cur.urg) { cta.href = 'tel:+16136320921'; cta.textContent = (root.lang === 'en' ? 'Call 613-632-0921' : 'Appeler le 613-632-0921'); }
+    else { cta.href = '#contact'; cta.textContent = (root.lang === 'en' ? 'Request a visit →' : 'Demander une visite →'); }
+    stageLabel.textContent = tx(labels[cur.at]);
+  };
+  SYMS.forEach((s) => {
+    const b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+    b.append(document.createElement('span'), document.createElement('small'));
+    b.addEventListener('click', () => {
+      cur = s; syms.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b));
+      const d = DEV[s.at], c = d.c;
+      const off = s.at === 'ac' ? [-1.5, 2.6, 7] : s.at === 'toilet' ? [1.8, 1.2, 7.5] : [1.8, 1, 8.5];
+      target = { pos: new THREE.Vector3(c.x + off[0], c.y + off[1], c.z + off[2]), look: c.clone() };
+      active = d; ring.position.set(c.x, (s.at === 'toilet' ? G + .3 : s.at === 'ac' ? G + .16 : .24), c.z + (s.at === 'valve' ? .4 : 0)); ring.visible = true; ring.userData.t = performance.now() / 1000;
+      pin.position.set(c.x, c.y + .8, c.z + 1);
+      const svc = document.getElementById('q-svc'); if (svc) svc.selectedIndex = s.svc;
+      render();
+    });
+    syms.appendChild(b);
+  });
+  render(); new MutationObserver(render).observe(root, { attributes: true, attributeFilter: ['lang'] });
+
+  renderer.setAnimationLoop((now) => {
+    if (!visible) return;
+    const t = now / 1000;
+    const k = reduce ? 1 : .06;
+    camPos.lerp(target.pos, k); camLook.lerp(target.look, k);
+    const sway = reduce ? 0 : Math.sin(t * .3) * .3;
+    camera.position.set(camPos.x + sway, camPos.y, camPos.z); camera.lookAt(camLook);
+    if (ring.visible) { const e = (t - ring.userData.t) % 1.6 / 1.6; ring.scale.setScalar(.6 + e * .9); ring.material.opacity = 1 - e; pin.intensity = 6 + Math.sin(t * 6) * 3; }
+    fan.rotation.y = t * (cur && cur.at === 'ac' ? .5 : 6);
+    renderer.render(scene, camera);
+  });
+})();
+
+(function logo(){
+  const gate = document.getElementById('gate');
+  const wrap = document.getElementById('logo3d');
+  const canvas = document.getElementById('logoCanvas');
+  const MARK = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1120 -600 2240 1160"><path fill="#000" fill-rule="evenodd" d="M908.7 -560.0L956.8 -553.5L999.3 -534.5L1033.3 -504.4L1056.5 -465.0L1067.4 -419.2L1065.2 -370.0L941.8 330.0L926.7 379.2L899.6 425.0L862.5 464.4L817.8 494.5L768.6 513.5L718.3 520.0L-901.7 520.0L-949.7 513.5L-992.2 494.5L-1026.2 464.4L-1049.5 425.0L-1060.4 379.2L-1058.2 330.0L-934.8 -370.0L-919.6 -419.2L-892.6 -465.0L-855.4 -504.4L-810.7 -534.5L-761.6 -553.5L-711.3 -560.0ZM847.6 -440.0L875.4 -436.3L900.0 -425.3L919.7 -407.8L933.1 -385.0L939.5 -358.5L938.2 -330.0L828.9 290.0L820.1 318.5L804.4 345.0L782.9 367.8L757.1 385.3L728.6 396.3L699.5 400.0L-840.5 400.0L-868.3 396.3L-892.9 385.3L-912.6 367.8L-926.1 345.0L-932.4 318.5L-931.1 290.0L-821.8 -330.0L-813.0 -358.5L-797.4 -385.0L-775.9 -407.8L-750.0 -425.3L-721.5 -436.3L-692.4 -440.0ZM-667.0 206.0 -583.0 -263.0 -458.0 -370.0H -112.0L -11.0 -249.0L -29.0 -150.0H -165.0L -155.0 -207.0L -193.0 -254.0H -398.0L -458.0 -203.0L -524.0 163.0L -482.0 214.0H -273.0L -216.0 166.0L -197.0 56.0H -346.0L -326.0 -60.0H -45.0L -95.0 227.0L -218.0 330.0H -565.0ZM 121.0 -370.0H 257.0L 206.0 -77.0H 501.0L 552.0 -370.0H 688.0L 565.0 330.0H 429.0L 480.0 39.0H 185.0L 134.0 330.0H -2.0Z"/></svg>`;
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+  const camera = new THREE.PerspectiveCamera(26, 1, 10, 60000);
+  const shapes = [];
+  new SVGLoader().parse(MARK).paths.forEach((p) => SVGLoader.createShapes(p).forEach((s) => shapes.push(s)));
+  const geo = new THREE.ExtrudeGeometry(shapes, { depth: 200, curveSegments: phone ? 10 : 24, bevelEnabled: true, bevelThickness: 22, bevelSize: 10, bevelSegments: phone ? 3 : 6 });
+  geo.center(); geo.computeBoundingBox();
+  const width = geo.boundingBox.max.x - geo.boundingBox.min.x;
+  const mat = new THREE.MeshPhysicalMaterial({ metalness: 0.6, roughness: 0.25, clearcoat: 0.8, clearcoatRoughness: 0.15 });
+  const mesh = new THREE.Mesh(geo, mat); mesh.rotation.x = Math.PI;
+  const group = new THREE.Group(); group.add(mesh); scene.add(group);
+  const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(0, 0, 4000); scene.add(key);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+  const applyVibe = () => mat.color = col('--accent');
+  applyVibe(); addEventListener('vibechange', applyVibe);
+  const fit = () => {
+    const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
+    renderer.setSize(w, h, false); camera.aspect = w / h;
+    const hfov = 2 * Math.atan(Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * camera.aspect);
+    camera.position.set(0, 0, (width / 0.62) / 2 / Math.tan(hfov / 2));
+    camera.near = camera.position.z / 20; camera.far = camera.position.z * 4; camera.updateProjectionMatrix();
+  };
+  new ResizeObserver(fit).observe(canvas); fit();
+  const ptr = { x: 0, y: 0 }; let drag = null, spin = 0, vel = 0, tiltX = 0;
+  const onMove = (e) => {
+    ptr.x = e.clientX / innerWidth * 2 - 1; ptr.y = e.clientY / innerHeight * 2 - 1;
+    if (drag) { const dx = e.clientX - drag.x; vel = dx * 0.012; spin += vel; tiltX = Math.max(-0.6, Math.min(0.6, tiltX + (e.clientY - drag.y) * 0.006)); drag.x = e.clientX; drag.y = e.clientY; }
+  };
+  wrap.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY }; wrap.setPointerCapture(e.pointerId); });
+  const end = () => { drag = null; };
+  wrap.addEventListener('pointerup', end); wrap.addEventListener('pointercancel', end);
+  addEventListener('pointermove', onMove, { passive: true });
+  const t0 = performance.now(); let shown = false;
+  const ease = (k) => 1 - Math.pow(1 - k, 3);
+  renderer.setAnimationLoop((now) => {
+    if (gate.hidden) { renderer.setAnimationLoop(null); removeEventListener('pointermove', onMove); geo.dispose(); mat.dispose(); pmrem.dispose(); renderer.dispose(); return; }
+    const t = (now - t0) / 1000, intro = reduce ? 1 : ease(Math.min(t / 1.8, 1));
+    if (!drag) { vel *= 0.95; spin += vel; spin *= 0.985; tiltX *= 0.96; }
+    const f = reduce ? 0 : 1;
+    group.rotation.y = spin + ptr.x * 0.45 + Math.cos(t * 0.6) * 0.12 * f - (1 - intro) * 1.2;
+    group.rotation.x = tiltX + ptr.y * 0.3 + Math.sin(t * 0.8) * 0.05 * f + 0.08;
+    group.position.y = Math.sin(t * 1.1) * width * 0.005 * f;
+    group.scale.setScalar(0.86 + 0.14 * intro);
+    key.position.set(ptr.x * 3000, -ptr.y * 2000 + 800, 4000);
+    renderer.render(scene, camera);
+    if (!shown) { shown = true; wrap.classList.add('webgl'); }
+  });
+})();
+</script>
+</body>
+</html>

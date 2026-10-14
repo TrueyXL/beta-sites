@@ -15,6 +15,7 @@ Every sample carries a visible "Maquette / Sample · WeUnfolded Web" label and i
 | `roro-ag-logistics/` | RORO.CA · AG Logistics (Saint-Donat-de-Montcalm) | Sample ready |
 | `couvertures-monteregiennes/` | Couvertures Montérégiennes (Saint-Jean-Baptiste) | Sample ready |
 | `toiture-rive-sud/` | Toiture Rive-Sud (Sainte-Catherine) | Sample ready |
+| `gray-hawk/` | Gray Hawk (Hawkesbury, ON) | Sample ready |
 
 Background videos come from Pexels (free licence); the hero labels them as illustration footage. Alexscellant uses the business's own job photos from its current website.
 

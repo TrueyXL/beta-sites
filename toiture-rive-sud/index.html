@@ -1,0 +1,947 @@
+<!doctype html>
+<html lang="fr" data-vibe="rs" data-phone="4506358148">
+<!-- Business phone: the 10 digits in data-phone above. Every "Appeler" button dials it. -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Toiture Rive-Sud</title>
+<meta name="description" content="Installation et réfection de toitures en bardeaux d'asphalte sur la Rive-Sud depuis 2004. Couvreurs certifiés IKO. Sainte-Catherine, Longueuil, Brossard, La Prairie et environs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Sans:wght@400;500;600&family=Azeret+Mono:wght@400;500&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* Layout: a shingle roofer's site built around the roof itself. Hero = a 3D Rive-Sud house whose asphalt
+   shingles lay down course by course; signature = try IKO shingle colours on the house + split the roof
+   into their 8 interest-free payments. */
+:root{
+  --display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Azeret Mono",ui-monospace,Menlo,monospace;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  /* Rive-Sud (default): the red and black of their logo */
+  --bg:#f3f1ee; --surface:#ffffff; --ink:#141414; --muted:#5e5a55; --line:#ddd8d1;
+  --accent:#e1251b; --accent-ink:#ffffff; --accent-text:#c41a12;
+  --hero:#121212; --hero-ink:#f5f3f0; --hero-muted:#a29d96;
+  --win:#ffb067; --edge:#1e1e1e; --dusk:#3a2a2a;
+}
+:root[data-vibe="ardoise"]{
+  --bg:#eef1f4; --surface:#ffffff; --ink:#111820; --muted:#56616c; --line:#d3dae1;
+  --accent:#7fb2d9; --accent-ink:#0d1620; --accent-text:#2f6690;
+  --hero:#141a21; --hero-ink:#eef3f7; --hero-muted:#95a3b0;
+  --win:#ffc58a; --edge:#1c242d; --dusk:#26364a;
+}
+:root[data-vibe="cedre"]{
+  --bg:#f4efe9; --surface:#ffffff; --ink:#1b130d; --muted:#665a50; --line:#e2d8cd;
+  --accent:#d9823b; --accent-ink:#1b1006; --accent-text:#9a4f14;
+  --hero:#1b1410; --hero-ink:#f8f1ea; --hero-muted:#b2a193;
+  --win:#ffb067; --edge:#2a1f18; --dusk:#4a2c1c;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--body);transition:background-color .6s var(--ease),color .6s var(--ease)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.tag{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:inline-flex;gap:10px;align-items:center}
+.tag::before{content:"";width:16px;height:2px;background:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 15px/1 var(--body);text-decoration:none;border-radius:8px;padding:16px 22px;border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease),background-color .3s,color .3s,border-color .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover{box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 40%,transparent)}
+.btn-line{border-color:color-mix(in srgb,var(--hero-ink) 40%,transparent);color:var(--hero-ink);background:transparent}
+.btn-line:hover{border-color:var(--hero-ink)}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.ph-ic{width:18px;height:18px;flex:none}
+.btn-call{position:relative}
+.btn-call::after{content:"";position:absolute;inset:-4px;border-radius:11px;border:2px solid var(--accent);opacity:0;animation:ring 2.4s var(--ease) infinite;pointer-events:none}
+@keyframes ring{0%{opacity:.7;transform:scale(.97)}70%,100%{opacity:0;transform:scale(1.08)}}
+.btn-call .num{font:500 13px var(--mono);opacity:.85}
+
+/* ---------- Entry gate ---------- */
+.gate{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:24px;text-align:center;color:var(--hero-ink);
+  background:color-mix(in srgb,var(--hero) 74%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:opacity .9s var(--ease),visibility 0s linear .9s}
+html:not(.js) .gate{display:none}
+.gate.closed{opacity:0;visibility:hidden}
+.gate::before{content:"";position:absolute;left:50%;top:40%;width:min(92vw,820px);aspect-ratio:2/1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--win) 18%,transparent),transparent);pointer-events:none}
+.logo3d{position:relative;width:min(60vw,380px);aspect-ratio:4112/2160;cursor:grab;touch-action:none}
+.logo3d:active{cursor:grabbing}
+.logo3d svg.flat{position:absolute;inset:0;width:100%;height:100%;color:var(--accent);transition:opacity .6s}
+.logo3d canvas{position:absolute;left:-30%;top:-45%;width:160%;height:190%;opacity:0;transition:opacity 1s var(--ease);pointer-events:none}
+.logo3d.webgl canvas{opacity:1}
+.logo3d.webgl svg.flat{opacity:0}
+.gate .logo3d{animation:logoIn 1.6s var(--ease) both}
+@keyframes logoIn{from{opacity:0;transform:translateY(26px) scale(.92);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+.gate-name{font:800 clamp(22px,4vw,34px)/1 var(--display);font-stretch:112%;text-transform:uppercase;letter-spacing:.02em}
+.gate-name small{display:block;font:500 11px/1 var(--mono);letter-spacing:.32em;color:var(--hero-muted);margin-top:10px}
+.gate-q{font:500 12px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;margin:4px 0 0;opacity:.9}
+.gate-q span{opacity:.6}
+.gate-langs{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.gate-langs .btn{min-width:170px}
+.gate-hint{font:400 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);margin:0}
+
+/* ---------- Vibes ---------- */
+.vibes{display:inline-flex;align-items:center;gap:6px;padding:5px;border-radius:999px;border:1px solid color-mix(in srgb,currentColor 25%,transparent)}
+.vibes button{width:26px;height:26px;border-radius:50%;border:0;padding:0;cursor:pointer;background:conic-gradient(var(--a) 0 50%,var(--b) 0 100%);transform:rotate(-45deg);transition:transform .3s var(--ease)}
+.vibes button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--hero),0 0 0 3.5px currentColor}
+.vibes button:hover{transform:rotate(-45deg) scale(1.12)}
+.vibe-name{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:0 8px 0 4px;white-space:nowrap}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;color:var(--hero-ink);transition:background-color .4s;padding-top:env(safe-area-inset-top,0px)}
+.nav.solid{background:color-mix(in srgb,var(--hero) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px}
+.brand{display:flex;align-items:center;text-decoration:none;color:var(--hero-ink)}
+.brand svg{height:30px;width:auto}
+.nav-links{display:flex;gap:28px;font:500 14px var(--body)}
+.nav-links a{text-decoration:none;opacity:.8;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang{display:flex;font:500 12px var(--mono)}
+.lang button{background:none;border:0;color:inherit;opacity:.55;cursor:pointer;padding:6px}
+.lang button[aria-pressed="true"]{opacity:1;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--accent)}
+.nav .btn{padding:12px 16px;font-size:14px}
+
+/* ---------- Hero ---------- */
+.hero{position:sticky;top:0;min-height:100svh;display:flex;align-items:flex-end;color:var(--hero-ink);background:var(--hero);overflow:hidden;isolation:isolate}
+#town{position:absolute;inset:0;width:100%;height:100%;z-index:-2;display:block;transform:scale(calc(1 + var(--p,0) * .08));filter:brightness(calc(1 - var(--p,0) * .55));will-change:transform}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,color-mix(in srgb,var(--hero) 50%,transparent) 0%,transparent 24%,transparent 48%,color-mix(in srgb,var(--hero) 94%,transparent) 92%),linear-gradient(90deg,color-mix(in srgb,var(--hero) 78%,transparent),transparent 62%)}
+.hero .wrap{width:100%;padding-block:140px 56px;display:grid;gap:24px;transform:translate3d(0,calc(var(--p,0) * -90px),0);opacity:calc(1 - var(--p,0) * 1.6);will-change:transform,opacity}
+.live{display:inline-flex;align-items:center;gap:10px;justify-self:start;font:500 12px var(--mono);letter-spacing:.08em;color:var(--hero-ink);background:color-mix(in srgb,var(--hero-ink) 8%,transparent);border:1px solid color-mix(in srgb,var(--hero-ink) 16%,transparent);border-radius:999px;padding:8px 14px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:live 1.8s infinite}
+@keyframes live{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 70%,transparent)}100%{box-shadow:0 0 0 10px transparent}}
+.live b{font-weight:500;font-variant-numeric:tabular-nums}
+.hero h1{font:800 clamp(46px,7.4vw,112px)/.9 var(--display);font-stretch:112%;text-transform:uppercase;margin:0;letter-spacing:-.01em;max-width:13ch;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--accent);text-shadow:0 0 40px color-mix(in srgb,var(--win) 40%,transparent)}
+.hero-sub{font-size:clamp(16px,1.6vw,19px);max-width:52ch;color:color-mix(in srgb,var(--hero-ink) 82%,transparent);margin:0}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.sectors{display:flex;gap:20px;flex-wrap:wrap;font:400 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);margin-top:12px}
+.sectors span{display:inline-flex;align-items:center;gap:8px}
+.sectors span::before{content:"";width:6px;height:6px;border-radius:1px;background:var(--win);box-shadow:0 0 8px var(--win)}
+.hero-tag{position:absolute;right:clamp(16px,4vw,40px);bottom:24px;font:400 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);opacity:calc(.75 - var(--p,0) * 2)}
+
+/* ---------- Sheet ---------- */
+.sheet{position:relative;z-index:2;background:var(--bg);border-radius:28px 28px 0 0;overflow:hidden;box-shadow:0 -30px 60px rgba(0,0,0,.3);transition:background-color .6s var(--ease)}
+footer{position:relative;z-index:2}
+.facts{background:var(--hero);color:var(--hero-ink)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:30px 0 30px 24px;display:grid;gap:6px;border-left:1px solid color-mix(in srgb,var(--hero-ink) 12%,transparent)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact b{font:800 42px/1 var(--display);font-stretch:112%;color:var(--accent)}
+.fact span{font-size:13px;color:var(--hero-muted)}
+
+section{padding-block:clamp(72px,10vw,128px)}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+h2{font:800 clamp(36px,5.4vw,72px)/.94 var(--display);font-stretch:112%;text-transform:uppercase;margin:16px 0 0;text-wrap:balance;letter-spacing:-.01em}
+h2 em{font-style:normal;color:var(--accent-text)}
+.head p{color:var(--muted);margin:0;max-width:46ch;justify-self:end}
+
+/* three sectors */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sector{position:relative;border-radius:16px;background:var(--hero);color:var(--hero-ink);padding:28px;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;overflow:hidden;isolation:isolate}
+.sector::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 55% at 75% 20%,color-mix(in srgb,var(--win) 26%,transparent),transparent 70%);opacity:.35;transition:opacity .8s var(--ease)}
+.sector:hover::before,.sector.in::before{opacity:1}
+.sector .n{position:absolute;top:22px;left:28px;font:500 12px var(--mono);color:var(--hero-muted)}
+.sector svg.sil{position:absolute;right:20px;top:24px;width:46%;height:auto;color:color-mix(in srgb,var(--hero-ink) 18%,transparent)}
+.sector svg.sil .w{fill:var(--win);opacity:.15;transition:opacity .6s}
+.sector:hover svg.sil .w,.sector.in svg.sil .w{opacity:1}
+.sector h3{font:800 32px/1 var(--display);font-stretch:112%;text-transform:uppercase;margin:0}
+.sector p{margin:0;color:var(--hero-muted);font-size:15px}
+
+/* residential checklist */
+.jobs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0;padding:0;list-style:none}
+.jobs li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:14px;align-content:start;min-height:140px}
+.led{width:10px;height:10px;border-radius:50%;background:var(--line);transition:background-color .5s,box-shadow .5s;transition-delay:calc(var(--i,0) * 120ms + .4s)}
+.jobs li.in .led{background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.jobs b{font:600 17px/1.25 var(--body)}
+
+/* emergency band */
+.sos{background:var(--hero);color:var(--hero-ink);position:relative;overflow:hidden}
+.sos::before{content:"";position:absolute;inset:-40% -10% auto auto;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 22%,transparent),transparent);pointer-events:none}
+.sos .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center;position:relative}
+.sos h2{margin:14px 0 18px}
+.sos p{color:var(--hero-muted);margin:0 0 26px;max-width:46ch}
+.sos .tag{color:var(--hero-muted)}
+.clock{justify-self:end;text-align:right;display:grid;gap:8px}
+.clock b{font:800 clamp(64px,9vw,128px)/.85 var(--display);font-stretch:112%;font-variant-numeric:tabular-nums;color:var(--accent);text-shadow:0 0 50px color-mix(in srgb,var(--accent) 35%,transparent)}
+.clock span{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted)}
+
+.quote{font:800 clamp(28px,3.8vw,48px)/1.04 var(--display);font-stretch:112%;text-transform:uppercase;margin:18px 0 56px;max-width:24ch;text-wrap:balance}
+.quote em{font-style:normal;color:var(--accent-text)}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.why div{border-top:2px solid var(--ink);padding-top:20px;display:grid;gap:8px}
+.why b{font:800 24px/1 var(--display);font-stretch:112%;text-transform:uppercase}
+.why p{margin:0;color:var(--muted)}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(160px,18vw,240px);gap:12px}
+.ph{position:relative;overflow:hidden;border-radius:12px;background:var(--hero)}
+.ph::before{content:"";position:absolute;inset:0;background:radial-gradient(40% 35% at 70% 35%,color-mix(in srgb,var(--win) 35%,transparent),transparent 70%),linear-gradient(180deg,transparent 55%,color-mix(in srgb,var(--edge) 80%,transparent));transition:transform 1.2s var(--ease)}
+.ph:hover::before{transform:scale(1.08)}
+.ph span{position:absolute;left:14px;bottom:12px;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--hero-muted)}
+.ph.big{grid-column:span 2;grid-row:span 2}
+.ph.wide{grid-column:span 2}
+.ph.big span{color:var(--hero-ink)}
+
+.split{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(32px,6vw,80px);align-items:start}
+.zones{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;padding:0;list-style:none}
+.zones li{border:1px solid var(--line);padding:8px 14px;font-size:14px;border-radius:999px;background:var(--surface)}
+.rating{background:var(--hero);color:var(--hero-ink);padding:34px;display:grid;gap:18px;border-radius:16px}
+.rating .score{display:flex;align-items:baseline;gap:14px}
+.rating b{font:800 88px/.8 var(--display);font-stretch:112%;color:var(--accent)}
+.rating .score span{color:var(--hero-muted);font-size:14px}
+.bars{display:grid;gap:8px;font:400 12px var(--mono);color:var(--hero-muted)}
+.bar{display:grid;grid-template-columns:24px 1fr 28px;gap:10px;align-items:center;font-variant-numeric:tabular-nums}
+.bar i{height:6px;border-radius:6px;background:color-mix(in srgb,var(--hero-ink) 12%,transparent);overflow:hidden;position:relative}
+.bar i::after{content:"";position:absolute;inset:0;width:calc(var(--v) * 1%);background:var(--accent);border-radius:6px;transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--ease)}
+.rating.in .bar i::after{transform:scaleX(1)}
+.rating p{margin:0;color:var(--hero-muted);font-size:13px}
+
+.contact{background:var(--hero);color:var(--hero-ink)}
+.contact h2 em{color:var(--accent)}
+.contact .tag{color:var(--hero-muted)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px;margin-top:8px}
+label{display:grid;gap:8px;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--hero-muted)}
+input,select,textarea{font:16px var(--body);color:var(--hero-ink);background:transparent;border:0;border-bottom:1px solid color-mix(in srgb,var(--hero-ink) 30%,transparent);padding:10px 0;border-radius:0;width:100%;transition:border-color .3s}
+select option{color:#111}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--accent)}
+textarea{min-height:90px;resize:vertical}
+.full{grid-column:1/-1}
+.sent{grid-column:1/-1;margin:0;color:var(--accent);font:500 13px var(--mono)}
+.contact-side{display:grid;gap:22px;align-content:start;color:var(--hero-muted)}
+.contact-side b{display:block;color:var(--hero-ink);font:800 18px var(--display);font-stretch:112%;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px}
+
+footer{background:var(--hero);color:var(--hero-muted);border-top:1px solid color-mix(in srgb,var(--hero-ink) 12%,transparent);font-size:13px;padding-block:36px calc(36px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer svg{height:30px;width:auto;color:var(--hero-ink)}
+
+.mock{position:fixed;left:16px;bottom:16px;z-index:60;font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);padding:8px 12px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.callbar{display:none}
+
+.js .rv{opacity:0;transform:translateY(40px);filter:blur(6px);transition:opacity 1.3s var(--ease),transform 1.3s var(--ease),filter 1.3s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
+.js .rv.in{opacity:1;transform:none;filter:none}
+.js .ph.rv{transform:none;filter:none;clip-path:inset(100% 0 0 0);transition:clip-path 1.4s var(--ease),opacity .6s;transition-delay:calc(var(--i,0) * 110ms)}
+.js .ph.rv.in{clip-path:inset(0 0 0 0)}
+@media (max-width:900px),(pointer:coarse){.js .rv{filter:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv,.js .ph.rv{opacity:1;transform:none;filter:none;clip-path:none}#town,.hero .wrap{transform:none!important;filter:none!important;opacity:1!important}.gate .logo3d{animation:none}.btn-call::after,.live i{animation:none}}
+
+[data-en]{display:none!important}
+html[lang="en"] [data-en]{display:revert!important}
+html[lang="en"] [data-fr]{display:none!important}
+
+@media (max-width:900px){
+  .nav-links{display:none}
+  .facts .wrap{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .head,.split,.sos .wrap{grid-template-columns:1fr}
+  .head p{justify-self:start}
+  .clock{justify-self:start;text-align:left}
+  .trio{grid-template-columns:1fr}
+  .sector{min-height:260px}
+  .jobs{grid-template-columns:1fr 1fr}
+  .why{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .nav .nav-right>.btn,.vibe-name{display:none}
+  form{grid-template-columns:1fr}
+  .callbar{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:55;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--hero)}
+  .callbar .btn{width:100%;padding-inline:12px}
+  .mock{bottom:84px}
+  footer{padding-bottom:110px}
+}
+
+/* ---------- Toiture Rive-Sud specific ---------- */
+.sheet{overflow:clip}
+.logo3d{width:min(52vw,300px);aspect-ratio:1480/1060}
+.logo3d canvas{left:-30%;top:-30%;width:160%;height:160%}
+.gate-name{font:400 clamp(26px,4.4vw,42px)/1 var(--display);font-stretch:normal;letter-spacing:.01em}
+.brand{gap:12px}
+.brand svg.mk{height:30px;width:auto;color:var(--accent)}
+.brand svg.word{height:30px;width:auto;color:var(--hero-ink)}
+footer svg.word{height:34px;width:auto}
+.hero h1,h2,.fact b,.contact-side b,.why4 b,.quote-card b,.swatch-name,.pay b,.also h3,.roofsvc h3{font-family:var(--display);font-weight:400;font-stretch:normal;text-transform:uppercase}
+.hero h1{font-size:clamp(42px,5.6vw,88px);line-height:.92;max-width:12ch;letter-spacing:-.01em}
+h2{font-size:clamp(34px,4.8vw,66px);line-height:.95;letter-spacing:-.01em}
+.fact b{font-size:clamp(28px,3.2vw,42px);line-height:1}
+
+/* hero: 3D house at dusk */
+.hero{background:linear-gradient(180deg,var(--hero) 0%,color-mix(in srgb,var(--dusk) 80%,var(--hero)) 55%,var(--hero) 100%)}
+#house{position:absolute;inset:0;width:100%;height:100%;z-index:-2;display:block;transform:scale(calc(1 + var(--p,0) * .06));filter:brightness(calc(1 - var(--p,0) * .5));cursor:grab;touch-action:pan-y}
+#house:active{cursor:grabbing}
+.hero::after{pointer-events:none;background:linear-gradient(180deg,color-mix(in srgb,var(--hero) 55%,transparent) 0%,transparent 22%,transparent 55%,color-mix(in srgb,var(--hero) 92%,transparent) 94%),linear-gradient(90deg,color-mix(in srgb,var(--hero) 82%,transparent),transparent 55%)}
+.hero .wrap{pointer-events:none}
+.hero .wrap>*{pointer-events:auto}
+.promo{display:inline-flex;align-items:center;gap:10px;justify-self:start;font:500 12px/1.3 var(--mono);color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:9px 16px;text-decoration:none}
+.promo b{font-weight:500;opacity:.8}
+.drag-hint{position:absolute;right:clamp(16px,4vw,40px);bottom:24px;font:400 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hero-muted);opacity:calc(.8 - var(--p,0) * 2)}
+
+/* roofing services */
+.roof .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:start}
+.roof .lead{color:var(--muted);max-width:46ch;margin:18px 0 0}
+.roofsvc{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.roofsvc li{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.roofsvc h3{font-size:clamp(18px,1.8vw,22px);line-height:1.1;margin:0}
+.roofsvc span{font:400 12px var(--mono);color:var(--muted);text-align:right}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0}
+.badges span{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-size:14px}
+.badges span::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--accent)}
+.also{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(48px,7vw,80px)}
+.also article{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.also img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.also div{padding:22px 24px 26px;display:grid;gap:8px}
+.also .k{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text)}
+.also h3{font-size:22px;line-height:1.05;margin:0}
+.also p{margin:0;color:var(--muted);font-size:15px}
+@media (max-width:900px){.roof .wrap{grid-template-columns:1fr}.also{grid-template-columns:1fr}}
+
+/* signature: colour + payments */
+.studio{background:var(--hero);color:var(--hero-ink)}
+.studio .tag{color:var(--hero-muted)}
+.studio h2 em{font-style:normal;color:var(--accent)}
+.studio .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,4vw,56px);align-items:center}
+.stage{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:linear-gradient(180deg,color-mix(in srgb,var(--dusk) 60%,var(--hero)),var(--hero))}
+#picker{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+.swatch-name{position:absolute;left:20px;bottom:18px;font-size:clamp(22px,2.4vw,32px);line-height:1;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.swatch-name small{display:block;font:500 11px var(--mono);letter-spacing:.14em;color:var(--hero-muted);margin-bottom:6px;text-shadow:none}
+.panel{display:grid;gap:26px}
+.panel p.lead{color:var(--hero-muted);margin:14px 0 0;max-width:40ch}
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.swatches button{aspect-ratio:1;border-radius:12px;border:2px solid transparent;cursor:pointer;background:var(--c);position:relative;overflow:hidden;transition:transform .3s var(--ease),border-color .3s}
+.swatches button::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 2px,transparent 2px 16px),repeating-linear-gradient(90deg,rgba(0,0,0,.2) 0 2px,transparent 2px 22px);mix-blend-mode:multiply}
+.swatches button:hover{transform:translateY(-2px)}
+.swatches button[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 35%,transparent)}
+.pay{border-top:1px solid color-mix(in srgb,var(--hero-ink) 16%,transparent);padding-top:24px;display:grid;gap:14px}
+.pay label{color:var(--hero-muted)}
+.pay input{font:500 26px var(--mono);padding:6px 0}
+.pay .res{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.pay b{font-size:clamp(40px,4.6vw,60px);line-height:.9;color:var(--accent);font-variant-numeric:tabular-nums}
+.pay .res span{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--hero-muted)}
+.note{font:400 11px/1.6 var(--mono);color:var(--hero-muted);margin:0}
+@media (max-width:900px){.studio .wrap{grid-template-columns:1fr}.stage{aspect-ratio:1/1}}
+
+/* why */
+.why4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.why4 div{border-top:3px solid var(--accent);padding-top:18px;display:grid;gap:10px;align-content:start}
+.why4 b{font-size:20px;line-height:1.05}
+.why4 p{margin:0;color:var(--muted);font-size:15px}
+@media (max-width:900px){.why4{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.why4{grid-template-columns:1fr}}
+
+/* reviews */
+.quotes{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-top:clamp(48px,7vw,80px)}
+.quote-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:clamp(24px,3vw,36px);display:grid;gap:18px;align-content:space-between}
+.quote-card blockquote{margin:0;font-size:clamp(18px,1.7vw,22px);line-height:1.45}
+.quote-card blockquote::before{content:"«";display:block;font:400 60px/.6 var(--display);color:var(--accent);margin-bottom:14px}
+.quote-card b{font-size:16px}
+.quote-card b span{display:block;font:400 12px var(--mono);color:var(--muted);text-transform:none;margin-top:4px}
+@media (max-width:900px){.quotes{grid-template-columns:1fr}}
+
+/* zones */
+.zones-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,64px);align-items:start}
+.zones{margin:0}
+.zones li.hq{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+@media (max-width:900px){.zones-wrap{grid-template-columns:1fr}}
+
+.contact-side .btn{margin-top:8px}
+.contact-side small{display:block;margin-top:6px;font:400 12px var(--mono);color:var(--hero-muted)}
+@media (max-width:620px){.brand svg.word{display:none}.hero-cta .num{display:none}.promo{font-size:11px}}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateQ">
+  <div class="logo3d" id="logo3d" aria-hidden="true">
+    <svg class="flat" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-740 -470 1480 1060"><path fill="currentColor" fill-rule="evenodd" d="M-520.0 -52.2L0.0 -430.0L520.0 -52.2L520.0 96.1L0.0 -281.7L-520.0 96.1ZM-113.0 -204.1L-113.0 -272.1L-95.0 -272.1L-95.0 -204.1ZM-217.0 -128.6L-217.0 -196.6L-199.0 -196.6L-199.0 -128.6ZM-321.0 -53.0L-321.0 -121.0L-303.0 -121.0L-303.0 -53.0ZM-425.0 22.6L-425.0 -45.4L-407.0 -45.4L-407.0 22.6ZM95.0 -204.1L95.0 -272.1L113.0 -272.1L113.0 -204.1ZM199.0 -128.6L199.0 -196.6L217.0 -196.6L217.0 -128.6ZM303.0 -53.0L303.0 -121.0L321.0 -121.0L321.0 -53.0ZM407.0 22.6L407.0 -45.4L425.0 -45.4L425.0 22.6ZM-580.0 173.7L0.0 -247.7L580.0 173.7L580.0 322.1L0.0 -99.3L-580.0 322.1ZM-125.0 -13.1L-125.0 -81.1L-107.0 -81.1L-107.0 -13.1ZM-241.0 71.2L-241.0 3.2L-223.0 3.2L-223.0 71.2ZM-357.0 155.5L-357.0 87.5L-339.0 87.5L-339.0 155.5ZM-473.0 239.8L-473.0 171.8L-455.0 171.8L-455.0 239.8ZM107.0 -13.1L107.0 -81.1L125.0 -81.1L125.0 -13.1ZM223.0 71.2L223.0 3.2L241.0 3.2L241.0 71.2ZM339.0 155.5L339.0 87.5L357.0 87.5L357.0 155.5ZM455.0 239.8L455.0 171.8L473.0 171.8L473.0 239.8ZM-640.0 399.6L0.0 -65.3L640.0 399.6L640.0 548.0L0.0 83.0L-640.0 548.0ZM-137.0 178.0L-137.0 110.0L-119.0 110.0L-119.0 178.0ZM-265.0 271.0L-265.0 203.0L-247.0 203.0L-247.0 271.0ZM-393.0 364.0L-393.0 296.0L-375.0 296.0L-375.0 364.0ZM-521.0 457.0L-521.0 389.0L-503.0 389.0L-503.0 457.0ZM119.0 178.0L119.0 110.0L137.0 110.0L137.0 178.0ZM247.0 271.0L247.0 203.0L265.0 203.0L265.0 271.0ZM375.0 364.0L375.0 296.0L393.0 296.0L393.0 364.0ZM503.0 457.0L503.0 389.0L521.0 389.0L521.0 457.0ZM250.0 -400.0L350.0 -400.0L350.0 -201.7L250.0 -274.4Z"/></svg>
+    <canvas id="logoCanvas"></canvas>
+  </div>
+  <div class="gate-name">Toiture Rive-Sud<small>Bardeaux d'asphalte · Depuis 2004</small></div>
+  <p class="gate-q" id="gateQ">Choisissez votre langue <span>· Choose your language</span></p>
+  <div class="gate-langs">
+    <button type="button" class="btn btn-accent" data-pick="fr">Français</button>
+    <button type="button" class="btn btn-line" data-pick="en">English</button>
+  </div>
+  <div class="vibes" role="group" aria-label="Ambiance / Vibe" data-vibes>
+    <span class="vibe-name" data-vibe-label>Rive-Sud</span>
+  </div>
+  <p class="gate-hint">Glissez le logo · Drag the logo</p>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Toiture Rive-Sud"><svg class="mk" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-740 -470 1480 1060"><path fill="currentColor" fill-rule="evenodd" d="M-520.0 -52.2L0.0 -430.0L520.0 -52.2L520.0 96.1L0.0 -281.7L-520.0 96.1ZM-113.0 -204.1L-113.0 -272.1L-95.0 -272.1L-95.0 -204.1ZM-217.0 -128.6L-217.0 -196.6L-199.0 -196.6L-199.0 -128.6ZM-321.0 -53.0L-321.0 -121.0L-303.0 -121.0L-303.0 -53.0ZM-425.0 22.6L-425.0 -45.4L-407.0 -45.4L-407.0 22.6ZM95.0 -204.1L95.0 -272.1L113.0 -272.1L113.0 -204.1ZM199.0 -128.6L199.0 -196.6L217.0 -196.6L217.0 -128.6ZM303.0 -53.0L303.0 -121.0L321.0 -121.0L321.0 -53.0ZM407.0 22.6L407.0 -45.4L425.0 -45.4L425.0 22.6ZM-580.0 173.7L0.0 -247.7L580.0 173.7L580.0 322.1L0.0 -99.3L-580.0 322.1ZM-125.0 -13.1L-125.0 -81.1L-107.0 -81.1L-107.0 -13.1ZM-241.0 71.2L-241.0 3.2L-223.0 3.2L-223.0 71.2ZM-357.0 155.5L-357.0 87.5L-339.0 87.5L-339.0 155.5ZM-473.0 239.8L-473.0 171.8L-455.0 171.8L-455.0 239.8ZM107.0 -13.1L107.0 -81.1L125.0 -81.1L125.0 -13.1ZM223.0 71.2L223.0 3.2L241.0 3.2L241.0 71.2ZM339.0 155.5L339.0 87.5L357.0 87.5L357.0 155.5ZM455.0 239.8L455.0 171.8L473.0 171.8L473.0 239.8ZM-640.0 399.6L0.0 -65.3L640.0 399.6L640.0 548.0L0.0 83.0L-640.0 548.0ZM-137.0 178.0L-137.0 110.0L-119.0 110.0L-119.0 178.0ZM-265.0 271.0L-265.0 203.0L-247.0 203.0L-247.0 271.0ZM-393.0 364.0L-393.0 296.0L-375.0 296.0L-375.0 364.0ZM-521.0 457.0L-521.0 389.0L-503.0 389.0L-503.0 457.0ZM119.0 178.0L119.0 110.0L137.0 110.0L137.0 178.0ZM247.0 271.0L247.0 203.0L265.0 203.0L265.0 271.0ZM375.0 364.0L375.0 296.0L393.0 296.0L393.0 364.0ZM503.0 457.0L503.0 389.0L521.0 389.0L521.0 457.0ZM250.0 -400.0L350.0 -400.0L350.0 -201.7L250.0 -274.4Z"/></svg><svg class="word" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 -730 5100 1620"><path fill="currentColor" d="M470.0 -512.0V 0.0H 249.0V -512.0H 23.0V -688.0H 695.0V -512.0ZM 1530.0 -344.0Q 1530.0 -170.0 1433.0 -79.0Q 1336.0 12.0 1158.0 12.0Q 980.0 12.0 883.5 -78.5Q 787.0 -169.0 787.0 -344.0Q 787.0 -519.0 883.5 -609.5Q 980.0 -700.0 1158.0 -700.0Q 1336.0 -700.0 1433.0 -609.0Q 1530.0 -518.0 1530.0 -344.0ZM 1013.0 -376.0V -312.0Q 1013.0 -239.0 1050.0 -196.0Q 1087.0 -153.0 1158.0 -153.0Q 1229.0 -153.0 1266.5 -196.0Q 1304.0 -239.0 1304.0 -312.0V -376.0Q 1304.0 -449.0 1266.5 -492.0Q 1229.0 -535.0 1158.0 -535.0Q 1087.0 -535.0 1050.0 -492.0Q 1013.0 -449.0 1013.0 -376.0ZM 1679.0 0.0V -688.0H 1900.0V 0.0ZM 2474.0 -512.0V 0.0H 2253.0V -512.0H 2027.0V -688.0H 2699.0V -512.0ZM 3163.0 12.0Q 2999.0 12.0 2909.5 -62.0Q 2820.0 -136.0 2820.0 -277.0V -688.0H 3041.0V -280.0Q 3041.0 -222.0 3072.0 -187.5Q 3103.0 -153.0 3162.0 -153.0Q 3221.0 -153.0 3252.5 -188.0Q 3284.0 -223.0 3284.0 -280.0V -688.0H 3505.0V -277.0Q 3505.0 -136.0 3416.0 -62.0Q 3327.0 12.0 3163.0 12.0ZM 4193.0 -288.0 4346.0 0.0H 4098.0L 3976.0 -251.0H 3894.0V 0.0H 3673.0V -688.0H 4094.0Q 4168.0 -688.0 4220.5 -659.5Q 4273.0 -631.0 4299.5 -582.5Q 4326.0 -534.0 4326.0 -477.0Q 4326.0 -414.0 4292.0 -363.0Q 4258.0 -312.0 4193.0 -288.0ZM 4039.0 -531.0H 3894.0V -404.0H 4039.0Q 4065.0 -404.0 4083.0 -422.5Q 4101.0 -441.0 4101.0 -468.0Q 4101.0 -495.0 4083.0 -513.0Q 4065.0 -531.0 4039.0 -531.0ZM 4471.0 -688.0H 5066.0V -523.0H 4692.0V -428.0H 5012.0V -270.0H 4692.0V -165.0H 5073.0V 0.0H 4471.0ZM559.7 588.6 703.9 860.0H 470.2L 355.2 623.5H 278.0V 860.0H 69.7V 211.7H 466.4Q 536.2 211.7 585.6 238.6Q 635.1 265.4 660.1 311.1Q 685.0 356.8 685.0 410.5Q 685.0 469.9 653.0 518.0Q 621.0 566.0 559.7 588.6ZM 414.6 359.7H 278.0V 479.3H 414.6Q 439.1 479.3 456.1 461.9Q 473.0 444.5 473.0 419.0Q 473.0 393.6 456.1 376.6Q 439.1 359.7 414.6 359.7ZM 831.1 860.0V 211.7H 1039.3V 860.0ZM 1383.3 860.0 1153.3 211.7H 1375.7L 1505.8 645.2H 1509.5L 1640.5 211.7H 1853.5L 1624.5 860.0ZM 1959.0 211.7H 2519.6V 367.2H 2167.2V 456.7H 2468.8V 605.6H 2167.2V 704.5H 2526.2V 860.0H 1959.0ZM 2625.2 675.3V 526.4H 2865.5V 675.3ZM 3549.6 400.2V 411.5H 3354.5V 407.7Q 3354.5 379.4 3333.8 360.6Q 3313.0 341.7 3270.6 341.7Q 3229.2 341.7 3207.0 354.0Q 3184.9 366.2 3184.9 384.2Q 3184.9 409.6 3215.0 421.8Q 3245.2 434.1 3312.1 447.3Q 3390.3 463.3 3440.7 480.7Q 3491.1 498.2 3528.8 537.7Q 3566.5 577.3 3567.5 645.2Q 3567.5 760.1 3489.7 815.7Q 3412.0 871.3 3282.0 871.3Q 3130.2 871.3 3045.9 820.4Q 2961.6 769.5 2961.6 640.4H 3158.5Q 3158.5 689.4 3184.0 705.9Q 3209.4 722.4 3263.1 722.4Q 3302.7 722.4 3328.6 713.9Q 3354.5 705.5 3354.5 679.1Q 3354.5 655.5 3325.8 643.7Q 3297.0 632.0 3232.0 618.8Q 3152.9 601.8 3101.0 583.4Q 3049.2 565.1 3010.6 522.7Q 2971.9 480.3 2971.9 407.7Q 2971.9 301.2 3054.4 250.8Q 3136.8 200.4 3263.1 200.4Q 3387.5 200.4 3467.6 250.8Q 3547.7 301.2 3549.6 400.2ZM 4013.2 871.3Q 3858.6 871.3 3774.3 801.6Q 3690.0 731.9 3690.0 599.0V 211.7H 3898.2V 596.2Q 3898.2 650.8 3927.4 683.3Q 3956.6 715.8 4012.2 715.8Q 4067.8 715.8 4097.5 682.9Q 4127.2 649.9 4127.2 596.2V 211.7H 4335.4V 599.0Q 4335.4 731.9 4251.6 801.6Q 4167.7 871.3 4013.2 871.3ZM 5114.7 535.9Q 5114.7 860.0 4774.5 860.0H 4493.7V 211.7H 4774.5Q 5114.7 211.7 5114.7 535.9ZM 4702.0 704.5H 4770.7Q 4901.7 704.5 4901.7 564.1V 507.6Q 4901.7 367.2 4770.7 367.2H 4702.0Z"/></svg></a>
+    <nav class="nav-links" aria-label="Menu">
+      <a href="#toiture"><span data-fr>Toiture</span><span data-en>Roofing</span></a>
+      <a href="#couleur"><span data-fr>Couleurs</span><span data-en>Colours</span></a>
+      <a href="#avis"><span data-fr>Avis</span><span data-en>Reviews</span></a>
+      <a href="#contact"><span data-fr>Contact</span><span data-en>Contact</span></a>
+    </nav>
+    <div class="nav-right">
+      <div class="vibes" role="group" aria-label="Ambiance / Vibe" data-vibes>
+        <span class="vibe-name" data-vibe-label>Rive-Sud</span>
+      </div>
+      <div class="lang" role="group" aria-label="Langue / Language">
+        <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-accent" href="#contact"><span data-fr>Estimation gratuite</span><span data-en>Free estimate</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:0">
+    <canvas id="house" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <a class="promo" href="#couleur"><span data-fr>Promotion : payez votre toiture en 8 versements sans intérêt</span><span data-en>Offer: pay for your roof in 8 interest-free instalments</span> →</a>
+      <h1 data-fr>Des toits en bardeaux <em>depuis 2004.</em></h1>
+      <h1 data-en>Shingle roofs <em>since 2004.</em></h1>
+      <p class="hero-sub" data-fr>Installation et réfection de toitures en bardeaux d'asphalte sur la Rive-Sud. Couvreurs certifiés IKO, plus de 20 ans d'expérience.</p>
+      <p class="hero-sub" data-en>Asphalt-shingle roof installation and replacement on Montréal's South Shore. IKO-certified roofers with over 20 years of experience.</p>
+      <div class="hero-cta">
+        <a class="btn btn-accent" href="#contact"><span data-fr>Estimation gratuite</span><span data-en>Free estimate</span><span class="arr">→</span></a>
+        <a class="btn btn-line btn-call" data-call href="tel:+14506358148"><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-fr>Appeler</span><span data-en>Call</span> <span class="num">(450) 635-8148</span></a>
+      </div>
+      <div class="sectors" aria-hidden="true"><span>Sainte-Catherine</span><span>Longueuil</span><span>Brossard</span><span>La Prairie</span><span data-fr>+ 14 villes</span><span data-en>+ 14 towns</span></div>
+    </div>
+    <div class="drag-hint" data-fr>Glissez pour tourner la maison</div>
+    <div class="drag-hint" data-en>Drag to turn the house</div>
+  </section>
+
+  <div class="sheet">
+  <div class="facts">
+    <div class="wrap">
+      <div class="fact rv"><b>2004</b><span data-fr>à votre service sur la Rive-Sud</span><span data-en>serving the South Shore since</span></div>
+      <div class="fact rv"><b>IKO</b><span data-fr>couvreurs certifiés</span><span data-en>certified roofers</span></div>
+      <div class="fact rv"><b>8×</b><span data-fr>versements mensuels sans intérêt</span><span data-en>monthly payments, no interest</span></div>
+      <div class="fact rv"><b>0 $</b><span data-fr>de dépôt pour la soumission</span><span data-en>deposit for the quote</span></div>
+    </div>
+  </div>
+
+  <section class="roof" id="toiture">
+    <div class="wrap">
+      <div class="rv">
+        <span class="tag" data-fr>Toiture</span><span class="tag" data-en>Roofing</span>
+        <h2 data-fr>Le bardeau d'asphalte, <em>c'est notre métier</em></h2><h2 data-en>Asphalt shingles <em>are our trade</em></h2>
+        <p class="lead" data-fr>Pose, rénovation et réparation de toitures, surtout pour les maisons de la Montérégie. Spécialistes du bardeau et de la ventilation de toit, nous intervenons aussi sur la sous-couche, l'entretoit et l'avant-toit.</p>
+        <p class="lead" data-en>Roof installation, renovation and repair, mostly for homes across the Montérégie. Specialists in shingles and roof ventilation, we also work on the underlayment, the attic and the eaves.</p>
+        <div class="badges"><span data-fr>Certifiés IKO</span><span data-en>IKO certified</span><span data-fr>Formation Ventilation Maximum</span><span data-en>Ventilation Maximum training</span><span data-fr>Membres de l'OPC</span><span data-en>OPC members</span></div>
+      </div>
+      <ul class="roofsvc rv">
+        <li><h3 data-fr>Installation de toiture</h3><h3 data-en>Roof installation</h3><span data-fr>bardeaux d'asphalte</span><span data-en>asphalt shingles</span></li>
+        <li><h3 data-fr>Réfection de toiture</h3><h3 data-en>Roof replacement</h3><span data-fr>arrachage et repose</span><span data-en>tear-off and re-roof</span></li>
+        <li><h3 data-fr>Réparation et infiltrations</h3><h3 data-en>Repairs and leaks</h3><span data-fr>tout revêtement</span><span data-en>any roofing</span></li>
+        <li><h3 data-fr>Ventilation d'entretoit</h3><h3 data-en>Attic ventilation</h3><span data-fr>attestation en main</span><span data-en>certified</span></li>
+        <li><h3 data-fr>Soffites et fascias</h3><h3 data-en>Soffits and fascia</h3><span data-fr>installation</span><span data-en>installation</span></li>
+        <li><h3 data-fr>Revêtement aluminium</h3><h3 data-en>Aluminium cladding</h3><span data-fr>ferblantier</span><span data-en>tinsmith</span></li>
+        <li><h3 data-fr>Moulures d'aluminium</h3><h3 data-en>Aluminium trim</h3><span data-fr>pliées sur mesure</span><span data-en>bent to measure</span></li>
+        <li><h3 data-fr>Gouttières</h3><h3 data-en>Gutters</h3><span data-fr>travaux de gouttières</span><span data-en>gutter work</span></li>
+      </ul>
+    </div>
+    <div class="wrap">
+      <div class="also">
+        <article class="rv"><img src="assets/maconnerie.jpg" alt="" loading="lazy" decoding="async"><div><span class="k" data-fr>Aussi</span><span class="k" data-en>Also</span><h3 data-fr>Maçonnerie et briquetage</h3><h3 data-en>Masonry and brickwork</h3><p data-fr>Cheminées de briques, briques fissurées, fissures de crépi et calfeutrage.</p><p data-en>Brick chimneys, cracked bricks, stucco cracks and caulking.</p></div></article>
+        <article class="rv"><img src="assets/exterieur.jpg" alt="" loading="lazy" decoding="async"><div><span class="k" data-fr>Aussi</span><span class="k" data-en>Also</span><h3 data-fr>Revêtements extérieurs</h3><h3 data-en>Exterior finishes</h3><p data-fr>Peinture de façade, réparation du crépi et colmatage de fissures dans la brique.</p><p data-en>Façade painting, stucco repair and sealing cracks in brick.</p></div></article>
+        <article class="rv"><img src="assets/interieur.jpg" alt="" loading="lazy" decoding="async"><div><span class="k" data-fr>Aussi</span><span class="k" data-en>Also</span><h3 data-fr>Rénovation intérieure</h3><h3 data-en>Interior renovation</h3><p data-fr>Cuisine, salle de bain, planchers, céramique, peinture, menuiserie et agrandissement.</p><p data-en>Kitchens, bathrooms, floors, tile, painting, carpentry and additions.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="studio" id="couleur">
+    <div class="wrap">
+      <div class="stage rv">
+        <canvas id="picker" aria-hidden="true"></canvas>
+        <div class="swatch-name"><small>IKO Cambridge</small><span id="swName">Dual Black</span></div>
+      </div>
+      <div class="panel rv">
+        <div>
+          <span class="tag" data-fr>Essayez-le</span><span class="tag" data-en>Try it</span>
+          <h2 data-fr>Votre toit, <em>votre couleur</em></h2><h2 data-en>Your roof, <em>your colour</em></h2>
+          <p class="lead" data-fr>Touchez une teinte de bardeau : on la pose sur la maison, rang par rang.</p>
+          <p class="lead" data-en>Tap a shingle colour: we lay it on the house, course by course.</p>
+        </div>
+        <div class="swatches" id="swatches" role="group" aria-label="Couleur de bardeau / Shingle colour"></div>
+        <p class="note" data-fr>Teintes approximatives à l'écran. Demandez l'échantillon réel avant de choisir.</p>
+        <p class="note" data-en>On-screen colours are approximate. Ask for a real sample before you choose.</p>
+        <div class="pay">
+          <label for="amt"><span data-fr>Montant de votre soumission ($)</span><span data-en>Your quote amount ($)</span><input id="amt" inputmode="numeric" value="12000"></label>
+          <div class="res"><b id="per">1 500 $</b><span data-fr>× 8 mois, sans intérêt</span><span data-en>× 8 months, no interest</span></div>
+          <p class="note" data-fr>Promotion en cours chez Toiture Rive-Sud : 8 versements mensuels sans intérêt, aucun dépôt requis pour la soumission.</p>
+          <p class="note" data-en>Current Toiture Rive-Sud offer: 8 interest-free monthly payments, no deposit required for the quote.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="avis">
+    <div class="wrap">
+      <div class="head rv">
+        <div><span class="tag" data-fr>Pourquoi nous</span><span class="tag" data-en>Why us</span>
+          <h2 data-fr>Avant, pendant <em>et après</em></h2><h2 data-en>Before, during <em>and after</em></h2></div>
+        <p data-fr>Un service après-vente attentionné, pour votre tranquillité d'esprit. C'est ce que nos clients remarquent le plus.</p>
+        <p data-en>Attentive after-sales service, for your peace of mind. It's what our customers notice most.</p>
+      </div>
+      <div class="why4">
+        <div class="rv"><b data-fr>Grande équipe</b><b data-en>A big crew</b><p data-fr>De nombreux employés aux compétences multiples, pour la toiture comme pour la rénovation.</p><p data-en>Many multi-skilled employees, for roofing and renovation alike.</p></div>
+        <div class="rv"><b data-fr>Toujours joignables</b><b data-en>Always reachable</b><p data-fr>On répond à la moindre de vos questions avant, pendant et après les travaux.</p><p data-en>We answer every question before, during and after the work.</p></div>
+        <div class="rv"><b data-fr>Personnel certifié</b><b data-en>Certified crew</b><p data-fr>Certification IKO, formation Ventilation Maximum et membres de l'OPC.</p><p data-en>IKO certification, Ventilation Maximum training and OPC membership.</p></div>
+        <div class="rv"><b data-fr>Chantier propre</b><b data-en>Clean site</b><p data-fr>On nettoie toutes les traces des travaux pour que vous profitiez tout de suite des lieux.</p><p data-en>We clean up every trace of the work so you can use the space right away.</p></div>
+      </div>
+      <div class="quotes">
+        <figure class="quote-card rv" style="margin:0">
+          <blockquote data-fr>Tout a été fait dans la même journée et ils ont laissé les lieux super propres sans le moindre débris. Leur service après-vente est incroyable et excellent, ce qui est très difficile à trouver de nos jours.</blockquote>
+          <blockquote data-en>Everything was done the same day and they left the place spotless, without a single bit of debris. Their after-sales service is incredible, which is very hard to find these days.</blockquote>
+          <b>Carole Filion<span data-fr>Avis client, publié sur toiturerive-sud.com</span><span data-en>Customer review (translated), published on toiturerive-sud.com</span></b>
+        </figure>
+        <figure class="quote-card rv" style="margin:0">
+          <blockquote data-fr>Le prix était le meilleur, ils ont fait tout le toit la même journée et la qualité du service après-vente est hors pair. Je vous recommande fortement cette entreprise.</blockquote>
+          <blockquote data-en>The price was the best, they did the whole roof the same day and the after-sales service is second to none. I highly recommend this company.</blockquote>
+          <b>Marc Edwards<span data-fr>Avis client, publié sur toiturerive-sud.com</span><span data-en>Customer review (translated), published on toiturerive-sud.com</span></b>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="zones" style="padding-top:0">
+    <div class="wrap zones-wrap">
+      <div class="rv">
+        <span class="tag" data-fr>Secteurs</span><span class="tag" data-en>Service area</span>
+        <h2 data-fr>Partout sur <em>la Rive-Sud</em></h2><h2 data-en>All over <em>the South Shore</em></h2>
+      </div>
+      <ul class="zones rv">
+        <li class="hq">Sainte-Catherine</li><li>Longueuil</li><li>Saint-Lambert</li><li>Boucherville</li><li>Saint-Hubert</li><li>La Prairie</li><li>Brossard</li><li>Candiac</li><li>Saint-Constant</li><li>Delson</li><li>Saint-Bruno-de-Montarville</li><li>Beloeil</li><li>Greenfield Park</li><li>Saint-Hilaire</li><li>Varennes</li><li>Châteauguay</li><li>Sainte-Julie</li><li>Saint-Basile-le-Grand</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap split">
+      <div class="rv">
+        <span class="tag" data-fr>Soumission gratuite</span><span class="tag" data-en>Free quote</span>
+        <h2 data-fr>Parlez-nous <em>de votre toit</em></h2><h2 data-en>Tell us <em>about your roof</em></h2>
+        <form id="quote">
+          <label for="q-name"><span data-fr>Nom</span><span data-en>Name</span><input id="q-name" required autocomplete="name"></label>
+          <label for="q-phone"><span data-fr>Téléphone</span><span data-en>Phone</span><input id="q-phone" type="tel" required autocomplete="tel"></label>
+          <label for="q-email"><span data-fr>Courriel</span><span data-en>Email</span><input id="q-email" type="email" autocomplete="email"></label>
+          <label for="q-city"><span data-fr>Ville</span><span data-en>Town</span>
+            <select id="q-city"><option>Sainte-Catherine</option><option>Longueuil</option><option>Saint-Lambert</option><option>Boucherville</option><option>Saint-Hubert</option><option>La Prairie</option><option>Brossard</option><option>Candiac</option><option>Saint-Constant</option><option>Delson</option><option>Saint-Bruno-de-Montarville</option><option>Beloeil</option><option>Greenfield Park</option><option>Saint-Hilaire</option><option>Varennes</option><option>Châteauguay</option><option>Sainte-Julie</option><option>Saint-Basile-le-Grand</option><option>Autre / Other</option></select></label>
+          <label for="q-leak"><span data-fr>Infiltration d'eau?</span><span data-en>Water leak?</span>
+            <select id="q-leak"><option>Non / No</option><option>Oui / Yes</option></select></label>
+          <label for="q-shed"><span data-fr>Un cabanon à faire aussi?</span><span data-en>A shed roof too?</span>
+            <select id="q-shed"><option>Non / No</option><option>Oui / Yes</option></select></label>
+          <label class="full" for="q-msg"><span data-fr>Votre projet</span><span data-en>Your project</span><textarea id="q-msg"></textarea></label>
+          <div class="full"><button class="btn btn-accent" type="submit"><span data-fr>Demander ma soumission</span><span data-en>Request my quote</span><span class="arr">→</span></button></div>
+          <p class="sent" id="sent" hidden><span data-fr>Maquette : sur le vrai site, la demande arrive directement à toiturerivesud@gmail.com.</span><span data-en>Sample: on the live site, requests go straight to toiturerivesud@gmail.com.</span></p>
+        </form>
+      </div>
+      <div class="contact-side rv">
+        <div><b data-fr>Téléphone</b><b data-en>Phone</b><a class="btn btn-accent btn-call" data-call href="tel:+14506358148"><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span>(450) 635-8148</span></a><small data-fr>Aussi : (514) 726-7033</small><small data-en>Also: (514) 726-7033</small></div>
+        <div><b data-fr>Courriel</b><b data-en>Email</b><a href="mailto:toiturerivesud@gmail.com">toiturerivesud@gmail.com</a></div>
+        <div><b data-fr>Adresse</b><b data-en>Address</b>465, rue du Gloria<br>Sainte-Catherine (Québec) J5C 2A7</div>
+        <div><b data-fr>Estimation</b><b data-en>Estimate</b><span data-fr>Gratuite, aucun dépôt requis</span><span data-en>Free, no deposit required</span></div>
+      </div>
+    </div>
+  </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <svg class="word" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 -730 5100 1620"><path fill="currentColor" d="M470.0 -512.0V 0.0H 249.0V -512.0H 23.0V -688.0H 695.0V -512.0ZM 1530.0 -344.0Q 1530.0 -170.0 1433.0 -79.0Q 1336.0 12.0 1158.0 12.0Q 980.0 12.0 883.5 -78.5Q 787.0 -169.0 787.0 -344.0Q 787.0 -519.0 883.5 -609.5Q 980.0 -700.0 1158.0 -700.0Q 1336.0 -700.0 1433.0 -609.0Q 1530.0 -518.0 1530.0 -344.0ZM 1013.0 -376.0V -312.0Q 1013.0 -239.0 1050.0 -196.0Q 1087.0 -153.0 1158.0 -153.0Q 1229.0 -153.0 1266.5 -196.0Q 1304.0 -239.0 1304.0 -312.0V -376.0Q 1304.0 -449.0 1266.5 -492.0Q 1229.0 -535.0 1158.0 -535.0Q 1087.0 -535.0 1050.0 -492.0Q 1013.0 -449.0 1013.0 -376.0ZM 1679.0 0.0V -688.0H 1900.0V 0.0ZM 2474.0 -512.0V 0.0H 2253.0V -512.0H 2027.0V -688.0H 2699.0V -512.0ZM 3163.0 12.0Q 2999.0 12.0 2909.5 -62.0Q 2820.0 -136.0 2820.0 -277.0V -688.0H 3041.0V -280.0Q 3041.0 -222.0 3072.0 -187.5Q 3103.0 -153.0 3162.0 -153.0Q 3221.0 -153.0 3252.5 -188.0Q 3284.0 -223.0 3284.0 -280.0V -688.0H 3505.0V -277.0Q 3505.0 -136.0 3416.0 -62.0Q 3327.0 12.0 3163.0 12.0ZM 4193.0 -288.0 4346.0 0.0H 4098.0L 3976.0 -251.0H 3894.0V 0.0H 3673.0V -688.0H 4094.0Q 4168.0 -688.0 4220.5 -659.5Q 4273.0 -631.0 4299.5 -582.5Q 4326.0 -534.0 4326.0 -477.0Q 4326.0 -414.0 4292.0 -363.0Q 4258.0 -312.0 4193.0 -288.0ZM 4039.0 -531.0H 3894.0V -404.0H 4039.0Q 4065.0 -404.0 4083.0 -422.5Q 4101.0 -441.0 4101.0 -468.0Q 4101.0 -495.0 4083.0 -513.0Q 4065.0 -531.0 4039.0 -531.0ZM 4471.0 -688.0H 5066.0V -523.0H 4692.0V -428.0H 5012.0V -270.0H 4692.0V -165.0H 5073.0V 0.0H 4471.0ZM559.7 588.6 703.9 860.0H 470.2L 355.2 623.5H 278.0V 860.0H 69.7V 211.7H 466.4Q 536.2 211.7 585.6 238.6Q 635.1 265.4 660.1 311.1Q 685.0 356.8 685.0 410.5Q 685.0 469.9 653.0 518.0Q 621.0 566.0 559.7 588.6ZM 414.6 359.7H 278.0V 479.3H 414.6Q 439.1 479.3 456.1 461.9Q 473.0 444.5 473.0 419.0Q 473.0 393.6 456.1 376.6Q 439.1 359.7 414.6 359.7ZM 831.1 860.0V 211.7H 1039.3V 860.0ZM 1383.3 860.0 1153.3 211.7H 1375.7L 1505.8 645.2H 1509.5L 1640.5 211.7H 1853.5L 1624.5 860.0ZM 1959.0 211.7H 2519.6V 367.2H 2167.2V 456.7H 2468.8V 605.6H 2167.2V 704.5H 2526.2V 860.0H 1959.0ZM 2625.2 675.3V 526.4H 2865.5V 675.3ZM 3549.6 400.2V 411.5H 3354.5V 407.7Q 3354.5 379.4 3333.8 360.6Q 3313.0 341.7 3270.6 341.7Q 3229.2 341.7 3207.0 354.0Q 3184.9 366.2 3184.9 384.2Q 3184.9 409.6 3215.0 421.8Q 3245.2 434.1 3312.1 447.3Q 3390.3 463.3 3440.7 480.7Q 3491.1 498.2 3528.8 537.7Q 3566.5 577.3 3567.5 645.2Q 3567.5 760.1 3489.7 815.7Q 3412.0 871.3 3282.0 871.3Q 3130.2 871.3 3045.9 820.4Q 2961.6 769.5 2961.6 640.4H 3158.5Q 3158.5 689.4 3184.0 705.9Q 3209.4 722.4 3263.1 722.4Q 3302.7 722.4 3328.6 713.9Q 3354.5 705.5 3354.5 679.1Q 3354.5 655.5 3325.8 643.7Q 3297.0 632.0 3232.0 618.8Q 3152.9 601.8 3101.0 583.4Q 3049.2 565.1 3010.6 522.7Q 2971.9 480.3 2971.9 407.7Q 2971.9 301.2 3054.4 250.8Q 3136.8 200.4 3263.1 200.4Q 3387.5 200.4 3467.6 250.8Q 3547.7 301.2 3549.6 400.2ZM 4013.2 871.3Q 3858.6 871.3 3774.3 801.6Q 3690.0 731.9 3690.0 599.0V 211.7H 3898.2V 596.2Q 3898.2 650.8 3927.4 683.3Q 3956.6 715.8 4012.2 715.8Q 4067.8 715.8 4097.5 682.9Q 4127.2 649.9 4127.2 596.2V 211.7H 4335.4V 599.0Q 4335.4 731.9 4251.6 801.6Q 4167.7 871.3 4013.2 871.3ZM 5114.7 535.9Q 5114.7 860.0 4774.5 860.0H 4493.7V 211.7H 4774.5Q 5114.7 211.7 5114.7 535.9ZM 4702.0 704.5H 4770.7Q 4901.7 704.5 4901.7 564.1V 507.6Q 4901.7 367.2 4770.7 367.2H 4702.0Z"/></svg>
+    <span>© 2026 Toiture Rive-Sud inc. · <a href="#top" data-fr>Politique de confidentialité (Loi 25)</a><a href="#top" data-en>Privacy policy (Law 25)</a></span>
+    <span data-fr>Site par WeUnfolded Web</span><span data-en>Site by WeUnfolded Web</span>
+  </div>
+</footer>
+
+<div class="mock"><span data-fr>Maquette · WeUnfolded Web</span><span data-en>Sample · WeUnfolded Web</span></div>
+<div class="callbar"><a class="btn btn-accent btn-call" data-call href="tel:+14506358148"><svg class="ph-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-fr>Appeler</span><span data-en>Call</span></a><a class="btn btn-line" href="#contact"><span data-fr>Soumission</span><span data-en>Quote</span></a></div>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var root=document.documentElement;
+  function setLang(l){
+    root.lang=l;
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
+    setVibe(root.dataset.vibe);tick();
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
+  var VIBES=[
+    {id:'rs',fr:'Rive-Sud',en:'Rive-Sud',a:'#121212',b:'#e1251b'},
+    {id:'ardoise',fr:'Ardoise',en:'Slate',a:'#141a21',b:'#7fb2d9'},
+    {id:'cedre',fr:'Cèdre',en:'Cedar',a:'#1b1410',b:'#d9823b'}
+  ];
+  document.querySelectorAll('[data-vibes]').forEach(function(g){
+    var label=g.querySelector('[data-vibe-label]');
+    VIBES.forEach(function(v){
+      var b=document.createElement('button');b.type='button';b.dataset.vibe=v.id;
+      b.style.setProperty('--a',v.a);b.style.setProperty('--b',v.b);
+      b.setAttribute('aria-label',v.fr+' / '+v.en);b.title=v.fr+' / '+v.en;
+      b.addEventListener('click',function(){setVibe(v.id)});
+      g.insertBefore(b,label);
+    });
+  });
+  function setVibe(id){
+    var v=VIBES.filter(function(x){return x.id===id})[0]||VIBES[0];
+    root.dataset.vibe=v.id;
+    document.querySelectorAll('[data-vibes] button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.vibe===v.id)});
+    document.querySelectorAll('[data-vibe-label]').forEach(function(s){s.textContent=root.lang==='en'?v.en:v.fr});
+    try{localStorage.setItem('trs-vibe',v.id)}catch(e){}
+    window.dispatchEvent(new Event('vibechange'));
+  }
+  // live clock (Montreal time)
+  function tick(){
+    var d=new Date(),t;
+    try{t=new Intl.DateTimeFormat(root.lang==='en'?'en-CA':'fr-CA',{hour:'numeric',minute:'2-digit',hour12:root.lang==='en',timeZone:'America/Toronto'}).format(d)}catch(e){t=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+    document.querySelectorAll('[data-clock]').forEach(function(b){b.textContent=t});
+  }
+  setInterval(tick,15000);
+  var saved=null;try{saved=localStorage.getItem('trs-vibe')}catch(e){}
+  var hm=/^#(fr|en)(?:-(rs|ardoise|cedre))?$/.exec(location.hash);
+  if(hm&&hm[2])saved=hm[2];
+  setVibe(saved||'rs');tick();
+  // call buttons
+  var digits=(root.dataset.phone||'').replace(/\D/g,'').replace(/^1(?=\d{10}$)/,'');
+  if(digits.length===10){
+    var pretty='('+digits.slice(0,3)+') '+digits.slice(3,6)+'-'+digits.slice(6);
+    document.querySelectorAll('[data-call]').forEach(function(a){a.href='tel:+1'+digits;a.setAttribute('aria-label','Appeler / Call '+pretty)});
+    document.querySelectorAll('[data-phone-text]').forEach(function(s){s.textContent=pretty});
+  }
+  var gate=document.getElementById('gate');
+  if(hm){setLang(hm[1]);gate.hidden=true}else document.body.style.overflow='hidden';
+  gate.querySelectorAll('[data-pick]').forEach(function(b){
+    b.addEventListener('click',function(){
+      setLang(b.dataset.pick);
+      gate.classList.add('closed');document.body.style.overflow='';
+      window.dispatchEvent(new Event('gateopening'));
+      setTimeout(function(){gate.hidden=true},900);
+    });
+  });
+  var nav=document.getElementById('nav');
+  function onScroll(){nav.classList.toggle('solid',window.scrollY>40)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,lenis=null;
+  if(window.Lenis&&!reduce){
+    lenis=new Lenis({duration:1.35,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true,wheelMultiplier:.9});
+    (function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(performance.now());
+    if(!gate.hidden)lenis.stop();
+    window.addEventListener('gateopening',function(){lenis.start()});
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click',function(e){
+        if(a.getAttribute('href').indexOf('tel:')===0)return;
+        var id=a.getAttribute('href');var el=id==='#top'?0:document.querySelector(id);
+        if(el===null)return;e.preventDefault();lenis.scrollTo(el,{offset:id==='#top'?0:-76,duration:1.6});
+      });
+    });
+  }
+  var hero=document.querySelector('.hero');
+  function heroProgress(){var p=Math.min(1,Math.max(0,window.scrollY/(hero.offsetHeight||1)));hero.style.setProperty('--p',p.toFixed(3));window.__heroCovered=p>=1}
+  window.addEventListener('scroll',heroProgress,{passive:true});heroProgress();
+  ['.facts .wrap','.roofsvc','.also','.why4','.zones','.swatches'].forEach(function(sel){
+    var g=document.querySelector(sel);if(!g)return;
+    Array.prototype.forEach.call(g.children,function(c,i){c.style.setProperty('--i',i%8)});
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  }else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
+  document.getElementById('quote').addEventListener('submit',function(e){e.preventDefault();document.getElementById('sent').hidden=false});
+})();
+</script>
+
+<script>
+/* 8 interest-free payments */
+(function(){
+  var root=document.documentElement,inp=document.getElementById('amt'),out=document.getElementById('per');
+  function draw(){
+    var v=parseFloat(String(inp.value).replace(/[^\d.,]/g,'').replace(',','.'));
+    out.textContent=v>0?new Intl.NumberFormat(root.lang==='en'?'en-CA':'fr-CA',{style:'currency',currency:'CAD',maximumFractionDigits:0}).format(v/8):'–';
+  }
+  inp.addEventListener('input',draw);draw();new MutationObserver(draw).observe(root,{attributes:true,attributeFilter:['lang']});
+})();
+</script>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const col = (n) => new THREE.Color(css(n));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const phone = matchMedia('(max-width: 900px), (pointer: coarse)').matches;
+const clamp01 = (x) => Math.min(1, Math.max(0, x));
+const ease = (k) => 1 - Math.pow(1 - k, 3);
+
+// IKO Cambridge shingle colours (approximate on screen)
+const SHINGLES = [
+  { n: 'Dual Black', c: '#2a2b2d' }, { n: 'Charcoal Grey', c: '#4b4d50' }, { n: 'Harvard Slate', c: '#5c6670' }, { n: 'Atlantic Blue', c: '#3e5064' },
+  { n: 'Driftwood', c: '#6e6356' }, { n: 'Weatherwood', c: '#7f766b' }, { n: 'Dual Brown', c: '#4f3c2f' }, { n: 'Earthtone Cedar', c: '#7b4b2d' }
+];
+
+/* ---------- textures (canvas, no downloads) ---------- */
+function canvasTex(w, h, draw, rx = 1, ry = 1) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h);
+  const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rx, ry); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t;
+}
+// one course of 3-tab shingles: granules, tab slits, a shadow line at the butt edge
+const shingleTex = canvasTex(512, 64, (g, w, h) => {
+  g.fillStyle = '#c9c9c9'; g.fillRect(0, 0, w, h);
+  for (let i = 0; i < 5000; i++) { const v = 150 + Math.random() * 105 | 0; g.fillStyle = `rgb(${v},${v},${v})`; g.fillRect(Math.random() * w, Math.random() * h, 1.5, 1.5); }
+  const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, 'rgba(0,0,0,.25)'); gr.addColorStop(.25, 'rgba(0,0,0,0)'); gr.addColorStop(.9, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,0,0,.55)');
+  g.fillStyle = gr; g.fillRect(0, 0, w, h);
+  g.fillStyle = 'rgba(0,0,0,.6)'; for (let x = 0; x < w; x += w / 6) g.fillRect(x, h * .35, 3, h * .65);
+}, 4, 1);
+const sidingTex = canvasTex(256, 256, (g, w, h) => {
+  g.fillStyle = '#c9c2b4'; g.fillRect(0, 0, w, h);
+  for (let y = 0; y < h; y += 16) { g.fillStyle = 'rgba(0,0,0,.18)'; g.fillRect(0, y + 14, w, 2); g.fillStyle = 'rgba(255,255,255,.35)'; g.fillRect(0, y, w, 1); }
+}, 3, 2);
+const brickTex = canvasTex(256, 256, (g, w, h) => {
+  g.fillStyle = '#d9d2c6'; g.fillRect(0, 0, w, h);
+  for (let r = 0; r < 16; r++) for (let c = -1; c < 5; c++) { const v = Math.random() * 30; g.fillStyle = `rgb(${140 + v},${58 + v * .5},${42 + v * .3})`; g.fillRect(c * 64 + (r % 2) * 32 + 2, r * 16 + 2, 60, 12); }
+}, 1, 2);
+
+/* ---------- a Rive-Sud house: two storeys, gable roof, shingles laid in courses ---------- */
+function buildHouse(scene, shadows) {
+  const std = (o) => new THREE.MeshStandardMaterial(Object.assign({ roughness: .85 }, o));
+  const box = (w, h, d, mat, x, y, z, p = scene) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); m.castShadow = m.receiveShadow = shadows; p.add(m); return m; };
+  const W = 11, D = 8, H = 5.6, PITCH = THREE.MathUtils.degToRad(34), OV = .55;
+  const siding = std({ map: sidingTex }), trim = std({ color: 0xf2efe8, roughness: .6 }), dark = std({ color: 0x1d1f22, roughness: .5 });
+  box(W, H, D, siding, 0, H / 2, 0);
+  // gable ends
+  const rise = (D / 2) * Math.tan(PITCH);
+  const gs = new THREE.Shape(); gs.moveTo(-D / 2, 0); gs.lineTo(D / 2, 0); gs.lineTo(0, rise); gs.closePath();
+  [-1, 1].forEach((s) => { const g = new THREE.Mesh(new THREE.ShapeGeometry(gs), siding); g.rotation.y = s * Math.PI / 2; g.position.set(s * W / 2, H, 0); g.castShadow = shadows; scene.add(g); });
+  // foundation, corner boards, windows lit from inside, door, porch steps
+  box(W + .2, .5, D + .2, std({ color: 0x8e8a83 }), 0, .25, 0);
+  [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([a, b]) => box(.18, H, .18, trim, a * (W / 2 + .02), H / 2, b * (D / 2 + .02)));
+  const glow = new THREE.MeshStandardMaterial({ color: 0x222222, emissive: new THREE.Color(0xffb067), emissiveIntensity: 1.3, roughness: .3 });
+  const win = (x, y, z, ry, w = 1.2, h = 1.4) => { const g = new THREE.Group(); g.position.set(x, y, z); g.rotation.y = ry; scene.add(g); box(w + .24, h + .24, .08, trim, 0, 0, 0, g); box(w, h, .1, glow, 0, 0, .02, g); box(.06, h, .12, trim, 0, 0, .04, g); box(w, .06, .12, trim, 0, 0, .04, g); };
+  [-3.6, -1.2, 3.6].forEach((x) => { win(x, 4.1, D / 2 + .04, 0); });
+  [-3.6, 3.6].forEach((x) => win(x, 1.7, D / 2 + .04, 0));
+  win(-2.4, 1.8, D / 2 + .04, 0, 2.2, 1.5);
+  [-1.6, 1.6].forEach((z) => { win(W / 2 + .04, 4.1, z, Math.PI / 2); win(W / 2 + .04, 1.7, z, Math.PI / 2); });
+  win(W / 2 + .04, H + 1, 0, Math.PI / 2, .8, .9);
+  box(1.1, 2.2, .1, std({ color: 0x7a1d18, roughness: .5 }), 1.2, 1.6, D / 2 + .05);
+  box(1.5, .5, 1.2, std({ color: 0x9a958d }), 1.2, .25, D / 2 + .6); box(1.5, .25, .6, std({ color: 0x9a958d }), 1.2, .12, D / 2 + 1.4);
+  // roof deck + courses (front and back slopes), fascia, gutters, ridge cap
+  const slope = (D / 2 + OV) / Math.cos(PITCH), N = 16, cw = slope / N;
+  const courses = [];
+  const slopes = [1, -1].map((s) => {
+    const g = new THREE.Group();
+    g.position.set(0, H - OV * Math.tan(PITCH), s * (D / 2 + OV));
+    const up = new THREE.Vector3(0, Math.sin(PITCH), -s * Math.cos(PITCH));      // up-slope direction
+    const nrm = new THREE.Vector3(0, Math.cos(PITCH), s * Math.sin(PITCH));      // outward normal
+    const m = new THREE.Matrix4().makeBasis(new THREE.Vector3(s, 0, 0), up, nrm);
+    g.quaternion.setFromRotationMatrix(m);   // x flips with the side so the basis stays right-handed
+    scene.add(g);
+    box(W + OV * 2, slope + .05, .12, std({ color: 0x3b3328 }), 0, slope / 2, -.06, g);           // plywood deck
+    for (let i = 0; i < N; i++) {
+      const mat = new THREE.MeshStandardMaterial({ map: shingleTex, color: 0x2a2b2d, roughness: .95 });
+      const c = box(W + OV * 2 + .02, cw * 1.6, .05, mat, 0, i * cw + cw * .8, .03 + i * .0015, g);
+      c.userData = { i, base: c.position.clone() }; courses.push(c);
+    }
+    box(W + OV * 2 + .1, .26, .1, trim, 0, -.04, .02, g);                                           // fascia
+    const gut = new THREE.Mesh(new THREE.CylinderGeometry(.11, .11, W + OV * 2 + .1, 10, 1, true, 0, Math.PI), std({ color: 0xf2efe8, roughness: .4, side: THREE.DoubleSide }));
+    gut.rotation.z = Math.PI / 2; gut.position.set(0, -.1, .14); g.add(gut);
+    return g;
+  });
+  const ridgeMat = new THREE.MeshStandardMaterial({ map: shingleTex, color: 0x2a2b2d, roughness: .95 });
+  const ridge = box(W + OV * 2 + .04, .14, .5, ridgeMat, 0, H + rise + .08, 0); ridge.userData = { i: N, base: ridge.position.clone() }; courses.push(ridge);
+  // chimney of brick (their masonry crew), through the back slope
+  box(1, 3.4, 1, std({ map: brickTex }), -3.4, H + rise - .2, -1.4); box(1.2, .16, 1.2, std({ color: 0x777777 }), -3.4, H + rise + 1.5, -1.4);
+  // ladder leaning on the front eave
+  const lad = new THREE.Group(); lad.position.set(4.6, 0, D / 2 + 1.5); lad.rotation.x = -.26; scene.add(lad);
+  const al = std({ color: 0xb8bcc0, roughness: .4, metalness: .7 });
+  box(.07, 6.2, .07, al, -.24, 3.1, 0, lad); box(.07, 6.2, .07, al, .24, 3.1, 0, lad); for (let y = .4; y < 6; y += .32) box(.48, .04, .04, al, 0, y, 0, lad);
+  // a pallet of shingle bundles on the lawn
+  for (let i = 0; i < 6; i++) box(1, .14, .34, new THREE.MeshStandardMaterial({ color: 0x2a2b2d, roughness: .9 }), -6.4 + (i % 2) * .02, .26 + i * .15, D / 2 + 2.2);
+  box(1.2, .14, 1, std({ color: 0x9b7b52 }), -6.4, .07, D / 2 + 2.2);
+  // ground, driveway, trees
+  const lawn = new THREE.Mesh(new THREE.CircleGeometry(60, 48), std({ color: 0x2c3a26, roughness: 1 })); lawn.rotation.x = -Math.PI / 2; lawn.receiveShadow = shadows; scene.add(lawn);
+  const drive = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 20), std({ color: 0x3a3a3c, roughness: .95 })); drive.rotation.x = -Math.PI / 2; drive.position.set(W / 2 + 2.6, .01, 8); drive.receiveShadow = shadows; scene.add(drive);
+  const leaf = std({ color: 0x24402a, roughness: 1 }), trunk = std({ color: 0x3b2e25 });
+  [[-10, -6, 1.2], [-9, 4, .9], [11, -7, 1.1], [-14, -14, 1.4], [16, 2, 1], [9, -14, 1.3]].forEach(([x, z, s]) => {
+    box(.3 * s, 1.6 * s, .3 * s, trunk, x, .8 * s, z);
+    for (let k = 0; k < 3; k++) { const c = new THREE.Mesh(new THREE.ConeGeometry((2 - k * .5) * s, 2.4 * s, 8), leaf); c.position.set(x, (2.2 + k * 1.3) * s, z); c.castShadow = shadows; scene.add(c); }
+  });
+  return { courses, W, D, H, rise, N };
+}
+
+/* lights for a dusk scene; sky gradient from the vibe */
+function dusk(scene, shadows) {
+  scene.add(new THREE.HemisphereLight(0xb9c8ff, 0x2a2018, .55));
+  const sun = new THREE.DirectionalLight(0xffa86a, 2.4); sun.position.set(22, 9, 14); sun.castShadow = shadows;
+  sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, { left: -20, right: 20, top: 20, bottom: -20, near: 1, far: 80 }); sun.shadow.bias = -.0004; scene.add(sun);
+  const fill = new THREE.DirectionalLight(0x8fa8ff, .35); fill.position.set(-20, 10, -10); scene.add(fill);
+  const porch = new THREE.PointLight(0xffb067, 12, 8, 2); porch.position.set(1.2, 2.9, 4.6); scene.add(porch);
+  const sky = document.createElement('canvas'); sky.width = 2; sky.height = 256; const tex = new THREE.CanvasTexture(sky); tex.colorSpace = THREE.SRGBColorSpace;
+  scene.fog = new THREE.Fog(0x000000, 40, 110);
+  const paint = () => { const c = sky.getContext('2d'), gr = c.createLinearGradient(0, 0, 0, 256), h = css('--hero'), d = css('--dusk');
+    gr.addColorStop(0, h); gr.addColorStop(.55, d); gr.addColorStop(.8, `color-mix(in srgb, ${css('--win')} 45%, ${d})`); gr.addColorStop(1, `color-mix(in srgb, ${css('--win')} 60%, ${d})`);
+    c.fillStyle = h; c.fillRect(0, 0, 2, 256); c.fillStyle = gr; c.fillRect(0, 0, 2, 256); tex.needsUpdate = true;
+    scene.background = tex; scene.fog.color = col('--dusk').lerp(col('--win'), .35); };
+  paint(); addEventListener('vibechange', paint);
+}
+
+function setup(canvas) {
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true }); } catch (e) { return null; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, phone ? 1.5 : 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = .95;
+  renderer.shadowMap.enabled = !phone; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer); scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+  const camera = new THREE.PerspectiveCamera(30, 1, .5, 400);
+  dusk(scene, !phone);
+  const house = buildHouse(scene, !phone);
+  let aspect = 1;
+  const fit = () => { const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = aspect = w / h; camera.updateProjectionMatrix(); };
+  new ResizeObserver(fit).observe(canvas); fit();
+  // drag to orbit (horizontal), with inertia
+  const orbit = { a: 0, v: 0, drag: null };
+  canvas.addEventListener('pointerdown', (e) => { orbit.drag = e.clientX; canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener('pointermove', (e) => { if (orbit.drag === null) return; orbit.v = (e.clientX - orbit.drag) * -.006; orbit.a += orbit.v; orbit.drag = e.clientX; });
+  const end = () => { orbit.drag = null; }; canvas.addEventListener('pointerup', end); canvas.addEventListener('pointercancel', end);
+  let visible = true; new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(canvas);
+  return { renderer, scene, camera, house, orbit, get aspect() { return aspect; }, get visible() { return visible; } };
+}
+
+/* lay shingles: course i drops in at its own time; returns true when all are down */
+function layCourses(house, t0, now, speed = 1) {
+  let done = true;
+  house.courses.forEach((c) => {
+    const k = clamp01(((now - t0) * speed - c.userData.i * .11) / .45), e = ease(k);
+    c.visible = k > 0; c.position.copy(c.userData.base); c.position.z += (1 - e) * .9; c.position.y += (1 - e) * .25;
+    c.scale.set(1, .4 + .6 * e, 1);
+    if (k < 1) done = false;
+  });
+  return done;
+}
+
+/* ================= Hero house ================= */
+(function hero(){
+  const S = setup(document.getElementById('house')); if (!S) return;
+  const { renderer, scene, camera, house, orbit } = S;
+  house.courses.forEach((c) => c.material.color.set('#2a2b2d'));
+  let t0 = null; const gate = document.getElementById('gate');
+  const start = () => { if (t0 === null) t0 = performance.now() / 1000 + .5; };
+  if (gate.hidden) start(); addEventListener('gateopening', start);
+  if (reduce) t0 = -100;
+  const look = new THREE.Vector3(0, 4.2, 0);
+  const frame = (now) => {
+    const t = now / 1000;
+    if (t0 === null) house.courses.forEach((c) => c.visible = false); else layCourses(house, t0, t);
+    if (orbit.drag === null) { orbit.v *= .94; orbit.a += orbit.v; }
+    const wide = S.aspect > 1.1, a = .62 + orbit.a + (reduce ? 0 : Math.sin(t * .07) * .12);
+    const R = wide ? 40 : 46;
+    camera.position.set(Math.sin(a) * R, wide ? 6.5 : 9, Math.cos(a) * R); camera.fov = wide ? 28 : 36; camera.updateProjectionMatrix();
+    camera.lookAt(look);
+    const w = renderer.domElement.clientWidth, h = renderer.domElement.clientHeight;
+    if (wide) camera.setViewOffset(w, h, -w * .24, h * .02, w, h); else camera.setViewOffset(w, h, 0, h * .2, w, h);
+    renderer.render(scene, camera);
+  };
+  renderer.setAnimationLoop((now) => { if (!S.visible || window.__heroCovered) return; frame(now); });
+})();
+
+/* ================= Signature: try IKO colours on the house ================= */
+(function picker(){
+  const S = setup(document.getElementById('picker')); if (!S) return;
+  const { renderer, scene, camera, house, orbit } = S;
+  const box = document.getElementById('swatches'), name = document.getElementById('swName');
+  // each course switches colour when the wave reaches it (eave to ridge)
+  let wave = { t: -100, from: null, to: new THREE.Color(SHINGLES[0].c) };
+  house.courses.forEach((c) => c.material.color.copy(wave.to));
+  const pick = (s, btn) => {
+    box.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn));
+    name.textContent = s.n;
+    house.courses.forEach((c) => c.userData.from = c.material.color.clone());
+    wave = { t: performance.now() / 1000, to: new THREE.Color(s.c) };
+  };
+  SHINGLES.forEach((s, i) => { const b = document.createElement('button'); b.type = 'button'; b.style.setProperty('--c', s.c); b.title = s.n; b.setAttribute('aria-label', s.n); b.setAttribute('aria-pressed', i === 0);
+    b.addEventListener('click', () => pick(s, b)); box.appendChild(b); });
+  const look = new THREE.Vector3(0, 4, 0);
+  renderer.setAnimationLoop((now) => {
+    if (!S.visible) return;
+    const t = now / 1000;
+    house.courses.forEach((c) => {
+      const k = reduce ? 1 : clamp01((t - wave.t - c.userData.i * .05) / .3);
+      if (c.userData.from) c.material.color.copy(c.userData.from).lerp(wave.to, k);
+      c.position.copy(c.userData.base); c.position.z += Math.sin(k * Math.PI) * .25;
+    });
+    if (orbit.drag === null) { orbit.v *= .94; orbit.a += orbit.v; }
+    const a = .5 + orbit.a + (reduce ? 0 : t * .05), R = S.aspect > 1.1 ? 27 : 33;
+    camera.position.set(Math.sin(a) * R, 9, Math.cos(a) * R); camera.fov = 32; camera.updateProjectionMatrix(); camera.lookAt(look);
+    renderer.render(scene, camera);
+  });
+})();
+
+(function logo(){
+  const gate = document.getElementById('gate');
+  const wrap = document.getElementById('logo3d');
+  const canvas = document.getElementById('logoCanvas');
+  const MARK = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-740 -470 1480 1060"><path fill="#000" fill-rule="evenodd" d="M-520.0 -52.2L0.0 -430.0L520.0 -52.2L520.0 96.1L0.0 -281.7L-520.0 96.1ZM-113.0 -204.1L-113.0 -272.1L-95.0 -272.1L-95.0 -204.1ZM-217.0 -128.6L-217.0 -196.6L-199.0 -196.6L-199.0 -128.6ZM-321.0 -53.0L-321.0 -121.0L-303.0 -121.0L-303.0 -53.0ZM-425.0 22.6L-425.0 -45.4L-407.0 -45.4L-407.0 22.6ZM95.0 -204.1L95.0 -272.1L113.0 -272.1L113.0 -204.1ZM199.0 -128.6L199.0 -196.6L217.0 -196.6L217.0 -128.6ZM303.0 -53.0L303.0 -121.0L321.0 -121.0L321.0 -53.0ZM407.0 22.6L407.0 -45.4L425.0 -45.4L425.0 22.6ZM-580.0 173.7L0.0 -247.7L580.0 173.7L580.0 322.1L0.0 -99.3L-580.0 322.1ZM-125.0 -13.1L-125.0 -81.1L-107.0 -81.1L-107.0 -13.1ZM-241.0 71.2L-241.0 3.2L-223.0 3.2L-223.0 71.2ZM-357.0 155.5L-357.0 87.5L-339.0 87.5L-339.0 155.5ZM-473.0 239.8L-473.0 171.8L-455.0 171.8L-455.0 239.8ZM107.0 -13.1L107.0 -81.1L125.0 -81.1L125.0 -13.1ZM223.0 71.2L223.0 3.2L241.0 3.2L241.0 71.2ZM339.0 155.5L339.0 87.5L357.0 87.5L357.0 155.5ZM455.0 239.8L455.0 171.8L473.0 171.8L473.0 239.8ZM-640.0 399.6L0.0 -65.3L640.0 399.6L640.0 548.0L0.0 83.0L-640.0 548.0ZM-137.0 178.0L-137.0 110.0L-119.0 110.0L-119.0 178.0ZM-265.0 271.0L-265.0 203.0L-247.0 203.0L-247.0 271.0ZM-393.0 364.0L-393.0 296.0L-375.0 296.0L-375.0 364.0ZM-521.0 457.0L-521.0 389.0L-503.0 389.0L-503.0 457.0ZM119.0 178.0L119.0 110.0L137.0 110.0L137.0 178.0ZM247.0 271.0L247.0 203.0L265.0 203.0L265.0 271.0ZM375.0 364.0L375.0 296.0L393.0 296.0L393.0 364.0ZM503.0 457.0L503.0 389.0L521.0 389.0L521.0 457.0ZM250.0 -400.0L350.0 -400.0L350.0 -201.7L250.0 -274.4Z"/></svg>`;
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+  const camera = new THREE.PerspectiveCamera(26, 1, 10, 60000);
+  const shapes = [];
+  new SVGLoader().parse(MARK).paths.forEach((p) => SVGLoader.createShapes(p).forEach((s) => shapes.push(s)));
+  const geo = new THREE.ExtrudeGeometry(shapes, { depth: 200, curveSegments: phone ? 10 : 24, bevelEnabled: true, bevelThickness: 22, bevelSize: 10, bevelSegments: phone ? 3 : 6 });
+  geo.center(); geo.computeBoundingBox();
+  const width = geo.boundingBox.max.x - geo.boundingBox.min.x;
+  const mat = new THREE.MeshPhysicalMaterial({ metalness: 0.6, roughness: 0.25, clearcoat: 0.8, clearcoatRoughness: 0.15 });
+  const mesh = new THREE.Mesh(geo, mat); mesh.rotation.x = Math.PI;
+  const group = new THREE.Group(); group.add(mesh); scene.add(group);
+  const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(0, 0, 4000); scene.add(key);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+  const applyVibe = () => mat.color = col('--accent');
+  applyVibe(); addEventListener('vibechange', applyVibe);
+  const fit = () => {
+    const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
+    renderer.setSize(w, h, false); camera.aspect = w / h;
+    const hfov = 2 * Math.atan(Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * camera.aspect);
+    camera.position.set(0, 0, (width / 0.62) / 2 / Math.tan(hfov / 2));
+    camera.near = camera.position.z / 20; camera.far = camera.position.z * 4; camera.updateProjectionMatrix();
+  };
+  new ResizeObserver(fit).observe(canvas); fit();
+  const ptr = { x: 0, y: 0 }; let drag = null, spin = 0, vel = 0, tiltX = 0;
+  const onMove = (e) => {
+    ptr.x = e.clientX / innerWidth * 2 - 1; ptr.y = e.clientY / innerHeight * 2 - 1;
+    if (drag) { const dx = e.clientX - drag.x; vel = dx * 0.012; spin += vel; tiltX = Math.max(-0.6, Math.min(0.6, tiltX + (e.clientY - drag.y) * 0.006)); drag.x = e.clientX; drag.y = e.clientY; }
+  };
+  wrap.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY }; wrap.setPointerCapture(e.pointerId); });
+  const end = () => { drag = null; };
+  wrap.addEventListener('pointerup', end); wrap.addEventListener('pointercancel', end);
+  addEventListener('pointermove', onMove, { passive: true });
+  const t0 = performance.now(); let shown = false;
+  const ease = (k) => 1 - Math.pow(1 - k, 3);
+  renderer.setAnimationLoop((now) => {
+    if (gate.hidden) { renderer.setAnimationLoop(null); removeEventListener('pointermove', onMove); geo.dispose(); mat.dispose(); pmrem.dispose(); renderer.dispose(); return; }
+    const t = (now - t0) / 1000, intro = reduce ? 1 : ease(Math.min(t / 1.8, 1));
+    if (!drag) { vel *= 0.95; spin += vel; spin *= 0.985; tiltX *= 0.96; }
+    const f = reduce ? 0 : 1;
+    group.rotation.y = spin + ptr.x * 0.45 + Math.cos(t * 0.6) * 0.12 * f - (1 - intro) * 1.2;
+    group.rotation.x = tiltX + ptr.y * 0.3 + Math.sin(t * 0.8) * 0.05 * f + 0.08;
+    group.position.y = Math.sin(t * 1.1) * width * 0.005 * f;
+    group.scale.setScalar(0.86 + 0.14 * intro);
+    key.position.set(ptr.x * 3000, -ptr.y * 2000 + 800, 4000);
+    renderer.render(scene, camera);
+    if (!shown) { shown = true; wrap.classList.add('webgl'); }
+  });
+})();
+</script>
+</body>
+</html>
